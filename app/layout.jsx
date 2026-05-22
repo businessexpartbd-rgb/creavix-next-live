@@ -50,6 +50,13 @@ export const metadata = {
   creator: SITE.name,
   publisher: SITE.name,
   alternates: { canonical: SITE.url },
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png', sizes: '500x500' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '500x500', type: 'image/png' }],
+    shortcut: ['/icon.png'],
+  },
   openGraph: {
     type: 'website',
     siteName: SITE.name,
@@ -58,6 +65,15 @@ export const metadata = {
     url: SITE.url,
     locale: 'en_US',
     alternateLocale: 'bn_BD',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 500,
+        height: 500,
+        alt: `${SITE.name} — ${SITE.tagline_en}`,
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -65,6 +81,7 @@ export const metadata = {
     creator: '@creavixit',
     title: `${SITE.name} — ${SITE.tagline_en}`,
     description: SITE.shortDesc,
+    images: ['/twitter-image.png'],
   },
   robots: {
     index: true,

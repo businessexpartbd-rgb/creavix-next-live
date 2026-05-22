@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
 import { NAV_LINKS, SITE, SOCIAL_LINKS } from '../../data/site-data';
 
@@ -7,9 +8,15 @@ export default function Footer() {
     <footer className="relative mt-24 border-t border-white/10 bg-ink-900">
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Link href="/" className="flex items-center gap-2">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-ink-950 shadow-glow">
-              <span className="font-display text-lg font-bold leading-none">C</span>
+          <Link href="/" className="flex items-center gap-3">
+            <span className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/0 ring-1 ring-white/10 shadow-glow">
+              <Image
+                src="/logo.png"
+                alt={`${SITE.name} logo`}
+                width={500}
+                height={500}
+                className="h-full w-full object-contain"
+              />
             </span>
             <div className="flex flex-col leading-tight">
               <span className="font-display text-xl font-semibold text-white">{SITE.name}</span>
