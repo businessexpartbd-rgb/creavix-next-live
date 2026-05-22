@@ -47,10 +47,9 @@ const nextConfig = {
         source: '/_next/static/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
-      {
-        source: '/(.*)\\.(png|jpg|jpeg|webp|avif|svg|ico|woff2)',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
-      },
+      // Note: per-extension cache headers handled via Vercel's automatic
+      // static-asset caching — avoid custom regex patterns that some
+      // path-to-regexp versions reject during build.
       { source: '/:path*', headers: security },
     ];
   },
