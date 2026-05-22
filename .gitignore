@@ -11,6 +11,10 @@ dist/
 next-env.d.ts
 *.tsbuildinfo
 
+# TypeScript
+.turbo/
+*.tsbuildinfo
+
 # misc
 .DS_Store
 *.pem
@@ -29,3 +33,8 @@ yarn-error.log*
 
 # vercel
 .vercel/
+
+# Local notes / draft commit messages
+.git-msg
+.git-commit-msg
+*.local

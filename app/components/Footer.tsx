@@ -1,0 +1,145 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
+import { NAV_LINKS, SITE, SOCIAL_LINKS } from '../../lib/site-data';
+import { SOCIAL_ICON_MAP } from './SocialIcons';
+import SubscribeButton from './SubscribeButton';
+
+export default function Footer() {
+  return (
+    <footer className="relative mt-24 border-t border-white/10 bg-ink-900">
+      <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        {/* Brand */}
+        <div>
+          <Link href="/" className="flex items-center gap-3">
+            <span className="relative grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/0 ring-1 ring-white/10 shadow-glow">
+              <Image
+                src="/logo.png"
+                alt={`${SITE.name} logo`}
+                width={500}
+                height={500}
+                className="h-full w-full object-contain"
+              />
+            </span>
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-2xl tracking-[0.18em] text-brand">
+                CREAVIX
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.32em] text-ash-300">
+                IT SOLUTION
+              </span>
+            </div>
+          </Link>
+          <p className="mt-5 max-w-md text-sm leading-7 text-ash-300">{SITE.shortDesc}</p>
+          <p className="mt-3 max-w-md font-bn text-sm leading-7 text-ash-200">
+            বাংলাদেশের প্রিমিয়াম এআই ভিডিও মার্কেটিং স্টুডিও। সিনেম্যাটিক স্টোরিটেলিং, প্রোডাক্ট অ্যাড ও বাইলিঙ্গুয়াল ক্যাম্পেইন।
+          </p>
+
+          {/* Social — pure SVG icons, no labels */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {SOCIAL_LINKS.map((s) => {
+              const Icon = SOCIAL_ICON_MAP[s.key];
+              if (!Icon) return null;
+              return (
+                <a
+                  key={s.key}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${SITE.name} on ${s.name}`}
+                  title={s.name}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-ash-300 transition hover:border-brand/60 hover:bg-brand hover:text-white"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Explore */}
+        <div>
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+            Explore
+          </h4>
+          <ul className="mt-5 space-y-3 text-sm text-ash-300">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-brand">
+                  {link.label_en}
+                  <span className="ml-2 font-bn text-xs text-ash-500">{link.label_bn}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+            Contact
+          </h4>
+          <ul className="mt-5 space-y-4 text-sm text-ash-300">
+            <li className="flex items-start gap-3">
+              <Phone size={16} className="mt-0.5 flex-none text-brand" />
+              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-white">
+                {SITE.hotline}
+              </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <MessageCircle size={16} className="mt-0.5 flex-none text-brand" />
+              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-white">
+                WhatsApp · {SITE.whatsapp}
+              </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <Mail size={16} className="mt-0.5 flex-none text-brand" />
+              <a href={`mailto:${SITE.email1}`} className="hover:text-white">
+                {SITE.email1}
+              </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <MapPin size={16} className="mt-0.5 flex-none text-brand" />
+              <span>
+                {SITE.address_en}
+                <br />
+                <span className="font-bn text-ash-400">{SITE.address_bn}</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Subscribe + Hours */}
+        <div>
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+            Studio Hours
+          </h4>
+          <ul className="mt-5 space-y-2 text-sm text-ash-300">
+            <li>Sat – Thu · 10:00 AM – 8:00 PM</li>
+            <li className="font-bn text-ash-400">শনি – বৃহঃ · সকাল ১০টা – রাত ৮টা</li>
+            <li className="text-ash-500">Friday closed · শুক্রবার বন্ধ</li>
+          </ul>
+
+          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+            Subscribe
+          </h4>
+          <p className="mt-3 text-xs leading-5 text-ash-400">
+            নতুন অফার, প্যাকেজ ও ভিডিও আপডেট পেতে সাবস্ক্রাইব করুন।
+          </p>
+          <SubscribeButton>Subscribe — সাবস্ক্রাইব</SubscribeButton>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="container-x flex flex-col gap-3 py-6 text-xs text-ash-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} {SITE.brand}. All rights reserved.
+          </p>
+          <p className="font-bn">
+            Founded by {SITE.founder.name} · ২০১৪ থেকে সেবায়
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
