@@ -1,14 +1,19 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { CLIENT_LOGOS } from '../../lib/site-data';
 
 /**
  * Bidirectional infinite logo slider:
- *  - Row 1 scrolls Left → Right (slow)
- *  - Row 2 scrolls Right → Left (slow)
+ *  - Row 1 scrolls Right → Left
+ *  - Row 2 scrolls Left → Right
  * Each row contains the list duplicated so the marquee loop is seamless.
  * Hovering or tapping any logo pauses BOTH rows for a moment, per spec.
+ *
+ * Logos are rendered through next/image, so each visitor gets AVIF/WebP
+ * (when supported), the exact pixel size their device needs, lazy-loaded.
+ * The source files live in `public/clients/` (see README in that folder).
  */
 export default function ClientLogosSlider() {
   const [paused, setPaused] = useState(false);
@@ -29,20 +34,19 @@ export default function ClientLogosSlider() {
           onMouseLeave={onLeave}
           onTouchStart={onHover}
           onTouchEnd={onLeave}
-          className="grid h-20 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] backdrop-blur-sm transition hover:border-brand/40 hover:bg-white/[0.08]"
+          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] p-3 backdrop-blur-sm transition hover:border-brand/40 hover:bg-white/[0.08]"
           title={logo.name}
         >
-          <span
-            className="font-display text-2xl tracking-[0.14em]"
-            style={{
-              background: `linear-gradient(135deg, ${logo.accent} 0%, #fff 100%)`,
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            {logo.initials}
-          </span>
+          <div className="relative h-full w-full">
+            <Image
+              src={logo.src}
+              alt={logo.name}
+              fill
+              sizes="(max-width: 640px) 25vw, 176px"
+              className="object-contain opacity-80 transition-opacity duration-300 hover:opacity-100"
+              loading="lazy"
+            />
+          </div>
         </div>
       ))}
     </div>

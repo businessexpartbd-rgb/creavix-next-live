@@ -60,9 +60,7 @@ export interface Showcase {
 
 export interface ClientLogo {
   name: string;
-  // Inline initials-style logo for slider (no external image dependency)
-  initials: string;
-  accent: string;
+  src: string;
 }
 
 export const SITE = {
@@ -546,21 +544,21 @@ export const SHOWCASES: Showcase[] = [
   },
 ];
 
-// Placeholder client logos — initials chip with a brand-tinted gradient.
-// Real client logos (transparent PNG/SVG) can be dropped into public/clients/
-// and this list updated to {name, src} when available.
-export const CLIENT_LOGOS: ClientLogo[] = [
-  { name: 'Bengal Bank', initials: 'BB', accent: '#FF4B6E' },
-  { name: 'Padma Insurance', initials: 'PI', accent: '#E8173A' },
-  { name: 'Lily Cosmetics', initials: 'LC', accent: '#FF6B8A' },
-  { name: 'NextGrocer', initials: 'NG', accent: '#FF8FA8' },
-  { name: 'Savar Tech', initials: 'ST', accent: '#E8173A' },
-  { name: 'Dhaka Fashion', initials: 'DF', accent: '#FF4B6E' },
-  { name: 'Coastal Foods', initials: 'CF', accent: '#FF7088' },
-  { name: 'Sonar Bangla', initials: 'SB', accent: '#E8173A' },
-  { name: 'Pulse Health', initials: 'PH', accent: '#FF4B6E' },
-  { name: 'Riverline Tours', initials: 'RT', accent: '#FF8FA8' },
-];
+/**
+ * Number of real client logo files in `public/clients/`.
+ * Each logo is expected to be named `Logo (N).png` for N = 1..COUNT.
+ * Change this number to expand or shrink the slider — the array
+ * regenerates automatically from it.
+ */
+export const CLIENT_LOGO_COUNT = 36;
+
+export const CLIENT_LOGOS: ClientLogo[] = Array.from(
+  { length: CLIENT_LOGO_COUNT },
+  (_, i) => ({
+    name: `Client ${i + 1}`,
+    src: `/clients/Logo (${i + 1}).png`,
+  }),
+);
 
 export const STATS = [
   { value: '10+', label_bn: 'বছর ধরে', label_en: 'Years in business', sub_bn: '২০১৪ থেকে' },
