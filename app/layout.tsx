@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Bebas_Neue, DM_Sans, Hind_Siliguri } from 'next/font/google';
 import { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -164,6 +165,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Footer />
         <WhatsAppButton />
         <ChatBot />
+        <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
