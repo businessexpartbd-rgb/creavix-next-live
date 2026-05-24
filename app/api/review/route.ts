@@ -1,17 +1,8 @@
 import { NextResponse } from 'next/server';
-
 export const runtime = 'nodejs';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/**
- * POST /api/review
- *   Body: { name, email, phone?, rating, text }
- *
- * Validates + logs (visible in `vercel logs`) and returns ok.
- * No persistence yet — wire to Vercel KV / Postgres when ready.
- * Resend forwarding to info@creavixit.com kicks in if RESEND_API_KEY is present.
- */
 export async function POST(req: Request) {
   let body: {
     name?: string;
@@ -19,6 +10,7 @@ export async function POST(req: Request) {
     phone?: string;
     rating?: number;
     text?: string;
+    turnstileToken?: string;
   } = {};
   try {
     body = await req.json();
@@ -26,6 +18,27 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'invalid json' }, { status: 400 });
   }
 
+  // ✅ Cloudflare Turnstile Verification
+  const token = (body.turnstileToken ?? '').toString().trim();
+  if (!token) {
+    return NextResponse.json({ error: 'human verification required' }, { status: 400 });
+  }
+
+  const secretKey = process.env.TURNSTILE_SECRET_KEY ?? '';
+  const verifyRes = await fetch(
+    'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret: secretKey, response: token }),
+    },
+  );
+  const verifyData = (await verifyRes.json()) as { success: boolean };
+  if (!verifyData.success) {
+    return NextResponse.json({ error: 'human verification failed' }, { status: 403 });
+  }
+
+  // Fields validate
   const name = (body.name ?? '').toString().trim().slice(0, 80);
   const email = (body.email ?? '').toString().trim().toLowerCase();
   const phone = (body.phone ?? '').toString().trim().slice(0, 30);
@@ -49,7 +62,7 @@ export async function POST(req: Request) {
   };
   console.log('[review] new submission', JSON.stringify(submission));
 
-  // Optional: forward to admin via Resend if configured
+  // Optional: Resend email notification
   const apiKey = process.env.RESEND_API_KEY;
   if (apiKey) {
     try {
