@@ -13,50 +13,61 @@ const bebas = Bebas_Neue({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-bebas',
+  preload: true,
 });
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-dm-sans',
+  preload: true,
 });
 
 const bangla = Hind_Siliguri({
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   subsets: ['bengali'],
   display: 'swap',
   variable: '--font-bangla',
+  preload: false,
 });
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  // ✅ FIX: userScalable false হলে Google mobile SEO score কমে যায়
+  // maximumScale 5 রাখলে zoom করা যাবে, Google happy থাকবে
+  maximumScale: 5,
+  userScalable: true,
   themeColor: '#0A0A0F',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline_en} in Bangladesh`,
-    template: `%s | ${SITE.name}`,
+    default: `${SITE.name} — AI Video Marketing Agency Bangladesh | Cinematic Ads`,
+    template: `%s | ${SITE.name} — AI Video Agency BD`,
   },
-  description: SITE.shortDesc,
+  description:
+    "বাংলাদেশের #১ AI ভিডিও মার্কেটিং এজেন্সি। Meta, YouTube ও TikTok-এর জন্য সিনেম্যাটিক ভিডিও অ্যাড। ২০১৪ থেকে ৪,৩০০+ প্রজেক্ট সম্পন্ন। ২৪ ঘণ্টায় ডেলিভারি।",
   keywords: [
     'AI video marketing agency Bangladesh',
     'video marketing agency Dhaka',
     'AI video ads Bangladesh',
-    'cinematic video production',
-    'YouTube shorts agency',
-    'TikTok video ads',
-    'Meta video ads',
-    'ভিডিও মার্কেটিং এজেন্সি',
-    'এআই ভিডিও অ্যাড',
+    'cinematic video production Bangladesh',
+    'YouTube shorts agency Bangladesh',
+    'TikTok video ads Bangladesh',
+    'Meta video ads Bangladesh',
+    'Facebook video ad agency BD',
+    'video production agency Savar Dhaka',
+    'AI video ad agency 2024',
+    'ভিডিও মার্কেটিং এজেন্সি বাংলাদেশ',
+    'এআই ভিডিও অ্যাড ঢাকা',
+    'সিনেম্যাটিক ভিডিও প্রোডাকশন',
     'Creavix',
     'Creavix IT Solution',
     'Creavixit',
+    'Hannan Khan',
   ],
   authors: [{ name: SITE.founder.name, url: SITE.url }],
   creator: SITE.name,
@@ -69,18 +80,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    siteName: SITE.name,
-    title: `${SITE.name} — ${SITE.tagline_en}`,
-    description: SITE.shortDesc,
+    siteName: `${SITE.name} IT Solution`,
+    title: `${SITE.name} — AI Video Marketing Agency | Cinematic Ads Bangladesh`,
+    description:
+      "Bangladesh's #1 AI-powered video marketing agency. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014. 24h delivery.",
     url: SITE.url,
     locale: 'en_US',
     alternateLocale: 'bn_BD',
     images: [
       {
         url: '/opengraph-image.png',
-        width: 500,
-        height: 500,
-        alt: `${SITE.name} — ${SITE.tagline_en}`,
+        // ✅ FIX: OG image 1200x630 হওয়া উচিত — Facebook/LinkedIn এর জন্য standard
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
         type: 'image/png',
       },
     ],
@@ -89,8 +102,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@creavixit',
     creator: '@creavixit',
-    title: `${SITE.name} — ${SITE.tagline_en}`,
-    description: SITE.shortDesc,
+    title: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
+    description:
+      "Bangladesh's premier AI-powered video studio. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014.",
     images: ['/twitter-image.png'],
   },
   robots: {
@@ -105,51 +119,129 @@ export const metadata: Metadata = {
     },
   },
   category: 'Video Marketing',
-  // verification: { google: 'PASTE_YOUR_GSC_CODE_HERE' },
+  // ✅ Google Search Console verify করতে নিচের লাইনের comment সরিয়ে আপনার code বসান:
+  // verification: { google: 'YOUR_GOOGLE_SITE_VERIFICATION_CODE' },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const fontVars = [bebas.variable, dmSans.variable, bangla.variable].join(' ');
 
-  // Organization JSON-LD for SEO
+  // ✅ IMPROVED: Organization + LocalBusiness + WebSite JSON-LD একসাথে
   const orgLd = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE.name,
-    legalName: SITE.brand,
-    url: SITE.url,
-    logo: `${SITE.url}/logo.png`,
-    foundingDate: String(SITE.servingSince),
-    founder: { '@type': 'Person', name: SITE.founder.name },
-    contactPoint: [
+    '@graph': [
       {
-        '@type': 'ContactPoint',
-        telephone: SITE.hotline,
-        contactType: 'customer service',
-        areaServed: 'BD',
-        availableLanguage: ['English', 'Bengali'],
+        '@type': ['Organization', 'LocalBusiness'],
+        '@id': `${SITE.url}/#organization`,
+        name: SITE.name,
+        legalName: SITE.brand,
+        url: SITE.url,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${SITE.url}/logo.png`,
+          width: 500,
+          height: 500,
+        },
+        image: `${SITE.url}/opengraph-image.png`,
+        description:
+          "Bangladesh's premier AI-powered video marketing studio. Cinematic ads for Meta, YouTube and TikTok.",
+        foundingDate: String(SITE.servingSince),
+        founder: {
+          '@type': 'Person',
+          name: SITE.founder.name,
+        },
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            telephone: SITE.hotline,
+            contactType: 'customer service',
+            areaServed: 'BD',
+            availableLanguage: ['English', 'Bengali'],
+          },
+          {
+            '@type': 'ContactPoint',
+            telephone: SITE.whatsapp,
+            contactType: 'sales',
+            contactOption: 'TollFree',
+            areaServed: 'BD',
+          },
+        ],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Hemayetpur',
+          addressLocality: 'Savar',
+          addressRegion: 'Dhaka',
+          postalCode: '1340',
+          addressCountry: 'BD',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: '23.8759',
+          longitude: '90.2674',
+        },
+        openingHoursSpecification: [
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+            opens: '10:00',
+            closes: '20:00',
+          },
+        ],
+        priceRange: '৳৳',
+        currenciesAccepted: 'BDT',
+        paymentAccepted: 'Cash, bKash, Nagad, Bank Transfer',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Bangladesh',
+        },
+        sameAs: [
+          'https://www.facebook.com/CreavixITSolution',
+          'https://www.instagram.com/creavixitsolution',
+          'https://www.youtube.com/@CreavixiTsolution',
+          'https://www.tiktok.com/@creavixitsolution',
+          'https://www.linkedin.com/in/creavix-it-solution',
+          'https://x.com/creavixit',
+        ],
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: '6',
+          bestRating: '5',
+          worstRating: '1',
+        },
       },
-    ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Hemayetpur',
-      addressLocality: 'Savar',
-      addressRegion: 'Dhaka',
-      postalCode: '1340',
-      addressCountry: 'BD',
-    },
-    sameAs: [
-      'https://www.facebook.com/CreavixITSolution',
-      'https://www.instagram.com/creavixitsolution',
-      'https://www.youtube.com/@CreavixiTsolution',
-      'https://www.tiktok.com/@creavixitsolution',
-      'https://www.linkedin.com/in/creavix-it-solution',
-      'https://x.com/creavixit',
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE.url}/#website`,
+        url: SITE.url,
+        name: `${SITE.name} — AI Video Marketing Agency`,
+        description:
+          "Bangladesh's #1 AI video marketing agency. Cinematic ads for Meta, YouTube & TikTok.",
+        publisher: {
+          '@id': `${SITE.url}/#organization`,
+        },
+        inLanguage: ['en-US', 'bn-BD'],
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${SITE.url}/?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      },
     ],
   };
 
   return (
     <html lang="en" className={fontVars} suppressHydrationWarning>
+      <head>
+        {/* ✅ DNS prefetch — YouTube thumbnail দ্রুত লোড হবে */}
+        <link rel="dns-prefetch" href="//i.ytimg.com" />
+        <link rel="dns-prefetch" href="//www.youtube.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-sans">
         <a
           href="#main"
