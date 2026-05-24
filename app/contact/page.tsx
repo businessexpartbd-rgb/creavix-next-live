@@ -12,14 +12,20 @@ import ContactForm from '../components/ContactForm';
 import { SOCIAL_ICON_MAP } from '../components/SocialIcons';
 
 export const metadata = {
-  title: 'Contact Creavix — WhatsApp & Email',
+  title: 'Contact Creavix — WhatsApp, Email & Studio Visit | Bangladesh',
   description:
-    'এখনই WhatsApp করুন: +8801890484355 অথবা ইমেইল করুন info@creavixit.com।',
+    'Creavix-এ যোগাযোগ করুন: WhatsApp +8801890484355 | Email: info@creavixit.com | স্টুডিও: হেমায়েতপুর, সাভার, ঢাকা। শনি–বৃহঃ সকাল ১০টা – রাত ৮টা।',
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact Creavix | WhatsApp Video Agency',
+    title: 'Contact Creavix | Bangladesh AI Video Agency',
     description:
-      'Reach Bangladesh\u2019s top AI video agency. WhatsApp +8801890484355 or email info@creavixit.com.',
+      'Get in touch: WhatsApp +8801890484355 or email info@creavixit.com. Studio in Hemayetpur, Savar, Dhaka. Sat–Thu 10AM–8PM.',
+    url: 'https://www.creavixit.com/contact',
+  },
+  twitter: {
+    title: 'Contact Creavix — AI Video Agency Bangladesh',
+    description:
+      'WhatsApp +8801890484355 | info@creavixit.com | Hemayetpur, Savar, Dhaka.',
   },
 };
 
