@@ -152,6 +152,7 @@ export default function HomePage() {
 
       {/* Client logos */}
       <ClientLogosSlider />
+      <AdInsightVideo />
 
       {/* Services */}
       <section className="container-x py-24 sm:py-28">
