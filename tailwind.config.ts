@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-
 const config: Config = {
   content: ['./app/**/*.{ts,tsx,js,jsx}', './lib/**/*.{ts,tsx}'],
   theme: {
@@ -50,8 +49,13 @@ const config: Config = {
       animation: {
         'fade-up': 'fadeUp 0.7s ease-out both',
         'fade-in': 'fadeIn 0.6s ease-out both',
+        // ── আগের speed (40s) ──────────────────────────────────────
         marquee: 'marquee 40s linear infinite',
         'marquee-reverse': 'marquee-reverse 40s linear infinite',
+        // ── নতুন 50% slow (80s) — ClientLogosSlider এ ব্যবহার হচ্ছে ─
+        'marquee-slow': 'marquee 80s linear infinite',
+        'marquee-reverse-slow': 'marquee-reverse 80s linear infinite',
+        // ─────────────────────────────────────────────────────────
         'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
         'spin-slow': 'spin 12s linear infinite',
         float: 'float 4s ease-in-out infinite',
@@ -92,5 +96,4 @@ const config: Config = {
   },
   plugins: [],
 };
-
 export default config;
