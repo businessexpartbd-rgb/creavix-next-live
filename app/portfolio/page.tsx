@@ -21,6 +21,8 @@ export const metadata = {
 const STORY = SHOWCASES[0];
 const SHORTS = SHOWCASES.slice(1);
 
+const EXTRA_IDS = ['UlNoCAs69vg', '4ryJaLx6o0k'];
+
 export default function PortfolioPage() {
   return (
     <>
@@ -53,6 +55,15 @@ export default function PortfolioPage() {
           {STORY.ids.slice(0, 4).map((id, i) => (
             <Reveal key={id} delay={i * 70}>
               <VideoThumb id={id} title={`${STORY.title_en} ${i + 1}`} priority={i === 0} />
+            </Reveal>
+          ))}
+          {EXTRA_IDS.map((id, i) => (
+            <Reveal key={id} delay={(STORY.ids.slice(0, 4).length + i) * 70}>
+              <VideoThumb
+                id={id}
+                title={`${STORY.title_en} ${STORY.ids.slice(0, 4).length + i + 1}`}
+                priority={false}
+              />
             </Reveal>
           ))}
         </div>
