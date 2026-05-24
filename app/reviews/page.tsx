@@ -5,13 +5,20 @@ import ReviewSection from '../components/ReviewSection';
 import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'Client Reviews & Ratings | Creavix',
+  title: 'Client Reviews & Ratings — 4.8/5 Stars | Creavix Bangladesh',
   description:
-    'আমাদের ক্লায়েন্টরা কি বলছেন — রিয়েল রিভিউ, ৫ স্টার রেটিং সিস্টেম।',
+    'Creavix-এর ক্লায়েন্টরা কি বলছেন — ভেরিফাইড রিয়েল রিভিউ, ৪.৮/৫ রেটিং। ৪,৩০০+ সফল প্রজেক্ট। AI ভিডিও অ্যাড সার্ভিস নিয়ে সৎ মতামত।',
   alternates: { canonical: '/reviews' },
   openGraph: {
-    title: 'Creavix Reviews — Verified Client Feedback',
-    description: 'Real client reviews for Creavix AI video campaigns. 4.8/5 from 4,300+ projects.',
+    title: 'Creavix Reviews — 4.8/5 Verified Client Feedback',
+    description:
+      "Real verified reviews from 4,300+ projects. 4.8/5 average rating. See what Bangladesh's top brands say about Creavix AI video ads.",
+    url: 'https://www.creavixit.com/reviews',
+  },
+  twitter: {
+    title: 'Creavix Client Reviews — 4.8/5 Stars',
+    description:
+      'Verified reviews from 4,300+ projects. 4.8/5 average. Real client feedback on AI video campaigns.',
   },
 };
 

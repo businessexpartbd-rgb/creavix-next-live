@@ -24,7 +24,7 @@ import VideoThumb from './components/VideoThumb';
 import CtaBand from './components/CtaBand';
 import ClientLogosSlider from './components/ClientLogosSlider';
 import ReviewSection from './components/ReviewSection';
-
+import AdInsightVideo from './components/AdInsightVideo';
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
   description:
@@ -152,6 +152,7 @@ export default function HomePage() {
 
       {/* Client logos */}
       <ClientLogosSlider />
+      <AdInsightVideo />
 
       {/* Services */}
       <section className="container-x py-24 sm:py-28">

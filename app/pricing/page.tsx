@@ -9,14 +9,20 @@ import FAQAccordion from '../components/FAQAccordion';
 import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'Video Ad Pricing — Affordable AI Packages | Creavix',
+  title: 'AI Video Ad Pricing Bangladesh — Launch, Growth & Signature Plans | Creavix',
   description:
-    'স্টোরি টেলিং ভিডিও ২,০০০ টাকা থেকে। প্রোডাক্ট ভিডিও ১,২০০ টাকা থেকে। ৫০% ডিসকাউন্ট চলছে।',
+    'সাশ্রয়ী দামে প্রিমিয়াম AI ভিডিও — Launch প্যাকেজ ১,২০০ টাকা থেকে। ৫০% ডিসকাউন্ট চলছে। স্টোরিটেলিং, প্রোডাক্ট ভিডিও ও কাস্টম প্যাকেজ। Creavix Bangladesh।',
   alternates: { canonical: '/pricing' },
   openGraph: {
-    title: 'Creavix Pricing — AI Video Packages Bangladesh',
+    title: 'Creavix Pricing — Affordable AI Video Packages Bangladesh',
     description:
-      'Transparent pricing. Story telling BDT 2000+, Product ads from BDT 1200+. 50% off now.',
+      'AI video ad packages from BDT 1,200. Launch, Growth & Signature plans. 50% discount running. Transparent pricing, 24h delivery.',
+    url: 'https://www.creavixit.com/pricing',
+  },
+  twitter: {
+    title: 'Creavix Pricing — AI Video Ad Packages BD',
+    description:
+      'AI video packages from BDT 1,200. 50% discount. Launch, Growth & Signature plans.',
   },
 };
 

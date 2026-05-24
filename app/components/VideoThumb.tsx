@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 import { ytThumb } from '../../lib/site-data';
 
@@ -8,7 +9,6 @@ interface VideoThumbProps {
   id: string;
   title?: string;
   ratio?: '16/9' | '9/16';
-  /** when `embed` true, becomes an in-place iframe with intersection-pause */
   embed?: boolean;
   priority?: boolean;
 }
@@ -25,8 +25,7 @@ export default function VideoThumb({
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // When in embed mode AND element scrolls out of view, pause via postMessage
-  // and pause OTHER videos when this one starts playing.
+  // Pause when scrolled out of view
   useEffect(() => {
     if (!embed || typeof IntersectionObserver === 'undefined') return;
     const el = containerRef.current;
@@ -48,7 +47,7 @@ export default function VideoThumb({
     return () => obs.disconnect();
   }, [embed]);
 
-  // Coordinate single-active across multiple thumbs on the page
+  // Pause when another video plays
   useEffect(() => {
     const onPlay = (e: Event) => {
       const detail = (e as CustomEvent).detail;
@@ -87,6 +86,11 @@ export default function VideoThumb({
     );
   }
 
+  // ✅ FIX: <img> এর বদলে next/image ব্যবহার করা হয়েছে
+  // এতে LCP score উন্নত হবে, lazy loading সঠিকভাবে কাজ করবে
+  // priority={true} হলে preload হবে — hero video-এর জন্য দরকারি
+  const thumbSrc = ytThumb(id, ratio === '9/16' ? 'hqdefault' : 'maxresdefault');
+
   return (
     <button
       type="button"
@@ -98,13 +102,17 @@ export default function VideoThumb({
       aria-label={`Play ${title}`}
       className={`group relative block w-full overflow-hidden rounded-card border border-white/10 bg-ink-800 ${ratioClass}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={ytThumb(id, ratio === '9/16' ? 'hqdefault' : 'maxresdefault')}
+      <Image
+        src={thumbSrc}
         alt={title}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+        fill
+        sizes={
+          ratio === '9/16'
+            ? '(max-width: 640px) 50vw, 300px'
+            : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px'
+        }
+        priority={priority}
+        className="object-cover transition duration-700 group-hover:scale-[1.04]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent opacity-90 transition group-hover:opacity-100" />
       <div className="absolute inset-0 grid place-items-center">

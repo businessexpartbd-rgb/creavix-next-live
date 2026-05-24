@@ -7,14 +7,20 @@ import ServiceCard from '../components/ServiceCard';
 import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'AI Video Ads & Cinematic Storytelling | Creavix',
+  title: 'AI Video Ads, Cinematic Storytelling & Product Videos | Creavix Services',
   description:
-    'প্রোডাক্ট ভিডিও, স্টোরিটেলিং, ফাইন্যান্সিয়াল অ্যাড — সব ধরনের ভিডিও মার্কেটিং সার্ভিস।',
+    'AI ভিডিও অ্যাড, প্রোডাক্ট প্রমো, ফাইন্যান্সিয়াল ভিডিও ও সিনেম্যাটিক স্টোরিটেলিং। Meta, YouTube, TikTok-এর জন্য ২৪ ঘণ্টায় ডেলিভারি। Creavix Bangladesh।',
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'Creavix Services — AI Video Production',
+    title: 'Creavix Services — AI Video Ads & Cinematic Production Bangladesh',
     description:
-      'Product ads, financial campaigns, cinematic storytelling. Premium bilingual video services in BD.',
+      'AI video ads, product promos, financial campaigns & cinematic storytelling. 24h delivery. Bilingual BD video agency since 2014.',
+    url: 'https://www.creavixit.com/services',
+  },
+  twitter: {
+    title: 'Creavix Services — AI Video Production Bangladesh',
+    description:
+      'AI video ads, product promos & cinematic storytelling for Meta, YouTube & TikTok. 24h delivery.',
   },
 };
 
