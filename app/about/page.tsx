@@ -7,13 +7,20 @@ import TrustCard from '../components/TrustCard';
 import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'About Creavix — AI Studio Since 2014',
+  title: 'About Creavix — AI Video Studio Bangladesh Since 2014 | Hannan Khan',
   description:
-    'হেমায়েতপুর, সাভারে অবস্থিত বাংলাদেশের প্রিমিয়াম AI ভিডিও স্টুডিও। Hannan Khan প্রতিষ্ঠিত।',
+    'Creavix IT Solution — হেমায়েতপুর, সাভার, ঢাকায় অবস্থিত বাংলাদেশের প্রিমিয়াম AI ভিডিও স্টুডিও। ২০১৪ সাল থেকে Hannan Khan-এর নেতৃত্বে ৪,৩০০+ ব্র্যান্ডের সাথে কাজ করেছি।',
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About Creavix — Bangladesh\u2019s AI Video Studio',
-    description: 'Founded 2014 in Savar, Dhaka. Cinematic AI video production with founder-led direction.',
+    title: "About Creavix — Bangladesh's AI Video Studio Since 2014",
+    description:
+      'Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Cinematic AI video production with founder-led direction.',
+    url: 'https://www.creavixit.com/about',
+  },
+  twitter: {
+    title: 'About Creavix — AI Video Studio Since 2014',
+    description:
+      "Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Bangladesh's premier AI video studio.",
   },
 };
 
@@ -32,8 +39,6 @@ const STATS = [
 ];
 
 export default function AboutPage() {
-  // Google Maps embed — Hemayetpur, Savar approximate.
-  // Map's URL params lock the zoom range visually using `&z=14`.
   const mapsSrc = `https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=14&output=embed`;
 
   return (
@@ -141,7 +146,7 @@ export default function AboutPage() {
             <div className="mt-10 overflow-hidden rounded-card border border-white/10">
               <iframe
                 src={mapsSrc}
-                title="Creavix Studio location"
+                title="Creavix Studio location — Hemayetpur, Savar, Dhaka"
                 width="100%"
                 height="420"
                 style={{ border: 0 }}
