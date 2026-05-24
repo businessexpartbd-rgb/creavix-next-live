@@ -22,7 +22,6 @@ const nextConfig = {
       { key: 'X-DNS-Prefetch-Control', value: 'on' },
       { key: 'X-Robots-Tag', value: 'index, follow' },
       { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-      // CSP — allows YouTube embed, Google Maps embed, Google Fonts, and inline styles
       {
         key: 'Content-Security-Policy',
         value: [
@@ -43,16 +42,23 @@ const nextConfig = {
       },
     ];
     return [
+      // ✅ Static assets — চিরকাল cache (hash আছে তাই safe)
       {
         source: '/_next/static/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
-      // Note: per-extension cache headers handled via Vercel's automatic
-      // static-asset caching — avoid custom regex patterns that some
-      // path-to-regexp versions reject during build.
-      { source: '/:path*', headers: security },
+      // ✅ HTML pages — নতুন deploy এ সবসময় fresh আসবে
+      {
+        source: '/:path*',
+        headers: [
+          ...security,
+          {
+            key: 'Cache-Control',
+            value: 'no-cache, no-store, must-revalidate',
+          },
+        ],
+      },
     ];
   },
 };
-
 export default nextConfig;
