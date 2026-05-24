@@ -8,13 +8,20 @@ import VideoThumb from '../components/VideoThumb';
 import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'Video Portfolio — AI Cinematic Work | Creavix',
+  title: 'AI Video Portfolio — Cinematic Ads & Brand Campaigns | Creavix',
   description:
-    'আমাদের সেরা কাজের ঝলক — AI ভিডিও অ্যাড, স্টোরিটেলিং ও ব্র্যান্ড ক্যাম্পেইন।',
+    'Creavix-এর সেরা কাজ দেখুন — AI ভিডিও অ্যাড, সিনেম্যাটিক স্টোরিটেলিং ও ব্র্যান্ড ক্যাম্পেইন। Meta, YouTube ও TikTok-রেডি ভিডিও। বাংলাদেশের শীর্ষ ভিডিও এজেন্সি।',
   alternates: { canonical: '/portfolio' },
   openGraph: {
-    title: 'Creavix Portfolio | Best AI Video Ads Bangladesh',
-    description: 'Cinematic AI video campaigns. Meta, YouTube & TikTok-ready ads for BD brands.',
+    title: 'Creavix Portfolio — Best AI Video Ads Bangladesh',
+    description:
+      'Watch our cinematic AI video campaigns. Meta, YouTube & TikTok-ready ads for Bangladeshi brands. 4,300+ projects delivered.',
+    url: 'https://www.creavixit.com/portfolio',
+  },
+  twitter: {
+    title: 'Creavix Portfolio — AI Cinematic Video Work',
+    description:
+      "Cinematic AI video campaigns for Meta, YouTube & TikTok. Bangladesh's top video agency.",
   },
 };
 
