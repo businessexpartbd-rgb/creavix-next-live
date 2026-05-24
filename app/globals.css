@@ -35,12 +35,16 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* ✅ FIX: মোবাইলে ডানদিকে scroll বন্ধ */
   }
 
   html,
   body {
     @apply bg-ink-900 text-ash-50 antialiased;
     font-feature-settings: 'ss01', 'cv11';
+    overflow-x: hidden; /* ✅ FIX: horizontal overflow বন্ধ */
+    max-width: 100%;    /* ✅ FIX: পেজ width ঠিক রাখে */
+    width: 100%;
   }
 
   body {
@@ -48,6 +52,7 @@
       radial-gradient(60% 40% at 50% -10%, rgba(232, 23, 58, 0.12) 0%, rgba(0, 0, 0, 0) 70%),
       radial-gradient(40% 30% at 100% 100%, rgba(232, 23, 58, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
     background-attachment: fixed;
+    position: relative; /* ✅ FIX: child elements যাতে body এর বাইরে না যায় */
   }
 
   ::selection {
