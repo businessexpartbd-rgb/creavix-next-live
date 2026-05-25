@@ -1,19 +1,52 @@
 'use client';
 
-import { useState } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { Play, Volume2, VolumeX } from 'lucide-react';
 import Reveal from './Reveal';
+import { ytThumb } from '../../lib/site-data';
 
 const VIDEO_ID = 'sHU3gWcwm4E';
-const SUBTITLE_EN = 'Why do most ads fail to convert? Here\'s what actually works.';
+const SUBTITLE_EN = "Why do most ads fail to convert? Here's what actually works.";
 const SUBTITLE_BN = 'বেশিরভাগ বিজ্ঞাপন কেন ফেল করে? আসলে কী করলে কাজ হয়?';
 
+/**
+ * Speed-optimized: iframe is NOT mounted until the section enters the viewport.
+ * Until then we show a lightweight YouTube thumbnail (~10KB) + Play overlay.
+ * Saves ~500KB of YouTube SDK + tracking scripts on initial page load.
+ */
 export default function AdInsightVideo() {
   const [muted, setMuted] = useState(true);
+  const [activated, setActivated] = useState(false);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
 
-  const src = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=${
-    muted ? 1 : 0
-  }&loop=1&playlist=${VIDEO_ID}&controls=1&rel=0&modestbranding=1&playsinline=1`;
+  // ✅ IntersectionObserver-based lazy mount (lazy autoplay)
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      // Fallback: activate immediately if no IO support
+      setActivated(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActivated(true);
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.25, rootMargin: '200px' },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const src = activated
+    ? `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${VIDEO_ID}&controls=1&rel=0&modestbranding=1&playsinline=1`
+    : '';
 
   return (
     <section className="container-x py-20 sm:py-24">
@@ -34,27 +67,50 @@ export default function AdInsightVideo() {
       </div>
 
       <Reveal delay={180}>
-        <div className="mx-auto w-full max-w-[320px]">
+        <div className="mx-auto w-full max-w-[320px]" ref={wrapRef}>
           <div
             className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
             style={{ aspectRatio: '9 / 16' }}
           >
-            <iframe
-              key={muted ? 'muted' : 'unmuted'}
-              src={src}
-              className="absolute inset-0 h-full w-full"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-              title="Why Most Ads Fail"
-            />
-            <button
-              onClick={() => setMuted((m) => !m)}
-              className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-black/90"
-            >
-              {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
-              {muted ? 'Sound On' : 'Mute'}
-            </button>
+            {activated ? (
+              <iframe
+                key={muted ? 'muted' : 'unmuted'}
+                src={src}
+                className="absolute inset-0 h-full w-full"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                title="Why Most Ads Fail — Creavix"
+              />
+            ) : (
+              // ✅ Lightweight placeholder — only ~10KB until scrolled into view
+              <Image
+                src={ytThumb(VIDEO_ID, 'hqdefault')}
+                alt="Why most ads fail — preview"
+                fill
+                sizes="320px"
+                className="object-cover"
+              />
+            )}
+
+            {!activated ? (
+              <div className="pointer-events-none absolute inset-0 grid place-items-center bg-black/40">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-brand text-white shadow-glow">
+                  <Play size={24} fill="currentColor" />
+                </span>
+              </div>
+            ) : null}
+
+            {activated ? (
+              <button
+                onClick={() => setMuted((m) => !m)}
+                aria-label={muted ? 'Unmute video' : 'Mute video'}
+                className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-black/90"
+              >
+                {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                {muted ? 'Sound On' : 'Mute'}
+              </button>
+            ) : null}
           </div>
 
           <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-center backdrop-blur-sm">
