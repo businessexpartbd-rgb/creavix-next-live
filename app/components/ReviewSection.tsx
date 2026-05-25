@@ -97,7 +97,11 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             setSubmitError('Verification failed — try again.');
           },
           theme: 'dark',
-          size: 'flexible',
+          // ✅ compact (150×140) — narrower card, fits mobile better than
+          //    flexible (which spread to full form width).  Keeps the
+          //    "tall card" feel the user asked for and matches input
+          //    column nicely on both mobile and desktop.
+          size: 'compact',
         });
         setTsReady(true);
       } catch {
@@ -185,10 +189,10 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
         const body = (await res.json().catch(() => ({}))) as { error?: string };
         setSubmitError(
           body.error === 'human verification failed'
-            ? 'Verification failed — refresh and try again.'
+            ? 'Verification failed — sometimes the server-side secret is misconfigured. Refresh and try again, or contact us via WhatsApp.'
             : body.error === 'human verification required'
-              ? 'Verification missing — please tick the box above.'
-              : 'Could not submit right now. Please try again later.',
+              ? 'Verification missing — please complete the captcha above.'
+              : 'Could not submit right now. Please try again later or WhatsApp us.',
         );
       }
     } catch {
@@ -408,7 +412,9 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
           />
 
-          {/* ✅ Cloudflare Turnstile — flexible width matches form on mobile + desktop */}
+          {/* ✅ Cloudflare Turnstile — compact widget (150×140) keeps the
+              form narrow on mobile while staying clearly visible.  The
+              wrapper centers it inside the form column. */}
           {SITE_KEY ? (
             <div>
               <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
@@ -416,7 +422,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               </label>
               <div
                 ref={turnstileWrapRef}
-                className="mt-2 min-h-[70px] w-full overflow-hidden rounded-xl"
+                className="mt-2 flex min-h-[140px] w-full items-center justify-start"
               />
               {!tsReady ? (
                 <p className="mt-1 text-[11px] text-ash-500">Loading verification…</p>
