@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Play, Volume2, VolumeX } from 'lucide-react';
 import Reveal from './Reveal';
@@ -11,20 +11,35 @@ const SUBTITLE_EN = "Why do most ads fail to convert? Here's what actually works
 const SUBTITLE_BN = 'বেশিরভাগ বিজ্ঞাপন কেন ফেল করে? আসলে কী করলে কাজ হয়?';
 
 /**
- * Speed-optimized: iframe is NOT mounted until the section enters the viewport.
- * Until then we show a lightweight YouTube thumbnail (~10KB) + Play overlay.
- * Saves ~500KB of YouTube SDK + tracking scripts on initial page load.
+ * Hero ad-strategy auto-play spot.
+ *
+ *   ① Lightweight YouTube thumbnail (~10KB) renders first.
+ *   ② Once the section scrolls into view → iframe mounts with
+ *      autoplay=1 + loop=1 → muted preview starts.
+ *   ③ When the section scrolls out of view (>60%) → the iframe is sent
+ *      a "pauseVideo" command via the YouTube IFrame-API.
+ *   ④ When the visitor scrolls back into view → "playVideo" resumes the
+ *      loop. Same UX as Instagram/TikTok feeds — the video plays only
+ *      while it's visible.
+ *   ⑤ Mute toggle works without remounting the iframe (live command).
  */
 export default function AdInsightVideo() {
   const [muted, setMuted] = useState(true);
   const [activated, setActivated] = useState(false);
   const wrapRef = useRef<HTMLDivElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
-  // ✅ IntersectionObserver-based lazy mount (lazy autoplay)
+  const post = useCallback((func: string, args: unknown[] = []) => {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: 'command', func, args }),
+      '*',
+    );
+  }, []);
+
+  /* ── First-time mount + ongoing pause/resume on scroll ── */
   useEffect(() => {
     const el = wrapRef.current;
     if (!el || typeof IntersectionObserver === 'undefined') {
-      // Fallback: activate immediately if no IO support
       setActivated(true);
       return;
     }
@@ -32,20 +47,59 @@ export default function AdInsightVideo() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
+            // First visible → mount the iframe.
             setActivated(true);
-            obs.disconnect();
-            break;
+            // If the iframe was already mounted (re-entry), resume.
+            post('playVideo');
+          } else if (entry.intersectionRatio < 0.4) {
+            // Mostly off-screen → pause to save CPU + bandwidth.
+            post('pauseVideo');
           }
         }
       },
-      { threshold: 0.25, rootMargin: '200px' },
+      { threshold: [0, 0.4, 0.6, 1], rootMargin: '200px 0px' },
     );
     obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
+    // Tab/window switch — pause when the page is hidden.
+    const onVisibility = () => {
+      if (document.hidden) post('pauseVideo');
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    return () => {
+      obs.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [post]);
+
+  /* ── Pause when any other VideoThumb on the page starts ── */
+  useEffect(() => {
+    const onOther = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: string }>).detail;
+      if (detail?.id !== VIDEO_ID) post('pauseVideo');
+    };
+    window.addEventListener('creavix:video-play', onOther as EventListener);
+    return () =>
+      window.removeEventListener('creavix:video-play', onOther as EventListener);
+  }, [post]);
+
+  /* ── Live mute toggle without remounting the iframe ── */
+  const toggleMute = () => {
+    setMuted((m) => {
+      const next = !m;
+      post(next ? 'mute' : 'unMute');
+      return next;
+    });
+  };
+
+  // enablejsapi=1 unlocks postMessage controls; loop+playlist make the
+  // single video loop seamlessly; mute=1 is required for autoplay on
+  // mobile browsers.
   const src = activated
-    ? `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${VIDEO_ID}&controls=1&rel=0&modestbranding=1&playsinline=1`
+    ? `https://www.youtube.com/embed/${VIDEO_ID}?enablejsapi=1&autoplay=1&mute=${
+        muted ? 1 : 0
+      }&loop=1&playlist=${VIDEO_ID}&controls=1&rel=0&modestbranding=1&playsinline=1`
     : '';
 
   return (
@@ -74,7 +128,7 @@ export default function AdInsightVideo() {
           >
             {activated ? (
               <iframe
-                key={muted ? 'muted' : 'unmuted'}
+                ref={iframeRef}
                 src={src}
                 className="absolute inset-0 h-full w-full"
                 allow="autoplay; encrypted-media; picture-in-picture"
@@ -83,7 +137,6 @@ export default function AdInsightVideo() {
                 title="Why Most Ads Fail — Creavix"
               />
             ) : (
-              // ✅ Lightweight placeholder — only ~10KB until scrolled into view
               <Image
                 src={ytThumb(VIDEO_ID, 'hqdefault')}
                 alt="Why most ads fail — preview"
@@ -103,7 +156,7 @@ export default function AdInsightVideo() {
 
             {activated ? (
               <button
-                onClick={() => setMuted((m) => !m)}
+                onClick={toggleMute}
                 aria-label={muted ? 'Unmute video' : 'Mute video'}
                 className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-black/90"
               >

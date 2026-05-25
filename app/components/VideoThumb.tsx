@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
 import { ytThumb } from '../../lib/site-data';
@@ -9,10 +9,27 @@ interface VideoThumbProps {
   id: string;
   title?: string;
   ratio?: '16/9' | '9/16';
+  /** Mount the iframe immediately on first viewport entry (true) instead
+   *  of waiting for a click. Used by the hero auto-play spot. */
   embed?: boolean;
+  /** Eager-load the thumbnail image — pass true on the LCP candidate. */
   priority?: boolean;
 }
 
+/**
+ * Click-to-play YouTube thumbnail with auto-pause-on-scroll-out.
+ *
+ *   ① Visitor sees a static thumbnail (next/image, lazy by default).
+ *   ② On click → iframe mounts with autoplay=1 → video plays.
+ *   ③ As soon as it scrolls out of view (>60% off-screen) → iframe is
+ *      sent the YouTube IFrame-API "pauseVideo" command. When the
+ *      visitor scrolls back, the video stays paused at the same frame
+ *      so playback resumes only when they click play again.
+ *   ④ When ANY other VideoThumb on the page starts playing, every
+ *      other one immediately pauses (single-channel feel, matching
+ *      AdInsightVideo).
+ *   ⑤ Tab switch / window blur also pauses (mobile background switch).
+ */
 export default function VideoThumb({
   id,
   title = 'Featured video',
@@ -23,44 +40,56 @@ export default function VideoThumb({
   const ratioClass = ratio === '9/16' ? 'aspect-[9/16]' : 'aspect-video';
   const [active, setActive] = useState(embed);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | HTMLButtonElement | null>(null);
 
-  // Pause when scrolled out of view
+  const pauseIframe = useCallback(() => {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
+      '*',
+    );
+  }, []);
+
+  /* ── Pause on scroll-out (works for both click and embed activation).
+     Re-runs when `active` flips so we track the new container element
+     after the button → div swap. */
   useEffect(() => {
-    if (!embed || typeof IntersectionObserver === 'undefined') return;
+    if (!active || typeof IntersectionObserver === 'undefined') return;
     const el = containerRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting && iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage(
-              JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
-              '*',
-            );
+        for (const entry of entries) {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.4) {
+            pauseIframe();
           }
-        });
+        }
       },
-      { threshold: 0.4 },
+      { threshold: [0, 0.4, 0.6, 1] },
     );
     obs.observe(el);
-    return () => obs.disconnect();
-  }, [embed]);
 
-  // Pause when another video plays
-  useEffect(() => {
-    const onPlay = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (detail?.id !== id && iframeRef.current) {
-        iframeRef.current.contentWindow?.postMessage(
-          JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
-          '*',
-        );
-      }
+    const onVisibility = () => {
+      if (document.hidden) pauseIframe();
     };
-    window.addEventListener('creavix:video-play' as any, onPlay);
-    return () => window.removeEventListener('creavix:video-play' as any, onPlay);
-  }, [id]);
+    document.addEventListener('visibilitychange', onVisibility);
+
+    return () => {
+      obs.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [active, pauseIframe]);
+
+  /* ── Pause when another video on the page starts playing ── */
+  useEffect(() => {
+    if (!active) return;
+    const onPlay = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: string }>).detail;
+      if (detail?.id !== id) pauseIframe();
+    };
+    window.addEventListener('creavix:video-play', onPlay as EventListener);
+    return () =>
+      window.removeEventListener('creavix:video-play', onPlay as EventListener);
+  }, [active, id, pauseIframe]);
 
   const onActivate = () => {
     setActive(true);
@@ -70,7 +99,9 @@ export default function VideoThumb({
   if (active) {
     return (
       <div
-        ref={containerRef}
+        ref={(el) => {
+          containerRef.current = el;
+        }}
         className={`relative overflow-hidden rounded-card border border-white/10 bg-ink-800 ${ratioClass}`}
       >
         <iframe
@@ -86,16 +117,13 @@ export default function VideoThumb({
     );
   }
 
-  // ✅ FIX: <img> এর বদলে next/image ব্যবহার করা হয়েছে
-  // এতে LCP score উন্নত হবে, lazy loading সঠিকভাবে কাজ করবে
-  // priority={true} হলে preload হবে — hero video-এর জন্য দরকারি
+  // Static thumbnail — high-DPI WebP via next/image, lazy by default.
   const thumbSrc = ytThumb(id, ratio === '9/16' ? 'hqdefault' : 'maxresdefault');
-
   return (
     <button
       type="button"
       ref={(el) => {
-        containerRef.current = el as unknown as HTMLDivElement;
+        containerRef.current = el;
       }}
       onClick={onActivate}
       title={title}
