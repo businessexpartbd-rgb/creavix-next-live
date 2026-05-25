@@ -57,13 +57,14 @@ const nextConfig = {
         key: 'Content-Security-Policy',
         value: [
           "default-src 'self'",
-          // YouTube, Google Maps script support
-          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://*.youtube.com https://www.google.com",
+          // YouTube, Google Maps, Cloudflare Turnstile script support
+          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://*.youtube.com https://www.google.com https://challenges.cloudflare.com",
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           // ✅ Tightened: http:// removed; whitelist only known image hosts
           "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com https://images.unsplash.com https://www.google.com https://*.googleusercontent.com",
           "font-src 'self' https://fonts.gstatic.com data:",
-          "frame-src 'self' https://*.youtube.com https://www.google.com https://www.google.com/maps",
+          // ✅ frame-src includes Cloudflare Turnstile widget iframe
+          "frame-src 'self' https://*.youtube.com https://www.google.com https://www.google.com/maps https://challenges.cloudflare.com",
           "connect-src 'self' https://*.youtube.com https://www.google.com https://api.anthropic.com https://api.resend.com https://challenges.cloudflare.com",
           "media-src 'self' https:",
           "object-src 'none'",

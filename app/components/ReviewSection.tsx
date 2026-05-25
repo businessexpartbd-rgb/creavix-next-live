@@ -1,8 +1,34 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Star, Quote, ShieldCheck } from 'lucide-react';
 import { REVIEWS_SEED, type Review } from '../../lib/site-data';
+
+/* ───────────── Cloudflare Turnstile (window + types) ───────────── */
+interface TurnstileRenderOptions {
+  sitekey: string;
+  callback?: (token: string) => void;
+  'expired-callback'?: () => void;
+  'error-callback'?: () => void;
+  theme?: 'light' | 'dark' | 'auto';
+  size?: 'normal' | 'compact' | 'flexible';
+  appearance?: 'always' | 'execute' | 'interaction-only';
+  language?: string;
+}
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement | string, options: TurnstileRenderOptions) => string;
+      remove: (widgetId: string) => void;
+      reset: (widgetId?: string) => void;
+      getResponse: (widgetId?: string) => string;
+    };
+  }
+}
+
+const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '';
+const TURNSTILE_SCRIPT_SRC =
+  'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 
 const maskEmail = (email: string) => {
   const [user, domain] = email.split('@');
@@ -10,12 +36,14 @@ const maskEmail = (email: string) => {
   const head = user.length <= 2 ? user[0] ?? 'x' : user.slice(0, 2);
   return `${head}***@${domain}`;
 };
-
 const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
+/* ───────────── Component ───────────── */
 export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Review[] }) {
   const [reviews, setReviews] = useState<Review[]>(initial);
   const [showAll, setShowAll] = useState(false);
+  // ✅ Real counter — increments only when a verified review is submitted.
+  //   Starts at the seed count and goes up by 1 per accepted submission.
   const [counter, setCounter] = useState(initial.length);
 
   const [rating, setRating] = useState(0);
@@ -25,15 +53,75 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
   const [phone, setPhone] = useState('');
   const [text, setText] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [submitError, setSubmitError] = useState('');
   const [busy, setBusy] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // Live counter — gentle drift to feel real (purely cosmetic).
+  /* ── Turnstile widget lifecycle ── */
+  const turnstileWrapRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<string | null>(null);
+  const [token, setToken] = useState('');
+  const [tsReady, setTsReady] = useState(false);
+
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setCounter((c) => c + (Math.random() < 0.5 ? 0 : 1));
-    }, 11000);
-    return () => window.clearInterval(id);
+    if (!SITE_KEY || typeof window === 'undefined') return;
+
+    // Load the Turnstile script once per page session.
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[data-creavix-turnstile]',
+    );
+    let script: HTMLScriptElement | null = existing;
+    if (!script) {
+      script = document.createElement('script');
+      script.src = TURNSTILE_SCRIPT_SRC;
+      script.async = true;
+      script.defer = true;
+      script.dataset.creavixTurnstile = '1';
+      document.head.appendChild(script);
+    }
+
+    let cancelled = false;
+    const tryRender = () => {
+      if (cancelled) return;
+      if (!window.turnstile || !turnstileWrapRef.current || widgetIdRef.current) return;
+      try {
+        widgetIdRef.current = window.turnstile.render(turnstileWrapRef.current, {
+          sitekey: SITE_KEY,
+          callback: (t: string) => {
+            setToken(t);
+            setSubmitError('');
+          },
+          'expired-callback': () => setToken(''),
+          'error-callback': () => {
+            setToken('');
+            setSubmitError('Verification failed — try again.');
+          },
+          theme: 'dark',
+          size: 'flexible',
+        });
+        setTsReady(true);
+      } catch {
+        // Render may fail if script just loaded; retry next tick
+      }
+    };
+
+    tryRender();
+    const poll = window.setInterval(tryRender, 200);
+    const timeout = window.setTimeout(() => window.clearInterval(poll), 10000);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(poll);
+      window.clearTimeout(timeout);
+      if (widgetIdRef.current && window.turnstile) {
+        try {
+          window.turnstile.remove(widgetIdRef.current);
+        } catch {
+          /* ignore — widget may already be detached */
+        }
+        widgetIdRef.current = null;
+      }
+    };
   }, []);
 
   const visibleReviews = useMemo(
@@ -46,35 +134,88 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
     return Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10;
   }, [reviews]);
 
+  const resetTurnstile = () => {
+    if (window.turnstile && widgetIdRef.current) {
+      try {
+        window.turnstile.reset(widgetIdRef.current);
+      } catch {
+        /* ignore */
+      }
+    }
+    setToken('');
+  };
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError('');
+
+    // Validate email (required) — phone stays optional
     if (!validateEmail(email)) {
       setEmailError('সঠিক ইমেইল দিন · Enter a valid email');
       return;
     }
-    if (!rating || !name.trim() || !text.trim()) return;
     setEmailError('');
+    if (!rating || !name.trim() || !text.trim()) return;
+
+    // Cloudflare Turnstile — must complete before submit
+    if (SITE_KEY && !token) {
+      setSubmitError(
+        'Please complete the human verification above · উপরের ভেরিফিকেশন সম্পূর্ণ করুন',
+      );
+      return;
+    }
+
     setBusy(true);
+    let serverOk = false;
     try {
-      await fetch('/api/review', {
+      const res = await fetch('/api/review', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, rating, text }),
-      }).catch(() => null);
+        body: JSON.stringify({
+          name,
+          email,
+          phone: phone || undefined,
+          rating,
+          text,
+          turnstileToken: token,
+        }),
+      });
+      serverOk = res.ok;
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        setSubmitError(
+          body.error === 'human verification failed'
+            ? 'Verification failed — refresh and try again.'
+            : body.error === 'human verification required'
+              ? 'Verification missing — please tick the box above.'
+              : 'Could not submit right now. Please try again later.',
+        );
+      }
+    } catch {
+      setSubmitError('Network error — please try again.');
     } finally {
       setBusy(false);
     }
-    // Optimistic insert (with masked email for display)
+
+    if (!serverOk) {
+      // Reset Turnstile so the user can retry with a fresh token
+      resetTurnstile();
+      return;
+    }
+
+    // ✅ Server accepted (Turnstile passed) → counts as a verified original review.
+    const isBangla = /[\u0980-\u09FF]/.test(text);
     const newReview: Review = {
       id: `local-${Date.now()}`,
       name,
       email: maskEmail(email),
       phone: phone || undefined,
       rating,
-      text_bn: text,
-      lang: /[\u0980-\u09FF]/.test(text) ? 'bn' : 'en',
+      text_bn: isBangla ? text : undefined,
+      text_en: isBangla ? undefined : text,
+      lang: isBangla ? 'bn' : 'en',
       createdAt: new Date().toISOString().slice(0, 10),
-      verified: false,
+      verified: true,
     };
     setReviews((r) => [newReview, ...r]);
     setCounter((c) => c + 1);
@@ -84,6 +225,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
     setEmail('');
     setPhone('');
     setText('');
+    resetTurnstile();
   };
 
   return (
@@ -103,7 +245,9 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               <strong className="text-white">{counter.toLocaleString('en-BD')}+</strong>{' '}
               reviews
             </span>
-            <span className="font-bn text-ash-400">· {counter.toLocaleString('en-BD')}+ জন রিভিউ দিয়েছেন</span>
+            <span className="font-bn text-ash-400">
+              · {counter.toLocaleString('en-BD')}+ জন রিভিউ দিয়েছেন
+            </span>
           </div>
           <div className="flex items-center gap-1">
             {[0, 1, 2, 3, 4].map((i) => (
@@ -157,7 +301,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               {r.verified ? (
                 <span
                   className="ml-auto grid h-7 w-7 place-items-center rounded-full bg-brand/15 text-brand"
-                  title="Verified"
+                  title="Verified original review"
                 >
                   <ShieldCheck size={14} />
                 </span>
@@ -246,10 +390,12 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             </div>
           </div>
 
+          {/* ✅ Phone is OPTIONAL — no `required`, label clarifies it */}
           <input
+            type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone (optional) · ফোন (ঐচ্ছিক)"
+            placeholder="Phone — optional · ফোন (ঐচ্ছিক)"
             className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
           />
 
@@ -262,17 +408,39 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
           />
 
+          {/* ✅ Cloudflare Turnstile — flexible width matches form on mobile + desktop */}
+          {SITE_KEY ? (
+            <div>
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+                Human verification · মানব যাচাই
+              </label>
+              <div
+                ref={turnstileWrapRef}
+                className="mt-2 min-h-[70px] w-full overflow-hidden rounded-xl"
+              />
+              {!tsReady ? (
+                <p className="mt-1 text-[11px] text-ash-500">Loading verification…</p>
+              ) : null}
+            </div>
+          ) : null}
+
+          {submitError ? (
+            <p className="rounded-xl border border-brand/40 bg-brand/10 px-4 py-3 text-sm text-brand">
+              {submitError}
+            </p>
+          ) : null}
+
           <button
             type="submit"
-            disabled={busy || !rating || !name || !email || !text}
+            disabled={busy || !rating || !name || !email || !text || (!!SITE_KEY && !token)}
             className="btn-3d-primary w-full justify-center disabled:opacity-60"
           >
             {busy ? 'Sending…' : 'Submit review · রিভিউ দিন'}
           </button>
 
           {submitted ? (
-            <p className="rounded-xl border border-brand/30 bg-brand/10 px-4 py-3 text-sm text-brand">
-              ✓ Thank you! আপনার রিভিউ পেলাম — moderation শেষে publish হবে।
+            <p className="rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300">
+              ✓ Thank you! আপনার ভেরিফাইড রিভিউ যুক্ত হয়েছে — উপরে দেখুন।
             </p>
           ) : null}
           <p className="text-[11px] uppercase tracking-[0.18em] text-ash-500">
