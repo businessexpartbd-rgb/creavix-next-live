@@ -18,11 +18,21 @@ export const metadata = {
     description:
       'AI video ad packages from BDT 1,200. Launch, Growth & Signature plans. 50% discount running. Transparent pricing, 24h delivery.',
     url: 'https://www.creavixit.com/pricing',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     title: 'Creavix Pricing — AI Video Ad Packages BD',
     description:
       'AI video packages from BDT 1,200. 50% discount. Launch, Growth & Signature plans.',
+    images: ['/share-card.jpg'],
   },
 };
 

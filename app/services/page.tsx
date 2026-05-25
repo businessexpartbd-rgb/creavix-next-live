@@ -16,11 +16,21 @@ export const metadata = {
     description:
       'AI video ads, product promos, financial campaigns & cinematic storytelling. 24h delivery. Bilingual BD video agency since 2014.',
     url: 'https://www.creavixit.com/services',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     title: 'Creavix Services — AI Video Production Bangladesh',
     description:
       'AI video ads, product promos & cinematic storytelling for Meta, YouTube & TikTok. 24h delivery.',
+    images: ['/share-card.jpg'],
   },
 };
 

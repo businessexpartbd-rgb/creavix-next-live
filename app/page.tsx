@@ -34,6 +34,15 @@ export const metadata = {
     title: 'Creavix AI Video Agency | Cinematic Ads BD',
     description:
       "Premium AI-powered video ads for Meta, YouTube & TikTok. Bangladesh's most trusted video studio since 2014.",
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
 };
 

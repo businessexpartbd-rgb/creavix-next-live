@@ -16,11 +16,21 @@ export const metadata = {
     description:
       'Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Cinematic AI video production with founder-led direction.',
     url: 'https://www.creavixit.com/about',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     title: 'About Creavix — AI Video Studio Since 2014',
     description:
       "Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Bangladesh's premier AI video studio.",
+    images: ['/share-card.jpg'],
   },
 };
 
