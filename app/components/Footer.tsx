@@ -16,8 +16,10 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt={`${SITE.name} logo`}
-                width={500}
-                height={500}
+                width={96}
+                height={96}
+                sizes="48px"
+                loading="lazy"
                 className="h-full w-full object-contain"
               />
             </span>

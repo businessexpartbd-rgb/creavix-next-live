@@ -52,9 +52,11 @@ export default function Navbar({ onSubscribe }: { onSubscribe?: () => void } = {
             <Image
               src="/logo.png"
               alt={`${SITE.name} logo`}
-              width={500}
-              height={500}
+              width={88}
+              height={88}
+              sizes="(max-width: 640px) 40px, 44px"
               priority
+              fetchPriority="high"
               className="h-full w-full object-contain"
             />
           </span>

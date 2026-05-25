@@ -60,7 +60,10 @@ export async function POST(req: Request) {
     rating,
     text,
   };
-  console.log('[review] new submission', JSON.stringify(submission));
+  // ✅ Privacy: don't log PII; only log a sanitized event marker
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('[review] new submission received', { rating, hasPhone: !!phone });
+  }
 
   // Optional: Resend email notification
   const apiKey = process.env.RESEND_API_KEY;

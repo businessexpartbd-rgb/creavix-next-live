@@ -32,14 +32,19 @@ const bangla = Hind_Siliguri({
   preload: false,
 });
 
+// ✅ Mobile zoom DISABLED by default — desktop mode চালু করলে browser নিজেই
+// viewport meta ignore করে, তখন zoom আবার কাজ করবে। App-like premium UX।
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  // ✅ FIX: userScalable false হলে Google mobile SEO score কমে যায়
-  // maximumScale 5 রাখলে zoom করা যাবে, Google happy থাকবে
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: '#0A0A0F',
+  maximumScale: 1,
+  minimumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0A0A0F' },
+    { media: '(prefers-color-scheme: light)', color: '#0A0A0F' },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -49,7 +54,8 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name} — AI Video Agency BD`,
   },
   description:
-    "বাংলাদেশের #১ AI ভিডিও মার্কেটিং এজেন্সি। Meta, YouTube ও TikTok-এর জন্য সিনেম্যাটিক ভিডিও অ্যাড। ২০১৪ থেকে ৪,৩০০+ প্রজেক্ট সম্পন্ন। ২৪ ঘণ্টায় ডেলিভারি।",
+    'বাংলাদেশের #১ AI ভিডিও মার্কেটিং এজেন্সি। Meta, YouTube ও TikTok-এর জন্য সিনেম্যাটিক ভিডিও অ্যাড। ২০১৪ থেকে ৪,৩০০+ প্রজেক্ট সম্পন্ন। ২৪ ঘণ্টায় ডেলিভারি।',
+  applicationName: SITE.brand,
   keywords: [
     'AI video marketing agency Bangladesh',
     'video marketing agency Dhaka',
@@ -72,10 +78,24 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.founder.name, url: SITE.url }],
   creator: SITE.name,
   publisher: SITE.name,
-  alternates: { canonical: SITE.url },
+  // ✅ Hreflang — Google-কে BN/EN audience signal
+  alternates: {
+    canonical: SITE.url,
+    languages: {
+      'en-US': SITE.url,
+      'bn-BD': SITE.url,
+      'x-default': SITE.url,
+    },
+  },
+  // ✅ PWA manifest reference
+  manifest: '/manifest.webmanifest',
   icons: {
-    icon: [{ url: '/icon.png', type: 'image/png', sizes: '500x500' }],
-    apple: [{ url: '/apple-icon.png', sizes: '500x500', type: 'image/png' }],
+    icon: [
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
     shortcut: ['/icon.png'],
   },
   openGraph: {
@@ -86,11 +106,10 @@ export const metadata: Metadata = {
       "Bangladesh's #1 AI-powered video marketing agency. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014. 24h delivery.",
     url: SITE.url,
     locale: 'en_US',
-    alternateLocale: 'bn_BD',
+    alternateLocale: ['bn_BD'],
     images: [
       {
-        url: '/opengraph-image.png',
-        // ✅ FIX: OG image 1200x630 হওয়া উচিত — Facebook/LinkedIn এর জন্য standard
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
@@ -105,11 +124,19 @@ export const metadata: Metadata = {
     title: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
     description:
       "Bangladesh's premier AI-powered video studio. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014.",
-    images: ['/twitter-image.png'],
+    images: [
+      {
+        url: '/twitter-image.png',
+        width: 1200,
+        height: 675,
+        alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
+      },
+    ],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -119,6 +146,11 @@ export const metadata: Metadata = {
     },
   },
   category: 'Video Marketing',
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   // ✅ Google Search Console verify করতে নিচের লাইনের comment সরিয়ে আপনার code বসান:
   // verification: { google: 'YOUR_GOOGLE_SITE_VERIFICATION_CODE' },
 };
@@ -126,12 +158,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   const fontVars = [bebas.variable, dmSans.variable, bangla.variable].join(' ');
 
-  // ✅ IMPROVED: Organization + LocalBusiness + WebSite JSON-LD একসাথে
+  // ✅ Organization + LocalBusiness + WebSite JSON-LD একসাথে (rich snippets)
   const orgLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': ['Organization', 'LocalBusiness'],
+        '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
         '@id': `${SITE.url}/#organization`,
         name: SITE.name,
         legalName: SITE.brand,
@@ -142,14 +174,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           width: 500,
           height: 500,
         },
-        image: `${SITE.url}/opengraph-image.png`,
+        image: `${SITE.url}/og-image.png`,
         description:
           "Bangladesh's premier AI-powered video marketing studio. Cinematic ads for Meta, YouTube and TikTok.",
+        slogan: SITE.tagline_en,
         foundingDate: String(SITE.servingSince),
         founder: {
           '@type': 'Person',
           name: SITE.founder.name,
+          jobTitle: SITE.founder.role_en,
         },
+        knowsLanguage: ['en', 'bn'],
         contactPoint: [
           {
             '@type': 'ContactPoint',
@@ -176,8 +211,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         },
         geo: {
           '@type': 'GeoCoordinates',
-          latitude: '23.8759',
-          longitude: '90.2674',
+          latitude: String(SITE.geo.lat),
+          longitude: String(SITE.geo.lng),
         },
         openingHoursSpecification: [
           {
@@ -217,9 +252,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         name: `${SITE.name} — AI Video Marketing Agency`,
         description:
           "Bangladesh's #1 AI video marketing agency. Cinematic ads for Meta, YouTube & TikTok.",
-        publisher: {
-          '@id': `${SITE.url}/#organization`,
-        },
+        publisher: { '@id': `${SITE.url}/#organization` },
         inLanguage: ['en-US', 'bn-BD'],
         potentialAction: {
           '@type': 'SearchAction',
@@ -236,11 +269,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={fontVars} suppressHydrationWarning>
       <head>
-        {/* ✅ DNS prefetch — YouTube thumbnail দ্রুত লোড হবে */}
+        {/* ✅ Performance: DNS prefetch + preconnect for third-party origins */}
         <link rel="dns-prefetch" href="//i.ytimg.com" />
         <link rel="dns-prefetch" href="//www.youtube.com" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* ✅ Hreflang explicit links (some crawlers prefer link-rel over header) */}
+        <link rel="alternate" hrefLang="en-US" href={SITE.url} />
+        <link rel="alternate" hrefLang="bn-BD" href={SITE.url} />
+        <link rel="alternate" hrefLang="x-default" href={SITE.url} />
       </head>
       <body className="font-sans">
         <a

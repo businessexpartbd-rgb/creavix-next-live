@@ -155,8 +155,10 @@ export default function ChatBot() {
               <Image
                 src="/logo.png"
                 alt="Creavix"
-                width={500}
-                height={500}
+                width={80}
+                height={80}
+                sizes="40px"
+                loading="lazy"
                 className="h-full w-full object-contain"
               />
             </span>

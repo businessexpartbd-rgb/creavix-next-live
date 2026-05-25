@@ -27,7 +27,10 @@ export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     // Soft-fallback path — UI shows the mailto button.
-    console.log(`[subscribe] (no RESEND_API_KEY) would subscribe: ${email}`);
+    // ✅ Privacy: don't log subscriber emails in production logs
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[subscribe] (no RESEND_API_KEY) fallback path triggered');
+    }
     return NextResponse.json({ ok: false, fallback: true });
   }
 
