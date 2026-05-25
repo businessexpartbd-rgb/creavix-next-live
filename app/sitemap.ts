@@ -4,7 +4,7 @@ import { SITE } from '../lib/site-data';
 // ✅ Sitemap with images — Google Image Search-এ ranking improve হবে
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const ogImage = `${SITE.url}/og-share.png`;
+  const ogImage = `${SITE.url}/og-card.png`;
 
   return [
     {

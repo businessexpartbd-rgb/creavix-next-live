@@ -117,7 +117,7 @@ export const metadata: Metadata = {
     //    must re-fetch, ignoring all old caches automatically).
     images: [
       {
-        url: '/og-share.png',
+        url: '/og-card.png',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
@@ -134,7 +134,7 @@ export const metadata: Metadata = {
       "Bangladesh's premier AI-powered video studio. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014.",
     images: [
       {
-        url: '/og-share.png',
+        url: '/og-card.png',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
@@ -182,7 +182,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           width: 500,
           height: 500,
         },
-        image: `${SITE.url}/og-share.png`,
+        image: `${SITE.url}/og-card.png`,
         description:
           "Bangladesh's premier AI-powered video marketing studio. Cinematic ads for Meta, YouTube and TikTok.",
         slogan: SITE.tagline_en,
