@@ -20,6 +20,17 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ['business', 'productivity', 'marketing'],
     icons: [
       {
+        src: '/favicon.ico',
+        sizes: '16x16 32x32 48x48',
+        type: 'image/x-icon',
+      },
+      {
+        src: '/icon.png',
+        sizes: '96x96',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
         src: '/icon-192.png',
         sizes: '192x192',
         type: 'image/png',

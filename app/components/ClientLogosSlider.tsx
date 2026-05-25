@@ -1,28 +1,56 @@
 'use client';
 import Image from 'next/image';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { CLIENT_LOGOS } from '../../lib/site-data';
+
 /**
  * Bidirectional infinite logo slider:
  *  - Row 1 scrolls Right → Left
  *  - Row 2 scrolls Left → Right
- * Each row contains the list duplicated so the marquee loop is seamless.
- * Hovering or tapping any logo pauses BOTH rows for a moment, per spec.
  *
- * Logos are rendered through next/image, so each visitor gets AVIF/WebP
- * (when supported), the exact pixel size their device needs, lazy-loaded.
- * The source files live in `public/clients/` (see README in that folder).
+ * Speed/Battery optimizations:
+ *  - Animation paused when slider is off-screen (IntersectionObserver)
+ *  - Animation paused on hover/touch (existing behavior)
+ *  - Logos use next/image with sizes hint → AVIF/WebP per device
+ *  - First-row logos lazy beyond the first viewport-width worth
  */
 export default function ClientLogosSlider() {
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
   const onHover = useCallback(() => setPaused(true), []);
   const onLeave = useCallback(() => setPaused(false), []);
+
+  // ✅ Pause animation while section is off-screen → no CPU/GPU when not visible
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) setInView(e.isIntersecting);
+      },
+      { threshold: 0, rootMargin: '100px 0px' },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const playState = !inView || paused ? 'paused' : 'running';
+
   const Row = ({ direction }: { direction: 'ltr' | 'rtl' }) => (
     <div
       className={`flex w-max gap-6 ${
         direction === 'ltr' ? 'animate-marquee-reverse-slow' : 'animate-marquee-slow'
-      } ${paused ? '[animation-play-state:paused]' : ''}`}
-      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+      }`}
+      style={{
+        // GPU-promoted layer; animation pauses when off-screen / hovered
+        transform: 'translateZ(0)',
+        animationPlayState: playState,
+      }}
     >
       {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, i) => (
         <div
@@ -31,7 +59,7 @@ export default function ClientLogosSlider() {
           onMouseLeave={onLeave}
           onTouchStart={onHover}
           onTouchEnd={onLeave}
-          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] p-3 transition hover:border-brand/40 hover:bg-white/[0.08]"
+          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] p-3 transition-[border-color,background-color] hover:border-brand/40 hover:bg-white/[0.08]"
           title={logo.name}
         >
           <div className="relative h-full w-full">
@@ -48,8 +76,9 @@ export default function ClientLogosSlider() {
       ))}
     </div>
   );
+
   return (
-    <section className="container-x py-16 sm:py-20">
+    <section ref={sectionRef} className="container-x py-16 sm:py-20 cv-auto">
       <p className="mb-6 text-center text-xs uppercase tracking-[0.3em] text-ash-400">
         Trusted by brands across Bangladesh · বিশ্বস্ত ব্র্যান্ডসমূহ
       </p>

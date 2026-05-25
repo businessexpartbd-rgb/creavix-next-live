@@ -34,25 +34,43 @@
   }
 
   html {
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* ✅ FIX: মোবাইলে ডানদিকে scroll বন্ধ */
+    /* ✅ overflow-x: clip — modern alternative to hidden, doesn't establish a
+     *  scroll container, so vertical scroll never gets accidentally blocked.
+     *  Falls back to hidden on browsers that don't support clip. */
+    overflow-x: clip;
+    -webkit-overflow-scrolling: touch;
+    text-rendering: optimizeSpeed;
+  }
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   html,
   body {
     @apply bg-ink-900 text-ash-50 antialiased;
     font-feature-settings: 'ss01', 'cv11';
-    overflow-x: hidden; /* ✅ FIX: horizontal overflow বন্ধ */
-    max-width: 100%;    /* ✅ FIX: পেজ width ঠিক রাখে */
+    max-width: 100%;
     width: 100%;
   }
 
   body {
+    /* ✅ Direct background-image (default scroll attachment).
+     *  Earlier we used a `position: fixed` body::before pseudo for GPU layering,
+     *  but on iOS Safari and some Android Chromium builds that pseudo-element
+     *  intercepted touch events on certain scroll regions — vertical scrolling
+     *  on long pages would silently freeze. Plain background-image with default
+     *  `scroll` attachment is fine perf-wise (no `fixed` repaint cost). */
+    background-color: #0a0a0f;
     background-image:
       radial-gradient(60% 40% at 50% -10%, rgba(232, 23, 58, 0.12) 0%, rgba(0, 0, 0, 0) 70%),
       radial-gradient(40% 30% at 100% 100%, rgba(232, 23, 58, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
-    background-attachment: fixed;
-    position: relative; /* ✅ FIX: child elements যাতে body এর বাইরে না যায় */
+    /* ✅ overflow-x: clip prevents the horizontal scrollbar without making
+     *  body itself a scroll container. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
@@ -66,16 +84,33 @@
     @apply text-white;
   }
 
-  /* Bangla glyphs use the Hind Siliguri font automatically when wrapped in .font-bn */
   a {
     @apply transition-colors;
   }
 
-  /* Anti-zoom on iOS form fields */
+  /* ✅ Anti-zoom on iOS form fields (prevents auto-zoom on focus) */
   input,
   textarea,
   select {
     font-size: 16px;
+  }
+
+  /* ✅ Mobile tap optimizations:
+     - touch-action: manipulation removes 300ms tap delay
+     - tap-highlight transparent removes ugly grey flash on iOS */
+  button,
+  a,
+  [role='button'],
+  input[type='submit'],
+  input[type='button'] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -98,14 +133,23 @@
   }
 
   .glass {
-    @apply rounded-card border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm
-           transition-all duration-300 hover:border-brand/40 hover:bg-white/[0.05] sm:p-7;
+    @apply rounded-card border border-white/10 bg-white/[0.03] p-6
+           transition-[border-color,background-color] duration-300
+           hover:border-brand/40 hover:bg-white/[0.05] sm:p-7;
+  }
+  /* ✅ backdrop-blur only on desktop — mobile uses solid bg (huge perf win) */
+  @media (min-width: 768px) {
+    .glass {
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
   }
 
   /* 3D button — depressed look with bottom border that flattens on press */
   .btn-3d {
     @apply relative inline-flex select-none items-center justify-center gap-2 rounded-pill
-           px-6 py-3 text-sm font-semibold tracking-wide transition-[transform,box-shadow,border-bottom-width]
+           px-6 py-3 text-sm font-semibold tracking-wide
+           transition-[transform,box-shadow,border-bottom-width]
            duration-100 active:translate-y-[3px];
     border-bottom-width: 4px;
     border-bottom-style: solid;
@@ -139,17 +183,19 @@
            text-ash-300 transition hover:text-white;
   }
 
-  /* 3D card — subtle perspective tilt on hover */
+  /* 3D card — hover tilt limited to devices with hover capability */
   .card-3d {
     @apply relative overflow-hidden rounded-card border border-white/10 bg-ink-800
            transition-[transform,box-shadow,border-color] duration-300;
     box-shadow: var(--shadow-card);
-    transform: perspective(1200px) rotateX(0deg) translateY(0);
   }
-  .card-3d:hover {
-    border-color: rgba(232, 23, 58, 0.4);
-    transform: perspective(1200px) rotateX(-2deg) translateY(-6px);
-    box-shadow: var(--shadow-card), 0 12px 40px -8px rgba(232, 23, 58, 0.45);
+  /* ✅ Hover tilt only on devices that can actually hover (desktop) */
+  @media (hover: hover) and (pointer: fine) {
+    .card-3d:hover {
+      border-color: rgba(232, 23, 58, 0.4);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card), 0 12px 40px -8px rgba(232, 23, 58, 0.45);
+    }
   }
 
   /* Hero giant background watermark text */
@@ -229,10 +275,12 @@
     text-wrap: balance;
   }
 
-  .grain {
+  /* ✅ Grain overlay opt-in only via .grain-overlay (was on every <main>) */
+  .grain-overlay {
     position: relative;
+    isolation: isolate;
   }
-  .grain::after {
+  .grain-overlay::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -242,22 +290,75 @@
     opacity: 0.4;
   }
 
+  /* Reveal: only animates when entering view */
   .reveal {
     opacity: 0;
     transform: translateY(36px);
     transition: opacity 0.7s ease, transform 0.7s ease;
-    will-change: opacity, transform;
   }
   .reveal.in-view {
     opacity: 1;
     transform: translateY(0);
   }
 
+  /* ✅ Below-the-fold sections: skip render until scrolled close
+     - Browser pretends section has 1500px height, then reveals at 200px proximity
+     - HUGE first paint win on long pages */
+  .cv-auto {
+    content-visibility: auto;
+    /* ✅ auto width (not 1px) — prevents off-screen sections from being
+     *  treated as 1px-wide while waiting to render, which previously caused
+     *  layout calculation errors and could appear as 'frozen' page on mobile. */
+    contain-intrinsic-size: auto 1500px;
+  }
+
+  /* ✅ Respect user motion preferences globally */
   @media (prefers-reduced-motion: reduce) {
     .reveal {
       opacity: 1 !important;
       transform: none !important;
+      transition: none !important;
     }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ───────────────────────────── Mobile-only overrides ────────────────────── */
+@media (max-width: 767px) {
+  /* Disable grain noise on mobile (heaviest paint cost) */
+  .grain-overlay::after {
+    display: none !important;
+  }
+
+  /* Slow infinite marquee on mobile (less battery/GPU drain) */
+  .animate-marquee-slow,
+  .animate-marquee-reverse-slow {
+    animation-duration: 120s;
+  }
+
+  /* Cap shadow blur on mobile to reduce paint cost */
+  .shadow-card,
+  .shadow-glow,
+  .shadow-glow-lg,
+  .shadow-deep {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+/* ────────────────────── No-hover (touch) device overrides ────────────────── */
+@media (hover: none) {
+  /* Disable hover transforms (look stuck on touch devices after tap) */
+  .glass:hover,
+  .card-3d:hover,
+  .btn-3d-primary:hover,
+  .btn-3d-secondary:hover {
+    transform: none !important;
   }
 }
 

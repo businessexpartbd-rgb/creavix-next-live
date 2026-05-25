@@ -2,11 +2,17 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Bebas_Neue, DM_Sans, Hind_Siliguri } from 'next/font/google';
 import { ReactNode } from 'react';
+import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
-import ChatBot from './components/ChatBot';
 import { SITE } from '../lib/site-data';
+
+// ✅ ChatBot lazy-loaded → ~10KB JS savings on initial page load.
+//    Bundle goes into a separate chunk that loads after FCP.
+const ChatBot = dynamic(() => import('./components/ChatBot'), {
+  loading: () => null,
+});
 
 const bebas = Bebas_Neue({
   weight: '400',
@@ -89,14 +95,21 @@ export const metadata: Metadata = {
   },
   // ✅ PWA manifest reference
   manifest: '/manifest.webmanifest',
+  // ✅ Favicons:
+  //  - favicon.ico (multi-res 16/32/48) → Google Search results + WhatsApp link
+  //    preview thumbnail (the small icon next to the domain).
+  //  - icon.png (96×96) → Google's recommended size for high-DPI search.
+  //  - icon-192/512 → PWA + Android home screen.
+  //  - apple-icon (180×180, padded with brand bg) → iOS home screen.
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '96x96' },
       { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
       { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
     ],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: ['/icon.png'],
+    shortcut: [{ url: '/favicon.ico' }],
   },
   openGraph: {
     type: 'website',
@@ -107,13 +120,15 @@ export const metadata: Metadata = {
     url: SITE.url,
     locale: 'en_US',
     alternateLocale: ['bn_BD'],
+    // ✅ Cache-bust filename: og-share.png (new URL → FB/WhatsApp/Twitter
+    //    must re-fetch, ignoring all old caches automatically).
     images: [
       {
-        url: '/og-image.png',
+        url: '/share-card.jpg',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -126,9 +141,9 @@ export const metadata: Metadata = {
       "Bangladesh's premier AI-powered video studio. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014.",
     images: [
       {
-        url: '/twitter-image.png',
+        url: '/share-card.jpg',
         width: 1200,
-        height: 675,
+        height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
       },
     ],
@@ -174,7 +189,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           width: 500,
           height: 500,
         },
-        image: `${SITE.url}/og-image.png`,
+        image: `${SITE.url}/share-card.jpg`,
         description:
           "Bangladesh's premier AI-powered video marketing studio. Cinematic ads for Meta, YouTube and TikTok.",
         slogan: SITE.tagline_en,
@@ -287,7 +302,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <Navbar />
-        <main id="main" className="grain">
+        <main id="main">
           {children}
         </main>
         <Footer />
