@@ -34,8 +34,10 @@
   }
 
   html {
-    /* ✅ scroll-behavior smooth desktop only — মোবাইলে rapid scroll-এ jank তৈরি করত */
-    overflow-x: hidden;
+    /* ✅ overflow-x: clip — modern alternative to hidden, doesn't establish a
+     *  scroll container, so vertical scroll never gets accidentally blocked.
+     *  Falls back to hidden on browsers that don't support clip. */
+    overflow-x: clip;
     -webkit-overflow-scrolling: touch;
     text-rendering: optimizeSpeed;
   }
@@ -49,33 +51,26 @@
   body {
     @apply bg-ink-900 text-ash-50 antialiased;
     font-feature-settings: 'ss01', 'cv11';
-    overflow-x: hidden;
     max-width: 100%;
     width: 100%;
-    /* ✅ Prevent iOS Safari elastic overscroll background flash */
-    overscroll-behavior-y: none;
   }
 
   body {
-    /* ✅ FIX: background-attachment: fixed সরানো হয়েছে — মোবাইলে scroll jank-এর প্রধান কারণ
-     * এর বদলে ::before pseudo দিয়ে static gradient (GPU-composited) */
+    /* ✅ Direct background-image (default scroll attachment).
+     *  Earlier we used a `position: fixed` body::before pseudo for GPU layering,
+     *  but on iOS Safari and some Android Chromium builds that pseudo-element
+     *  intercepted touch events on certain scroll regions — vertical scrolling
+     *  on long pages would silently freeze. Plain background-image with default
+     *  `scroll` attachment is fine perf-wise (no `fixed` repaint cost). */
     background-color: #0a0a0f;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* ✅ Background gradient as fixed pseudo (GPU layer, no repaint on scroll) */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
     background-image:
       radial-gradient(60% 40% at 50% -10%, rgba(232, 23, 58, 0.12) 0%, rgba(0, 0, 0, 0) 70%),
       radial-gradient(40% 30% at 100% 100%, rgba(232, 23, 58, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
-    transform: translateZ(0);
+    /* ✅ overflow-x: clip prevents the horizontal scrollbar without making
+     *  body itself a scroll container. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
@@ -311,7 +306,10 @@
      - HUGE first paint win on long pages */
   .cv-auto {
     content-visibility: auto;
-    contain-intrinsic-size: 1px 1500px;
+    /* ✅ auto width (not 1px) — prevents off-screen sections from being
+     *  treated as 1px-wide while waiting to render, which previously caused
+     *  layout calculation errors and could appear as 'frozen' page on mobile. */
+    contain-intrinsic-size: auto 1500px;
   }
 
   /* ✅ Respect user motion preferences globally */
