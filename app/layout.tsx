@@ -95,14 +95,21 @@ export const metadata: Metadata = {
   },
   // ✅ PWA manifest reference
   manifest: '/manifest.webmanifest',
+  // ✅ Favicons:
+  //  - favicon.ico (multi-res 16/32/48) → Google Search results + WhatsApp link
+  //    preview thumbnail (the small icon next to the domain).
+  //  - icon.png (96×96) → Google's recommended size for high-DPI search.
+  //  - icon-192/512 → PWA + Android home screen.
+  //  - apple-icon (180×180, padded with brand bg) → iOS home screen.
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/jpeg', sizes: '32x32' },
-      { url: '/icon-192.png', type: 'image/jpeg', sizes: '192x192' },
-      { url: '/icon-512.png', type: 'image/jpeg', sizes: '512x512' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '96x96' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
     ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/jpeg' }],
-    shortcut: ['/icon.png'],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: [{ url: '/favicon.ico' }],
   },
   openGraph: {
     type: 'website',
