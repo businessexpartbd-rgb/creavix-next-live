@@ -97,11 +97,11 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
-      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
-      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+      { url: '/icon.png', type: 'image/jpeg', sizes: '32x32' },
+      { url: '/icon-192.png', type: 'image/jpeg', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/jpeg', sizes: '512x512' },
     ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/jpeg' }],
     shortcut: ['/icon.png'],
   },
   openGraph: {
@@ -117,11 +117,11 @@ export const metadata: Metadata = {
     //    must re-fetch, ignoring all old caches automatically).
     images: [
       {
-        url: '/og-card.png',
+        url: '/share-card.jpg',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -134,7 +134,7 @@ export const metadata: Metadata = {
       "Bangladesh's premier AI-powered video studio. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014.",
     images: [
       {
-        url: '/og-card.png',
+        url: '/share-card.jpg',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
@@ -182,7 +182,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           width: 500,
           height: 500,
         },
-        image: `${SITE.url}/og-card.png`,
+        image: `${SITE.url}/share-card.jpg`,
         description:
           "Bangladesh's premier AI-powered video marketing studio. Cinematic ads for Meta, YouTube and TikTok.",
         slogan: SITE.tagline_en,
