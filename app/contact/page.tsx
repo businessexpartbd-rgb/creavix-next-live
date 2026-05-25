@@ -21,11 +21,21 @@ export const metadata = {
     description:
       'Get in touch: WhatsApp +8801890484355 or email info@creavixit.com. Studio in Hemayetpur, Savar, Dhaka. Sat–Thu 10AM–8PM.',
     url: 'https://www.creavixit.com/contact',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     title: 'Contact Creavix — AI Video Agency Bangladesh',
     description:
       'WhatsApp +8801890484355 | info@creavixit.com | Hemayetpur, Savar, Dhaka.',
+    images: ['/share-card.jpg'],
   },
 };
 

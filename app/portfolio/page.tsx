@@ -17,11 +17,21 @@ export const metadata = {
     description:
       'Watch our cinematic AI video campaigns. Meta, YouTube & TikTok-ready ads for Bangladeshi brands. 4,300+ projects delivered.',
     url: 'https://www.creavixit.com/portfolio',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     title: 'Creavix Portfolio — AI Cinematic Video Work',
     description:
       "Cinematic AI video campaigns for Meta, YouTube & TikTok. Bangladesh's top video agency.",
+    images: ['/share-card.jpg'],
   },
 };
 

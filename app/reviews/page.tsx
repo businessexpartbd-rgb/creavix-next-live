@@ -14,11 +14,21 @@ export const metadata = {
     description:
       "Real verified reviews from 4,300+ projects. 4.8/5 average rating. See what Bangladesh's top brands say about Creavix AI video ads.",
     url: 'https://www.creavixit.com/reviews',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     title: 'Creavix Client Reviews — 4.8/5 Stars',
     description:
       'Verified reviews from 4,300+ projects. 4.8/5 average. Real client feedback on AI video campaigns.',
+    images: ['/share-card.jpg'],
   },
 };
 
