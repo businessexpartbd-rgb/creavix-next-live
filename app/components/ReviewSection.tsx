@@ -97,11 +97,13 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             setSubmitError('Verification failed — try again.');
           },
           theme: 'dark',
-          // ✅ compact (150×140) — narrower card, fits mobile better than
-          //    flexible (which spread to full form width).  Keeps the
-          //    "tall card" feel the user asked for and matches input
-          //    column nicely on both mobile and desktop.
-          size: 'compact',
+          // ✅ flexible (300+ × 65) — horizontal Cloudflare bar that
+          //    matches the screenshot the user shared. Adapts to the
+          //    container width: full form width on mobile (looks like
+          //    a tidy single row, not a square card) and the same row
+          //    look on desktop. The wrapper limits max width so it
+          //    doesn't stretch beyond the form's reading column.
+          size: 'flexible',
         });
         setTsReady(true);
       } catch {
@@ -412,9 +414,10 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
           />
 
-          {/* ✅ Cloudflare Turnstile — compact widget (150×140) keeps the
-              form narrow on mobile while staying clearly visible.  The
-              wrapper centers it inside the form column. */}
+          {/* ✅ Cloudflare Turnstile — flexible widget renders the standard
+              horizontal "Verifying… CLOUDFLARE" bar that matches the
+              screenshot the user shared. Wrapper caps max width at
+              480px so it never stretches edge-to-edge on wide desktops. */}
           {SITE_KEY ? (
             <div>
               <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
@@ -422,7 +425,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               </label>
               <div
                 ref={turnstileWrapRef}
-                className="mt-2 flex min-h-[140px] w-full items-center justify-start"
+                className="mt-2 min-h-[68px] w-full max-w-[480px]"
               />
               {!tsReady ? (
                 <p className="mt-1 text-[11px] text-ash-500">Loading verification…</p>
