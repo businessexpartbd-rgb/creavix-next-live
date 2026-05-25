@@ -39,9 +39,9 @@ export default function Navbar({ onSubscribe }: { onSubscribe?: () => void } = {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
         scrolled
-          ? 'border-b border-white/10 bg-ink-950/80 backdrop-blur-md'
+          ? 'border-b border-white/10 bg-ink-950/95 md:bg-ink-950/80 md:backdrop-blur-md'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -143,7 +143,7 @@ export default function Navbar({ onSubscribe }: { onSubscribe?: () => void } = {
 
       {/* Search palette (desktop) */}
       {searchOpen ? (
-        <div className="border-t border-white/10 bg-ink-900/95 backdrop-blur">
+        <div className="border-t border-white/10 bg-ink-900/98 md:bg-ink-900/95 md:backdrop-blur">
           <form
             onSubmit={submitSearch}
             className="container-x flex items-center gap-3 py-3"
@@ -173,7 +173,7 @@ export default function Navbar({ onSubscribe }: { onSubscribe?: () => void } = {
 
       {/* Mobile menu */}
       <div
-        className={`overflow-hidden border-t border-white/10 bg-ink-900/95 backdrop-blur transition-[max-height] duration-300 lg:hidden ${
+        className={`overflow-hidden border-t border-white/10 bg-ink-900/98 md:bg-ink-900/95 md:backdrop-blur transition-[max-height] duration-300 lg:hidden ${
           open ? 'max-h-[640px]' : 'max-h-0'
         }`}
       >

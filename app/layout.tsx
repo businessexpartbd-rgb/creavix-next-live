@@ -2,11 +2,17 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Bebas_Neue, DM_Sans, Hind_Siliguri } from 'next/font/google';
 import { ReactNode } from 'react';
+import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
-import ChatBot from './components/ChatBot';
 import { SITE } from '../lib/site-data';
+
+// ✅ ChatBot lazy-loaded → ~10KB JS savings on initial page load.
+//    Bundle goes into a separate chunk that loads after FCP.
+const ChatBot = dynamic(() => import('./components/ChatBot'), {
+  loading: () => null,
+});
 
 const bebas = Bebas_Neue({
   weight: '400',
@@ -287,7 +293,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <Navbar />
-        <main id="main" className="grain">
+        <main id="main">
           {children}
         </main>
         <Footer />

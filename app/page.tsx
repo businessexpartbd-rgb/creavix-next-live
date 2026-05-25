@@ -155,7 +155,7 @@ export default function HomePage() {
       <AdInsightVideo />
 
       {/* Services */}
-      <section className="container-x py-24 sm:py-28">
+      <section className="container-x py-24 sm:py-28 cv-auto">
         <SectionIntro
           eyebrow="Core Services · মূল সার্ভিস"
           title="High-impact production for"
@@ -173,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust pillars */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28 cv-auto">
         <div className="container-x">
           <SectionIntro
             eyebrow="Why Creavix · কেন আমরা"
@@ -192,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* Portfolio teaser */}
-      <section className="container-x py-24 sm:py-28">
+      <section className="container-x py-24 sm:py-28 cv-auto">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionIntro
             eyebrow="Showcase · কাজের ঝলক"
@@ -225,7 +225,7 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28 cv-auto">
         <div className="container-x">
           <SectionIntro
             eyebrow="Our Process · কাজের ধাপ"
@@ -255,7 +255,7 @@ export default function HomePage() {
       <ReviewSection initial={REVIEWS_SEED} />
 
       {/* Value promise */}
-      <section className="container-x pb-24 sm:pb-28">
+      <section className="container-x pb-24 sm:pb-28 cv-auto">
         <Reveal>
           <div className="grid gap-10 rounded-card border border-white/10 bg-white/[0.03] p-8 sm:p-12 lg:grid-cols-[1fr_1.2fr]">
             <div>
