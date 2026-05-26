@@ -129,11 +129,24 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
-        scrolled
-          ? 'border-b border-white/10 bg-ink-950/95 md:bg-ink-950/80 md:backdrop-blur-md'
+        scrolled || pagesOpen
+          ? 'border-b border-white/10 bg-ink-950 md:bg-ink-950/95 md:backdrop-blur-md'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
+      {/* Click-outside backdrop — visible only when the Pages dropdown
+          is open. Dims the page content beneath so the navbar links
+          never visually merge with content text underneath. Click =
+          close. Sits below the header (z-40) so the dropdown itself
+          stays interactive. */}
+      {pagesOpen ? (
+        <button
+          type="button"
+          aria-label="Close pages menu"
+          onClick={() => setPagesOpen(false)}
+          className="fixed inset-0 -z-10 cursor-default bg-black/60 backdrop-blur-sm"
+        />
+      ) : null}
       <div className="container-x flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-6">
         {/* Logo + brand wordmark — clicks Home */}
         <Link href="/" aria-label="Home" className="group flex items-center gap-2.5">
@@ -226,7 +239,7 @@ export default function Navbar() {
       {/* ───── Pages dropdown ───── */}
       <div
         id="pages-dropdown"
-        className={`overflow-hidden border-t border-white/10 bg-ink-950/98 transition-[max-height,opacity] duration-300 md:bg-ink-900/95 md:backdrop-blur ${
+        className={`overflow-hidden border-t border-white/10 bg-ink-950 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
           pagesOpen
             ? 'max-h-[640px] opacity-100'
             : 'pointer-events-none max-h-0 opacity-0'
