@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { getDynamicStats, STATS, type Review } from '../../lib/site-data';
+import { getReviewStats } from '../../lib/reviews';
 
 export default function CounterStats({ reviews }: { reviews?: Review[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,6 +13,19 @@ export default function CounterStats({ reviews }: { reviews?: Review[] }) {
   const statsToUse = reviews ? getDynamicStats(reviews) : STATS;
 
   useEffect(() => {
+    // Check if already animated in this session
+    const alreadyAnimated = sessionStorage.getItem('creavix_stats_animated');
+    if (alreadyAnimated) {
+      setHasAnimated(true);
+      // Show final values immediately
+      const finalCounts: { [key: string]: number } = {};
+      statsToUse.forEach((s) => {
+        finalCounts[s.label_en] = parseInt(s.value.replace(/\D/g, '')) || 0;
+      });
+      setCounts(finalCounts);
+      return;
+    }
+
     // Initialize counts to 0
     const initialCounts: { [key: string]: number } = {};
     statsToUse.forEach((s) => {
@@ -24,6 +38,7 @@ export default function CounterStats({ reviews }: { reviews?: Review[] }) {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated) {
             setHasAnimated(true);
+            sessionStorage.setItem('creavix_stats_animated', 'true');
             // Animate each counter
             statsToUse.forEach((s) => {
               const targetValue = parseInt(s.value.replace(/\D/g, '')) || 0;
@@ -42,6 +57,8 @@ export default function CounterStats({ reviews }: { reviews?: Review[] }) {
                 }
               }, duration / steps);
             });
+            // Unobserve immediately to prevent re-triggering
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -56,6 +73,7 @@ export default function CounterStats({ reviews }: { reviews?: Review[] }) {
       if (containerRef.current) {
         observer.unobserve(containerRef.current);
       }
+      observer.disconnect();
     };
   }, [hasAnimated, statsToUse]);
 

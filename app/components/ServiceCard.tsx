@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   ArrowUpRight,
   Sparkles,
@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import type { Service } from '../../lib/site-data';
 import { SITE, buildOrderWhatsAppLink } from '../../lib/site-data';
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
 
 const ICONS: Record<Service['icon'], LucideIcon> = {
   Sparkles,
@@ -27,6 +28,8 @@ const ICONS: Record<Service['icon'], LucideIcon> = {
 
 export default function ServiceCard({ service }: { service: Service }) {
   const [expanded, setExpanded] = useState(false);
+  const h3Ref = useRef<HTMLHeadingElement>(null);
+  useRevealOnScroll(h3Ref);
   const Icon = ICONS[service.icon] ?? Sparkles;
 
   return (
@@ -54,7 +57,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         />
       </div>
 
-      <h3 className="mt-6 font-display text-2xl uppercase tracking-[0.04em] text-white">
+      <h3 className="reveal-card mt-6 font-display text-2xl uppercase tracking-[0.04em] text-white" ref={h3Ref}>
         {service.title_en}
       </h3>
       <p className="mt-1 font-bn text-sm text-ash-300">{service.title_bn}</p>

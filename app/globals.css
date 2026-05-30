@@ -132,6 +132,32 @@
     color: transparent;
   }
 
+  /* Brand heading color system */
+  .heading-brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .heading-brand span.accent {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: #e63946;
+  }
+
+  /* Card title fade-up reveal animation */
+  .reveal-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .glass {
     @apply rounded-card border border-white/10 bg-white/[0.03] p-6
            transition-[border-color,background-color] duration-300

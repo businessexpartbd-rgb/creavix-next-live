@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Star, Quote, ShieldCheck } from 'lucide-react';
 import { REVIEWS_SEED, type Review } from '../../lib/site-data';
+import { getAllReviews, saveReview, getReviewStats } from '../../lib/reviews';
 
 /* ───────────── Cloudflare Turnstile (window + types) ───────────── */
 interface TurnstileRenderOptions {
@@ -13,6 +14,7 @@ interface TurnstileRenderOptions {
   theme?: 'light' | 'dark' | 'auto';
   size?: 'normal' | 'compact' | 'flexible';
   appearance?: 'always' | 'execute' | 'interaction-only';
+  execution?: 'render' | 'managed';
   language?: string;
 }
 declare global {
@@ -42,9 +44,16 @@ const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Review[] }) {
   const [reviews, setReviews] = useState<Review[]>(initial);
   const [showAll, setShowAll] = useState(false);
-  // ✅ Real counter — increments only when a verified review is submitted.
-  //   Starts at the seed count and goes up by 1 per accepted submission.
   const [counter, setCounter] = useState(initial.length);
+
+  // Load all reviews (seed + localStorage) on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const allReviews = getAllReviews();
+      setReviews(allReviews);
+      setCounter(allReviews.length);
+    }
+  }, []);
 
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -97,13 +106,9 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             setSubmitError('Verification failed — try again.');
           },
           theme: 'dark',
-          // ✅ flexible (300+ × 65) — horizontal Cloudflare bar that
-          //    matches the screenshot the user shared. Adapts to the
-          //    container width: full form width on mobile (looks like
-          //    a tidy single row, not a square card) and the same row
-          //    look on desktop. The wrapper limits max width so it
-          //    doesn't stretch beyond the form's reading column.
           size: 'flexible',
+          appearance: 'always',
+          execution: 'render',
         });
         setTsReady(true);
       } catch {
@@ -223,6 +228,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
       createdAt: new Date().toISOString().slice(0, 10),
       verified: true,
     };
+    saveReview(newReview);
     setReviews((r) => [newReview, ...r]);
     setCounter((c) => c + 1);
     setSubmitted(true);

@@ -1,8 +1,10 @@
 'use client';
 
 import { Check, Sparkles } from 'lucide-react';
+import { useRef } from 'react';
 import type { PricingPlan } from '../../lib/site-data';
 import { buildOrderWhatsAppLink } from '../../lib/site-data';
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
 
 export default function PricingCard({
   plan,
@@ -12,6 +14,8 @@ export default function PricingCard({
   /** Bangla category name used in the WhatsApp prefill (e.g. 'স্টোরি টেলিং') */
   category_bn: string;
 }) {
+  const h3Ref = useRef<HTMLHeadingElement>(null);
+  useRevealOnScroll(h3Ref);
   const discountPct = Math.round(
     ((plan.originalBDT - plan.priceBDT) / plan.originalBDT) * 100,
   );
@@ -32,7 +36,7 @@ export default function PricingCard({
 
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white">
+          <h3 className="reveal-card font-display text-2xl uppercase tracking-[0.04em] text-white" ref={h3Ref}>
             {plan.name_en}
           </h3>
           <p className="mt-1 font-bn text-sm text-ash-300">{plan.name_bn}</p>
