@@ -6,6 +6,9 @@ import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import HomeButton from './components/HomeButton';
+import SplitTextAnimator from './components/SplitTextAnimator';
+import CardTitleAnimator from './components/CardTitleAnimator';
 import { SITE } from '../lib/site-data';
 
 // ✅ ChatBot lazy-loaded → ~10KB JS savings on initial page load.
@@ -301,12 +304,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
+        <SplitTextAnimator />
+        <CardTitleAnimator />
         <Navbar />
         <main id="main">
           {children}
         </main>
         <Footer />
         <WhatsAppButton />
+        <HomeButton />
         <ChatBot />
         <script
           type="application/ld+json"

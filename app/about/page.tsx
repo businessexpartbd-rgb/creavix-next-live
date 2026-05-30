@@ -36,8 +36,6 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  const mapsSrc = `https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=14&output=embed`;
-
   return (
     <>
       <HeroSection theme="about" watermark="ABOUT">
@@ -109,17 +107,24 @@ export default function AboutPage() {
             body_bn="হেমায়েতপুর, সাভার, ঢাকা — ১৩৪০। ভিজিটের জন্য আগেই WhatsApp করে অ্যাপয়েন্টমেন্ট নিন।"
           />
           <Reveal delay={120}>
-            <div className="mt-10 overflow-hidden rounded-card border border-white/10">
-              <iframe
-                src={mapsSrc}
-                title="Creavix Studio location — Hemayetpur, Savar, Dhaka"
-                width="100%"
-                height="420"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+            <div className="mt-10 overflow-hidden rounded-card border border-white/10 relative group">
+              {/* Static map background */}
+              <div
+                className="w-full h-96 bg-cover bg-center relative"
+                style={{
+                  backgroundImage:
+                    'url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect fill=%22%23111118%22 width=%22600%22 height=%22400%22/%3E%3Cpath fill=%22%23222228%22 d=%22M0,150 Q150,100 300,120 T600,140 L600,400 L0,400 Z%22 opacity=%220.6%22/%3E%3Ccircle cx=%22300%22 cy=%22180%22 r=%2216%22 fill=%22%23e8173a%22 opacity=%220.9%22/%3E%3Ctext x=%22300%22 y=%22145%22 text-anchor=%22middle%22 font-size=%2212%22 fill=%22%23f5f5f7%22 font-family=%22sans-serif%22%3E%3Ctspan font-weight=%22600%22%3ECreavix Studio%3C/tspan%3E%3C/text%3E%3Ctext x=%22300%22 y=%22335%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23e8173a%22 font-family=%22sans-serif%22%3E%3Ctspan font-weight=%22600%22%3EHemayetpur, Savar, Dhaka%3C/tspan%3E%3C/text%3E%3C/svg%3E")',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                {/* Subtle zoom indicator on scroll */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <p className="text-ash-200 text-sm mb-2">📍 Studio Location</p>
+                    <p className="text-white font-display text-lg">Hemayetpur, Savar</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <p className="mt-4 text-center text-xs uppercase tracking-[0.18em] text-ash-400">
               {SITE.address_en}

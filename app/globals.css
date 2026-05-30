@@ -301,6 +301,34 @@
     transform: translateY(0);
   }
 
+  /* Split-text headline animation applied via data-split on h1/h2 */
+  [data-split='left'] {
+    display: inline-block;
+    animation: splitTextLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    will-change: transform;
+  }
+  [data-split='right'] {
+    display: inline-block;
+    animation: splitTextRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    will-change: transform;
+  }
+  [data-split='left']:nth-child(2n) {
+    animation-delay: 0.15s;
+  }
+  [data-split='right']:nth-child(2n) {
+    animation-delay: 0.15s;
+  }
+
+  /* Card title animations triggered by IntersectionObserver */
+  .card-title {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: transform;
+  }
+  .card-title.animate-in {
+    animation: cardTitleSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
   /* ✅ Below-the-fold sections: skip render until scrolled close
      - Browser pretends section has 1500px height, then reveals at 200px proximity
      - HUGE first paint win on long pages */
@@ -382,5 +410,40 @@
     box-shadow:
       0 4px 50px rgba(232, 23, 58, 0.6),
       0 0 0 12px rgba(232, 23, 58, 0.08);
+  }
+}
+
+/* Split-text headline animation — words slide in from left & right, meet in center */
+@keyframes splitTextLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes splitTextRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Card title fade-up on scroll */
+@keyframes cardTitleSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
