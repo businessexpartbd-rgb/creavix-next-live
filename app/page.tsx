@@ -142,7 +142,7 @@ export default function HomePage() {
 
         {/* Stats */}
         <Reveal delay={200}>
-          <CounterStats />
+          <CounterStats reviews={REVIEWS_SEED} />
         </Reveal>
       </HeroSection>
 

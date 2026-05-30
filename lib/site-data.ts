@@ -260,7 +260,7 @@ export const TRUST_PILLARS = [
     icon: 'Award',
     title_en: 'Experience Since 2014',
     title_bn: '২০১৪ থেকে অভিজ্ঞতা',
-    desc_bn: '১০+ বছরের ক্যাম্পেইন প্রোডাকশন অভিজ্ঞতা।',
+    desc_bn: '১০+ বছরের ক্��াম্পেইন প্রোডাকশন অভিজ্ঞতা।',
   },
   {
     icon: 'MapPin',
@@ -586,6 +586,20 @@ export const STATS = [
   { value: '4.8/5', label_bn: 'গড় রেটিং', label_en: 'Avg rating', sub_bn: 'ভেরিফাইড ক্লায়েন্ট' },
   { value: '24h', label_bn: 'ডেলিভারি টার্গেট', label_en: 'Delivery', sub_bn: 'শর্ট ভিডিও' },
 ];
+
+// Calculate dynamic stats based on reviews
+export const getDynamicStats = (reviews: Review[]) => {
+  const avgRating = reviews.length > 0 
+    ? Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length) * 10) / 10
+    : 4.8;
+  
+  return [
+    { value: '10+', label_bn: 'বছর ধরে', label_en: 'Years in business', sub_bn: '২০১৪ থেকে' },
+    { value: '4,300+', label_bn: 'সম্পন্ন প্রজেক্ট', label_en: 'Projects', sub_bn: 'মাল্টি-ইন্ডাস্ট্রি' },
+    { value: `${avgRating}/5`, label_bn: 'গড় রেটিং', label_en: 'Avg rating', sub_bn: 'ভেরিফাইড ক্লায়েন্ট' },
+    { value: '24h', label_bn: 'ডেলিভারি টার্গেট', label_en: 'Delivery', sub_bn: 'শর্ট ভিডিও' },
+  ];
+};
 
 export const ytThumb = (id: string, quality: 'maxresdefault' | 'hqdefault' = 'maxresdefault') =>
   `https://i.ytimg.com/vi/${id}/${quality}.jpg`;

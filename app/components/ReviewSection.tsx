@@ -423,10 +423,12 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
                 Human verification · মানব যাচাই
               </label>
-              <div
-                ref={turnstileWrapRef}
-                className="mt-2 min-h-[68px] w-full max-w-[480px]"
-              />
+              <div className="mt-2 flex justify-center">
+                <div
+                  ref={turnstileWrapRef}
+                  className="min-h-[68px]"
+                />
+              </div>
               {!tsReady ? (
                 <p className="mt-1 text-[11px] text-ash-500">Loading verification…</p>
               ) : null}

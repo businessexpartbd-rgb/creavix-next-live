@@ -1,17 +1,20 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { STATS } from '../../lib/site-data';
+import { getDynamicStats, STATS, type Review } from '../../lib/site-data';
 
-export default function CounterStats() {
+export default function CounterStats({ reviews }: { reviews?: Review[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [counts, setCounts] = useState<{ [key: string]: number }>({});
   const [hasAnimated, setHasAnimated] = useState(false);
 
+  // Use dynamic stats from reviews, or fall back to static STATS
+  const statsToUse = reviews ? getDynamicStats(reviews) : STATS;
+
   useEffect(() => {
     // Initialize counts to 0
     const initialCounts: { [key: string]: number } = {};
-    STATS.forEach((s) => {
+    statsToUse.forEach((s) => {
       initialCounts[s.label_en] = 0;
     });
     setCounts(initialCounts);
@@ -22,7 +25,7 @@ export default function CounterStats() {
           if (entry.isIntersecting && !hasAnimated) {
             setHasAnimated(true);
             // Animate each counter
-            STATS.forEach((s) => {
+            statsToUse.forEach((s) => {
               const targetValue = parseInt(s.value.replace(/\D/g, '')) || 0;
               const duration = 1500; // 1.5 seconds
               const steps = 60;
@@ -54,14 +57,14 @@ export default function CounterStats() {
         observer.unobserve(containerRef.current);
       }
     };
-  }, [hasAnimated]);
+  }, [hasAnimated, statsToUse]);
 
   return (
     <div
       ref={containerRef}
       className="mt-20 grid gap-px rounded-card border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4"
     >
-      {STATS.map((s) => {
+      {statsToUse.map((s) => {
         const suffix = s.value.replace(/\d/g, '').trim();
         const displayValue = counts[s.label_en] ? `${counts[s.label_en]}${suffix}` : s.value;
 
