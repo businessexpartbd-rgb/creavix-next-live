@@ -85,6 +85,26 @@ export const SITE = {
     role_en: 'Founder & Creative Director',
     role_bn: 'প্রতিষ্ঠাতা ও ক্রিয়েটিভ ডিরেক্টর',
   },
+  team: {
+    hannanKhan: {
+      name: 'Hannan Khan',
+      role_en: 'Founder & Creative Director',
+      role_bn: 'প্রতিষ্ঠাতা ও ক্রিয়েটিভ ডিরেক্টর',
+      bio_bn: 'Creavix-এর প্রতিষ্ঠাতা ও ক্রিয়েটিভ ডিরেক্টর, সরাসরি প্রতিটি প্রজেক্টের দিকনির্দেশনা দেন।',
+      bio_en: 'Founder directing creative strategy and output quality across all Creavix projects since 2014.',
+      facebookUrl: 'https://web.facebook.com/HannanKhanDesigner/',
+      linkedinUrl: 'https://www.linkedin.com/in/creavix-it-solution',
+    },
+    sabbirKhan: {
+      name: 'Sabbir Khan',
+      role_en: 'Production Manager',
+      role_bn: 'প্রোডাকশন ম্যানেজার',
+      bio_bn: '৫+ বছরের অভিজ্ঞতার সাথে সম্পূর্ণ প্রোডাকশন সাইকেল পরিচালনা করে থাকেন।',
+      bio_en: '5+ years managing full production cycle from planning to final delivery.',
+      facebookUrl: 'https://web.facebook.com/sabbirkhanmotivation',
+      linkedinUrl: 'https://www.linkedin.com/in/creavix-it-solution',
+    },
+  },
   // Approximate Hemayetpur, Savar coords (used for embedded Google Map)
   // Update precise studio coords here when finalized
   geo: { lat: 23.85, lng: 90.21 },
