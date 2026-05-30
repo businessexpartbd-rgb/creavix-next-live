@@ -12,7 +12,6 @@ import {
   SERVICES,
   SHOWCASES,
   SITE,
-  STATS,
   TRUST_PILLARS,
 } from '../lib/site-data';
 import HeroSection from './components/HeroSection';
@@ -25,6 +24,7 @@ import CtaBand from './components/CtaBand';
 import ClientLogosSlider from './components/ClientLogosSlider';
 import ReviewSection from './components/ReviewSection';
 import AdInsightVideo from './components/AdInsightVideo';
+import CounterStats from './components/CounterStats';
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
   description:
@@ -142,20 +142,7 @@ export default function HomePage() {
 
         {/* Stats */}
         <Reveal delay={200}>
-          <div className="mt-20 grid gap-px rounded-card border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
-            {STATS.map((s) => (
-              <div
-                key={s.label_en}
-                className="bg-ink-900/60 p-6 first:rounded-t-card last:rounded-b-card sm:first:rounded-l-card sm:first:rounded-tr-none sm:last:rounded-r-card sm:last:rounded-bl-none"
-              >
-                <p className="font-display text-4xl tracking-wide text-white sm:text-5xl">
-                  <span className="accent">{s.value}</span>
-                </p>
-                <p className="mt-2 text-sm font-medium text-ash-200">{s.label_en}</p>
-                <p className="mt-1 font-bn text-xs text-ash-400">{s.sub_bn}</p>
-              </div>
-            ))}
-          </div>
+          <CounterStats />
         </Reveal>
       </HeroSection>
 
