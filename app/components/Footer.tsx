@@ -7,7 +7,7 @@ import SubscribeButton from './SubscribeButton';
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-white/10 bg-ink-900">
+    <footer className="relative mt-24 border-t border-blue-100 bg-white">
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div>
@@ -27,13 +27,13 @@ export default function Footer() {
               <span className="font-display text-2xl tracking-[0.18em] text-brand">
                 CREAVIX
               </span>
-              <span className="text-[10px] uppercase tracking-[0.32em] text-ash-300">
+              <span className="text-[10px] uppercase tracking-[0.32em] text-slate-500">
                 IT SOLUTION
               </span>
             </div>
           </Link>
-          <p className="mt-5 max-w-md text-sm leading-7 text-ash-300">{SITE.shortDesc}</p>
-          <p className="mt-3 max-w-md font-bn text-sm leading-7 text-ash-200">
+          <p className="mt-5 max-w-md text-sm leading-7 text-slate-600">{SITE.shortDesc}</p>
+          <p className="mt-3 max-w-md font-bn text-sm leading-7 text-slate-700">
             বাংলাদেশের প্রিমিয়াম এআই ভিডিও মার্কেটিং স্টুডিও। সিনেম্যাটিক স্টোরিটেলিং, প্রোডাক্ট অ্যাড ও বাইলিঙ্গুয়াল ক্যাম্পেইন।
           </p>
 
@@ -61,15 +61,15 @@ export default function Footer() {
 
         {/* Explore */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">
             Explore
           </h4>
-          <ul className="mt-5 space-y-3 text-sm text-ash-300">
+          <ul className="mt-5 space-y-3 text-sm text-slate-600">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="hover:text-brand">
                   {link.label_en}
-                  <span className="ml-2 font-bn text-xs text-ash-500">{link.label_bn}</span>
+                  <span className="ml-2 font-bn text-xs text-slate-500">{link.label_bn}</span>
                 </Link>
               </li>
             ))}
@@ -78,25 +78,25 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">
             Contact
           </h4>
-          <ul className="mt-5 space-y-4 text-sm text-ash-300">
+          <ul className="mt-5 space-y-4 text-sm text-slate-600">
             <li className="flex items-start gap-3">
               <Phone size={16} className="mt-0.5 flex-none text-brand" />
-              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-white">
+              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-brand">
                 {SITE.hotline}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <MessageCircle size={16} className="mt-0.5 flex-none text-brand" />
-              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-white">
+              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-brand">
                 WhatsApp · {SITE.whatsapp}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail size={16} className="mt-0.5 flex-none text-brand" />
-              <a href={`mailto:${SITE.email1}`} className="hover:text-white">
+              <a href={`mailto:${SITE.email1}`} className="hover:text-brand">
                 {SITE.email1}
               </a>
             </li>
@@ -105,7 +105,7 @@ export default function Footer() {
               <span>
                 {SITE.address_en}
                 <br />
-                <span className="font-bn text-ash-400">{SITE.address_bn}</span>
+                <span className="font-bn text-slate-700">{SITE.address_bn}</span>
               </span>
             </li>
           </ul>
@@ -113,27 +113,27 @@ export default function Footer() {
 
         {/* Subscribe + Hours */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">
             Studio Hours
           </h4>
-          <ul className="mt-5 space-y-2 text-sm text-ash-300">
+          <ul className="mt-5 space-y-2 text-sm text-slate-600">
             <li>Sat – Thu · 10:00 AM – 8:00 PM</li>
-            <li className="font-bn text-ash-400">শনি – বৃহঃ · সকাল ১০টা – রাত ৮টা</li>
-            <li className="text-ash-500">Friday closed · শুক্রবার বন্ধ</li>
+            <li className="font-bn text-slate-700">শনি – বৃহঃ · সকাল ১০টা – রাত ৮টা</li>
+            <li className="text-slate-500">Friday closed · শুক্রবার বন্ধ</li>
           </ul>
 
-          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-ash-200">
+          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">
             Subscribe
           </h4>
-          <p className="mt-3 text-xs leading-5 text-ash-400">
+          <p className="mt-3 text-xs leading-5 text-slate-600">
             নতুন অফার, প্যাকেজ ও ভিডিও আপডেট পেতে সাবস্ক্রাইব করুন।
           </p>
           <SubscribeButton>Subscribe — সাবস্ক্রাইব</SubscribeButton>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-x flex flex-col gap-3 py-6 text-xs text-ash-400 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-blue-100">
+        <div className="container-x flex flex-col gap-3 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE.brand}. All rights reserved.
           </p>
