@@ -1,5 +1,33 @@
 import { CheckCircle2 } from 'lucide-react';
 import { SERVICES, PROCESS_STEPS } from '../../lib/site-data';
+
+export const metadata = {
+  title: 'AI Video Ads, Cinematic Storytelling & Product Videos | Creavix Services',
+  description:
+    'AI ভিডিও অ্যাড, প্রোডাক্ট প্রমো, ফাইন্যান্সিয়াল ভিডিও ও সিনেম্যাটিক স্টোরিটেলিং। Meta, YouTube, TikTok-এর জন্য ২৪ ঘণ্টায় ডেলিভারি। Creavix Bangladesh।',
+  alternates: { canonical: '/services' },
+  openGraph: {
+    title: 'Creavix Services — AI Video Ads & Cinematic Production Bangladesh',
+    description:
+      'AI video ads, product promos, financial campaigns & cinematic storytelling. 24h delivery. Bilingual BD video agency since 2014.',
+    url: 'https://www.creavixit.com/services',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    title: 'Creavix Services — AI Video Production Bangladesh',
+    description:
+      'AI video ads, product promos & cinematic storytelling for Meta, YouTube & TikTok. 24h delivery.',
+    images: ['/share-card.jpg'],
+  },
+};
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import SectionIntro from '../components/SectionIntro';

@@ -7,6 +7,34 @@ import SectionIntro from '../components/SectionIntro';
 import VideoThumb from '../components/VideoThumb';
 import CtaBand from '../components/CtaBand';
 
+export const metadata = {
+  title: 'AI Video Portfolio — Cinematic Ads & Brand Campaigns | Creavix',
+  description:
+    'Creavix-এর সেরা কাজ দেখুন — AI ভিডিও অ্যাড, সিনেম্যাটিক স্টোরিটেলিং ও ব্র্যান্ড ক্যাম্পেইন। Meta, YouTube ও TikTok-রেডি ভিডিও। বাংলাদেশের শীর্ষ ভিডিও এজেন্সি।',
+  alternates: { canonical: '/portfolio' },
+  openGraph: {
+    title: 'Creavix Portfolio — Best AI Video Ads Bangladesh',
+    description:
+      'Watch our cinematic AI video campaigns. Meta, YouTube & TikTok-ready ads for Bangladeshi brands. 4,300+ projects delivered.',
+    url: 'https://www.creavixit.com/portfolio',
+    images: [
+      {
+        url: '/share-card.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    title: 'Creavix Portfolio — AI Cinematic Video Work',
+    description:
+      "Cinematic AI video campaigns for Meta, YouTube & TikTok. Bangladesh's top video agency.",
+    images: ['/share-card.jpg'],
+  },
+};
+
 
 
 const STORY = SHOWCASES[0];
