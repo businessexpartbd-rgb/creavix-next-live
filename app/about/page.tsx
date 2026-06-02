@@ -6,33 +6,7 @@ import SectionIntro from '../components/SectionIntro';
 import TrustCard from '../components/TrustCard';
 import CtaBand from '../components/CtaBand';
 
-export const metadata = {
-  title: 'About Creavix — AI Video Studio Bangladesh Since 2014 | Hannan Khan',
-  description:
-    'Creavix IT Solution — হেমায়েতপুর, সাভার, ঢাকায় অবস্থিত বাংলাদেশের প্রিমিয়াম AI ভিডিও স্টুডিও। ২০১৪ সাল থেকে Hannan Khan-এর নেতৃত্বে ৪,৩০০+ ব্র্যান্ডের সাথে কাজ করেছি।',
-  alternates: { canonical: '/about' },
-  openGraph: {
-    title: "About Creavix — Bangladesh's AI Video Studio Since 2014",
-    description:
-      'Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Cinematic AI video production with founder-led direction.',
-    url: 'https://www.creavixit.com/about',
-    images: [
-      {
-        url: '/share-card.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
-        type: 'image/jpeg',
-      },
-    ],
-  },
-  twitter: {
-    title: 'About Creavix — AI Video Studio Since 2014',
-    description:
-      "Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Bangladesh's premier AI video studio.",
-    images: ['/share-card.jpg'],
-  },
-};
+
 
 const TOUCHPOINTS_BN = [
   'প্রতিটি ব্রিফে ফাউন্ডার-লেড সরাসরি ক্রিয়েটিভ ওভারসাইট।',

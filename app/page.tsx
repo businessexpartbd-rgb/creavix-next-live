@@ -15,16 +15,7 @@ import {
   STATS,
   TRUST_PILLARS,
 } from '../lib/site-data';
-import HeroSection from './components/HeroSection';
-import Reveal from './components/Reveal';
-import SectionIntro from './components/SectionIntro';
-import ServiceCard from './components/ServiceCard';
-import TrustCard from './components/TrustCard';
-import VideoThumb from './components/VideoThumb';
-import CtaBand from './components/CtaBand';
-import ClientLogosSlider from './components/ClientLogosSlider';
-import ReviewSection from './components/ReviewSection';
-import AdInsightVideo from './components/AdInsightVideo';
+
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
   description:
@@ -45,6 +36,17 @@ export const metadata = {
     ],
   },
 };
+import HeroSection from './components/HeroSection';
+import Reveal from './components/Reveal';
+import SectionIntro from './components/SectionIntro';
+import ServiceCard from './components/ServiceCard';
+import TrustCard from './components/TrustCard';
+import VideoThumb from './components/VideoThumb';
+import CtaBand from './components/CtaBand';
+import ClientLogosSlider from './components/ClientLogosSlider';
+import ReviewSection from './components/ReviewSection';
+import AdInsightVideo from './components/AdInsightVideo';
+
 
 const HERO_REEL = SHOWCASES[0]?.ids?.slice(0, 3) ?? [];
 
