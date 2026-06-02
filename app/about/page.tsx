@@ -1,10 +1,5 @@
 import { CheckCircle2, Quote } from 'lucide-react';
 import { SITE, TRUST_PILLARS } from '../../lib/site-data';
-import HeroSection from '../components/HeroSection';
-import Reveal from '../components/Reveal';
-import SectionIntro from '../components/SectionIntro';
-import TrustCard from '../components/TrustCard';
-import CtaBand from '../components/CtaBand';
 
 export const metadata = {
   title: 'About Creavix — AI Video Studio Bangladesh Since 2014 | Hannan Khan',
@@ -33,6 +28,13 @@ export const metadata = {
     images: ['/share-card.jpg'],
   },
 };
+import HeroSection from '../components/HeroSection';
+import Reveal from '../components/Reveal';
+import SectionIntro from '../components/SectionIntro';
+import TrustCard from '../components/TrustCard';
+import CtaBand from '../components/CtaBand';
+
+
 
 const TOUCHPOINTS_BN = [
   'প্রতিটি ব্রিফে ফাউন্ডার-লেড সরাসরি ক্রিয়েটিভ ওভারসাইট।',

@@ -1,10 +1,5 @@
 import { CheckCircle2 } from 'lucide-react';
 import { SERVICES, PROCESS_STEPS } from '../../lib/site-data';
-import HeroSection from '../components/HeroSection';
-import Reveal from '../components/Reveal';
-import SectionIntro from '../components/SectionIntro';
-import ServiceCard from '../components/ServiceCard';
-import CtaBand from '../components/CtaBand';
 
 export const metadata = {
   title: 'AI Video Ads, Cinematic Storytelling & Product Videos | Creavix Services',
@@ -33,6 +28,13 @@ export const metadata = {
     images: ['/share-card.jpg'],
   },
 };
+import HeroSection from '../components/HeroSection';
+import Reveal from '../components/Reveal';
+import SectionIntro from '../components/SectionIntro';
+import ServiceCard from '../components/ServiceCard';
+import CtaBand from '../components/CtaBand';
+
+
 
 const DELIVERY_STANDARDS_BN = [
   'সিনেম্যাটিক ভিজ্যুয়াল ও প্ল্যাটফর্ম-রেডি ফ্রেমিং',

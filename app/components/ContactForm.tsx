@@ -49,10 +49,10 @@ export default function ContactForm() {
       className="card-3d p-7 sm:p-9"
       aria-label="Contact form"
     >
-      <h2 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+      <h2 className="font-display text-2xl uppercase tracking-[0.04em] text-slate-900 sm:text-3xl">
         Tell us about your project
       </h2>
-      <p className="mt-1 font-bn text-sm text-ash-300">
+      <p className="mt-1 font-bn text-sm text-slate-600">
         ফর্ম সাবমিট করলেই WhatsApp খুলবে আপনার বার্তা সহ — দ্রুত উত্তরের সবচেয়ে সহজ পথ।
       </p>
 
@@ -70,14 +70,14 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-5">
-        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-600">
           Service
         </label>
         <select
           name="service"
           required
           defaultValue=""
-          className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+          className="mt-2 w-full rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
         >
           <option value="" disabled>
             Choose a service
@@ -91,7 +91,7 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-5">
-        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-600">
           Project brief / প্রজেক্ট ডিটেইলস
         </label>
         <textarea
@@ -99,7 +99,7 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Tell us about your product, audience, goal and timeline."
-          className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+          className="mt-2 w-full rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
         />
       </div>
 
@@ -115,7 +115,7 @@ export default function ContactForm() {
       </div>
 
       {submitted ? (
-        <p className="mt-5 rounded-xl border border-brand/30 bg-brand/10 px-4 py-3 text-sm text-brand">
+        <p className="mt-5 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-700">
           ✓ WhatsApp opened in a new tab with your message. If it didn&apos;t open, tap the
           button again.
         </p>
@@ -143,7 +143,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+      <label className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-600">
         {label}
       </label>
       <input
@@ -152,9 +152,9 @@ function Field({
         required={required}
         placeholder={placeholder}
         onBlur={onBlur}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+        className="mt-2 w-full rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
       />
-      {error ? <p className="mt-1 text-xs text-brand">{error}</p> : null}
+      {error ? <p className="mt-1 text-xs text-blue-600">{error}</p> : null}
     </div>
   );
 }

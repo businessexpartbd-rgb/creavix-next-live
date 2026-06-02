@@ -35,6 +35,8 @@ export const metadata = {
   },
 };
 
+
+
 const STORY = SHOWCASES[0];
 const SHORTS = SHOWCASES.slice(1);
 
