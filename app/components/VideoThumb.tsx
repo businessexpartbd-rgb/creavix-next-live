@@ -96,6 +96,10 @@ export default function VideoThumb({
     window.dispatchEvent(new CustomEvent('creavix:video-play', { detail: { id } }));
   };
 
+  const handleOpenInNewTab = () => {
+    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+  };
+
   if (active) {
     return (
       <div
@@ -106,13 +110,20 @@ export default function VideoThumb({
       >
         <iframe
           ref={iframeRef}
-          src={`https://www.youtube.com/embed/${id}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1&autoplay=1`}
+          src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&autoplay=1`}
           title={title}
           loading={priority ? 'eager' : 'lazy'}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           allowFullScreen
           className="absolute inset-0 h-full w-full"
         />
+        <button
+          onClick={handleOpenInNewTab}
+          className="absolute bottom-4 right-4 z-10 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/90 transition"
+          title="Open on YouTube"
+        >
+          ↗ Open
+        </button>
       </div>
     );
   }
@@ -129,6 +140,12 @@ export default function VideoThumb({
       title={title}
       aria-label={`Play ${title}`}
       className={`group relative block w-full overflow-hidden rounded-card border border-white/10 bg-ink-800 ${ratioClass}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onActivate();
+        }
+      }}
     >
       <Image
         src={thumbSrc}

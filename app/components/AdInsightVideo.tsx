@@ -97,7 +97,7 @@ export default function AdInsightVideo() {
   // single video loop seamlessly; mute=1 is required for autoplay on
   // mobile browsers.
   const src = activated
-    ? `https://www.youtube.com/embed/${VIDEO_ID}?enablejsapi=1&autoplay=1&mute=${
+    ? `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=${
         muted ? 1 : 0
       }&loop=1&playlist=${VIDEO_ID}&controls=1&rel=0&modestbranding=1&playsinline=1`
     : '';
@@ -131,7 +131,7 @@ export default function AdInsightVideo() {
                 ref={iframeRef}
                 src={src}
                 className="absolute inset-0 h-full w-full"
-                allow="autoplay; encrypted-media; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
                 loading="lazy"
                 title="Why Most Ads Fail — Creavix"
