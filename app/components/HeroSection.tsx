@@ -26,7 +26,7 @@ export type HeroTheme =
 
 interface HeroSectionProps {
   theme: HeroTheme;
-  /** Bebas-Neue uppercase background watermark (huge, brand-tinted) */
+  /** Sora premium heading font background watermark (huge, brand-tinted) */
   watermark?: string;
   children: ReactNode;
 }

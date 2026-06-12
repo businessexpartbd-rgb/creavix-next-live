@@ -209,7 +209,7 @@
     z-index: 0;
   }
   .hero-watermark span {
-    font-family: var(--font-bebas), Impact, sans-serif;
+    font-family: var(--font-sora), system-ui, sans-serif;
     font-size: clamp(110px, 22vw, 240px);
     line-height: 0.9;
     letter-spacing: 0.06em;

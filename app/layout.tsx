@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Bebas_Neue, DM_Sans, Hind_Siliguri } from 'next/font/google';
+import { Sora, Inter, Hind_Siliguri } from 'next/font/google';
 import { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
@@ -14,19 +14,19 @@ const ChatBot = dynamic(() => import('./components/ChatBot'), {
   loading: () => null,
 });
 
-const bebas = Bebas_Neue({
-  weight: '400',
+const sora = Sora({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-bebas',
+  variable: '--font-sora',
   preload: true,
 });
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
+const inter = Inter({
   weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
   display: 'swap',
-  variable: '--font-dm-sans',
+  variable: '--font-inter',
   preload: true,
 });
 
@@ -171,7 +171,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const fontVars = [bebas.variable, dmSans.variable, bangla.variable].join(' ');
+  const fontVars = [sora.variable, inter.variable, bangla.variable].join(' ');
 
   // ✅ Organization + LocalBusiness + WebSite JSON-LD একসাথে (rich snippets)
   const orgLd = {
@@ -282,7 +282,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <html lang="en" className={fontVars} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${sora.variable} ${inter.variable} ${bangla.variable} bg-background`}
+    >
       <head>
         {/* ✅ Performance: DNS prefetch + preconnect for third-party origins */}
         <link rel="dns-prefetch" href="//i.ytimg.com" />
@@ -291,16 +294,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* YouTube IFrame API for video playback */}
         <script async src="https://www.youtube.com/iframe_api"></script>
-        {/* ✅ Hreflang explicit links (some crawlers prefer link-rel over header) */}
-        <link rel="alternate" hrefLang="en-US" href={SITE.url} />
-        <link rel="alternate" hrefLang="bn-BD" href={SITE.url} />
-        <link rel="alternate" hrefLang="x-default" href={SITE.url} />
       </head>
-      <body className="font-sans">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
-        >
+      <body>
+        <a href="#main" className="sr-only">
           Skip to content
         </a>
         <Navbar />

@@ -29,8 +29,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['var(--font-bebas)', 'Impact', 'sans-serif'],
-        sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-sora)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         bn: ['var(--font-bangla)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
