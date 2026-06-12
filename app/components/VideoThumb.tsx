@@ -140,6 +140,7 @@ export default function VideoThumb({
             : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px'
         }
         priority={priority}
+        crossOrigin="anonymous"
         className="object-cover transition duration-700 group-hover:scale-[1.04]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent opacity-90 transition group-hover:opacity-100" />

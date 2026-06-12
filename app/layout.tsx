@@ -289,6 +289,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="//www.youtube.com" />
         <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* YouTube IFrame API for video playback */}
+        <script async src="https://www.youtube.com/iframe_api"></script>
         {/* ✅ Hreflang explicit links (some crawlers prefer link-rel over header) */}
         <link rel="alternate" hrefLang="en-US" href={SITE.url} />
         <link rel="alternate" hrefLang="bn-BD" href={SITE.url} />

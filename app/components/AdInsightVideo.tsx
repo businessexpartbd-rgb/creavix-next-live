@@ -142,6 +142,7 @@ export default function AdInsightVideo() {
                 alt="Why most ads fail — preview"
                 fill
                 sizes="320px"
+                crossOrigin="anonymous"
                 className="object-cover"
               />
             )}
