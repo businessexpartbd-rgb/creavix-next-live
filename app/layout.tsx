@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import { SITE } from '../lib/site-data';
 
 // ✅ ChatBot lazy-loaded → ~10KB JS savings on initial page load.
@@ -305,6 +306,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </main>
         <Footer />
         <WhatsAppButton />
+        <ScrollToTopButton />
         <ChatBot />
         <script
           type="application/ld+json"

@@ -148,7 +148,7 @@ export default function HomePage() {
                 key={s.label_en}
                 className="bg-ink-900/60 p-6 first:rounded-t-card last:rounded-b-card sm:first:rounded-l-card sm:first:rounded-tr-none sm:last:rounded-r-card sm:last:rounded-bl-none"
               >
-                <p className="font-display text-4xl tracking-wide text-white sm:text-5xl">
+                <p className="font-display text-4xl font-bold tracking-wide text-white sm:text-5xl">
                   <span className="accent">{s.value}</span>
                 </p>
                 <p className="mt-2 text-sm font-medium text-ash-200">{s.label_en}</p>
