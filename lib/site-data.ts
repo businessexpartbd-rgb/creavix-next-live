@@ -82,8 +82,17 @@ export const SITE = {
   servingSince: 2014,
   founder: {
     name: 'Hannan Khan',
-    role_en: 'Founder & Creative Director',
-    role_bn: 'প্রতিষ্ঠাতা ও ক্রিয়েটিভ ডিরেক্টর',
+    role_en: 'Founder & CEO',
+    role_bn: 'প্রতিষ্ঠাতা ও সিইও',
+    fb_url: 'https://web.facebook.com/HannanKhanDesigner/',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hannan_khan.jpg-DGc1S570iuf223ti1nVZtJ1lSxoARv.png',
+  },
+  management: {
+    name: 'Sabbir Khan',
+    role_en: 'Management & Operations',
+    role_bn: 'ম্যানেজমেন্ট ও পরিচালনা',
+    fb_url: 'https://web.facebook.com/sabbirkhanmotivation',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sabbir-TP4hCLwK8o3T872NEqC57uakqZV8mn.png',
   },
   // Approximate Hemayetpur, Savar coords (used for embedded Google Map)
   // Update precise studio coords here when finalized

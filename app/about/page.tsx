@@ -1,10 +1,12 @@
 import { CheckCircle2, Quote } from 'lucide-react';
+import Image from 'next/image';
 import { SITE, TRUST_PILLARS } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import SectionIntro from '../components/SectionIntro';
 import TrustCard from '../components/TrustCard';
 import CtaBand from '../components/CtaBand';
+import FacebookLink from '../components/FacebookLink';
 
 export const metadata = {
   title: 'About Creavix — AI Video Studio Bangladesh Since 2014 | Hannan Khan',
@@ -70,76 +72,91 @@ export default function AboutPage() {
         </Reveal>
       </HeroSection>
 
-      {/* Founder section */}
+      {/* Team section - Founder & Management */}
       <section className="container-x py-24 sm:py-28">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="mb-16">
           <Reveal>
-            <div className="relative">
-              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/30 to-transparent blur-2xl" />
-              <div className="card-3d relative p-8 sm:p-10">
-                <div className="grid h-32 w-32 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-display text-4xl text-white">
-                  HK
+            <span className="eyebrow">Leadership · নেতৃত্ব</span>
+            <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl">
+              Meet the <span className="accent">founding team</span>
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Hannan Khan - Founder & CEO */}
+          <Reveal>
+            <div className="group relative overflow-hidden rounded-card border border-white/10 bg-ink-900/50 p-6 sm:p-8 transition hover:bg-ink-900">
+              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/20 to-transparent opacity-0 blur-2xl transition group-hover:opacity-100" />
+              
+              <div className="relative mb-6">
+                <div className="relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-brand/30 to-transparent">
+                  <Image
+                    src={SITE.founder.image}
+                    alt={`${SITE.founder.name} - ${SITE.founder.role_en}`}
+                    fill
+                    className="object-cover transition group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-                <h3 className="mt-6 font-display text-3xl uppercase tracking-[0.04em] text-white">
-                  {SITE.founder.name}
-                </h3>
-                <p className="mt-1 text-sm text-brand">{SITE.founder.role_en}</p>
-                <p className="font-bn text-sm text-ash-400">{SITE.founder.role_bn}</p>
-                <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
-                  Hannan সরাসরি প্রতিটি ব্রিফের ক্রিয়েটিভ ডিরেকশন করে — প্রথম মেসেজ থেকে ফাইনাল
-                  এক্সপোর্ট পর্যন্ত। স্টোরিটেলিং, বাইলিঙ্গুয়াল প্রেজেন্টেশন ও ব্র্যান্ড-সেফ আউটপুটের
-                  স্ট্যান্ডার্ড এখান থেকেই শুরু।
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white">
+                    {SITE.founder.name}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-brand">{SITE.founder.role_en}</p>
+                  <p className="font-bn text-xs text-ash-400">{SITE.founder.role_bn}</p>
+                </div>
+
+                <p className="font-bn text-sm leading-6 text-ash-200">
+                  Hannan এর ২০১৪ সাল থেকে ডিজিটাল মার্কেটিং এবং ভিডিও প্রোডাকশনে ১০+ বছরের অভিজ্ঞতা। 
+                  তিনি প্রতিটি প্রজেক্টে সরাসরি ক্রিয়েটিভ ডিরেকশন প্রদান করেন এবং নিশ্চিত করেন যে প্রতিটি ভিডিও ব্র্যান্ড স্ট্যান্ডার্ড পূরণ করে।
                 </p>
-                <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                  <Quote size={16} className="mt-1 flex-none text-brand" />
-                  <p className="font-bn text-sm leading-7 text-ash-200">
-                    &ldquo;ক্লায়েন্ট শুধু ভিডিও কেনে না — তারা চয়েস করে কে ব্রিফের কাছাকাছি থাকবে
-                    আর সময়মতো রেসপন্স দেবে।&rdquo;
-                  </p>
-                </div>
+
+                <FacebookLink url={SITE.founder.fb_url} label="Follow on Facebook" />
               </div>
             </div>
           </Reveal>
 
-          <div>
-            <Reveal>
-              <span className="eyebrow">Founder-led direction · ফাউন্ডার-লেড</span>
-              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl">
-                Closer creative ownership behind <span className="accent">every delivery.</span>
-              </h2>
-              <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
-                Creavix একটি ফাউন্ডার-লেড স্টুডিও। তাই ব্রিফ, রিভিশন ও ফাইনাল পলিশ — সবই কোর
-                ডিসিশন-মেকারের কাছাকাছি থাকে।
-              </p>
-            </Reveal>
-
-            <ul className="mt-8 space-y-4">
-              {TOUCHPOINTS_BN.map((t, i) => (
-                <Reveal key={t} delay={i * 60}>
-                  <li className="flex gap-3">
-                    <CheckCircle2 size={18} className="mt-1 flex-none text-brand" />
-                    <span className="font-bn text-sm leading-7 text-ash-200">{t}</span>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-
-            <Reveal delay={200}>
-              <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {STATS.map((s) => (
-                  <div key={String(s.label_en)} className="rounded-card border border-white/10 bg-white/5 p-4">
-                    <div className="font-display text-3xl uppercase tracking-wide text-white">
-                      <span className="accent">{s.value}</span>
-                    </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-ash-300">
-                      {s.label_en}
-                    </div>
-                    <div className="mt-1 font-bn text-[11px] text-ash-400">{s.label_bn}</div>
-                  </div>
-                ))}
+          {/* Sabbir Khan - Management & Operations */}
+          <Reveal delay={60}>
+            <div className="group relative overflow-hidden rounded-card border border-white/10 bg-ink-900/50 p-6 sm:p-8 transition hover:bg-ink-900">
+              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/20 to-transparent opacity-0 blur-2xl transition group-hover:opacity-100" />
+              
+              <div className="relative mb-6">
+                <div className="relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-brand/30 to-transparent">
+                  <Image
+                    src={SITE.management.image}
+                    alt={`${SITE.management.name} - ${SITE.management.role_en}`}
+                    fill
+                    className="object-cover transition group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                </div>
               </div>
-            </Reveal>
-          </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white">
+                    {SITE.management.name}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-brand">{SITE.management.role_en}</p>
+                  <p className="font-bn text-xs text-ash-400">{SITE.management.role_bn}</p>
+                </div>
+
+                <p className="font-bn text-sm leading-6 text-ash-200">
+                  Sabbir Creavix-র অপারেশনাল দক্ষতা এবং প্রজেক্ট ম্যানেজমেন্ট পরিচালনা করেন। 
+                  তার দায়িত্বে রয়েছে টাইমলি ডেলিভারি, ক্লায়েন্ট কমিউনিকেশন এবং নিশ্চিত করা যে প্রতিটি প্রজেক্ট স্মুথলি এক্সিকিউট হয়।
+                </p>
+
+                <FacebookLink url={SITE.management.fb_url} label="Follow on Facebook" />
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
