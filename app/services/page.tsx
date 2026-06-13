@@ -2,6 +2,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { SERVICES, PROCESS_STEPS } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
+import AnimatedText from '../components/AnimatedText';
 import SectionIntro from '../components/SectionIntro';
 import ServiceCard from '../components/ServiceCard';
 import CtaBand from '../components/CtaBand';

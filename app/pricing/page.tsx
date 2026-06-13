@@ -3,6 +3,7 @@ import { Sparkles } from 'lucide-react';
 import { FAQS, PRICING, SITE } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
+import AnimatedText from '../components/AnimatedText';
 import SectionIntro from '../components/SectionIntro';
 import PricingCard from '../components/PricingCard';
 import FAQAccordion from '../components/FAQAccordion';

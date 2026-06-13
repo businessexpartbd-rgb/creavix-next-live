@@ -1,6 +1,7 @@
 import { REVIEWS_SEED } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
+import AnimatedText from '../components/AnimatedText';
 import ReviewSection from '../components/ReviewSection';
 import CtaBand from '../components/CtaBand';
 

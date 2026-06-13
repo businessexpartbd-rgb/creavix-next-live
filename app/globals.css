@@ -319,7 +319,22 @@
     opacity: 0.4;
   }
 
-  /* Reveal: only animates when entering view */
+  /* Premium heading animation - fast reveal with blur effect */
+  .animate-heading {
+    animation: revealText 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Light text animation - subtle fade-up */
+  .animate-text {
+    animation: revealTextLight 0.6s ease-out forwards;
+  }
+
+  /* Staggered animation for multi-line headings */
+  .stagger-child {
+    animation-fill-mode: both;
+  }
+
+  /* Viewport-triggered animations */
   .reveal {
     opacity: 0;
     transform: translateY(36px);
@@ -330,34 +345,16 @@
     transform: translateY(0);
   }
 
-  /* Scroll-triggered animations */
-  .scroll-animate {
-    opacity: 0;
-    animation: scrollFadeUp 0.8s ease forwards;
-  }
-  .scroll-animate.in-view {
-    animation: scrollFadeUp 0.8s ease forwards;
-  }
-
-  .scroll-scale {
-    opacity: 0;
-    animation: scrollScale 0.8s ease forwards;
-  }
-  .scroll-scale.in-view {
-    animation: scrollScale 0.8s ease forwards;
-  }
-
-  .scroll-slide-in {
-    opacity: 0;
-    animation: scrollSlideIn 0.8s ease forwards;
-  }
-  .scroll-slide-in.in-view {
-    animation: scrollSlideIn 0.8s ease forwards;
-  }
-
-  /* Counter animation */
-  .counter-animate {
-    font-variant-numeric: tabular-nums;
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-heading,
+    .animate-text,
+    .stagger-child,
+    .reveal {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
   }
 
   /* ✅ Below-the-fold sections: skip render until scrolled close
@@ -444,35 +441,24 @@
   }
 }
 
-@keyframes scrollFadeUp {
+@keyframes revealText {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(24px) blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) blur(0);
+  }
+}
+
+@keyframes revealTextLight {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes scrollScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes scrollSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }

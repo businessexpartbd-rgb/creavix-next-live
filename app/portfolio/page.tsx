@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { SHOWCASES, SITE } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
+import AnimatedText from '../components/AnimatedText';
 import SectionIntro from '../components/SectionIntro';
 import VideoThumb from '../components/VideoThumb';
 import CtaBand from '../components/CtaBand';

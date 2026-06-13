@@ -7,6 +7,7 @@ import {
 import { SITE, SOCIAL_LINKS } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
+import AnimatedText from '../components/AnimatedText';
 import SectionIntro from '../components/SectionIntro';
 import ContactForm from '../components/ContactForm';
 import { SOCIAL_ICON_MAP } from '../components/SocialIcons';

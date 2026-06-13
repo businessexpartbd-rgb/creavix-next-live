@@ -17,6 +17,8 @@ import {
 } from '../lib/site-data';
 import HeroSection from './components/HeroSection';
 import Reveal from './components/Reveal';
+import AnimatedHeading from './components/AnimatedHeading';
+import AnimatedText from './components/AnimatedText';
 import SectionIntro from './components/SectionIntro';
 import ServiceCard from './components/ServiceCard';
 import TrustCard from './components/TrustCard';
@@ -60,24 +62,24 @@ export default function HomePage() {
                 {SITE.tagline_en} · বাংলাদেশ
               </span>
             </Reveal>
-            <Reveal delay={80}>
-              <h1 className="mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]">
-                Cinematic <span className="accent">AI Video</span>
-                <br />
-                campaigns that convert.
-              </h1>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="mt-6 max-w-xl text-base leading-8 text-ash-300 sm:text-lg">
-                Creavix blends premium storytelling, AI-led production and bilingual brand
-                clarity for businesses that want short-form speed, cinematic depth and a
-                stronger mobile-first web presence.
-              </p>
-              <p className="mt-3 max-w-xl font-bn text-sm leading-7 text-ash-200">
-                মেটা, ইউটিউব ও টিকটকের জন্য বাস্তবধর্মী, কনভার্সন-কেন্দ্রিক এআই ভিডিও অ্যাড।
-                ২০১৪ থেকে ৪,৩০০+ ব্র্যান্ডের পাশে।
-              </p>
-            </Reveal>
+            <AnimatedHeading
+              level={1}
+              delay={80}
+              className="mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]"
+            >
+              Cinematic <span className="accent">AI Video</span>
+              <br />
+              campaigns that convert.
+            </AnimatedHeading>
+            <AnimatedText delay={160} className="mt-6 max-w-xl text-base leading-8 text-ash-300 sm:text-lg">
+              Creavix blends premium storytelling, AI-led production and bilingual brand
+              clarity for businesses that want short-form speed, cinematic depth and a
+              stronger mobile-first web presence.
+            </AnimatedText>
+            <AnimatedText delay={240} className="mt-3 max-w-xl font-bn text-sm leading-7 text-ash-200">
+              মেটা, ইউটিউব ও টিকটকের জন্য বাস্তবধর্মী, কনভার্সন-কেন্দ্রিক এআই ভিডিও অ্যাড।
+              ২০১৪ থেকে ৪,৩০০+ ব্র্যান্ডের পাশে।
+            </AnimatedText>
             <Reveal delay={240}>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="btn-3d-primary">

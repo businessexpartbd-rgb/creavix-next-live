@@ -1,5 +1,5 @@
-import Reveal from './Reveal';
-import ScrollAnimationWrapper from './ScrollAnimationWrapper';
+import AnimatedHeading from './AnimatedHeading';
+import AnimatedText from './AnimatedText';
 
 interface SectionIntroProps {
   eyebrow?: string;
@@ -20,25 +20,35 @@ export default function SectionIntro({
 }: SectionIntroProps) {
   const alignment = align === 'center' ? 'text-center mx-auto items-center' : 'text-left items-start';
   return (
-    <ScrollAnimationWrapper animation="fade-up">
-      <div className={`flex max-w-3xl flex-col gap-5 ${alignment}`}>
-        {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
-        <h2 className="font-display text-balance text-4xl font-bold uppercase leading-[0.95] tracking-[0.04em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-          {title}
-          {accent ? (
-            <>
-              {' '}
-              <span className="accent">{accent}</span>
-            </>
-          ) : null}
-        </h2>
-        {body ? (
-          <p className="max-w-2xl text-base leading-7 text-ash-300 sm:text-[17px]">{body}</p>
+    <div className={`flex max-w-3xl flex-col gap-5 ${alignment}`}>
+      {eyebrow ? (
+        <AnimatedText delay={0} className="eyebrow">
+          {eyebrow}
+        </AnimatedText>
+      ) : null}
+      <AnimatedHeading
+        level={2}
+        delay={80}
+        className="font-display text-balance text-4xl font-bold uppercase leading-[0.95] tracking-[0.04em] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+      >
+        {title}
+        {accent ? (
+          <>
+            {' '}
+            <span className="accent">{accent}</span>
+          </>
         ) : null}
-        {body_bn ? (
-          <p className="max-w-2xl font-bn text-sm leading-7 text-ash-200 sm:text-base">{body_bn}</p>
-        ) : null}
-      </div>
-    </ScrollAnimationWrapper>
+      </AnimatedHeading>
+      {body ? (
+        <AnimatedText delay={160} className="max-w-2xl text-base leading-7 text-ash-300 sm:text-[17px]">
+          {body}
+        </AnimatedText>
+      ) : null}
+      {body_bn ? (
+        <AnimatedText delay={240} className="max-w-2xl font-bn text-sm leading-7 text-ash-200 sm:text-base">
+          {body_bn}
+        </AnimatedText>
+      ) : null}
+    </div>
   );
 }
