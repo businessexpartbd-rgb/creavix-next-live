@@ -31,7 +31,7 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-bebas)', 'Impact', 'sans-serif'],
         sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
-        bn: ['var(--font-bangla)', 'system-ui', 'sans-serif'],
+        bn: ['var(--font-noto-bn)', 'var(--font-bangla)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         card: '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)',

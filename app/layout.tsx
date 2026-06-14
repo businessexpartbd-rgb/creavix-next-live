@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Bebas_Neue, DM_Sans, Hind_Siliguri } from 'next/font/google';
+import { Bebas_Neue, DM_Sans, Hind_Siliguri, Noto_Sans_Bengali } from 'next/font/google';
 import { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
@@ -35,6 +35,14 @@ const bangla = Hind_Siliguri({
   subsets: ['bengali'],
   display: 'swap',
   variable: '--font-bangla',
+  preload: false,
+});
+
+const notoBengali = Noto_Sans_Bengali({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['bengali', 'latin'],
+  display: 'swap',
+  variable: '--font-noto-bn',
   preload: false,
 });
 
@@ -171,7 +179,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const fontVars = [bebas.variable, dmSans.variable, bangla.variable].join(' ');
+  const fontVars = [bebas.variable, dmSans.variable, bangla.variable, notoBengali.variable].join(' ');
 
   // ✅ Organization + LocalBusiness + WebSite JSON-LD একসাথে (rich snippets)
   const orgLd = {

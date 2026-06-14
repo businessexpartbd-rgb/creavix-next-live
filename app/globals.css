@@ -259,6 +259,29 @@
     text-wrap: balance;
   }
 
+  /* Reveal: only animates when entering view */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger reveal for scroll sections */
+  .reveal-stagger {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal-stagger.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .grain-overlay {
     position: relative;
     isolation: isolate;
@@ -344,6 +367,30 @@
   }
   50% {
     box-shadow: 0 4px 40px rgba(37, 211, 102, 0.7);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 4px 24px rgba(225, 29, 42, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 4px 50px rgba(225, 29, 42, 0.4),
+      0 0 0 12px rgba(225, 29, 42, 0.06);
+  }
+}
+
+/* Stagger reveal animation for scroll sections */
+@keyframes staggerReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
