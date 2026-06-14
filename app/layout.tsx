@@ -128,15 +128,14 @@ export const metadata: Metadata = {
     url: SITE.url,
     locale: 'en_US',
     alternateLocale: ['bn_BD'],
-    // ✅ Cache-bust filename: og-share.png (new URL → FB/WhatsApp/Twitter
-    //    must re-fetch, ignoring all old caches automatically).
+    // ✅ OG Image with logo - used for WhatsApp, Facebook, Twitter, etc.
     images: [
       {
-        url: '/share-card.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
-        type: 'image/jpeg',
+        type: 'image/webp',
       },
     ],
   },
@@ -149,7 +148,7 @@ export const metadata: Metadata = {
       "Bangladesh's premier AI-powered video studio. Cinematic ads for Meta, YouTube & TikTok. 4,300+ projects since 2014.",
     images: [
       {
-        url: '/share-card.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — AI Video Marketing Agency Bangladesh`,
