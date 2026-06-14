@@ -35,7 +35,7 @@ export default function TrustCard({ pillar }: { pillar: Pillar }) {
       <span className="grid h-11 w-11 place-items-center rounded-xl bg-white/5 text-brand ring-1 ring-white/10">
         <Icon size={20} />
       </span>
-      <h3 className="mt-5 font-display text-xl uppercase tracking-[0.04em] text-white">
+      <h3 className="mt-5 font-display text-xl uppercase tracking-[0.04em] text-ash-50">
         {pillar.title_en}
       </h3>
       <p className="mt-1 font-bn text-xs text-ash-400">{pillar.title_bn}</p>

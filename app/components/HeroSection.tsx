@@ -71,7 +71,7 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
           <Camera className="absolute right-[6%] top-[18%] h-14 w-14 animate-float text-brand/40" />
           <Film
-            className="absolute right-[18%] top-[32%] h-16 w-16 animate-spin-slow text-white/8"
+            className="absolute right-[18%] top-[32%] h-16 w-16 animate-spin-slow text-ash-50/8"
             strokeWidth={1.2}
           />
           <Play
@@ -84,9 +84,9 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
           <Cpu className="absolute right-[6%] top-[20%] h-12 w-12 animate-float text-brand/40" />
-          <Camera className="absolute right-[20%] top-[36%] h-12 w-12 animate-float text-white/15" />
+          <Camera className="absolute right-[20%] top-[36%] h-12 w-12 animate-float text-ash-50/15" />
           <Mic className="absolute right-[12%] top-[60%] h-12 w-12 animate-float text-brand/30" />
-          <Wrench className="absolute right-[26%] top-[18%] h-9 w-9 animate-spin-slow text-white/15" />
+          <Wrench className="absolute right-[26%] top-[18%] h-9 w-9 animate-spin-slow text-ash-50/15" />
         </div>
       );
     case 'portfolio':
@@ -98,7 +98,7 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
             fill="currentColor"
           />
           <Film
-            className="absolute right-[12%] top-[64%] h-14 w-14 animate-spin-slow text-white/10"
+            className="absolute right-[12%] top-[64%] h-14 w-14 animate-spin-slow text-ash-50/10"
             strokeWidth={1.2}
           />
         </div>
@@ -138,7 +138,7 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
           <MessageCircle className="absolute right-[6%] top-[22%] h-14 w-14 animate-pulse-glow text-brand/45" />
-          <MapPin className="absolute right-[18%] top-[50%] h-12 w-12 animate-float text-white/15" />
+          <MapPin className="absolute right-[18%] top-[50%] h-12 w-12 animate-float text-ash-50/15" />
         </div>
       );
     case 'reviews':

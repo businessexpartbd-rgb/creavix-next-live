@@ -240,7 +240,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <span className="eyebrow">Client Reviews · ক্লায়েন্ট রিভিউ</span>
-          <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl lg:text-5xl">
+          <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-ash-50 sm:text-4xl lg:text-5xl">
             What teams say after <span className="accent">working with us</span>
           </h2>
         </div>
@@ -248,7 +248,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
           <div className="flex items-center gap-2 text-sm">
             <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-brand" />
             <span className="text-ash-200">
-              <strong className="text-white">{counter.toLocaleString('en-BD')}+</strong>{' '}
+              <strong className="text-ash-50">{counter.toLocaleString('en-BD')}+</strong>{' '}
               reviews
             </span>
             <span className="font-bn text-ash-400">
@@ -297,11 +297,11 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               <p className="mt-2 text-xs leading-5 text-ash-400">&ldquo;{r.text_en}&rdquo;</p>
             ) : null}
             <figcaption className="mt-5 flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-brand/40 to-brand/10 text-sm font-semibold text-white ring-1 ring-brand/20">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-brand/40 to-brand/10 text-sm font-semibold text-ash-50 ring-1 ring-brand/20">
                 {r.name.charAt(0)}
               </span>
               <div className="leading-tight">
-                <div className="text-sm font-semibold text-white">{r.name}</div>
+                <div className="text-sm font-semibold text-ash-50">{r.name}</div>
                 <div className="text-xs text-ash-400">{r.email}</div>
               </div>
               {r.verified ? (
@@ -330,8 +330,8 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
       ) : null}
 
       {/* Submit form */}
-      <div className="mt-16 rounded-card border border-white/10 bg-white/[0.03] p-7 sm:p-9">
-        <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+      <div className="mt-16 rounded-card border border-black/10 bg-black/[0.03] p-7 sm:p-9">
+        <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-ash-50 sm:text-3xl">
           Share your experience
         </h3>
         <p className="mt-1 font-bn text-sm text-ash-300">
@@ -374,7 +374,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Your name · আপনার নাম"
-              className="rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+              className="rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
             />
             <div>
               <input
@@ -390,7 +390,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
                     setEmailError('সঠিক ইমেইল দিন · Enter a valid email');
                 }}
                 placeholder="Email (required) · ইমেইল"
-                className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+                className="w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
               />
               {emailError ? <p className="mt-1 text-xs text-brand">{emailError}</p> : null}
             </div>
@@ -402,7 +402,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Phone — optional · ফোন (ঐচ্ছিক)"
-            className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+            className="w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
           />
 
           <textarea
@@ -411,7 +411,7 @@ export default function ReviewSection({ initial = REVIEWS_SEED }: { initial?: Re
             onChange={(e) => setText(e.target.value)}
             rows={4}
             placeholder="আপনার অভিজ্ঞতা লিখুন... · Share your experience..."
-            className="w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+            className="w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
           />
 
           {/* ✅ Cloudflare Turnstile — flexible widget renders the standard

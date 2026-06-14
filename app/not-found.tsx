@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <section className="container-x flex min-h-[70vh] flex-col items-center justify-center pt-32 text-center">
       <span className="eyebrow">404 · Not found</span>
-      <h1 className="mt-6 font-display text-6xl uppercase tracking-[0.04em] text-white sm:text-7xl">
+      <h1 className="mt-6 font-display text-6xl uppercase tracking-[0.04em] text-ash-50 sm:text-7xl">
         This <span className="accent">scene</span> didn&apos;t make the cut.
       </h1>
       <p className="mt-6 max-w-md font-bn text-ash-300">

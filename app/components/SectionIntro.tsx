@@ -22,7 +22,7 @@ export default function SectionIntro({
     <Reveal>
       <div className={`flex max-w-3xl flex-col gap-5 ${alignment}`}>
         {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
-        <h2 className="font-display text-balance text-4xl font-normal uppercase leading-[0.95] tracking-[0.04em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+        <h2 className="font-display text-balance text-4xl font-normal uppercase leading-[0.95] tracking-[0.04em] text-ash-50 sm:text-5xl lg:text-6xl xl:text-7xl">
           {title}
           {accent ? (
             <>

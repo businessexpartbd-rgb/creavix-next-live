@@ -54,7 +54,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         />
       </div>
 
-      <h3 className="mt-6 font-display text-2xl uppercase tracking-[0.04em] text-white">
+      <h3 className="mt-6 font-display text-2xl uppercase tracking-[0.04em] text-ash-50">
         {service.title_en}
       </h3>
       <p className="mt-1 font-bn text-sm text-ash-300">{service.title_bn}</p>
@@ -69,7 +69,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         }`}
       >
         <div className="min-h-0">
-          <div className="rounded-card border border-white/10 bg-ink-700 p-5">
+          <div className="rounded-card border border-black/10 bg-ink-700 p-5">
             <ul className="space-y-2">
               {service.bullets_bn.map((b) => (
                 <li key={b} className="flex gap-2 font-bn text-sm leading-6 text-ash-200">

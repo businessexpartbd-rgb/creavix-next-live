@@ -81,7 +81,7 @@ export default function SubscribeModal() {
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Close"
-          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-white"
+          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-ash-50"
         >
           <X size={16} />
         </button>
@@ -89,7 +89,7 @@ export default function SubscribeModal() {
         <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand/15 text-brand ring-1 ring-brand/30">
           <Bell size={20} />
         </span>
-        <h2 className="mt-5 font-display text-2xl uppercase tracking-[0.04em] text-white">
+        <h2 className="mt-5 font-display text-2xl uppercase tracking-[0.04em] text-ash-50">
           Subscribe
         </h2>
         <p className="mt-1 font-bn text-sm text-ash-300">
@@ -108,7 +108,7 @@ export default function SubscribeModal() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@brand.com"
                 required
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+                className="mt-2 w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
               />
               {error ? <p className="mt-1 text-xs text-brand">{error}</p> : null}
             </div>
@@ -140,7 +140,7 @@ export default function SubscribeModal() {
           </p>
         ) : null}
         {done === 'fallback' ? (
-          <div className="mt-6 space-y-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm">
+          <div className="mt-6 space-y-3 rounded-xl border border-black/10 bg-black/[0.04] px-4 py-3 text-sm">
             <p className="text-ash-200">
               Email service isn&apos;t configured yet — please email us directly:
             </p>

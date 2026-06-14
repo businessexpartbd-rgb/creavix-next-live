@@ -136,16 +136,16 @@ export default function ChatBot() {
       {/* Window */}
       {open ? (
         <div
-          className="fixed right-4 bottom-[100px] z-[60] flex w-[min(92vw,380px)] flex-col overflow-hidden rounded-card border border-white/10 bg-ink-900 shadow-deep sm:right-7 sm:bottom-[110px]"
+          className="fixed right-4 bottom-[100px] z-[60] flex w-[min(92vw,380px)] flex-col overflow-hidden rounded-card border border-black/10 bg-ink-900 shadow-deep sm:right-7 sm:bottom-[110px]"
           role="dialog"
           aria-label="Creavix chat support"
         >
           {/* Header */}
-          <div className="flex items-center gap-3 border-b border-white/10 bg-ink-800 p-3">
+          <div className="flex items-center gap-3 border-b border-black/10 bg-ink-800 p-3">
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-white/5 text-ash-300 transition hover:bg-white/10 hover:text-white"
+              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-white/5 text-ash-300 transition hover:bg-white/10 hover:text-ash-50"
               aria-label="Go home"
               title="Home"
             >
@@ -163,7 +163,7 @@ export default function ChatBot() {
               />
             </span>
             <div className="flex flex-1 flex-col leading-tight">
-              <span className="font-display text-base tracking-[0.14em] text-white">
+              <span className="font-display text-base tracking-[0.14em] text-ash-50">
                 CREAVIX
               </span>
               <span className="flex items-center gap-1.5 text-xs text-ash-300">
@@ -177,7 +177,7 @@ export default function ChatBot() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="grid h-8 w-8 flex-none place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-white"
+              className="grid h-8 w-8 flex-none place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-ash-50"
               aria-label="Close chat"
             >
               <X size={14} />
@@ -192,13 +192,13 @@ export default function ChatBot() {
             {messages.map((m) =>
               m.role === 'user' ? (
                 <div key={m.id} className="flex justify-end">
-                  <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-brand px-4 py-2 text-sm leading-6 text-white shadow-glow">
+                  <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-brand px-4 py-2 text-sm leading-6 text-ash-50 shadow-glow">
                     {m.text}
                   </div>
                 </div>
               ) : (
                 <div key={m.id} className="flex justify-start">
-                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-white/10 bg-ink-700 px-4 py-2 text-sm leading-6 text-ash-50">
+                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-black/10 bg-ink-700 px-4 py-2 text-sm leading-6 text-ash-50">
                     <span className="font-bn">{m.text}</span>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function ChatBot() {
             )}
             {typing ? (
               <div className="flex justify-start">
-                <div className="flex gap-1 rounded-2xl rounded-tl-sm border border-white/10 bg-ink-700 px-4 py-3">
+                <div className="flex gap-1 rounded-2xl rounded-tl-sm border border-black/10 bg-ink-700 px-4 py-3">
                   <span className="h-2 w-2 animate-bounce rounded-full bg-ash-300 [animation-delay:-0.3s]" />
                   <span className="h-2 w-2 animate-bounce rounded-full bg-ash-300 [animation-delay:-0.15s]" />
                   <span className="h-2 w-2 animate-bounce rounded-full bg-ash-300" />
@@ -216,14 +216,14 @@ export default function ChatBot() {
           </div>
 
           {/* Suggested questions */}
-          <div className="border-t border-white/10 bg-ink-800 p-3">
+          <div className="border-t border-black/10 bg-ink-800 p-3">
             <div className="flex flex-wrap gap-2">
               {SUGGESTED_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   type="button"
                   onClick={() => sendMessage(q)}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-left font-bn text-xs text-ash-200 transition hover:border-brand/40 hover:bg-brand/10 hover:text-white"
+                  className="rounded-full border border-black/10 bg-white/5 px-3 py-1.5 text-left font-bn text-xs text-ash-200 transition hover:border-brand/40 hover:bg-brand/10 hover:text-ash-50"
                 >
                   {q}
                 </button>
@@ -237,20 +237,20 @@ export default function ChatBot() {
               e.preventDefault();
               sendMessage(input);
             }}
-            className="flex items-center gap-2 border-t border-white/10 bg-ink-900 p-3"
+            className="flex items-center gap-2 border-t border-black/10 bg-ink-900 p-3"
           >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="মেসেজ লিখুন... · Type a message"
               aria-label="Type a message"
-              className="flex-1 rounded-full border border-white/10 bg-ink-800 px-4 py-2 text-sm text-white outline-none focus:border-brand/60"
+              className="flex-1 rounded-full border border-black/10 bg-ink-800 px-4 py-2 text-sm text-ash-50 outline-none focus:border-brand/60"
             />
             <button
               type="submit"
               aria-label="Send"
               disabled={typing || !input.trim()}
-              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-brand text-white shadow-glow transition hover:bg-brand-secondary disabled:opacity-50"
+              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-brand text-ash-50 shadow-glow transition hover:bg-brand-secondary disabled:opacity-50"
             >
               <Send size={14} />
             </button>

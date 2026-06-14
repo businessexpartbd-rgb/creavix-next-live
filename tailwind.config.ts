@@ -4,28 +4,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand core (TikTok-YouTube hybrid red)
+        // Brand core — New light theme with red accent
         brand: {
-          DEFAULT: '#E8173A',
-          primary: '#E8173A',
-          secondary: '#FF4B6E',
-          deep: '#9A0F24',
+          DEFAULT: '#E11D2A',
+          primary: '#E11D2A',
+          secondary: '#E11D2A',
+          deep: '#0F0F12',
         },
-        // Dark surface — deep navy-black, NOT pure black
+        // Light surface — NEW: Light background instead of dark
         ink: {
-          950: '#06060A',
-          900: '#0A0A0F',
-          800: '#111118',
-          700: '#18181F',
-          600: '#22222B',
+          950: '#FAFAFA',
+          900: '#FAFAFA',
+          800: '#FFFFFF',
+          700: '#F5F5F3',
+          600: '#E8E8E6',
         },
-        // Text scale
+        // Text scale — NEW: Dark text for light backgrounds
         ash: {
-          50: '#F5F5F7',
-          200: '#C8C8D8',
-          300: '#A0A0B0',
-          400: '#7A7A88',
-          500: '#5A5A6E',
+          50: '#1A1A1A',
+          200: '#4A4A4A',
+          300: '#666666',
+          400: '#888888',
+          500: '#B0B0B0',
         },
       },
       fontFamily: {

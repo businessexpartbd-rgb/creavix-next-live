@@ -59,7 +59,7 @@ export default function ClientLogosSlider() {
           onMouseLeave={onLeave}
           onTouchStart={onHover}
           onTouchEnd={onLeave}
-          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] p-3 transition-[border-color,background-color] hover:border-brand/40 hover:bg-white/[0.08]"
+          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-black/10 bg-black/[0.04] p-3 transition-[border-color,background-color] hover:border-brand/40 hover:bg-black/[0.08]"
           title={logo.name}
         >
           <div className="relative h-full w-full">

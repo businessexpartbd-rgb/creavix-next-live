@@ -36,8 +36,8 @@ export async function POST(req: Request) {
 
   const adminSubject = `🔔 New Creavix subscriber: ${email}`;
   const welcomeHtml =
-    `<div style="font-family:DM Sans,sans-serif;line-height:1.6;color:#0a0a0f">` +
-    `<h2 style="color:#E8173A;margin:0 0 12px">🎬 Welcome to Creavix!</h2>` +
+    `<div style="font-family:DM Sans,sans-serif;line-height:1.6;color:#1A1A1A">` +
+    `<h2 style="color:#E11D2A;margin:0 0 12px">🎬 Welcome to Creavix!</h2>` +
     `<p>Thanks for subscribing — you'll be the first to hear about new packages, offers and behind-the-scenes work.</p>` +
     `<p style="font-family:Hind Siliguri,sans-serif;color:#444">নতুন অফার, প্যাকেজ ও ভিডিও আপডেট সবার আগে আপনার ইনবক্সে।</p>` +
     `<p>📞 ${SITE.whatsapp}<br>📧 ${SITE.email1}<br>📍 ${SITE.address_en}</p>` +

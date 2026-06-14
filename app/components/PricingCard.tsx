@@ -20,11 +20,11 @@ export default function PricingCard({
       className={`relative flex h-full flex-col rounded-card border p-7 transition ${
         plan.highlight
           ? 'border-brand/50 bg-gradient-to-br from-brand/12 via-white/[0.04] to-transparent shadow-glow-lg'
-          : 'border-white/10 bg-white/[0.03] hover:border-brand/30'
+          : 'border-black/10 bg-black/[0.03] hover:border-brand/30'
       }`}
     >
       {plan.highlight ? (
-        <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-brand px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-glow">
+        <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-brand px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-ash-50 shadow-glow">
           <Sparkles size={11} />
           Most popular
         </span>
@@ -32,7 +32,7 @@ export default function PricingCard({
 
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white">
+          <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-ash-50">
             {plan.name_en}
           </h3>
           <p className="mt-1 font-bn text-sm text-ash-300">{plan.name_bn}</p>
@@ -43,7 +43,7 @@ export default function PricingCard({
       </div>
 
       <div className="mt-6 flex items-end gap-3">
-        <div className="font-display text-4xl tracking-wide text-white">
+        <div className="font-display text-4xl tracking-wide text-ash-50">
           ৳<span className="accent">{plan.priceBDT.toLocaleString('en-BD')}</span>
         </div>
         <div className="pb-1 text-xs text-ash-400 line-through">

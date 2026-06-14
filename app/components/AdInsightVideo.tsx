@@ -109,7 +109,7 @@ export default function AdInsightVideo() {
           <span className="eyebrow">Ad Strategy · বিজ্ঞাপন কৌশল</span>
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 font-display text-3xl uppercase tracking-[0.04em] text-ash-50 sm:text-4xl lg:text-5xl">
             Why Most Ads <span className="accent">Fail</span> — and What Works
           </h2>
         </Reveal>
@@ -123,7 +123,7 @@ export default function AdInsightVideo() {
       <Reveal delay={180}>
         <div className="mx-auto w-full max-w-[320px]" ref={wrapRef}>
           <div
-            className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
+            className="relative overflow-hidden rounded-2xl border border-black/10 bg-black shadow-2xl"
             style={{ aspectRatio: '9 / 16' }}
           >
             {activated ? (
@@ -148,7 +148,7 @@ export default function AdInsightVideo() {
 
             {!activated ? (
               <div className="pointer-events-none absolute inset-0 grid place-items-center bg-black/40">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-brand text-white shadow-glow">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-brand text-ash-50 shadow-glow">
                   <Play size={24} fill="currentColor" />
                 </span>
               </div>
@@ -158,7 +158,7 @@ export default function AdInsightVideo() {
               <button
                 onClick={toggleMute}
                 aria-label={muted ? 'Unmute video' : 'Mute video'}
-                className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-black/90"
+                className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-ash-50 backdrop-blur-sm transition hover:bg-black/90"
               >
                 {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
                 {muted ? 'Sound On' : 'Mute'}
@@ -166,8 +166,8 @@ export default function AdInsightVideo() {
             ) : null}
           </div>
 
-          <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-center backdrop-blur-sm">
-            <p className="text-sm font-medium leading-6 text-white">{SUBTITLE_EN}</p>
+          <div className="mt-4 rounded-xl border border-black/10 bg-white/5 px-5 py-4 text-center backdrop-blur-sm">
+            <p className="text-sm font-medium leading-6 text-ash-50">{SUBTITLE_EN}</p>
             <p className="mt-1 font-bn text-sm leading-7 text-ash-300">{SUBTITLE_BN}</p>
           </div>
         </div>

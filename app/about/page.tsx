@@ -58,7 +58,7 @@ export default function AboutPage() {
           <span className="eyebrow">About Creavix · আমাদের গল্প</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-ash-50 sm:text-6xl lg:text-7xl">
             Storytelling, performance & <span className="accent">AI production</span> together.
           </h1>
         </Reveal>
@@ -77,10 +77,10 @@ export default function AboutPage() {
             <div className="relative">
               <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/30 to-transparent blur-2xl" />
               <div className="card-3d relative p-8 sm:p-10">
-                <div className="grid h-32 w-32 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-display text-4xl text-white">
+                <div className="grid h-32 w-32 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-display text-4xl text-ash-50">
                   HK
                 </div>
-                <h3 className="mt-6 font-display text-3xl uppercase tracking-[0.04em] text-white">
+                <h3 className="mt-6 font-display text-3xl uppercase tracking-[0.04em] text-ash-50">
                   {SITE.founder.name}
                 </h3>
                 <p className="mt-1 text-sm text-brand">{SITE.founder.role_en}</p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
                   এক্সপোর্ট পর্যন্ত। স্টোরিটেলিং, বাইলিঙ্গুয়াল প্রেজেন্টেশন ও ব্র্যান্ড-সেফ আউটপুটের
                   স্ট্যান্ডার্ড এখান থেকেই শুরু।
                 </p>
-                <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <div className="mt-6 flex items-start gap-3 rounded-xl border border-black/10 bg-black/[0.03] p-4">
                   <Quote size={16} className="mt-1 flex-none text-brand" />
                   <p className="font-bn text-sm leading-7 text-ash-200">
                     &ldquo;ক্লায়েন্ট শুধু ভিডিও কেনে না — তারা চয়েস করে কে ব্রিফের কাছাকাছি থাকবে
@@ -104,7 +104,7 @@ export default function AboutPage() {
           <div>
             <Reveal>
               <span className="eyebrow">Founder-led direction · ফাউন্ডার-লেড</span>
-              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl">
+              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-ash-50 sm:text-4xl">
                 Closer creative ownership behind <span className="accent">every delivery.</span>
               </h2>
               <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
@@ -127,8 +127,8 @@ export default function AboutPage() {
             <Reveal delay={200}>
               <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {STATS.map((s) => (
-                  <div key={String(s.label_en)} className="rounded-card border border-white/10 bg-white/5 p-4">
-                    <div className="font-display text-3xl uppercase tracking-wide text-white">
+                  <div key={String(s.label_en)} className="rounded-card border border-black/10 bg-white/5 p-4">
+                    <div className="font-display text-3xl uppercase tracking-wide text-ash-50">
                       <span className="accent">{s.value}</span>
                     </div>
                     <div className="mt-1 text-xs uppercase tracking-[0.16em] text-ash-300">
@@ -144,7 +144,7 @@ export default function AboutPage() {
       </section>
 
       {/* Studio Map */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-20 sm:py-24">
+      <section className="border-y border-black/10 bg-ink-800/60 py-20 sm:py-24">
         <div className="container-x">
           <SectionIntro
             eyebrow="Studio · স্টুডিও"
@@ -153,7 +153,7 @@ export default function AboutPage() {
             body_bn="হেমায়েতপুর, সাভার, ঢাকা — ১৩৪০। ভিজিটের জন্য আগেই WhatsApp করে অ্যাপয়েন্টমেন্ট নিন।"
           />
           <Reveal delay={120}>
-            <div className="mt-10 overflow-hidden rounded-card border border-white/10">
+            <div className="mt-10 overflow-hidden rounded-card border border-black/10">
               <iframe
                 src={mapsSrc}
                 title="Creavix Studio location — Hemayetpur, Savar, Dhaka"

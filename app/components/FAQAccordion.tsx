@@ -19,7 +19,7 @@ export default function FAQAccordion({ items }: { items: readonly FaqItem[] }) {
         return (
           <div
             key={item.q_en}
-            className="overflow-hidden rounded-card border border-white/10 bg-ink-800"
+            className="overflow-hidden rounded-card border border-black/10 bg-ink-800"
           >
             <button
               type="button"
@@ -28,13 +28,13 @@ export default function FAQAccordion({ items }: { items: readonly FaqItem[] }) {
               className="flex w-full items-center justify-between gap-4 bg-ink-700 px-5 py-4 text-left transition hover:bg-ink-600"
             >
               <span className="flex flex-col">
-                <span className="font-display text-lg uppercase tracking-[0.04em] text-white">
+                <span className="font-display text-lg uppercase tracking-[0.04em] text-ash-50">
                   {item.q_en}
                 </span>
                 <span className="font-bn text-sm text-ash-300">{item.q_bn}</span>
               </span>
               <span
-                className={`grid h-9 w-9 flex-none place-items-center rounded-full border border-white/10 bg-white/5 text-ash-300 transition ${
+                className={`grid h-9 w-9 flex-none place-items-center rounded-full border border-black/10 bg-white/5 text-ash-300 transition ${
                   open ? 'rotate-45 border-brand/50 text-brand' : ''
                 }`}
               >

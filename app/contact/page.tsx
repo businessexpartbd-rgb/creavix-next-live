@@ -47,7 +47,7 @@ export default function ContactPage() {
           <span className="eyebrow">Contact · যোগাযোগ</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-ash-50 sm:text-6xl lg:text-7xl">
             Start your <span className="accent">video marketing</span> campaign.
           </h1>
         </Reveal>
@@ -69,12 +69,12 @@ export default function ContactPage() {
                 rel="noreferrer"
                 className="group flex items-start gap-4 rounded-card border border-brand/30 bg-gradient-to-br from-brand/15 to-transparent p-6 transition hover:border-brand/60"
               >
-                <span className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-brand text-white">
+                <span className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-brand text-ash-50">
                   <MessageCircle size={20} />
                 </span>
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-ash-300">Fastest · WhatsApp</p>
-                  <p className="mt-1 font-display text-xl uppercase tracking-wide text-white">
+                  <p className="mt-1 font-display text-xl uppercase tracking-wide text-ash-50">
                     {SITE.whatsapp}
                   </p>
                   <p className="mt-2 font-bn text-sm text-ash-300">
@@ -92,7 +92,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-ash-300">Hotline</p>
-                  <p className="mt-1 font-display text-xl uppercase tracking-wide text-white">
+                  <p className="mt-1 font-display text-xl uppercase tracking-wide text-ash-50">
                     {SITE.hotline}
                   </p>
                   <p className="mt-2 font-bn text-sm text-ash-400">শনি – বৃহঃ · সকাল ১০টা – রাত ৮টা</p>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-ash-300">Email</p>
-                  <p className="mt-1 font-display text-lg uppercase tracking-wide text-white">
+                  <p className="mt-1 font-display text-lg uppercase tracking-wide text-ash-50">
                     {SITE.email1}
                   </p>
                   <p className="text-sm text-ash-300">{SITE.email2}</p>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-ash-300">Studio</p>
-                  <p className="mt-1 font-display text-lg uppercase tracking-wide text-white">
+                  <p className="mt-1 font-display text-lg uppercase tracking-wide text-ash-50">
                     {SITE.address_en}
                   </p>
                   <p className="mt-1 font-bn text-sm text-ash-400">{SITE.address_bn}</p>
@@ -134,7 +134,7 @@ export default function ContactPage() {
       </section>
 
       {/* Social */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-black/10 bg-ink-800/60 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
             eyebrow="Find us online · অনলাইনে"
@@ -155,11 +155,11 @@ export default function ContactPage() {
                     title={s.name}
                     className="card-3d group flex items-center gap-4 p-5"
                   >
-                    <span className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-white/5 text-brand ring-1 ring-white/10 transition group-hover:bg-brand group-hover:text-white group-hover:ring-brand">
+                    <span className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-white/5 text-brand ring-1 ring-white/10 transition group-hover:bg-brand group-hover:text-ash-50 group-hover:ring-brand">
                       <Icon className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="font-display text-base uppercase tracking-wide text-white">
+                      <p className="font-display text-base uppercase tracking-wide text-ash-50">
                         {s.name}
                       </p>
                       <p className="text-xs text-ash-400">{s.handle}</p>

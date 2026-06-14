@@ -130,7 +130,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
         scrolled || pagesOpen
-          ? 'border-b border-white/10 bg-ink-950 md:bg-ink-950/95 md:backdrop-blur-md'
+          ? 'border-b border-black/10 bg-ink-900 md:bg-ink-900/95 md:backdrop-blur-md'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -183,8 +183,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   active
-                    ? 'bg-white/10 text-white'
-                    : 'text-ash-300 hover:bg-white/5 hover:text-white'
+                    ? 'bg-white/10 text-ash-50'
+                    : 'text-ash-300 hover:bg-white/5 hover:text-ash-50'
                 }`}
                 aria-current={active ? 'page' : undefined}
               >
@@ -203,7 +203,7 @@ export default function Navbar() {
             onClick={() =>
               window.dispatchEvent(new CustomEvent('creavix:open-subscribe'))
             }
-            className="hidden h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-brand/60 md:grid"
+            className="hidden h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/5 text-ash-50 transition hover:border-brand/60 md:grid"
           >
             <Bell size={16} />
           </button>
@@ -226,7 +226,7 @@ export default function Navbar() {
             aria-controls="pages-dropdown"
             aria-label={pagesOpen ? 'Close pages menu' : 'Open pages menu'}
             onClick={() => setPagesOpen((v) => !v)}
-            className="flex h-10 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-white transition hover:border-brand/60 sm:h-11 sm:px-4"
+            className="flex h-10 items-center gap-2 rounded-full border border-black/10 bg-white/5 px-3 text-ash-50 transition hover:border-brand/60 sm:h-11 sm:px-4"
           >
             {pagesOpen ? <X size={16} /> : <LayoutGrid size={16} />}
             <span className="text-xs font-semibold uppercase tracking-[0.18em]">
@@ -239,7 +239,7 @@ export default function Navbar() {
       {/* ───── Pages dropdown ───── */}
       <div
         id="pages-dropdown"
-        className={`overflow-hidden border-t border-white/10 bg-ink-950 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
+        className={`overflow-hidden border-t border-black/10 bg-ink-900 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
           pagesOpen
             ? 'max-h-[640px] opacity-100'
             : 'pointer-events-none max-h-0 opacity-0'
@@ -249,7 +249,7 @@ export default function Navbar() {
           {/* Search bar */}
           <form
             onSubmit={submitSearch}
-            className="mb-4 flex items-center gap-3 rounded-xl border border-white/10 bg-ink-800 px-4 py-2.5 focus-within:border-brand/60 focus-within:ring-2 focus-within:ring-brand/20"
+            className="mb-4 flex items-center gap-3 rounded-xl border border-black/10 bg-ink-800 px-4 py-2.5 focus-within:border-brand/60 focus-within:ring-2 focus-within:ring-brand/20"
           >
             <Search size={16} className="flex-none text-brand" />
             <input
@@ -257,7 +257,7 @@ export default function Navbar() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search pages or ask AI… · পেজ বা কন্টেন্ট খুঁজুন"
-              className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-ash-400"
+              className="flex-1 bg-transparent text-sm text-ash-50 outline-none placeholder:text-ash-400"
               type="text"
               aria-label="Search website"
             />
@@ -266,7 +266,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setSearch('')}
                 aria-label="Clear search"
-                className="grid h-7 w-7 flex-none place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-white"
+                className="grid h-7 w-7 flex-none place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-ash-50"
               >
                 <X size={14} />
               </button>
@@ -274,7 +274,7 @@ export default function Navbar() {
             {q ? (
               <button
                 type="submit"
-                className="hidden flex-none rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-brand-secondary sm:inline-flex"
+                className="hidden flex-none rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-ash-50 transition hover:bg-brand-secondary sm:inline-flex"
               >
                 Go
               </button>
@@ -295,14 +295,14 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
                     active
-                      ? 'bg-brand/15 text-white ring-1 ring-brand/40'
-                      : 'text-ash-200 hover:bg-white/5 hover:text-white'
+                      ? 'bg-brand/15 text-ash-50 ring-1 ring-brand/40'
+                      : 'text-ash-200 hover:bg-white/5 hover:text-ash-50'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >
                   <span
                     className={`grid h-8 w-8 flex-none place-items-center rounded-lg ${
-                      active ? 'bg-brand text-white' : 'bg-white/5 text-ash-300'
+                      active ? 'bg-brand text-ash-50' : 'bg-white/5 text-ash-300'
                     }`}
                   >
                     <Icon size={14} />
@@ -317,12 +317,12 @@ export default function Navbar() {
               );
             })}
             {filteredPages.length === 0 ? (
-              <div className="col-span-full rounded-xl border border-white/10 bg-white/5 p-4 text-center text-sm text-ash-300">
+              <div className="col-span-full rounded-xl border border-black/10 bg-white/5 p-4 text-center text-sm text-ash-300">
                 No pages match.{' '}
                 <button
                   type="button"
                   onClick={submitSearch}
-                  className="text-brand underline hover:text-white"
+                  className="text-brand underline hover:text-ash-50"
                 >
                   Press Enter to ask AI.
                 </button>
@@ -347,7 +347,7 @@ export default function Navbar() {
                 setPagesOpen(false);
                 window.dispatchEvent(new CustomEvent('creavix:open-subscribe'));
               }}
-              className="flex items-center justify-center gap-2 rounded-pill border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-white"
+              className="flex items-center justify-center gap-2 rounded-pill border border-black/10 bg-white/5 px-5 py-2.5 text-sm text-ash-50"
             >
               <Bell size={16} />
               Subscribe — সাবস্ক্রাইব

@@ -7,7 +7,7 @@ import SubscribeButton from './SubscribeButton';
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-white/10 bg-ink-900">
+    <footer className="relative mt-24 border-t border-black/10 bg-ink-900">
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div>
@@ -50,7 +50,7 @@ export default function Footer() {
                   rel="noreferrer"
                   aria-label={`${SITE.name} on ${s.name}`}
                   title={s.name}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-ash-300 transition hover:border-brand/60 hover:bg-brand hover:text-white"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/5 text-ash-300 transition hover:border-brand/60 hover:bg-brand hover:text-ash-50"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -84,19 +84,19 @@ export default function Footer() {
           <ul className="mt-5 space-y-4 text-sm text-ash-300">
             <li className="flex items-start gap-3">
               <Phone size={16} className="mt-0.5 flex-none text-brand" />
-              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-white">
+              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-ash-50">
                 {SITE.hotline}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <MessageCircle size={16} className="mt-0.5 flex-none text-brand" />
-              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-white">
+              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-ash-50">
                 WhatsApp · {SITE.whatsapp}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail size={16} className="mt-0.5 flex-none text-brand" />
-              <a href={`mailto:${SITE.email1}`} className="hover:text-white">
+              <a href={`mailto:${SITE.email1}`} className="hover:text-ash-50">
                 {SITE.email1}
               </a>
             </li>
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-black/10">
         <div className="container-x flex flex-col gap-3 py-6 text-xs text-ash-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE.brand}. All rights reserved.

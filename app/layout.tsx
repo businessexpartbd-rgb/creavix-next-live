@@ -48,8 +48,8 @@ export const viewport: Viewport = {
   userScalable: false,
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#0A0A0F' },
-    { media: '(prefers-color-scheme: light)', color: '#0A0A0F' },
+    { media: '(prefers-color-scheme: dark)', color: '#FAFAFA' },
+    { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
   ],
 };
 
@@ -297,7 +297,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="font-sans">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-brand focus:px-4 focus:py-2 focus:text-ash-50"
         >
           Skip to content
         </a>

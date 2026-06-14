@@ -48,7 +48,7 @@ export default function PortfolioPage() {
           <span className="eyebrow">Portfolio · শোকেস</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-ash-50 sm:text-6xl lg:text-7xl">
             Story-first <span className="accent">video work</span> for modern brands.
           </h1>
         </Reveal>
@@ -87,7 +87,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Categorized short-form */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-black/10 bg-ink-800/60 py-24 sm:py-28">
         <div className="container-x space-y-16">
           <SectionIntro
             eyebrow="Short-form grids · শর্ট-ফর্ম"
@@ -99,7 +99,7 @@ export default function PortfolioPage() {
               <div className="card-3d p-6 sm:p-8">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div className="max-w-2xl">
-                    <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+                    <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-ash-50 sm:text-3xl">
                       {cat.title_en}
                     </h3>
                     <p className="mt-1 font-bn text-sm text-ash-400">{cat.title_bn}</p>
@@ -133,8 +133,8 @@ export default function PortfolioPage() {
       {/* CTA */}
       <section className="container-x py-20">
         <Reveal>
-          <div className="rounded-card border border-white/10 bg-white/5 p-8 text-center sm:p-12">
-            <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+          <div className="rounded-card border border-black/10 bg-white/5 p-8 text-center sm:p-12">
+            <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-ash-50 sm:text-3xl">
               Want a campaign like these?
             </h3>
             <p className="mx-auto mt-3 max-w-xl font-bn text-sm leading-7 text-ash-200">

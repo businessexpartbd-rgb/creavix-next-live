@@ -46,7 +46,7 @@ export default function PricingPage() {
           </span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-ash-50 sm:text-6xl lg:text-7xl">
             Flexible packages for <span className="accent">every campaign stage.</span>
           </h1>
         </Reveal>
@@ -87,7 +87,7 @@ export default function PricingPage() {
       </div>
 
       {/* FAQ */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-black/10 bg-ink-800/60 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
             eyebrow="FAQ · প্রশ্নোত্তর"

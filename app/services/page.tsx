@@ -51,7 +51,7 @@ export default function ServicesPage() {
           <span className="eyebrow">Services · সার্ভিস</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-ash-50 sm:text-6xl lg:text-7xl">
             <span className="accent">AI Video Ads</span> and storytelling for growth-focused brands.
           </h1>
         </Reveal>
@@ -84,7 +84,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Delivery standards */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-black/10 bg-ink-800/60 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
             eyebrow="Delivery standard · ডেলিভারি স্ট্যান্ডার্ড"
@@ -116,7 +116,7 @@ export default function ServicesPage() {
             <Reveal key={step.step} delay={i * 70}>
               <div className="card-3d h-full p-6">
                 <span className="font-display text-3xl text-brand">{step.step}</span>
-                <h3 className="mt-3 font-display text-xl uppercase tracking-[0.04em] text-white">
+                <h3 className="mt-3 font-display text-xl uppercase tracking-[0.04em] text-ash-50">
                   {step.title_en}
                 </h3>
                 <p className="mt-1 font-bn text-sm text-ash-400">{step.title_bn}</p>

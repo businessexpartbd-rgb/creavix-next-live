@@ -40,7 +40,7 @@ export default function ReviewsPage() {
           <span className="eyebrow">Reviews · ক্লায়েন্ট রিভিউ</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-ash-50 sm:text-6xl lg:text-7xl">
             Verified <span className="accent">client feedback</span> across BD.
           </h1>
         </Reveal>

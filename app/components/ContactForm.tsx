@@ -49,7 +49,7 @@ export default function ContactForm() {
       className="card-3d p-7 sm:p-9"
       aria-label="Contact form"
     >
-      <h2 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+      <h2 className="font-display text-2xl uppercase tracking-[0.04em] text-ash-50 sm:text-3xl">
         Tell us about your project
       </h2>
       <p className="mt-1 font-bn text-sm text-ash-300">
@@ -77,7 +77,7 @@ export default function ContactForm() {
           name="service"
           required
           defaultValue=""
-          className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+          className="mt-2 w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
         >
           <option value="" disabled>
             Choose a service
@@ -99,7 +99,7 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Tell us about your product, audience, goal and timeline."
-          className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+          className="mt-2 w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
         />
       </div>
 
@@ -152,7 +152,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         onBlur={onBlur}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+        className="mt-2 w-full rounded-xl border border-black/10 bg-ink-900 px-4 py-3 text-sm text-ash-50 placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
       />
       {error ? <p className="mt-1 text-xs text-brand">{error}</p> : null}
     </div>
