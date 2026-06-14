@@ -23,7 +23,7 @@ import TrustCard from './components/TrustCard';
 import VideoThumb from './components/VideoThumb';
 import CtaBand from './components/CtaBand';
 import ClientLogosSlider from './components/ClientLogosSlider';
-import ReviewSection from './components/ReviewSection';
+import ReviewSectionWithDatabase from './components/ReviewSectionWithDatabase';
 import AdInsightVideo from './components/AdInsightVideo';
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
@@ -261,7 +261,7 @@ export default function HomePage() {
       </section>
 
       {/* Reviews (live counter + form) */}
-      <ReviewSection initial={REVIEWS_SEED} />
+      <ReviewSectionWithDatabase initial={REVIEWS_SEED} />
 
       {/* Value promise */}
       <section className="container-x pb-24 sm:pb-28 cv-auto">
