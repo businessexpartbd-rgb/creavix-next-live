@@ -43,7 +43,7 @@ export default function ClientLogosSlider() {
 
   const Row = ({ direction }: { direction: 'ltr' | 'rtl' }) => (
     <div
-      className={`flex w-max gap-6 ${
+      className={`flex w-max gap-12 ${
         direction === 'ltr' ? 'animate-marquee-reverse-slow' : 'animate-marquee-slow'
       }`}
       style={{
@@ -59,7 +59,7 @@ export default function ClientLogosSlider() {
           onMouseLeave={onLeave}
           onTouchStart={onHover}
           onTouchEnd={onLeave}
-          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-black/10 bg-black/[0.04] p-3 transition-[border-color,background-color] hover:border-brand/40 hover:bg-black/[0.08]"
+          className="logo-item grid h-24 w-44 flex-none place-items-center p-3"
           title={logo.name}
         >
           <div className="relative h-full w-full">
@@ -68,7 +68,7 @@ export default function ClientLogosSlider() {
               alt={logo.name}
               fill
               sizes="(max-width: 640px) 25vw, 176px"
-              className="object-contain opacity-80 transition-opacity duration-300 hover:opacity-100"
+              className="logo-image object-contain transition-all duration-300"
               loading="lazy"
             />
           </div>
