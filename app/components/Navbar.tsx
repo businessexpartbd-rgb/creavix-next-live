@@ -144,7 +144,7 @@ export default function Navbar() {
           type="button"
           aria-label="Close pages menu"
           onClick={() => setPagesOpen(false)}
-          className="fixed inset-0 -z-10 cursor-default bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 -z-10 cursor-default bg-black/50 backdrop-blur-sm"
         />
       ) : null}
       <div className="container-x flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-6">

@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Bebas_Neue, DM_Sans, Hind_Siliguri } from 'next/font/google';
+import { Inter, Bebas_Neue, Hind_Siliguri } from 'next/font/google';
 import { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
@@ -14,19 +14,19 @@ const ChatBot = dynamic(() => import('./components/ChatBot'), {
   loading: () => null,
 });
 
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+});
+
 const bebas = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-bebas',
-  preload: true,
-});
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-dm-sans',
   preload: true,
 });
 
@@ -171,7 +171,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const fontVars = [bebas.variable, dmSans.variable, bangla.variable].join(' ');
+  const fontVars = [inter.variable, bebas.variable, bangla.variable].join(' ');
 
   // ✅ Organization + LocalBusiness + WebSite JSON-LD একসাথে (rich snippets)
   const orgLd = {
