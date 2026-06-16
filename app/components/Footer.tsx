@@ -7,14 +7,14 @@ import SubscribeButton from './SubscribeButton';
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-white/10 bg-ink-900">
+    <footer className="relative mt-24 border-t border-warm-fg/10 bg-gradient-to-r from-warm-muted/80 to-warm-fg/80 text-warm-bg">
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div>
           <Link href="/" className="flex items-center gap-3">
-            <span className="relative grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/0 ring-1 ring-white/10 shadow-glow">
+            <span className="relative grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-xl bg-warm-fg/10 ring-1 ring-warm-fg/20">
               <Image
-                src="/logo.png"
+                src="/new-logo.png"
                 alt={`${SITE.name} logo`}
                 width={96}
                 height={96}
@@ -24,16 +24,16 @@ export default function Footer() {
               />
             </span>
             <div className="flex flex-col leading-tight">
-              <span className="font-display text-2xl tracking-[0.18em] text-brand">
+              <span className="font-display text-2xl tracking-[0.18em] text-warm-bg">
                 CREAVIX
               </span>
-              <span className="text-[10px] uppercase tracking-[0.32em] text-ash-300">
+              <span className="text-[10px] uppercase tracking-[0.32em] text-warm-bg/80">
                 IT SOLUTION
               </span>
             </div>
           </Link>
-          <p className="mt-5 max-w-md text-sm leading-7 text-ash-300">{SITE.shortDesc}</p>
-          <p className="mt-3 max-w-md font-bn text-sm leading-7 text-ash-200">
+          <p className="mt-5 max-w-md text-sm leading-7 text-warm-bg/80">{SITE.shortDesc}</p>
+          <p className="mt-3 max-w-md font-bn text-sm leading-7 text-warm-bg/90">
             বাংলাদেশের প্রিমিয়াম এআই ভিডিও মার্কেটিং স্টুডিও। সিনেম্যাটিক স্টোরিটেলিং, প্রোডাক্ট অ্যাড ও বাইলিঙ্গুয়াল ক্যাম্পেইন।
           </p>
 

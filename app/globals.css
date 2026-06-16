@@ -1,46 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
+
+@font-face {
+  font-family: 'Dosis';
+  src: url('/fonts/Dosis-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Serif Text';
+  src: url('/fonts/DMSerifText-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Serif Text';
+  src: url('/fonts/DMSerifText-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Righteous';
+  src: url('/fonts/Righteous-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('/fonts/Lobster-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hind Siliguri';
+  src: url('/fonts/HindSiliguri-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hind Siliguri';
+  src: url('/fonts/HindSiliguri-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hind Siliguri';
+  src: url('/fonts/HindSiliguri-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hind Siliguri';
+  src: url('/fonts/HindSiliguri-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ───────────────────────────────── Brand tokens ───────────────────────────── */
+
+/* ────────────────────────────── Warm Premium Light Theme ────────────────────── */
 @layer base {
   :root {
-    /* Brand core — Luxury dark violet/purple system */
-    --brand-primary: #a855f7;
-    --brand-secondary: #d8b4fe;
-    --brand-deep: #7c3aed;
-    --brand-glow: rgba(168, 85, 247, 0.25);
+    /* Warm premium light color system */
+    --background: #FEFAE0;
+    --background-soft: #FFE6A7;
+    --foreground: #03071E;
+    --muted: #656D4A;
+    --accent: #EB5E28;
+    --card: rgba(255, 230, 167, 0.55);
+    --card-olive: rgba(101, 109, 74, 0.12);
+    --border: rgba(3, 7, 30, 0.12);
+    --orange-glow: rgba(235, 94, 40, 0.35);
+    --glass-bg: rgba(254, 250, 224, 0.72);
+    --glass-border: rgba(3, 7, 30, 0.08);
 
-    /* Dark surface */
-    --bg-base: #0a0a0f;
-    --bg-card: #111118;
-    --bg-card-hover: #18181f;
-    --bg-glass: rgba(255, 255, 255, 0.04);
-    --bg-glass-border: rgba(255, 255, 255, 0.08);
-
-    /* Text */
-    --text-primary: #f5f5f7;
-    --text-secondary: #a0a0b0;
-    --text-bangla: #c8c8d8;
-    --text-muted: #5a5a6e;
-
-    /* Shadows */
-    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6),
-      inset 0 1px 0 rgba(168, 85, 247, 0.06);
-    --shadow-glow: 0 0 40px rgba(168, 85, 247, 0.2);
-    --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.8);
-
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
-    /* ✅ overflow-x: clip — modern alternative to hidden, doesn't establish a
-     *  scroll container, so vertical scroll never gets accidentally blocked.
-     *  Falls back to hidden on browsers that don't support clip. */
     overflow-x: clip;
     -webkit-overflow-scrolling: touch;
     text-rendering: optimizeSpeed;
+    background-color: var(--background);
   }
+
   @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
@@ -49,55 +103,114 @@
 
   html,
   body {
-    @apply bg-ink-900 text-ash-50 antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Dosis', system-ui, sans-serif;
     font-feature-settings: 'ss01', 'cv11';
     max-width: 100%;
     width: 100%;
-  }
-
-  body {
-    /* ✅ Direct background-image (default scroll attachment).
-     *  Earlier we used a `position: fixed` body::before pseudo for GPU layering,
-     *  but on iOS Safari and some Android Chromium builds that pseudo-element
-     *  intercepted touch events on certain scroll regions — vertical scrolling
-     *  on long pages would silently freeze. Plain background-image with default
-     *  `scroll` attachment is fine perf-wise (no `fixed` repaint cost). */
-    background-color: #0a0a0f;
-    background-image:
-      radial-gradient(60% 40% at 50% -10%, rgba(168, 85, 247, 0.12) 0%, rgba(0, 0, 0, 0) 70%),
-      radial-gradient(40% 30% at 100% 100%, rgba(168, 85, 247, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
-    /* ✅ overflow-x: clip prevents the horizontal scrollbar without making
-     *  body itself a scroll container. */
-    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  ::selection {
-    background-color: rgba(168, 85, 247, 0.4);
-    color: #fff;
+  /* Background watermark – premium grid aesthetic */
+  body::before {
+    content: 'CREAVIX IT';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bitcount Grid Double', monospace;
+    font-size: clamp(80px, 15vw, 280px);
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    color: rgba(3, 7, 30, 0.035);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    line-height: 1;
+    user-select: none;
+  }
+
+  main,
+  .container,
+  [role='main'] {
+    position: relative;
+    z-index: 1;
   }
 
   h1,
   h2,
-  h3 {
-    @apply text-white;
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'DM Serif Text', serif;
+    font-weight: 400;
+    color: var(--foreground);
+    line-height: 1.2;
+  }
+
+  /* Heading with orange accent word */
+  .heading-with-accent {
+    color: var(--foreground);
+  }
+
+  .heading-accent {
+    color: var(--accent);
+  }
+
+  /* Righteous for bold creative headings */
+  .heading-righteous {
+    font-family: 'Righteous', sans-serif;
+    color: var(--foreground);
+    font-weight: 400;
+  }
+
+  /* Bengali text support */
+  .text-bn {
+    font-family: 'Hind Siliguri', system-ui, sans-serif;
+  }
+
+  .heading-bn {
+    font-family: 'Hind Siliguri', system-ui, sans-serif;
+    color: var(--foreground);
+  }
+
+  /* Decorative signature text */
+  .text-lobster {
+    font-family: 'Lobster', cursive;
+    font-size: 1.25rem;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: white;
+  }
+
+  p {
+    color: var(--muted);
+    line-height: 1.6;
   }
 
   a {
-    @apply transition-colors;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
   }
 
-  /* ✅ Anti-zoom on iOS form fields (prevents auto-zoom on focus) */
+  a:hover {
+    color: var(--foreground);
+  }
+
+  /* Anti-zoom on iOS form fields */
   input,
   textarea,
   select {
     font-size: 16px;
   }
 
-  /* ✅ Mobile tap optimizations:
-     - touch-action: manipulation removes 300ms tap delay
-     - tap-highlight transparent removes ugly grey flash on iOS */
+  /* Mobile tap optimizations */
   button,
   a,
   [role='button'],
@@ -112,218 +225,221 @@
     max-width: 100%;
     height: auto;
   }
+
+  /* Support reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
-/* ───────────────────────────────── Components ─────────────────────────────── */
+/* ──────────────────────────────── Components ─────────────────────────────── */
 @layer components {
   .container-x {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-10;
   }
 
+  /* Premium pill badges */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1
-           text-[11px] font-medium tracking-[0.14em] text-ash-300;
-    /* Use Hind Siliguri so inline Bangla script renders correctly
-       (Hind Siliguri includes a full Latin subset too, so Latin labels
-       are unaffected). Never uppercase here — it garbles Bengali glyphs. */
-    font-family: var(--font-bangla), var(--font-inter), system-ui, sans-serif;
-    text-transform: none;
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium tracking-wide;
+    background-color: var(--background-soft);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    font-family: 'Dosis', system-ui, sans-serif;
   }
 
-  .accent {
-    background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #d8b4fe 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
+  /* Glass morphism card */
   .glass {
-    @apply rounded-card border border-white/10 bg-white/[0.03] p-6
-           transition-[border-color,background-color] duration-300
-           hover:border-brand/40 hover:bg-white/[0.05] sm:p-7;
-  }
-  /* ✅ backdrop-blur only on desktop — mobile uses solid bg (huge perf win) */
-  @media (min-width: 768px) {
-    .glass {
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
+    @apply rounded-2xl border p-6 transition-all duration-300 sm:p-7;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
-  /* 3D button — depressed look with bottom border that flattens on press */
+  .glass:hover {
+    border-color: var(--orange-glow);
+    background-color: rgba(254, 250, 224, 0.85);
+  }
+
+  /* Warm gradient card */
+  .card-warm {
+    @apply rounded-2xl border p-6 transition-all duration-300 sm:p-7;
+    background-color: var(--background-soft);
+    border-color: var(--border);
+  }
+
+  .card-warm:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px var(--orange-glow);
+    transform: translateY(-4px);
+  }
+
+  /* Olive muted card */
+  .card-muted {
+    @apply rounded-2xl border p-6 transition-all duration-300 sm:p-7;
+    background-color: var(--card-olive);
+    border-color: var(--border);
+  }
+
+  .card-muted:hover {
+    border-color: var(--accent);
+    background-color: rgba(101, 109, 74, 0.2);
+  }
+
+  /* Premium 3D button */
   .btn-3d {
-    @apply relative inline-flex select-none items-center justify-center gap-2 rounded-pill
-           px-6 py-3 text-sm font-semibold tracking-wide
-           transition-[transform,box-shadow,border-bottom-width]
-           duration-100 active:translate-y-[3px];
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
+    @apply relative inline-flex select-none items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-100;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  .btn-3d-primary {
+  .btn-3d {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px var(--orange-glow), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-3d:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--orange-glow);
+  }
+
+  .btn-3d:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px var(--orange-glow);
+  }
+
+  /* Orange gradient primary button */
+  .btn-primary {
     @apply btn-3d text-white;
-    background-image: linear-gradient(180deg, #d8b4fe 0%, #a855f7 100%);
-    border-bottom-color: #7c3aed;
-    box-shadow:
-      0 6px 20px rgba(168, 85, 247, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  }
-  .btn-3d-primary:hover {
-    background-image: linear-gradient(180deg, #e9d5ff 0%, #b76bff 100%);
-  }
-  .btn-3d-primary:active {
-    border-bottom-width: 1px;
+    background: linear-gradient(135deg, #FFB347 0%, #EB5E28 100%);
   }
 
-  .btn-3d-secondary {
-    @apply btn-3d border border-white/15 bg-white/5 text-white hover:border-brand/60 hover:bg-white/10;
-    border-bottom-color: rgba(255, 255, 255, 0.12);
-  }
-  .btn-3d-secondary:active {
-    border-bottom-width: 1px;
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #FFC55A 0%, #F5743D 100%);
   }
 
+  /* Soft secondary button */
+  .btn-secondary {
+    @apply btn-3d;
+    background-color: var(--background-soft);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--card);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Ghost button */
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-sm font-medium
-           text-ash-300 transition hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors;
+    color: var(--muted);
   }
 
-  /* 3D card — hover tilt limited to devices with hover capability */
-  .card-3d {
-    @apply relative overflow-hidden rounded-card border border-white/10 bg-ink-800
-           transition-[transform,box-shadow,border-color] duration-300;
-    box-shadow: var(--shadow-card);
-  }
-  /* ✅ Hover tilt only on devices that can actually hover (desktop) */
-  @media (hover: hover) and (pointer: fine) {
-    .card-3d:hover {
-      border-color: rgba(168, 85, 247, 0.4);
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-card), 0 12px 40px -8px rgba(168, 85, 247, 0.35);
-    }
+  .btn-ghost:hover {
+    color: var(--accent);
   }
 
-  /* Hero giant background watermark text */
-  .hero-watermark {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-  .hero-watermark span {
-    font-family: var(--font-bebas), Impact, sans-serif;
-    font-size: clamp(110px, 22vw, 240px);
-    line-height: 0.9;
-    letter-spacing: 0.06em;
-    color: rgba(168, 85, 247, 0.06);
-    background: linear-gradient(180deg, rgba(168, 85, 247, 0.16) 0%, rgba(168, 85, 247, 0.0) 70%);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-
-  .ring-divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
-  }
-
-  /* WhatsApp Float */
+  /* WhatsApp float button */
   .whatsapp-float {
-    @apply fixed right-5 z-[60] grid h-14 w-14 place-items-center rounded-full text-white
-           shadow-[0_4px_20px_rgba(37,211,102,0.45)] sm:h-[60px] sm:w-[60px];
+    @apply fixed right-5 z-[60] grid h-14 w-14 place-items-center rounded-full text-white shadow-lg sm:h-[60px] sm:w-[60px];
     background: #25d366;
     bottom: calc(env(safe-area-inset-bottom, 0) + 96px);
     animation: waPulse 2.4s ease-in-out infinite;
   }
 
-  /* ChatBot Trigger */
+  /* Chatbot trigger button */
   .chatbot-trigger {
-    @apply fixed right-5 z-[60] grid h-14 w-14 place-items-center rounded-full text-white sm:h-[60px] sm:w-[60px];
+    @apply fixed right-5 z-[60] grid h-14 w-14 place-items-center rounded-full text-white shadow-lg sm:h-[60px] sm:w-[60px];
     bottom: calc(env(safe-area-inset-bottom, 0) + 20px);
-    background-image: linear-gradient(135deg, #d8b4fe 0%, #a855f7 100%);
-    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.3);
-    animation: pulseGlow 3s ease-in-out infinite;
+    background: linear-gradient(135deg, #FFB347 0%, #EB5E28 100%);
+    animation: orangePulse 3s ease-in-out infinite;
   }
 
-  /* Logos slider rows */
-  .logos-mask {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 12%,
-      #000 88%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 12%,
-      #000 88%,
-      transparent 100%
-    );
-  }
-
-  /* Star rating input */
+  /* Star rating */
   .star-btn {
-    @apply text-2xl text-ash-500 transition-colors;
+    @apply text-2xl transition-all duration-200;
+    color: var(--muted);
   }
+
   .star-btn[data-active='true'] {
-    color: #ffb547;
+    color: #FFB547;
     text-shadow: 0 0 10px rgba(255, 181, 71, 0.5);
   }
-}
 
-/* ───────────────────────────────── Utilities ──────────────────────────────── */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* ✅ Grain overlay opt-in only via .grain-overlay (was on every <main>) */
-  .grain-overlay {
-    position: relative;
-    isolation: isolate;
-  }
-  .grain-overlay::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    mix-blend-mode: overlay;
-    opacity: 0.4;
-  }
-
-  /* Reveal: only animates when entering view */
+  /* Reveal animation on scroll */
   .reveal {
     opacity: 0;
     transform: translateY(36px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
+
   .reveal.in-view {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* ✅ Below-the-fold sections: skip render until scrolled close
-     - Browser pretends section has 1500px height, then reveals at 200px proximity
-     - HUGE first paint win on long pages */
+  /* Content visibility for performance */
   .cv-auto {
     content-visibility: auto;
-    /* ✅ auto width (not 1px) — prevents off-screen sections from being
-     *  treated as 1px-wide while waiting to render, which previously caused
-     *  layout calculation errors and could appear as 'frozen' page on mobile. */
     contain-intrinsic-size: auto 1500px;
   }
 
-  /* ✅ Respect user motion preferences globally */
+  /* Grain texture overlay */
+  .grain-overlay {
+    position: relative;
+    isolation: isolate;
+  }
+
+  @media (min-width: 768px) {
+    .grain-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.025 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      mix-blend-mode: overlay;
+      opacity: 0.3;
+    }
+  }
+}
+
+/* ──────────────────────────────── Utilities ────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Orange glow effect */
+  .glow-orange {
+    box-shadow: 0 0 30px var(--orange-glow);
+  }
+
+  /* Premium shadow */
+  .shadow-premium {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Reduced motion media query */
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    .reveal,
+    .card-warm,
+    .card-muted,
+    .btn-3d {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
     }
+
     *,
     *::before,
     *::after {
@@ -334,40 +450,18 @@
   }
 }
 
-/* ───────────────────────────── Mobile-only overrides ────────────────────── */
+/* ────────────────────────────── Mobile Optimizations ──────────────────────── */
 @media (max-width: 767px) {
-  /* Disable grain noise on mobile (heaviest paint cost) */
   .grain-overlay::after {
     display: none !important;
   }
 
-  /* Slow infinite marquee on mobile (less battery/GPU drain) */
-  .animate-marquee-slow,
-  .animate-marquee-reverse-slow {
-    animation-duration: 120s;
-  }
-
-  /* Cap shadow blur on mobile to reduce paint cost */
-  .shadow-card,
-  .shadow-glow,
-  .shadow-glow-lg,
-  .shadow-deep {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  .box-shadow {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
   }
 }
 
-/* ────────────────────── No-hover (touch) device overrides ────────────────── */
-@media (hover: none) {
-  /* Disable hover transforms (look stuck on touch devices after tap) */
-  .glass:hover,
-  .card-3d:hover,
-  .btn-3d-primary:hover,
-  .btn-3d-secondary:hover {
-    transform: none !important;
-  }
-}
-
-/* ───────────────────────────────── Keyframes ──────────────────────────────── */
+/* ────────────────────────────── Keyframe Animations ────────────────────────── */
 @keyframes waPulse {
   0%,
   100% {
@@ -378,14 +472,12 @@
   }
 }
 
-@keyframes pulseGlow {
+@keyframes orangePulse {
   0%,
   100% {
-    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.25);
+    box-shadow: 0 4px 24px var(--orange-glow);
   }
   50% {
-    box-shadow:
-      0 4px 50px rgba(168, 85, 247, 0.5),
-      0 0 0 12px rgba(168, 85, 247, 0.08);
+    box-shadow: 0 4px 50px var(--orange-glow);
   }
 }

@@ -127,11 +127,11 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
-        scrolled || pagesOpen
-          ? 'border-b border-white/10 bg-ink-950 md:bg-ink-950/95 md:backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent'
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? 'border-warm-fg/10 bg-warm-bg/72 backdrop-blur-md'
+          : 'border-transparent bg-transparent'
       }`}
     >
       {/* Click-outside backdrop — visible only when the Pages dropdown
@@ -139,20 +139,20 @@ export default function Navbar() {
           never visually merge with content text underneath. Click =
           close. Sits below the header (z-40) so the dropdown itself
           stays interactive. */}
-      {pagesOpen ? (
+          {pagesOpen ? (
         <button
           type="button"
           aria-label="Close pages menu"
           onClick={() => setPagesOpen(false)}
-          className="fixed inset-0 -z-10 cursor-default bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 -z-10 cursor-default bg-warm-fg/20 backdrop-blur-sm"
         />
       ) : null}
       <div className="container-x flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-6">
         {/* Logo + brand wordmark — clicks Home */}
         <Link href="/" aria-label="Home" className="group flex items-center gap-2.5">
-          <span className="relative grid h-10 w-10 flex-none place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/0 shadow-glow ring-1 ring-white/10 sm:h-11 sm:w-11">
+          <span className="relative grid h-10 w-10 flex-none place-items-center overflow-hidden rounded-xl bg-warm-bg/50 ring-1 ring-warm-fg/10 transition-all hover:ring-warm-accent/40 sm:h-11 sm:w-11">
             <Image
-              src="/logo.png"
+              src="/new-logo.png"
               alt={`${SITE.name} logo`}
               width={88}
               height={88}
@@ -163,10 +163,10 @@ export default function Navbar() {
             />
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-2xl tracking-[0.18em] text-brand sm:text-[26px]">
+            <span className="font-display text-2xl tracking-[0.18em] text-warm-accent sm:text-[26px]">
               CREAVIX
             </span>
-            <span className="text-[9px] uppercase tracking-[0.32em] text-ash-300 sm:text-[10px]">
+            <span className="text-[9px] uppercase tracking-[0.32em] text-warm-muted sm:text-[10px]">
               IT Solution
             </span>
           </span>
@@ -183,8 +183,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   active
-                    ? 'bg-white/10 text-white'
-                    : 'text-ash-300 hover:bg-white/5 hover:text-white'
+                    ? 'bg-warm-accent/10 text-warm-accent'
+                    : 'text-warm-muted hover:bg-warm-bg/50 hover:text-warm-accent'
                 }`}
                 aria-current={active ? 'page' : undefined}
               >
@@ -203,7 +203,7 @@ export default function Navbar() {
             onClick={() =>
               window.dispatchEvent(new CustomEvent('creavix:open-subscribe'))
             }
-            className="hidden h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-brand/60 md:grid"
+            className="hidden h-10 w-10 place-items-center rounded-full border border-warm-fg/10 bg-warm-bg/50 text-warm-muted transition hover:border-warm-accent/60 hover:text-warm-accent md:grid"
           >
             <Bell size={16} />
           </button>
