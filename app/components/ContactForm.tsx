@@ -13,6 +13,15 @@ const SERVICE_OPTIONS = [
   'Custom Project',
 ];
 
+const BUDGET_OPTIONS = [
+  'Under ৳2,000',
+  '৳2,000 – ৳5,000',
+  '৳5,000 – ৳10,000',
+  '৳10,000 – ৳25,000',
+  'Above ৳25,000',
+  'Not sure yet',
+];
+
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [emailError, setEmailError] = useState('');
@@ -28,7 +37,9 @@ export default function ContactForm() {
     const data = new FormData(e.currentTarget);
     const name = data.get('name')?.toString().trim() ?? '';
     const email = data.get('email')?.toString().trim() ?? '';
+    const phone = data.get('phone')?.toString().trim() ?? '';
     const service = data.get('service')?.toString().trim() ?? '';
+    const budget = data.get('budget')?.toString().trim() ?? '';
     const message = data.get('message')?.toString().trim() ?? '';
     if (!validateEmail(email)) return;
 
@@ -36,8 +47,10 @@ export default function ContactForm() {
       `হ্যালো Creavix team,\n\n` +
       `Name: ${name}\n` +
       `Email: ${email}\n` +
-      `Service: ${service}\n\n` +
-      `${message}`;
+      (phone ? `Phone: ${phone}\n` : '') +
+      `Service: ${service}\n` +
+      (budget ? `Budget: ${budget}\n` : '') +
+      `\n${message}`;
     const url = `${SITE.whatsappLink}?text=${encodeURIComponent(text)}`;
     if (typeof window !== 'undefined') window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
@@ -57,21 +70,47 @@ export default function ContactForm() {
       </p>
 
       <div className="mt-7 grid gap-5 sm:grid-cols-2">
-        <Field name="name" label="Your name" placeholder="Hannan Khan" required />
+        <Field name="name" label="Your name · নাম" placeholder="Hannan Khan" required />
+        <div>
+          <Field
+            name="email"
+            label="Email · ইমেইল"
+            type="email"
+            placeholder="you@brand.com"
+            required
+            onBlur={(e) => validateEmail(e.target.value)}
+          />
+          {emailError ? <p className="mt-1 text-xs text-brand">{emailError}</p> : null}
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field
-          name="email"
-          label="Email"
-          type="email"
-          placeholder="you@brand.com"
-          required
-          onBlur={(e) => validateEmail(e.target.value)}
-          error={emailError}
+          name="phone"
+          label="Phone — optional · ফোন (ঐচ্ছিক)"
+          type="tel"
+          placeholder="+8801XXXXXXXXX"
         />
+        <div>
+          <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+            Budget range · বাজেট
+          </label>
+          <select
+            name="budget"
+            defaultValue=""
+            className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+          >
+            <option value="">Select budget range</option>
+            {BUDGET_OPTIONS.map((b) => (
+              <option key={b} value={b}>{b}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="mt-5">
         <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
-          Service
+          Service · সার্ভিস
         </label>
         <select
           name="service"
@@ -79,20 +118,16 @@ export default function ContactForm() {
           defaultValue=""
           className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
         >
-          <option value="" disabled>
-            Choose a service
-          </option>
+          <option value="" disabled>Choose a service</option>
           {SERVICE_OPTIONS.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
+            <option key={s} value={s}>{s}</option>
           ))}
         </select>
       </div>
 
       <div className="mt-5">
         <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
-          Project brief / প্রজেক্ট ডিটেইলস
+          Project brief · প্রজেক্ট ডিটেইলস
         </label>
         <textarea
           name="message"
@@ -116,8 +151,7 @@ export default function ContactForm() {
 
       {submitted ? (
         <p className="mt-5 rounded-xl border border-brand/30 bg-brand/10 px-4 py-3 text-sm text-brand">
-          ✓ WhatsApp opened in a new tab with your message. If it didn&apos;t open, tap the
-          button again.
+          WhatsApp opened in a new tab with your message. If it didn&apos;t open, tap the button again.
         </p>
       ) : null}
     </form>
@@ -131,7 +165,6 @@ function Field({
   placeholder,
   required,
   onBlur,
-  error,
 }: {
   name: string;
   label: string;
@@ -139,7 +172,6 @@ function Field({
   placeholder?: string;
   required?: boolean;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  error?: string;
 }) {
   return (
     <div>
@@ -154,7 +186,6 @@ function Field({
         onBlur={onBlur}
         className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
       />
-      {error ? <p className="mt-1 text-xs text-brand">{error}</p> : null}
     </div>
   );
 }

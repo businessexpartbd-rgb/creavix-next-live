@@ -1,4 +1,5 @@
-import { CheckCircle2, Quote } from 'lucide-react';
+import { CheckCircle2, Quote, Zap, Eye, Heart, Shield } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { SITE, TRUST_PILLARS } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
@@ -13,23 +14,13 @@ export const metadata = {
   alternates: { canonical: '/about' },
   openGraph: {
     title: "About Creavix — Bangladesh's AI Video Studio Since 2014",
-    description:
-      'Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Cinematic AI video production with founder-led direction.',
+    description: 'Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Cinematic AI video production with founder-led direction.',
     url: 'https://www.creavixit.com/about',
-    images: [
-      {
-        url: '/share-card.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
-        type: 'image/jpeg',
-      },
-    ],
+    images: [{ url: '/share-card.jpg', width: 1200, height: 630, alt: 'Creavix — AI Video Marketing Agency Bangladesh', type: 'image/jpeg' }],
   },
   twitter: {
     title: 'About Creavix — AI Video Studio Since 2014',
-    description:
-      "Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Bangladesh's premier AI video studio.",
+    description: "Founded 2014 by Hannan Khan in Savar, Dhaka. 4,300+ projects. Bangladesh's premier AI video studio.",
     images: ['/share-card.jpg'],
   },
 };
@@ -48,6 +39,83 @@ const STATS = [
   { value: 'Savar', label_en: 'Studio', label_bn: 'স্টুডিও' },
 ];
 
+const TIMELINE = [
+  {
+    year: '2014',
+    title_en: 'Founded in Savar',
+    title_bn: 'সাভারে প্রতিষ্ঠা',
+    desc_en: 'Creavix started as a small creative studio in Hemayetpur, Savar — focused on promotional video production for local businesses.',
+    desc_bn: 'হেমায়েতপুর, সাভারে ছোট ক্রিয়েটিভ স্টুডিও হিসেবে যাত্রা শুরু — স্থানীয় ব্যবসার প্রমোশনাল ভিডিওর জন্য।',
+  },
+  {
+    year: '2018',
+    title_en: 'Scaled to 1,000+ Projects',
+    title_bn: '১,০০০+ প্রজেক্ট সম্পন্ন',
+    desc_en: 'After 4 years of consistent delivery, the studio crossed 1,000 completed campaigns — expanding into product and financial video ads.',
+    desc_bn: '৪ বছরে ১,০০০+ ক্যাম্পেইন সম্পন্ন — প্রোডাক্ট ও ফাইন্যান্সিয়াল ভিডিও অ্যাডে সম্প্রসারিত।',
+  },
+  {
+    year: '2021',
+    title_en: 'AI-First Production Adopted',
+    title_bn: 'এআই-ফার্স্ট প্রোডাকশন',
+    desc_en: 'Integrated AI video tools into the production pipeline — enabling faster delivery, more visual variety and higher campaign consistency.',
+    desc_bn: 'প্রোডাকশন পাইপলাইনে AI ভিডিও টুল যুক্ত করা হয় — দ্রুত ডেলিভারি ও উচ্চ কোয়ালিটি নিশ্চিত।',
+  },
+  {
+    year: '2024',
+    title_en: '4,000+ Projects Delivered',
+    title_bn: '৪,০০০+ প্রজেক্ট',
+    desc_en: 'Surpassed 4,000 successful deliveries across 10+ industries including fintech, e-commerce, insurance and NGOs.',
+    desc_bn: 'ফিনটেক, ই-কমার্স, ইন্স্যুরেন্স ও এনজিও সহ ১০+ ইন্ডাস্ট্রিতে ৪,০০০+ সফল ডেলিভারি।',
+  },
+  {
+    year: '2026',
+    title_en: 'Global-Standard AI Studio',
+    title_bn: 'গ্লোবাল-স্ট্যান্ডার্ড স্টুডিও',
+    desc_en: 'Expanding to serve international clients with bilingual content, global campaign formats and founder-led quality oversight.',
+    desc_bn: 'আন্তর্জাতিক ক্লায়েন্টদের জন্য বাইলিঙ্গুয়াল কন্টেন্ট ও গ্লোবাল ক্যাম্পেইন ফরম্যাটে সম্প্রসারণ।',
+  },
+];
+
+interface CoreValue {
+  icon: LucideIcon;
+  title_en: string;
+  title_bn: string;
+  desc_en: string;
+  desc_bn: string;
+}
+
+const CORE_VALUES: CoreValue[] = [
+  {
+    icon: Zap,
+    title_en: 'Speed Without Compromise',
+    title_bn: 'গতি, কোয়ালিটি ছাড়া নয়',
+    desc_en: 'Every delivery is fast — 24h shorts, 48h long-form. But speed never comes at the cost of cinematic quality.',
+    desc_bn: 'প্রতিটি ডেলিভারি দ্রুত — কিন্তু সিনেম্যাটিক কোয়ালিটির সাথে আপোষ নেই।',
+  },
+  {
+    icon: Eye,
+    title_en: 'Story Before Aesthetics',
+    title_bn: 'অ্যাস্থেটিক্সের আগে গল্প',
+    desc_en: 'Pretty visuals don\'t convert — clear, emotional storytelling does. We always script the narrative before the visual.',
+    desc_bn: 'শুধু সুন্দর ভিজ্যুয়াল কনভার্ট করে না — পরিষ্কার ন্যারেটিভই করে।',
+  },
+  {
+    icon: Heart,
+    title_en: 'Bilingual by Default',
+    title_bn: 'ডিফল্টে দুভাষিক',
+    desc_en: 'Bangladesh has a bilingual audience. Every campaign we produce is designed for both Bangla and English speakers.',
+    desc_bn: 'বাংলাদেশ বাইলিঙ্গুয়াল — প্রতিটি ক্যাম্পেইন বাংলা ও ইংরেজি উভয় অডিয়েন্সের জন্য।',
+  },
+  {
+    icon: Shield,
+    title_en: 'Founder-Led Accountability',
+    title_bn: 'ফাউন্ডার-লেড দায়বদ্ধতা',
+    desc_en: 'Hannan personally oversees every brief. If something misses the mark, we correct it — no excuses.',
+    desc_bn: 'Hannan ব্যক্তিগতভাবে প্রতিটি ব্রিফ দেখে — কোনো ভুল হলে সংশোধন করা হয়, কোনো অজুহাত নেই।',
+  },
+];
+
 export default function AboutPage() {
   const mapsSrc = `https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=14&output=embed`;
 
@@ -64,8 +132,7 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-ash-200 sm:text-base">
-            Creavix বাংলাদেশের একটি ফোকাসড AI ভিডিও মার্কেটিং স্টুডিও। সিনেম্যাটিক ডিরেকশন ও আধুনিক
-            AI ওয়ার্কফ্লো একসাথে — তাই ক্যাম্পেইন দ্রুত গতি পায় ও আত্মবিশ্বাসী লাগে।
+            Creavix বাংলাদেশের একটি ফোকাসড AI ভিডিও মার্কেটিং স্টুডিও। সিনেম্যাটিক ডিরেকশন ও আধুনিক AI ওয়ার্কফ্লো একসাথে।
           </p>
         </Reveal>
       </HeroSection>
@@ -75,9 +142,9 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <div className="relative">
-              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/30 to-transparent blur-2xl" />
+              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/25 to-transparent blur-2xl" />
               <div className="card-3d relative p-8 sm:p-10">
-                <div className="grid h-32 w-32 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-display text-4xl text-white">
+                <div className="grid h-28 w-28 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-display text-4xl text-white ring-4 ring-brand/20 shadow-glow">
                   HK
                 </div>
                 <h3 className="mt-6 font-display text-3xl uppercase tracking-[0.04em] text-white">
@@ -86,15 +153,12 @@ export default function AboutPage() {
                 <p className="mt-1 text-sm text-brand">{SITE.founder.role_en}</p>
                 <p className="font-bn text-sm text-ash-400">{SITE.founder.role_bn}</p>
                 <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
-                  Hannan সরাসরি প্রতিটি ব্রিফের ক্রিয়েটিভ ডিরেকশন করে — প্রথম মেসেজ থেকে ফাইনাল
-                  এক্সপোর্ট পর্যন্ত। স্টোরিটেলিং, বাইলিঙ্গুয়াল প্রেজেন্টেশন ও ব্র্যান্ড-সেফ আউটপুটের
-                  স্ট্যান্ডার্ড এখান থেকেই শুরু।
+                  Hannan সরাসরি প্রতিটি ব্রিফের ক্রিয়েটিভ ডিরেকশন করে — প্রথম মেসেজ থেকে ফাইনাল এক্সপোর্ট পর্যন্ত।
                 </p>
-                <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <div className="mt-6 flex items-start gap-3 rounded-xl border border-brand/20 bg-brand/[0.06] p-4">
                   <Quote size={16} className="mt-1 flex-none text-brand" />
                   <p className="font-bn text-sm leading-7 text-ash-200">
-                    &ldquo;ক্লায়েন্ট শুধু ভিডিও কেনে না — তারা চয়েস করে কে ব্রিফের কাছাকাছি থাকবে
-                    আর সময়মতো রেসপন্স দেবে।&rdquo;
+                    &ldquo;ক্লায়েন্ট শুধু ভিডিও কেনে না — তারা চয়েস করে কে ব্রিফের কাছাকাছি থাকবে আর সময়মতো রেসপন্স দেবে।&rdquo;
                   </p>
                 </div>
               </div>
@@ -108,11 +172,9 @@ export default function AboutPage() {
                 Closer creative ownership behind <span className="accent">every delivery.</span>
               </h2>
               <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
-                Creavix একটি ফাউন্ডার-লেড স্টুডিও। তাই ব্রিফ, রিভিশন ও ফাইনাল পলিশ — সবই কোর
-                ডিসিশন-মেকারের কাছাকাছি থাকে।
+                Creavix একটি ফাউন্ডার-লেড স্টুডিও। তাই ব্রিফ, রিভিশন ও ফাইনাল পলিশ — সবই কোর ডিসিশন-মেকারের কাছাকাছি থাকে।
               </p>
             </Reveal>
-
             <ul className="mt-8 space-y-4">
               {TOUCHPOINTS_BN.map((t, i) => (
                 <Reveal key={t} delay={i * 60}>
@@ -123,7 +185,6 @@ export default function AboutPage() {
                 </Reveal>
               ))}
             </ul>
-
             <Reveal delay={200}>
               <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {STATS.map((s) => (
@@ -131,9 +192,7 @@ export default function AboutPage() {
                     <div className="font-display text-3xl uppercase tracking-wide text-white">
                       <span className="accent">{s.value}</span>
                     </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-ash-300">
-                      {s.label_en}
-                    </div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-ash-300">{s.label_en}</div>
                     <div className="mt-1 font-bn text-[11px] text-ash-400">{s.label_bn}</div>
                   </div>
                 ))}
@@ -143,17 +202,89 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Timeline */}
+      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+        <div className="container-x">
+          <SectionIntro
+            eyebrow="Our journey · আমাদের যাত্রা"
+            title="A decade of"
+            accent="consistent growth"
+            body_bn="২০১৪ থেকে ২০২৬ — প্রতিটি মাইলস্টোন ছিল একটি নতুন প্রতিশ্রুতি।"
+          />
+          <div className="relative mt-14">
+            {/* Vertical line */}
+            <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-brand via-brand/40 to-transparent sm:left-[50%] sm:-translate-x-px" />
+
+            <div className="space-y-0">
+              {TIMELINE.map((item, i) => {
+                const isRight = i % 2 === 0;
+                return (
+                  <Reveal key={item.year} delay={i * 80}>
+                    <div className={`relative flex gap-8 pb-12 pl-12 sm:pl-0 sm:gap-0 ${isRight ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
+                      {/* Year bubble */}
+                      <div className="absolute left-0 top-0 z-10 grid h-9 w-9 place-items-center rounded-full border-2 border-brand bg-ink-950 shadow-glow sm:left-[50%] sm:-translate-x-1/2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-brand" />
+                      </div>
+                      {/* Content card */}
+                      <div className={`w-full sm:w-[calc(50%-2.5rem)] ${isRight ? 'sm:pr-8 sm:text-right' : 'sm:pl-8 sm:text-left'}`}>
+                        <div className="card-3d p-5 sm:p-6">
+                          <span className="font-display text-3xl tracking-wide text-brand">{item.year}</span>
+                          <h3 className="mt-2 font-display text-xl uppercase tracking-[0.04em] text-white">{item.title_en}</h3>
+                          <p className="font-bn text-xs text-ash-400">{item.title_bn}</p>
+                          <p className="mt-3 text-sm leading-7 text-ash-300">{item.desc_en}</p>
+                          <p className="mt-2 font-bn text-xs leading-6 text-ash-400">{item.desc_bn}</p>
+                        </div>
+                      </div>
+                      {/* Spacer on opposite side */}
+                      <div className="hidden sm:block sm:w-[calc(50%-2.5rem)]" />
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core values */}
+      <section className="container-x py-24 sm:py-28">
+        <SectionIntro
+          eyebrow="Core values · মূল মূল্যবোধ"
+          title="The principles behind"
+          accent="every campaign"
+          body_bn="চারটি মূল মূল্যবোধ যা প্রতিটি প্রজেক্টে আমাদের গাইড করে।"
+        />
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {CORE_VALUES.map((val, i) => {
+            const Icon = val.icon;
+            return (
+              <Reveal key={val.title_en} delay={i * 70}>
+                <div className="card-3d h-full p-6">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-brand/30 to-brand/10 text-brand ring-1 ring-brand/30">
+                    <Icon size={22} strokeWidth={1.6} />
+                  </span>
+                  <h3 className="mt-5 font-display text-xl uppercase tracking-[0.04em] text-white">{val.title_en}</h3>
+                  <p className="font-bn text-xs text-ash-400">{val.title_bn}</p>
+                  <p className="mt-3 text-sm leading-7 text-ash-300">{val.desc_en}</p>
+                  <p className="mt-2 font-bn text-xs leading-6 text-ash-400">{val.desc_bn}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Studio Map */}
       <section className="border-y border-white/10 bg-ink-800/60 py-20 sm:py-24">
         <div className="container-x">
           <SectionIntro
             eyebrow="Studio · স্টুডিও"
-            title="Find us in"
+            title="Real studio in"
             accent="Hemayetpur, Savar"
             body_bn="হেমায়েতপুর, সাভার, ঢাকা — ১৩৪০। ভিজিটের জন্য আগেই WhatsApp করে অ্যাপয়েন্টমেন্ট নিন।"
           />
           <Reveal delay={120}>
-            <div className="mt-10 overflow-hidden rounded-card border border-white/10">
+            <div className="mt-10 overflow-hidden rounded-card border border-white/10 shadow-deep">
               <iframe
                 src={mapsSrc}
                 title="Creavix Studio location — Hemayetpur, Savar, Dhaka"
@@ -165,9 +296,10 @@ export default function AboutPage() {
                 allowFullScreen
               />
             </div>
-            <p className="mt-4 text-center text-xs uppercase tracking-[0.18em] text-ash-400">
-              {SITE.address_en}
-            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-ash-400">{SITE.address_en}</p>
+              <p className="font-bn text-xs text-ash-400">{SITE.address_bn}</p>
+            </div>
           </Reveal>
         </div>
       </section>

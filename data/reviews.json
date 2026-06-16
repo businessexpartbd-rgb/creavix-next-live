@@ -1,0 +1,68 @@
+[
+  {
+    "id": "r1",
+    "name": "Rahim K.",
+    "email_masked": "ra***@gmail.com",
+    "rating": 5,
+    "review_en": "AI video ad boosted our ROAS significantly. Cinematic feel and clear storytelling.",
+    "review_bn": "AI ভিডিও অ্যাড দিয়ে আমাদের ROAS অনেক বেড়েছে। সিনেম্যাটিক ফিল ও স্পষ্ট স্টোরিটেলিং।",
+    "verified": true,
+    "created_at": "2026-04-12T10:00:00Z",
+    "avatar_color": "#7C3AED"
+  },
+  {
+    "id": "r2",
+    "name": "Sajjad H.",
+    "email_masked": "sa***@yahoo.com",
+    "rating": 5,
+    "review_en": "Fast delivery, clear revision rounds, premium final quality.",
+    "review_bn": "ডেলিভারি দ্রুত, রিভিশন রাউন্ড পরিষ্কার, ফাইনাল কোয়ালিটি প্রিমিয়াম।",
+    "verified": true,
+    "created_at": "2026-03-30T08:30:00Z",
+    "avatar_color": "#A855F7"
+  },
+  {
+    "id": "r3",
+    "name": "Maliha R.",
+    "email_masked": "ma***@outlook.com",
+    "rating": 5,
+    "review_en": "Great pacing and premium product visuals. Minor revisions handled quickly. Campaign-ready output.",
+    "review_bn": "প্রোডাক্ট ভিজ্যুয়াল দারুণ — মাইনর রিভিশন দ্রুত হ্যান্ডল হয়েছে, ক্যাম্পেইন রেডি।",
+    "verified": true,
+    "created_at": "2026-03-18T14:20:00Z",
+    "avatar_color": "#6D28D9"
+  },
+  {
+    "id": "r4",
+    "name": "Tanvir A.",
+    "email_masked": "ta***@bank.com.bd",
+    "rating": 5,
+    "review_en": "Their financial ad work made our brand image more trustworthy.",
+    "review_bn": "ফাইন্যান্সিয়াল ক্যাম্পেইনে আমাদের ব্র্যান্ড ইমেজ অনেক ট্রাস্টওয়ার্দি লাগছে।",
+    "verified": true,
+    "created_at": "2026-02-22T09:15:00Z",
+    "avatar_color": "#8B5CF6"
+  },
+  {
+    "id": "r5",
+    "name": "Nusrat J.",
+    "email_masked": "nu***@gmail.com",
+    "rating": 5,
+    "review_en": "Short-form concepts are mobile-first, ready to launch on paid social.",
+    "review_bn": "শর্ট-ফর্ম কনসেপ্ট মোবাইল-ফার্স্ট, একদম পেইড সোশ্যালে রেডি।",
+    "verified": true,
+    "created_at": "2026-02-04T11:00:00Z",
+    "avatar_color": "#9333EA"
+  },
+  {
+    "id": "r6",
+    "name": "Farhana S.",
+    "email_masked": "fa***@brand.com",
+    "rating": 5,
+    "review_en": "Perfect understanding of bilingual audience. Premium presentation across all formats.",
+    "review_bn": "বিলিঙ্গুয়াল অডিয়েন্স পারফেক্টলি বুঝেছে। প্রিমিয়াম প্রেজেন্টেশন।",
+    "verified": true,
+    "created_at": "2026-01-15T16:45:00Z",
+    "avatar_color": "#7C3AED"
+  }
+]

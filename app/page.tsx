@@ -25,6 +25,7 @@ import CtaBand from './components/CtaBand';
 import ClientLogosSlider from './components/ClientLogosSlider';
 import ReviewSection from './components/ReviewSection';
 import AdInsightVideo from './components/AdInsightVideo';
+import type { DbReview } from './api/reviews/route';
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
   description:
@@ -261,7 +262,17 @@ export default function HomePage() {
       </section>
 
       {/* Reviews (live counter + form) */}
-      <ReviewSection initial={REVIEWS_SEED} />
+      <ReviewSection initial={REVIEWS_SEED.map<DbReview>((r) => ({
+        id: r.id,
+        name: r.name,
+        email_masked: r.email,
+        rating: r.rating,
+        review_en: r.text_en ?? r.text_bn ?? '',
+        review_bn: r.text_bn,
+        verified: r.verified,
+        created_at: r.createdAt,
+        avatar_color: '#A855F7',
+      }))} />
 
       {/* Value promise */}
       <section className="container-x pb-24 sm:pb-28 cv-auto">

@@ -1,8 +1,10 @@
-import { REVIEWS_SEED } from '../../lib/site-data';
+import { readFile } from 'fs/promises';
+import path from 'path';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import ReviewSection from '../components/ReviewSection';
 import CtaBand from '../components/CtaBand';
+import type { DbReview } from '../api/reviews/route';
 
 export const metadata = {
   title: 'Client Reviews & Ratings — 4.8/5 Stars | Creavix Bangladesh',
@@ -14,25 +16,31 @@ export const metadata = {
     description:
       "Real verified reviews from 4,300+ projects. 4.8/5 average rating. See what Bangladesh's top brands say about Creavix AI video ads.",
     url: 'https://www.creavixit.com/reviews',
-    images: [
-      {
-        url: '/share-card.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Creavix — AI Video Marketing Agency Bangladesh',
-        type: 'image/jpeg',
-      },
-    ],
+    images: [{ url: '/share-card.jpg', width: 1200, height: 630, alt: 'Creavix — AI Video Marketing Agency Bangladesh', type: 'image/jpeg' }],
   },
   twitter: {
     title: 'Creavix Client Reviews — 4.8/5 Stars',
-    description:
-      'Verified reviews from 4,300+ projects. 4.8/5 average. Real client feedback on AI video campaigns.',
+    description: 'Verified reviews from 4,300+ projects. 4.8/5 average. Real client feedback on AI video campaigns.',
     images: ['/share-card.jpg'],
   },
 };
 
-export default function ReviewsPage() {
+async function getReviews(): Promise<DbReview[]> {
+  try {
+    const dbPath = path.join(process.cwd(), 'data', 'reviews.json');
+    const raw = await readFile(dbPath, 'utf8');
+    const data = JSON.parse(raw) as DbReview[];
+    return [...data].sort(
+      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+    );
+  } catch {
+    return [];
+  }
+}
+
+export default async function ReviewsPage() {
+  const reviews = await getReviews();
+
   return (
     <>
       <HeroSection theme="reviews" watermark="REVIEWS">
@@ -46,13 +54,12 @@ export default function ReviewsPage() {
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-ash-200 sm:text-base">
-            আমাদের প্রতিটি ক্যাম্পেইনের পেছনে একটি বাস্তব গল্প — পড়ুন, রেট দিন এবং নিজেও আপনার
-            অভিজ্ঞতা শেয়ার করুন।
+            আমাদের প্রতিটি ক্যাম্পেইনের পেছনে একটি বাস্তব গল্প — পড়ুন, রেট দিন এবং নিজেও আপনার অভিজ্ঞতা শেয়ার করুন।
           </p>
         </Reveal>
       </HeroSection>
 
-      <ReviewSection initial={REVIEWS_SEED} />
+      <ReviewSection initial={reviews} />
 
       <CtaBand />
     </>
