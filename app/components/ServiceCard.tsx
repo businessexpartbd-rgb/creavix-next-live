@@ -45,7 +45,7 @@ export default function ServiceCard({ service }: { service: Service }) {
     >
       <div className="flex items-start justify-between">
         {/* 3D-styled icon (CSS depth in lieu of Lottie placeholder) */}
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand/30 via-brand/10 to-transparent text-brand ring-1 ring-brand/30 shadow-[inset_0_-2px_6px_rgba(232,23,58,0.4),0_8px_20px_-8px_rgba(232,23,58,0.4)]">
+        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand/30 via-brand/10 to-transparent text-brand ring-1 ring-brand/30 shadow-[inset_0_-2px_6px_rgba(168,85,247,0.4),0_8px_20px_-8px_rgba(168,85,247,0.4)]">
           <Icon size={26} strokeWidth={1.6} />
         </span>
         <ArrowUpRight
