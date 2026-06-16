@@ -122,7 +122,12 @@
 
   .eyebrow {
     @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1
-           text-[11px] font-medium uppercase tracking-[0.18em] text-ash-300;
+           text-[11px] font-medium tracking-[0.14em] text-ash-300;
+    /* Use Hind Siliguri so inline Bangla script renders correctly
+       (Hind Siliguri includes a full Latin subset too, so Latin labels
+       are unaffected). Never uppercase here — it garbles Bengali glyphs. */
+    font-family: var(--font-bangla), var(--font-inter), system-ui, sans-serif;
+    text-transform: none;
   }
 
   .accent {
