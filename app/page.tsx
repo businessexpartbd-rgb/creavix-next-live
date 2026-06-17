@@ -24,7 +24,6 @@ import VideoThumb from './components/VideoThumb';
 import CtaBand from './components/CtaBand';
 import ClientLogosSlider from './components/ClientLogosSlider';
 import ReviewSection from './components/ReviewSection';
-import AdInsightVideo from './components/AdInsightVideo';
 import type { DbReview } from './api/reviews/route';
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
@@ -62,19 +61,19 @@ export default function HomePage() {
               </span>
             </Reveal>
             <Reveal delay={80}>
-              <h1 className="mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]">
-                Cinematic <span className="accent">AI Video</span>
+              <h1 className="mt-6 font-serif text-balance text-5xl leading-[1.1] tracking-tight text-warm-fg sm:text-6xl lg:text-7xl xl:text-[88px]">
+                Cinematic <span className="font-display text-warm-accent">AI Video</span>
                 <br />
                 campaigns that convert.
               </h1>
             </Reveal>
             <Reveal delay={160}>
-              <p className="mt-6 max-w-xl text-base leading-8 text-ash-300 sm:text-lg">
+              <p className="mt-6 max-w-xl text-base leading-8 text-warm-muted sm:text-lg">
                 Creavix blends premium storytelling, AI-led production and bilingual brand
                 clarity for businesses that want short-form speed, cinematic depth and a
                 stronger mobile-first web presence.
               </p>
-              <p className="mt-3 max-w-xl font-bn text-sm leading-7 text-ash-200">
+              <p className="mt-3 max-w-xl font-bn text-sm leading-7 text-warm-muted">
                 মেটা, ইউটিউব ও টিকটকের জন্য বাস্তবধর্মী, কনভার্সন-কেন্দ্রিক এআই ভিডিও অ্যাড।
                 ২০১৪ থেকে ৪,৩০০+ ব্র্যান্ডের পাশে।
               </p>
@@ -98,8 +97,8 @@ export default function HomePage() {
                     <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-sm text-ash-300">
-                  <span className="font-semibold text-white">4.8/5</span> from verified clients ·{' '}
+                <p className="text-sm text-warm-muted">
+                  <span className="font-semibold text-warm-fg">4.8/5</span> from verified clients ·{' '}
                   <span className="font-bn">৪,৩০০+ প্রজেক্ট</span>
                 </p>
               </div>
@@ -112,7 +111,7 @@ export default function HomePage() {
               <div className="relative grid gap-4">
                 {HERO_REEL[0] ? (
                   <div className="relative">
-                    <div className="absolute -inset-4 -z-10 rounded-[32px] bg-gradient-to-br from-brand/30 via-brand/10 to-transparent blur-2xl" />
+                    <div className="absolute -inset-4 -z-10 rounded-[32px] bg-gradient-to-br from-warm-accent/20 via-warm-accent/5 to-transparent blur-2xl" />
                     <VideoThumb id={HERO_REEL[0]} title="Featured cinematic story" priority />
                   </div>
                 ) : null}
@@ -124,14 +123,14 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal delay={280}>
-              <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-white/10 bg-ink-900/80 p-4 shadow-card backdrop-blur lg:block">
+              <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-warm-fg/10 bg-warm-bg/80 p-4 shadow-card backdrop-blur lg:block">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-warm-accent text-warm-bg">
                     <Sparkles size={18} />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-ash-400">Delivered in</p>
-                    <p className="font-display text-lg uppercase tracking-wide text-white">
+                    <p className="text-xs uppercase tracking-[0.18em] text-warm-muted">Delivered in</p>
+                    <p className="font-display text-lg uppercase tracking-wide text-warm-fg">
                       24–48 hours
                     </p>
                   </div>
@@ -143,17 +142,17 @@ export default function HomePage() {
 
         {/* Stats */}
         <Reveal delay={200}>
-          <div className="mt-20 grid gap-px rounded-card border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-20 grid gap-px rounded-card border border-warm-fg/10 bg-warm-bg/30 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s) => (
               <div
                 key={s.label_en}
-                className="bg-ink-900/60 p-6 first:rounded-t-card last:rounded-b-card sm:first:rounded-l-card sm:first:rounded-tr-none sm:last:rounded-r-card sm:last:rounded-bl-none"
+                className="bg-warm-bg p-6 first:rounded-t-card last:rounded-b-card sm:first:rounded-l-card sm:first:rounded-tr-none sm:last:rounded-r-card sm:last:rounded-bl-none"
               >
-                <p className="font-display text-4xl tracking-wide text-white sm:text-5xl">
-                  <span className="accent">{s.value}</span>
+                <p className="font-display text-4xl tracking-wide text-warm-accent sm:text-5xl">
+                  {s.value}
                 </p>
-                <p className="mt-2 text-sm font-medium text-ash-200">{s.label_en}</p>
-                <p className="mt-1 font-bn text-xs text-ash-400">{s.sub_bn}</p>
+                <p className="mt-2 text-sm font-medium text-warm-fg">{s.label_en}</p>
+                <p className="mt-1 font-bn text-xs text-warm-muted">{s.sub_bn}</p>
               </div>
             ))}
           </div>
@@ -162,7 +161,6 @@ export default function HomePage() {
 
       {/* Client logos */}
       <ClientLogosSlider />
-      <AdInsightVideo />
 
       {/* Services */}
       <section className="container-x py-24 sm:py-28 cv-auto">
@@ -279,7 +277,7 @@ export default function HomePage() {
         <Reveal>
           <div className="grid gap-10 rounded-card border border-white/10 bg-white/[0.03] p-8 sm:p-12 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <span className="eyebrow">Studio promise · প্রতিশ্রুতি</span>
+              <span className="eyebrow">Studio promise · প্রতি��্রুতি</span>
               <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl">
                 Sharper hierarchy, calmer reading flow,{' '}
                 <span className="accent">stronger premium cues.</span>

@@ -68,15 +68,15 @@ export default function ServicesPage() {
           <span className="eyebrow">Services · সার্ভিস</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
-            <span className="accent">AI Video Ads</span> and storytelling for growth-focused brands.
+          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+            <span className="font-display text-warm-accent">AI Video Ads</span> and storytelling for growth-focused brands.
           </h1>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-ash-300 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-warm-muted sm:text-lg">
             From launch promos to brand storytelling, each service delivers clearer messaging, stronger visuals and faster campaign motion across Meta, YouTube and TikTok.
           </p>
-          <p className="mt-3 max-w-2xl font-bn text-sm leading-7 text-ash-200">
+          <p className="mt-3 max-w-2xl font-bn text-sm leading-7 text-warm-muted">
             লঞ্চ প্রমো থেকে ব্র্যান্ড স্টোরিটেলিং — প্রতিটি সার্ভিস ব্যবসাকে দেয় পরিষ্কার মেসেজিং, শক্তিশালী ভিজ্যুয়াল ও দ্রুত ক্যাম্পেইন গতি।
           </p>
         </Reveal>

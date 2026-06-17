@@ -112,7 +112,7 @@ const CORE_VALUES: CoreValue[] = [
     title_en: 'Founder-Led Accountability',
     title_bn: 'ফাউন্ডার-লেড দায়বদ্ধতা',
     desc_en: 'Hannan personally oversees every brief. If something misses the mark, we correct it — no excuses.',
-    desc_bn: 'Hannan ব্যক্তিগতভাবে প্রতিটি ব্রিফ দেখে — কোনো ভুল হলে সংশোধন করা হয়, কোনো অজুহাত নেই।',
+    desc_bn: 'Hannan ব্যক্তিগতভাবে প্রতিটি ব্রিফ দেখে — কোনো ভুল হলে সংশোধন করা হয়, কোনো অজুহাত ���েই।',
   },
 ];
 
@@ -126,12 +126,12 @@ export default function AboutPage() {
           <span className="eyebrow">About Creavix · আমাদের গল্প</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
-            Storytelling, performance & <span className="accent">AI production</span> together.
+          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+            Storytelling, performance & <span className="font-display text-warm-accent">AI production</span> together.
           </h1>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-ash-200 sm:text-base">
+          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">
             Creavix বাংলাদেশের একটি ফোকাসড AI ভিডিও মার্কেটিং স্টুডিও। সিনেম্যাটিক ডিরেকশন ও আধুনিক AI ওয়ার্কফ্লো একসাথে।
           </p>
         </Reveal>

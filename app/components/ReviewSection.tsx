@@ -51,15 +51,15 @@ function RatingBar({ star, count, total }: { star: number; count: number; total:
   const pct = total > 0 ? (count / total) * 100 : 0;
   return (
     <div className="flex items-center gap-3">
-      <span className="w-3 text-right text-xs font-medium text-ash-300">{star}</span>
+      <span className="w-3 text-right text-xs font-medium text-warm-muted">{star}</span>
       <Star size={11} className="flex-none fill-yellow-400 text-yellow-400" />
-      <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-ink-700">
+      <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-warm-accent/10">
         <div
-          className="absolute inset-y-0 left-0 rounded-full bg-yellow-400 transition-all duration-700"
+          className="absolute inset-y-0 left-0 rounded-full bg-warm-accent transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="w-6 text-right text-xs text-ash-400">{count}</span>
+      <span className="w-6 text-right text-xs text-warm-muted">{count}</span>
     </div>
   );
 }
@@ -74,7 +74,7 @@ function Stars({ rating, size = 14 }: { rating: number; size?: number }) {
         <Star
           key={i}
           size={size}
-          className={i <= rating ? 'fill-yellow-400 text-yellow-400' : 'fill-transparent text-ash-600'}
+          className={i <= rating ? 'fill-yellow-400 text-yellow-400' : 'fill-transparent text-warm-bg/30'}
         />
       ))}
     </div>
@@ -86,19 +86,19 @@ function Stars({ rating, size = 14 }: { rating: number; size?: number }) {
    ────────────────────────────────────────────── */
 function ReviewCard({ review }: { review: DbReview }) {
   return (
-    <figure className="card-3d break-inside-avoid p-6">
+    <figure className="card-warm break-inside-avoid p-6">
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <span
-            className="grid h-10 w-10 flex-none place-items-center rounded-full font-semibold text-white text-sm shadow-glow"
+            className="grid h-10 w-10 flex-none place-items-center rounded-full font-semibold text-warm-bg text-sm shadow-warm-glow"
             style={{ backgroundColor: review.avatar_color }}
           >
             {review.name.charAt(0).toUpperCase()}
           </span>
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-white truncate">{review.name}</p>
-            <p className="text-xs text-ash-400">{review.email_masked}</p>
+            <p className="text-sm font-semibold text-warm-fg truncate">{review.name}</p>
+            <p className="text-xs text-warm-muted">{review.email_masked}</p>
           </div>
         </div>
         {review.verified && (
@@ -112,14 +112,14 @@ function ReviewCard({ review }: { review: DbReview }) {
       {/* Stars + date */}
       <div className="mt-3 flex items-center justify-between">
         <Stars rating={review.rating} />
-        <span className="text-[11px] text-ash-500">{formatDate(review.created_at)}</span>
+        <span className="text-[11px] text-warm-muted">{formatDate(review.created_at)}</span>
       </div>
 
       {/* Review body */}
       <blockquote className="mt-3">
-        <p className="text-sm leading-7 text-ash-200">&ldquo;{review.review_en}&rdquo;</p>
+        <p className="text-sm leading-7 text-warm-fg">&ldquo;{review.review_en}&rdquo;</p>
         {review.review_bn && (
-          <p className="mt-2 font-bn text-xs leading-6 text-ash-400">&ldquo;{review.review_bn}&rdquo;</p>
+          <p className="mt-2 font-bn text-xs leading-6 text-warm-muted">&ldquo;{review.review_bn}&rdquo;</p>
         )}
       </blockquote>
     </figure>
@@ -144,7 +144,7 @@ function StarSelector({ value, onChange }: { value: number; onChange: (v: number
             onMouseLeave={() => setHover(0)}
             onClick={() => onChange(i)}
             className={`text-2xl transition-transform hover:scale-110 ${
-              filled ? 'text-brand drop-shadow-[0_0_6px_rgba(168,85,247,0.6)]' : 'text-ash-600'
+              filled ? 'text-warm-accent drop-shadow-[0_0_6px_rgba(235,94,40,0.6)]' : 'text-warm-bg/20'
             }`}
           >
             {filled ? '★' : '☆'}
@@ -152,7 +152,7 @@ function StarSelector({ value, onChange }: { value: number; onChange: (v: number
         );
       })}
       {value > 0 && (
-        <span className="ml-2 text-sm text-ash-400">{value}/5</span>
+        <span className="ml-2 text-sm text-warm-muted">{value}/5</span>
       )}
     </div>
   );

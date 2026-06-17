@@ -117,15 +117,15 @@ export default function PortfolioPage() {
           <span className="eyebrow">Portfolio · শোকেস</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
-            Story-first <span className="accent">video work</span> for modern brands.
+          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+            Story-first <span className="font-display text-warm-accent">video work</span> for modern brands.
           </h1>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-ash-300 sm:text-base">
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-warm-muted sm:text-base">
             Browse by category — cinematic storytelling, AI product ads, financial campaigns and custom projects.
           </p>
-          <p className="mt-2 max-w-2xl font-bn text-sm leading-7 text-ash-200">
+          <p className="mt-2 max-w-2xl font-bn text-sm leading-7 text-warm-muted">
             ক্যাটাগরি অনুযায়ী ফিল্টার করুন — সিনেম্যাটিক, এআই প্রোডাক্ট অ্যাড, ফাইন্যান্সিয়াল ও কাস্টম।
           </p>
         </Reveal>

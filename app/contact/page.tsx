@@ -34,12 +34,12 @@ export default function ContactPage() {
           <span className="eyebrow">Contact · যোগাযোগ</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl">
-            Start your <span className="accent">video marketing</span> campaign.
+          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+            Start your <span className="font-display text-warm-accent">video marketing</span> campaign.
           </h1>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-ash-200 sm:text-base">
+          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">
             ব্রিফ, বাজেট বা পার্টনারশিপ — সবচেয়ে দ্রুত পথ বেছে নিন। সাধারণত কয়েক ঘণ্টায় উত্তর দিই।
           </p>
         </Reveal>

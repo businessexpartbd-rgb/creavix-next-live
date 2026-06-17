@@ -113,7 +113,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Background watermark – premium grid aesthetic */
+  /* Background watermark – premium grid aesthetic with floating animation */
   body::before {
     content: 'CREAVIX IT';
     position: fixed;
@@ -130,6 +130,7 @@
     z-index: 0;
     line-height: 1;
     user-select: none;
+    animation: floatWatermark 8s ease-in-out infinite;
   }
 
   main,
@@ -419,9 +420,43 @@
     text-wrap: balance;
   }
 
+  /* Warm color utilities */
+  .text-warm-fg {
+    @apply text-[#03071E];
+  }
+
+  .text-warm-accent {
+    @apply text-[#EB5E28];
+  }
+
+  .text-warm-muted {
+    @apply text-[#656D4A];
+  }
+
+  .bg-warm-fg {
+    @apply bg-[#03071E];
+  }
+
+  .bg-warm-bg {
+    @apply bg-[#FEFAE0];
+  }
+
+  .bg-warm-accent {
+    @apply bg-[#EB5E28];
+  }
+
   /* Orange glow effect */
   .glow-orange {
     box-shadow: 0 0 30px var(--orange-glow);
+  }
+
+  /* Warm glow shadow */
+  .shadow-warm-glow {
+    box-shadow: 0 12px 36px rgba(235, 94, 40, 0.25), 0 4px 12px rgba(235, 94, 40, 0.15);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   /* Premium shadow */
@@ -479,5 +514,15 @@
   }
   50% {
     box-shadow: 0 4px 50px var(--orange-glow);
+  }
+}
+
+@keyframes floatWatermark {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, calc(-50% + 8px));
   }
 }
