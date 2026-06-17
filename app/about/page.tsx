@@ -112,7 +112,7 @@ const CORE_VALUES: CoreValue[] = [
     title_en: 'Founder-Led Accountability',
     title_bn: 'ফাউন্ডার-লেড দায়বদ্ধতা',
     desc_en: 'Hannan personally oversees every brief. If something misses the mark, we correct it — no excuses.',
-    desc_bn: 'Hannan ব্যক্তিগতভাবে প্রতিটি ব্রিফ দেখে — কোনো ভুল হলে সংশোধন করা হয়, কোনো অজুহাত ���েই।',
+    desc_bn: 'Hannan ব্যক্তিগতভাবে প্রতিটি ব্রিফ দেখে — কোনো ভুল হলে সংশোধন করা হয়, কোনো অজুহাত �����েই।',
   },
 ];
 
@@ -142,22 +142,22 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <div className="relative">
-              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-brand/25 to-transparent blur-2xl" />
-              <div className="card-3d relative p-8 sm:p-10">
-                <div className="grid h-28 w-28 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-display text-4xl text-white ring-4 ring-brand/20 shadow-glow">
+              <div className="absolute -inset-6 -z-10 rounded-[40px] bg-gradient-to-br from-warm-accent/15 to-transparent blur-2xl" />
+              <div className="card-warm relative p-8 sm:p-10">
+                <div className="grid h-28 w-28 place-items-center rounded-full bg-gradient-to-br from-warm-accent to-orange-600 font-display text-4xl text-warm-bg ring-4 ring-warm-accent/20 shadow-warm-glow">
                   HK
                 </div>
-                <h3 className="mt-6 font-display text-3xl uppercase tracking-[0.04em] text-white">
+                <h3 className="mt-6 font-serif text-3xl tracking-tight text-warm-fg">
                   {SITE.founder.name}
                 </h3>
-                <p className="mt-1 text-sm text-brand">{SITE.founder.role_en}</p>
-                <p className="font-bn text-sm text-ash-400">{SITE.founder.role_bn}</p>
-                <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
+                <p className="mt-1 text-sm text-warm-accent">{SITE.founder.role_en}</p>
+                <p className="font-bn text-sm text-warm-muted">{SITE.founder.role_bn}</p>
+                <p className="mt-5 font-bn text-sm leading-7 text-warm-muted">
                   Hannan সরাসরি প্রতিটি ব্রিফের ক্রিয়েটিভ ডিরেকশন করে — প্রথম মেসেজ থেকে ফাইনাল এক্সপোর্ট পর্যন্ত।
                 </p>
-                <div className="mt-6 flex items-start gap-3 rounded-xl border border-brand/20 bg-brand/[0.06] p-4">
-                  <Quote size={16} className="mt-1 flex-none text-brand" />
-                  <p className="font-bn text-sm leading-7 text-ash-200">
+                <div className="mt-6 flex items-start gap-3 rounded-xl border border-warm-fg/10 bg-warm-accent/5 p-4">
+                  <Quote size={16} className="mt-1 flex-none text-warm-accent" />
+                  <p className="font-bn text-sm leading-7 text-warm-fg">
                     &ldquo;ক্লায়েন্ট শুধু ভিডিও কেনে না — তারা চয়েস করে কে ব্রিফের কাছাকাছি থাকবে আর সময়মতো রেসপন্স দেবে।&rdquo;
                   </p>
                 </div>
@@ -168,10 +168,10 @@ export default function AboutPage() {
           <div>
             <Reveal>
               <span className="eyebrow">Founder-led direction · ফাউন্ডার-লেড</span>
-              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl">
-                Closer creative ownership behind <span className="accent">every delivery.</span>
+              <h2 className="mt-5 font-serif text-3xl tracking-tight text-warm-fg sm:text-4xl">
+                Closer creative ownership behind <span className="text-warm-accent">every delivery.</span>
               </h2>
-              <p className="mt-5 font-bn text-sm leading-7 text-ash-200">
+              <p className="mt-5 font-bn text-sm leading-7 text-warm-muted">
                 Creavix একটি ফাউন্ডার-লেড স্টুডিও। তাই ব্রিফ, রিভিশন ও ফাইনাল পলিশ — সবই কোর ডিসিশন-মেকারের কাছাকাছি থাকে।
               </p>
             </Reveal>
@@ -179,8 +179,8 @@ export default function AboutPage() {
               {TOUCHPOINTS_BN.map((t, i) => (
                 <Reveal key={t} delay={i * 60}>
                   <li className="flex gap-3">
-                    <CheckCircle2 size={18} className="mt-1 flex-none text-brand" />
-                    <span className="font-bn text-sm leading-7 text-ash-200">{t}</span>
+                    <CheckCircle2 size={18} className="mt-1 flex-none text-warm-accent" />
+                    <span className="font-bn text-sm leading-7 text-warm-fg">{t}</span>
                   </li>
                 </Reveal>
               ))}
@@ -188,12 +188,12 @@ export default function AboutPage() {
             <Reveal delay={200}>
               <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {STATS.map((s) => (
-                  <div key={String(s.label_en)} className="rounded-card border border-white/10 bg-white/5 p-4">
-                    <div className="font-display text-3xl uppercase tracking-wide text-white">
-                      <span className="accent">{s.value}</span>
+                  <div key={String(s.label_en)} className="card-warm rounded-card p-4">
+                    <div className="font-display text-3xl tracking-wide text-warm-fg">
+                      <span className="text-warm-accent">{s.value}</span>
                     </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-ash-300">{s.label_en}</div>
-                    <div className="mt-1 font-bn text-[11px] text-ash-400">{s.label_bn}</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-warm-muted">{s.label_en}</div>
+                    <div className="mt-1 font-bn text-[11px] text-warm-muted">{s.label_bn}</div>
                   </div>
                 ))}
               </div>
@@ -203,7 +203,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
             eyebrow="Our journey · আমাদের যাত্রা"
@@ -213,7 +213,7 @@ export default function AboutPage() {
           />
           <div className="relative mt-14">
             {/* Vertical line */}
-            <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-brand via-brand/40 to-transparent sm:left-[50%] sm:-translate-x-px" />
+            <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-warm-accent via-warm-accent/40 to-transparent sm:left-[50%] sm:-translate-x-px" />
 
             <div className="space-y-0">
               {TIMELINE.map((item, i) => {
@@ -222,17 +222,17 @@ export default function AboutPage() {
                   <Reveal key={item.year} delay={i * 80}>
                     <div className={`relative flex gap-8 pb-12 pl-12 sm:pl-0 sm:gap-0 ${isRight ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
                       {/* Year bubble */}
-                      <div className="absolute left-0 top-0 z-10 grid h-9 w-9 place-items-center rounded-full border-2 border-brand bg-ink-950 shadow-glow sm:left-[50%] sm:-translate-x-1/2">
-                        <span className="h-2.5 w-2.5 rounded-full bg-brand" />
+                      <div className="absolute left-0 top-0 z-10 grid h-9 w-9 place-items-center rounded-full border-2 border-warm-accent bg-warm-bg shadow-warm-glow sm:left-[50%] sm:-translate-x-1/2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-warm-accent" />
                       </div>
                       {/* Content card */}
                       <div className={`w-full sm:w-[calc(50%-2.5rem)] ${isRight ? 'sm:pr-8 sm:text-right' : 'sm:pl-8 sm:text-left'}`}>
-                        <div className="card-3d p-5 sm:p-6">
-                          <span className="font-display text-3xl tracking-wide text-brand">{item.year}</span>
-                          <h3 className="mt-2 font-display text-xl uppercase tracking-[0.04em] text-white">{item.title_en}</h3>
-                          <p className="font-bn text-xs text-ash-400">{item.title_bn}</p>
-                          <p className="mt-3 text-sm leading-7 text-ash-300">{item.desc_en}</p>
-                          <p className="mt-2 font-bn text-xs leading-6 text-ash-400">{item.desc_bn}</p>
+                        <div className="card-warm p-5 sm:p-6">
+                          <span className="font-display text-3xl tracking-wide text-warm-accent">{item.year}</span>
+                          <h3 className="mt-2 font-serif text-xl tracking-tight text-warm-fg">{item.title_en}</h3>
+                          <p className="font-bn text-xs text-warm-muted">{item.title_bn}</p>
+                          <p className="mt-3 text-sm leading-7 text-warm-fg">{item.desc_en}</p>
+                          <p className="mt-2 font-bn text-xs leading-6 text-warm-muted">{item.desc_bn}</p>
                         </div>
                       </div>
                       {/* Spacer on opposite side */}
@@ -259,14 +259,14 @@ export default function AboutPage() {
             const Icon = val.icon;
             return (
               <Reveal key={val.title_en} delay={i * 70}>
-                <div className="card-3d h-full p-6">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-brand/30 to-brand/10 text-brand ring-1 ring-brand/30">
+                <div className="card-warm h-full p-6">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-warm-accent/20 to-warm-accent/5 text-warm-accent ring-1 ring-warm-accent/30">
                     <Icon size={22} strokeWidth={1.6} />
                   </span>
-                  <h3 className="mt-5 font-display text-xl uppercase tracking-[0.04em] text-white">{val.title_en}</h3>
-                  <p className="font-bn text-xs text-ash-400">{val.title_bn}</p>
-                  <p className="mt-3 text-sm leading-7 text-ash-300">{val.desc_en}</p>
-                  <p className="mt-2 font-bn text-xs leading-6 text-ash-400">{val.desc_bn}</p>
+                  <h3 className="mt-5 font-serif text-xl tracking-tight text-warm-fg">{val.title_en}</h3>
+                  <p className="font-bn text-xs text-warm-muted">{val.title_bn}</p>
+                  <p className="mt-3 text-sm leading-7 text-warm-fg">{val.desc_en}</p>
+                  <p className="mt-2 font-bn text-xs leading-6 text-warm-muted">{val.desc_bn}</p>
                 </div>
               </Reveal>
             );
@@ -275,7 +275,7 @@ export default function AboutPage() {
       </section>
 
       {/* Studio Map */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-20 sm:py-24">
+      <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-20 sm:py-24">
         <div className="container-x">
           <SectionIntro
             eyebrow="Studio · স্টুডিও"
@@ -284,7 +284,7 @@ export default function AboutPage() {
             body_bn="হেমায়েতপুর, সাভার, ঢাকা — ১৩৪০। ভিজিটের জন্য আগেই WhatsApp করে অ্যাপয়েন্টমেন্ট নিন।"
           />
           <Reveal delay={120}>
-            <div className="mt-10 overflow-hidden rounded-card border border-white/10 shadow-deep">
+            <div className="mt-10 overflow-hidden rounded-card border border-warm-fg/10 shadow-warm-glow">
               <iframe
                 src={mapsSrc}
                 title="Creavix Studio location — Hemayetpur, Savar, Dhaka"
@@ -297,8 +297,8 @@ export default function AboutPage() {
               />
             </div>
             <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
-              <p className="text-xs uppercase tracking-[0.18em] text-ash-400">{SITE.address_en}</p>
-              <p className="font-bn text-xs text-ash-400">{SITE.address_bn}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-warm-muted">{SITE.address_en}</p>
+              <p className="font-bn text-xs text-warm-muted">{SITE.address_bn}</p>
             </div>
           </Reveal>
         </div>

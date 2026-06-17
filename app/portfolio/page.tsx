@@ -43,7 +43,7 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
       target="_blank"
       rel="noreferrer"
       title={title}
-      className="group relative block overflow-hidden rounded-card border border-white/10 bg-ink-800 transition hover:border-brand/50 hover:shadow-glow"
+      className="group relative block overflow-hidden rounded-card border border-white/10 bg-ink-800 transition hover:border-warm-accent/50 hover:shadow-glow"
     >
       <div className="aspect-video">
         <Image
@@ -57,14 +57,14 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent opacity-80 transition group-hover:opacity-100" />
         {/* Play button overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-glow transition duration-300 group-hover:scale-110 group-hover:shadow-glow-lg">
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow transition duration-300 group-hover:scale-110 group-hover:shadow-glow-lg">
             <Play size={18} fill="currentColor" />
           </span>
         </div>
         {/* Title overlay */}
         <div className="absolute inset-x-0 bottom-0 p-3">
-          <p className="line-clamp-1 text-xs font-medium text-white/90 drop-shadow">{title}</p>
-          <div className="mt-1 flex items-center gap-1 text-[10px] uppercase tracking-[0.18em] text-ash-400">
+          <p className="line-clamp-1 text-xs font-medium text-warm-fg/90 drop-shadow">{title}</p>
+          <div className="mt-1 flex items-center gap-1 text-[10px] uppercase tracking-[0.18em] text-warm-muted00">
             <ArrowUpRight size={10} />
             YouTube
           </div>
@@ -78,14 +78,14 @@ function ComingSoonCard({ index }: { index: number }) {
   return (
     <div className="relative overflow-hidden rounded-card border border-dashed border-white/20 bg-ink-800/60">
       <div className="aspect-video flex flex-col items-center justify-center gap-3 p-4 text-center">
-        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-ash-400">
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-warm-muted00">
           <Clock size={18} />
         </span>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ash-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-warm-muted00">
             Coming Soon
           </p>
-          <p className="mt-1 font-bn text-[11px] text-ash-500">শীঘ্রই আসছে {index + 1}</p>
+          <p className="mt-1 font-bn text-[11px] text-warm-muted00">শীঘ্রই আসছে {index + 1}</p>
         </div>
       </div>
     </div>
@@ -144,12 +144,12 @@ export default function PortfolioPage() {
                   onClick={() => setActiveFilter(tab.key)}
                   className={`flex-none rounded-full px-4 py-2 text-sm font-medium transition whitespace-nowrap ${
                     active
-                      ? 'bg-brand text-white shadow-glow'
-                      : 'border border-white/10 bg-white/5 text-ash-300 hover:border-brand/40 hover:text-white'
+                      ? 'bg-warm-accent text-warm-fg shadow-glow'
+                      : 'border border-white/10 bg-white/5 text-warm-muted00 hover:border-warm-accent/40 hover:text-warm-fg'
                   }`}
                 >
                   {tab.label_en}
-                  <span className={`ml-1.5 font-bn text-[11px] ${active ? 'text-brand-secondary' : 'text-ash-500'}`}>
+                  <span className={`ml-1.5 font-bn text-[11px] ${active ? 'text-warm-accent-secondary' : 'text-warm-muted00'}`}>
                     {tab.label_bn}
                   </span>
                 </button>
@@ -180,13 +180,13 @@ export default function PortfolioPage() {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-sm text-ash-400">No videos in this category yet.</p>
-            <p className="mt-1 font-bn text-xs text-ash-500">এই ক্যাটাগরিতে এখনো ভিডিও নেই।</p>
+            <p className="text-sm text-warm-muted00">No videos in this category yet.</p>
+            <p className="mt-1 font-bn text-xs text-warm-muted00">এই ক্যাটাগরিতে এখনো ভিডিও নেই।</p>
           </div>
         )}
 
         <Reveal delay={200}>
-          <p className="mt-10 text-center text-xs uppercase tracking-[0.18em] text-ash-500">
+          <p className="mt-10 text-center text-xs uppercase tracking-[0.18em] text-warm-muted00">
             Click any thumbnail to watch on YouTube
           </p>
         </Reveal>
@@ -196,11 +196,11 @@ export default function PortfolioPage() {
       <section className="border-t border-white/10 bg-ink-800/60 py-20 sm:py-24">
         <div className="container-x">
           <Reveal>
-            <div className="rounded-card border border-brand/20 bg-gradient-to-br from-brand/[0.08] to-transparent p-8 text-center sm:p-12">
-              <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+            <div className="rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.08] to-transparent p-8 text-center sm:p-12">
+              <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg sm:text-3xl">
                 Want a campaign like these?
               </h3>
-              <p className="mx-auto mt-3 max-w-xl font-bn text-sm leading-7 text-ash-200">
+              <p className="mx-auto mt-3 max-w-xl font-bn text-sm leading-7 text-warm-muted00">
                 আপনার পণ্য, অডিয়েন্স ও লক্ষ্য জানান — পরিষ্কার প্ল্যান ও স্যাম্পল ক্রিয়েটিভ ডিরেকশন পাঠাবো।
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">

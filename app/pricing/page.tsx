@@ -58,13 +58,13 @@ type CellValue = boolean | string;
 
 function CellIcon({ value, isHighlight }: { value: CellValue; isHighlight: boolean }) {
   if (value === true) {
-    return <Check size={16} className={isHighlight ? 'text-brand' : 'text-emerald-400'} />;
+    return <Check size={16} className={isHighlight ? 'text-warm-accent' : 'text-emerald-400'} />;
   }
   if (value === false) {
-    return <Minus size={14} className="text-ash-500" />;
+    return <Minus size={14} className="text-warm-muted00" />;
   }
   return (
-    <span className={`text-sm font-semibold ${isHighlight ? 'text-brand' : 'text-ash-200'}`}>
+    <span className={`text-sm font-semibold ${isHighlight ? 'text-warm-accent' : 'text-warm-muted00'}`}>
       {value}
     </span>
   );
@@ -90,19 +90,19 @@ function ComparisonTable({
       <table className="w-full min-w-[540px] border-collapse text-sm">
         <thead>
           <tr className="border-b border-white/10 bg-ink-800">
-            <th className="p-4 text-left text-xs uppercase tracking-[0.18em] text-ash-400 w-[40%]">
+            <th className="p-4 text-left text-xs uppercase tracking-[0.18em] text-warm-muted00 w-[40%]">
               Feature
             </th>
             {planNames.map((name, i) => (
               <th
                 key={name}
                 className={`p-4 text-center text-xs uppercase tracking-[0.18em] ${
-                  i === highlightIndex ? 'text-brand' : 'text-ash-300'
+                  i === highlightIndex ? 'text-warm-accent' : 'text-warm-muted00'
                 }`}
               >
                 {name}
                 {i === highlightIndex && (
-                  <span className="ml-1.5 inline-flex items-center gap-0.5 rounded-full bg-brand/20 px-1.5 py-0.5 text-[9px] text-brand">
+                  <span className="ml-1.5 inline-flex items-center gap-0.5 rounded-full bg-warm-accent/20 px-1.5 py-0.5 text-[9px] text-warm-accent">
                     <Sparkles size={8} />
                     Popular
                   </span>
@@ -118,11 +118,11 @@ function ComparisonTable({
               className={`border-b border-white/[0.06] ${rowIdx % 2 === 0 ? 'bg-ink-900' : 'bg-ink-800/50'}`}
             >
               <td className="p-4">
-                <span className="font-medium text-ash-200">{row.feature_en}</span>
-                <span className="ml-2 font-bn text-xs text-ash-500">{row.feature_bn}</span>
+                <span className="font-medium text-warm-muted00">{row.feature_en}</span>
+                <span className="ml-2 font-bn text-xs text-warm-muted00">{row.feature_bn}</span>
               </td>
               {row.tiers.map((val, i) => (
-                <td key={i} className={`p-4 text-center ${i === highlightIndex ? 'bg-brand/[0.04]' : ''}`}>
+                <td key={i} className={`p-4 text-center ${i === highlightIndex ? 'bg-warm-accent/[0.04]' : ''}`}>
                   <div className="flex justify-center">
                     <CellIcon value={val} isHighlight={i === highlightIndex} />
                   </div>
@@ -142,7 +142,7 @@ export default function PricingPage() {
       <HeroSection theme="pricing" watermark="PRICING">
         <Reveal>
           <span className="eyebrow">
-            <Sparkles size={12} className="text-brand" /> 50% OFF · ছাড় চলছে
+            <Sparkles size={12} className="text-warm-accent" /> 50% OFF · ছাড় চলছে
           </span>
         </Reveal>
         <Reveal delay={80}>
@@ -184,7 +184,7 @@ export default function PricingPage() {
               {/* Comparison table */}
               <Reveal delay={120}>
                 <div className="mt-8">
-                  <p className="text-xs uppercase tracking-[0.18em] text-ash-400">
+                  <p className="text-xs uppercase tracking-[0.18em] text-warm-muted00">
                     Full comparison · বিস্তারিত তুলনা
                   </p>
                   <ComparisonTable
@@ -199,7 +199,7 @@ export default function PricingPage() {
         })}
 
         <Reveal delay={240}>
-          <p className="text-center text-xs uppercase tracking-[0.18em] text-ash-400">
+          <p className="text-center text-xs uppercase tracking-[0.18em] text-warm-muted00">
             Custom industry packages available · বাংলা & English supported · Money-back guarantee on agreed scope
           </p>
         </Reveal>
@@ -219,16 +219,16 @@ export default function PricingPage() {
           </div>
           <Reveal delay={160}>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-card border border-brand/20 bg-gradient-to-br from-brand/[0.07] to-transparent p-6">
-                <p className="text-sm font-semibold text-ash-200">Not sure which plan fits?</p>
-                <p className="mt-1 font-bn text-xs text-ash-400">সঠিক প্যাকেজ নিয়ে নিশ্চিত না হলে — WhatsApp করুন।</p>
+              <div className="rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.07] to-transparent p-6">
+                <p className="text-sm font-semibold text-warm-muted00">Not sure which plan fits?</p>
+                <p className="mt-1 font-bn text-xs text-warm-muted00">সঠিক প্যাকেজ নিয়ে নিশ্চিত না হলে — WhatsApp করুন।</p>
                 <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="btn-3d-primary mt-4 text-sm">
                   WhatsApp করুন
                 </a>
               </div>
               <div className="rounded-card border border-white/10 bg-white/[0.03] p-6">
-                <p className="text-sm font-semibold text-ash-200">Custom project?</p>
-                <p className="mt-1 font-bn text-xs text-ash-400">বড় বা ইন্ডাস্ট্রি-স্পেসিফিক প্রজেক্টের জন্য আলাদা কোট নি��।</p>
+                <p className="text-sm font-semibold text-warm-muted00">Custom project?</p>
+                <p className="mt-1 font-bn text-xs text-warm-muted00">বড় বা ইন্ডাস্ট্রি-স্পেসিফিক প্রজেক্টের জন্য আলাদা কোট নি��।</p>
                 <Link href="/contact" className="btn-3d-secondary mt-4 text-sm">
                   Get a custom quote
                 </Link>
@@ -242,13 +242,13 @@ export default function PricingPage() {
 
       <section className="container-x pb-24">
         <Reveal>
-          <p className="text-center text-sm text-ash-400">
+          <p className="text-center text-sm text-warm-muted00">
             Not sure which plan fits?{' '}
-            <Link href="/contact" className="font-semibold text-brand hover:text-brand-secondary">
+            <Link href="/contact" className="font-semibold text-warm-accent hover:text-warm-accent-secondary">
               Tell us about your project
             </Link>{' '}
             — সাহায্য করব। অথবা সরাসরি{' '}
-            <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold text-brand hover:text-brand-secondary">
+            <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold text-warm-accent hover:text-warm-accent-secondary">
               WhatsApp
             </a>
             -এ মেসেজ দিন।

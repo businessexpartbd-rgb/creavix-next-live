@@ -27,13 +27,13 @@ export default function AnimatedCard({
   
   const variantClasses = {
     default: `${baseClasses} border-white/10 bg-ink-800 shadow-card ${
-      hoverGlow ? 'hover:border-brand/40 hover:shadow-glow' : ''
+      hoverGlow ? 'hover:border-warm-accent/40 hover:shadow-glow' : ''
     }`,
     glass: `${baseClasses} border-white/10 bg-white/5 shadow-card backdrop-blur-sm ${
-      hoverGlow ? 'hover:border-brand/30 hover:bg-white/10' : ''
+      hoverGlow ? 'hover:border-warm-accent/30 hover:bg-white/10' : ''
     }`,
     minimal: `${baseClasses} border-white/5 bg-transparent ${
-      hoverGlow ? 'hover:border-brand/30' : ''
+      hoverGlow ? 'hover:border-warm-accent/30' : ''
     }`,
   };
 

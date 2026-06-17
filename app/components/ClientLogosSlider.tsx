@@ -59,7 +59,7 @@ export default function ClientLogosSlider() {
           onMouseLeave={onLeave}
           onTouchStart={onHover}
           onTouchEnd={onLeave}
-          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] p-3 transition-[border-color,background-color] hover:border-brand/40 hover:bg-white/[0.08]"
+          className="grid h-24 w-44 flex-none place-items-center rounded-card border border-white/10 bg-white/[0.04] p-3 transition-[border-color,background-color] hover:border-warm-accent/40 hover:bg-white/[0.08]"
           title={logo.name}
         >
           <div className="relative h-full w-full">
@@ -79,7 +79,7 @@ export default function ClientLogosSlider() {
 
   return (
     <section ref={sectionRef} className="container-x py-16 sm:py-20 cv-auto">
-      <p className="mb-6 text-center text-xs uppercase tracking-[0.3em] text-ash-400">
+      <p className="mb-6 text-center text-xs uppercase tracking-[0.3em] text-warm-muted00">
         Trusted by brands across Bangladesh · বিশ্বস্ত ব্র্যান্ডসমূহ
       </p>
       <div className="logos-mask space-y-5">

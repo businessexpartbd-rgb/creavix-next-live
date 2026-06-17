@@ -74,32 +74,32 @@ export default function SubscribeModal() {
       onClick={() => setOpen(false)}
     >
       <div
-        className="card-3d relative w-full max-w-md p-7"
+        className="card-warm relative w-full max-w-md p-7"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Close"
-          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-white"
+          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-warm-muted00 hover:bg-white/5 hover:text-warm-fg"
         >
           <X size={16} />
         </button>
 
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand/15 text-brand ring-1 ring-brand/30">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-warm-accent/15 text-warm-accent ring-1 ring-warm-accent/30">
           <Bell size={20} />
         </span>
-        <h2 className="mt-5 font-display text-2xl uppercase tracking-[0.04em] text-white">
+        <h2 className="mt-5 font-display text-2xl uppercase tracking-[0.04em] text-warm-fg">
           Subscribe
         </h2>
-        <p className="mt-1 font-bn text-sm text-ash-300">
+        <p className="mt-1 font-bn text-sm text-warm-muted00">
           নতুন অফার, প্যাকেজ ও ভিডিও আপডেট পেতে সাবস্ক্রাইব করুন।
         </p>
 
         {done === 'idle' || done === 'error' ? (
           <form onSubmit={submit} className="mt-6 space-y-3">
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
                 Email
               </label>
               <input
@@ -108,9 +108,9 @@ export default function SubscribeModal() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@brand.com"
                 required
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white placeholder:text-ash-500 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
               />
-              {error ? <p className="mt-1 text-xs text-brand">{error}</p> : null}
+              {error ? <p className="mt-1 text-xs text-warm-accent">{error}</p> : null}
             </div>
             <button
               type="submit"
@@ -120,7 +120,7 @@ export default function SubscribeModal() {
               {busy ? 'Sending…' : 'Subscribe'}
             </button>
             {done === 'error' ? (
-              <p className="text-xs text-brand">
+              <p className="text-xs text-warm-accent">
                 Something went wrong. Please email us instead.
               </p>
             ) : null}
@@ -135,13 +135,13 @@ export default function SubscribeModal() {
         ) : null}
 
         {done === 'ok' ? (
-          <p className="mt-6 rounded-xl border border-brand/30 bg-brand/10 px-4 py-3 text-sm text-brand">
+          <p className="mt-6 rounded-xl border border-warm-accent/30 bg-warm-accent/10 px-4 py-3 text-sm text-warm-accent">
             ✓ Subscribed! আপনার ইমেইলে শীঘ্রই স্বাগত বার্তা পৌঁছাবে।
           </p>
         ) : null}
         {done === 'fallback' ? (
           <div className="mt-6 space-y-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm">
-            <p className="text-ash-200">
+            <p className="text-warm-muted00">
               Email service isn&apos;t configured yet — please email us directly:
             </p>
             <a

@@ -56,7 +56,7 @@ export default function HomePage() {
           <div>
             <Reveal>
               <span className="eyebrow">
-                <Sparkles size={12} className="text-brand" />
+                <Sparkles size={12} className="text-warm-accent" />
                 {SITE.tagline_en} · বাংলাদেশ
               </span>
             </Reveal>
@@ -217,14 +217,14 @@ export default function HomePage() {
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SHOWCASES.slice(0, 3).map((sc, i) => (
             <Reveal key={sc.title_en} delay={i * 80}>
-              <article className="card-3d overflow-hidden">
+              <article className="card-warm overflow-hidden">
                 <VideoThumb id={sc.ids[0]} title={sc.title_en} />
                 <div className="p-6">
-                  <h3 className="font-display text-xl uppercase tracking-[0.04em] text-white">
+                  <h3 className="font-display text-xl uppercase tracking-[0.04em] text-warm-fg">
                     {sc.title_en}
                   </h3>
-                  <p className="mt-1 font-bn text-sm text-ash-400">{sc.title_bn}</p>
-                  <p className="mt-3 text-sm leading-7 text-ash-300">{sc.sub_en}</p>
+                  <p className="mt-1 font-bn text-sm text-warm-muted00">{sc.title_bn}</p>
+                  <p className="mt-3 text-sm leading-7 text-warm-muted00">{sc.sub_en}</p>
                 </div>
               </article>
             </Reveal>
@@ -243,15 +243,15 @@ export default function HomePage() {
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {PROCESS_STEPS.map((step, i) => (
               <Reveal key={step.step} delay={i * 70}>
-                <div className="card-3d relative h-full p-6">
-                  <span className="absolute -right-4 -top-4 grid h-12 w-12 place-items-center rounded-2xl bg-brand/15 font-display text-base text-brand ring-1 ring-brand/30">
+                <div className="card-warm relative h-full p-6">
+                  <span className="absolute -right-4 -top-4 grid h-12 w-12 place-items-center rounded-2xl bg-warm-accent/15 font-display text-base text-warm-accent ring-1 ring-warm-accent/30">
                     {step.step}
                   </span>
-                  <h3 className="font-display text-xl uppercase tracking-[0.04em] text-white">
+                  <h3 className="font-display text-xl uppercase tracking-[0.04em] text-warm-fg">
                     {step.title_en}
                   </h3>
-                  <p className="mt-1 font-bn text-sm text-ash-400">{step.title_bn}</p>
-                  <p className="mt-3 font-bn text-sm leading-7 text-ash-200">{step.desc_bn}</p>
+                  <p className="mt-1 font-bn text-sm text-warm-muted00">{step.title_bn}</p>
+                  <p className="mt-3 font-bn text-sm leading-7 text-warm-muted00">{step.desc_bn}</p>
                 </div>
               </Reveal>
             ))}
@@ -278,7 +278,7 @@ export default function HomePage() {
           <div className="grid gap-10 rounded-card border border-white/10 bg-white/[0.03] p-8 sm:p-12 lg:grid-cols-[1fr_1.2fr]">
             <div>
               <span className="eyebrow">Studio promise · প্রতি��্রুতি</span>
-              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl">
+              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-warm-fg sm:text-4xl">
                 Sharper hierarchy, calmer reading flow,{' '}
                 <span className="accent">stronger premium cues.</span>
               </h2>
@@ -290,8 +290,8 @@ export default function HomePage() {
                 'Premium turnaround without sacrificing cinematic polish or brand safety.',
                 'Founder-led oversight on every brief from script to final export.',
               ].map((t) => (
-                <li key={t} className="flex gap-3 text-sm leading-7 text-ash-200">
-                  <CheckCircle2 size={18} className="mt-1 flex-none text-brand" />
+                <li key={t} className="flex gap-3 text-sm leading-7 text-warm-muted00">
+                  <CheckCircle2 size={18} className="mt-1 flex-none text-warm-accent" />
                   <span>{t}</span>
                 </li>
               ))}

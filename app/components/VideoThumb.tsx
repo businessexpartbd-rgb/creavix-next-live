@@ -144,13 +144,13 @@ export default function VideoThumb({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent opacity-90 transition group-hover:opacity-100" />
       <div className="absolute inset-0 grid place-items-center">
-        <span className="grid h-14 w-14 place-items-center rounded-full bg-brand text-white shadow-glow transition duration-300 group-hover:scale-110">
+        <span className="grid h-14 w-14 place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow transition duration-300 group-hover:scale-110">
           <Play size={20} fill="currentColor" />
         </span>
       </div>
       {title ? (
         <div className="absolute inset-x-0 bottom-0 p-4 text-left">
-          <p className="line-clamp-2 text-sm font-medium text-white drop-shadow">{title}</p>
+          <p className="line-clamp-2 text-sm font-medium text-warm-fg drop-shadow">{title}</p>
         </div>
       ) : null}
     </button>

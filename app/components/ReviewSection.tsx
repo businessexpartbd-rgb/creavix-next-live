@@ -288,12 +288,12 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           {/* Big score */}
           <div className="flex flex-col items-center text-center sm:min-w-[140px]">
-            <span className="font-sans text-[80px] font-extrabold leading-none tracking-tight text-ash-50 sm:text-[96px]">
+            <span className="font-sans text-[80px] font-extrabold leading-none tracking-tight text-warm-muted0 sm:text-[96px]">
               {avg.toFixed(1)}
             </span>
             <Stars rating={Math.round(avg)} size={18} />
-            <p className="mt-1.5 text-xs text-ash-400">out of 5.0</p>
-            <p className="mt-3 font-bn text-xs text-ash-500">
+            <p className="mt-1.5 text-xs text-warm-muted00">out of 5.0</p>
+            <p className="mt-3 font-bn text-xs text-warm-muted00">
               {total.toLocaleString('en-BD')}+ রিভিউ
             </p>
           </div>
@@ -306,16 +306,16 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
           </div>
 
           {/* Summary card */}
-          <div className="hidden lg:flex flex-col items-center justify-center rounded-xl border border-brand/20 bg-brand/[0.06] px-8 py-6 text-center min-w-[160px]">
+          <div className="hidden lg:flex flex-col items-center justify-center rounded-xl border border-warm-accent/20 bg-warm-accent/[0.06] px-8 py-6 text-center min-w-[160px]">
             <div className="flex items-center gap-1">
               {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} size={16} className={i < 5 ? 'fill-yellow-400 text-yellow-400' : 'text-ash-600'} />
+                <Star key={i} size={16} className={i < 5 ? 'fill-yellow-400 text-yellow-400' : 'text-warm-muted00'} />
               ))}
             </div>
-            <p className="mt-2 font-display text-lg uppercase tracking-wide text-white">
+            <p className="mt-2 font-display text-lg uppercase tracking-wide text-warm-fg">
               4,300+ projects
             </p>
-            <p className="mt-1 font-bn text-xs text-ash-400">ভেরিফাইড ক্লায়েন্ট</p>
+            <p className="mt-1 font-bn text-xs text-warm-muted00">ভেরিফাইড ক্লায়েন্ট</p>
             <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-400">
               <ShieldCheck size={11} />
               Verified
@@ -347,17 +347,17 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
 
       {/* ── Submit review form ── */}
       <div className="mt-20 rounded-card border border-white/10 bg-white/[0.03] p-7 sm:p-9">
-        <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-white sm:text-3xl">
+        <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg sm:text-3xl">
           Share your experience
         </h3>
-        <p className="mt-1 font-bn text-sm text-ash-300">
+        <p className="mt-1 font-bn text-sm text-warm-muted00">
           আপনার মতামত দিন · আপনার রিভিউ আমাদের সার্ভিস আরো উন্নত করতে সাহায্য করে।
         </p>
 
         <form onSubmit={handleSubmit} className="mt-7 space-y-5">
           {/* Star selector */}
           <div>
-            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
               Your rating · রেটিং
             </label>
             <div className="mt-2">
@@ -367,7 +367,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
                 Name · নাম
               </label>
               <input
@@ -375,11 +375,11 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
                 Email · ইমেইল
               </label>
               <input
@@ -389,14 +389,14 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
                 onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError(''); }}
                 onBlur={(e) => { if (!validateEmail(e.target.value)) setEmailError('সঠিক ইমেইল দিন · Enter a valid email'); }}
                 placeholder="you@email.com (masked publicly)"
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
               />
-              {emailError && <p className="mt-1 text-xs text-brand">{emailError}</p>}
+              {emailError && <p className="mt-1 text-xs text-warm-accent">{emailError}</p>}
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
               Review in English
             </label>
             <textarea
@@ -405,12 +405,12 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
               onChange={(e) => setReviewEn(e.target.value)}
               rows={3}
               placeholder="Share your experience in English..."
-              className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
               Review in Bangla — optional · বাংলায় রিভিউ (ঐচ্ছিক)
             </label>
             <textarea
@@ -418,23 +418,23 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
               onChange={(e) => setReviewBn(e.target.value)}
               rows={3}
               placeholder="বাংলায় আপনার অভিজ্ঞতা শেয়ার করুন (ঐচ্ছিক)..."
-              className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 font-bn text-sm text-white outline-none focus:border-brand/60 focus:ring-2 focus:ring-brand/20"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 font-bn text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
             />
           </div>
 
           {/* Turnstile */}
           {SITE_KEY ? (
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-ash-300">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
                 Human verification · মানব যাচাই
               </label>
               <div ref={turnstileWrapRef} className="mt-2 min-h-[68px] w-full max-w-[480px]" />
-              {!tsReady && <p className="mt-1 text-[11px] text-ash-500">Loading verification…</p>}
+              {!tsReady && <p className="mt-1 text-[11px] text-warm-muted00">Loading verification…</p>}
             </div>
           ) : null}
 
           {submitError && (
-            <p className="rounded-xl border border-brand/40 bg-brand/10 px-4 py-3 text-sm text-brand">
+            <p className="rounded-xl border border-warm-accent/40 bg-warm-accent/10 px-4 py-3 text-sm text-warm-accent">
               {submitError}
             </p>
           )}
@@ -453,7 +453,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
             </p>
           )}
 
-          <p className="text-[11px] uppercase tracking-[0.18em] text-ash-500">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-warm-muted00">
             Your email is masked publicly (e.g. ha***@gmail.com)
           </p>
         </form>

@@ -106,41 +106,41 @@ export default function ServicesPage() {
                   <div className={isEven ? 'lg:col-start-2' : ''}>
                     <Reveal>
                       <div className="flex items-center gap-3">
-                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand/30 to-brand/10 text-brand ring-1 ring-brand/30 shadow-[0_4px_16px_-4px_rgba(168,85,247,0.4)]">
+                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-warm-accent/30 to-warm-accent/10 text-warm-accent ring-1 ring-warm-accent/30 shadow-[0_4px_16px_-4px_rgba(168,85,247,0.4)]">
                           <Icon size={20} strokeWidth={1.6} />
                         </span>
-                        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+                        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-warm-accent">
                           Service {String(idx + 1).padStart(2, '0')}
                         </span>
                       </div>
                     </Reveal>
                     <Reveal delay={60}>
-                      <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl lg:text-5xl">
+                      <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-warm-fg sm:text-4xl lg:text-5xl">
                         {service.title_en}
                       </h2>
-                      <p className="mt-1 font-bn text-base text-ash-300">{service.title_bn}</p>
+                      <p className="mt-1 font-bn text-base text-warm-muted00">{service.title_bn}</p>
                     </Reveal>
                     <Reveal delay={100}>
-                      <p className="mt-5 text-sm leading-8 text-ash-300">{service.desc_en}</p>
-                      <p className="mt-3 font-bn text-sm leading-7 text-ash-200">{service.desc_bn}</p>
+                      <p className="mt-5 text-sm leading-8 text-warm-muted00">{service.desc_en}</p>
+                      <p className="mt-3 font-bn text-sm leading-7 text-warm-muted00">{service.desc_bn}</p>
                     </Reveal>
                     <Reveal delay={140}>
                       <ul className="mt-7 space-y-2.5">
                         {service.bullets_bn.map((b) => (
                           <li key={b} className="flex items-start gap-3">
-                            <CheckCircle2 size={16} className="mt-1 flex-none text-brand" />
-                            <span className="font-bn text-sm leading-6 text-ash-200">{b}</span>
+                            <CheckCircle2 size={16} className="mt-1 flex-none text-warm-accent" />
+                            <span className="font-bn text-sm leading-6 text-warm-muted00">{b}</span>
                           </li>
                         ))}
                       </ul>
                     </Reveal>
                     {hint && (
                       <Reveal delay={180}>
-                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-brand/20 bg-brand/[0.06] px-4 py-3">
-                          <span className="h-2 w-2 flex-none rounded-full bg-brand" />
+                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-warm-accent/20 bg-warm-accent/[0.06] px-4 py-3">
+                          <span className="h-2 w-2 flex-none rounded-full bg-warm-accent" />
                           <div>
-                            <p className="text-sm font-medium text-ash-200">{hint.en}</p>
-                            <p className="font-bn text-xs text-ash-400">{hint.bn}</p>
+                            <p className="text-sm font-medium text-warm-muted00">{hint.en}</p>
+                            <p className="font-bn text-xs text-warm-muted00">{hint.bn}</p>
                           </div>
                         </div>
                       </Reveal>
@@ -171,7 +171,7 @@ export default function ServicesPage() {
                         />
                       ) : (
                         <div className="aspect-video rounded-card border border-white/10 bg-ink-800 grid place-items-center">
-                          <Icon size={48} className="text-brand/30" />
+                          <Icon size={48} className="text-warm-accent/30" />
                         </div>
                       )}
                     </Reveal>
@@ -196,8 +196,8 @@ export default function ServicesPage() {
             <FAQAccordion items={FAQS} />
           </div>
           <Reveal delay={120}>
-            <div className="mt-10 rounded-card border border-brand/20 bg-gradient-to-br from-brand/[0.08] to-transparent p-6 sm:p-8">
-              <p className="font-bn text-sm leading-7 text-ash-200">
+            <div className="mt-10 rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.08] to-transparent p-6 sm:p-8">
+              <p className="font-bn text-sm leading-7 text-warm-muted00">
                 আরো প্রশ্ন আছে? WhatsApp-এ সরাসরি জিজ্ঞেস করুন — সাধারণত কয়েক ঘণ্টায় উত্তর দিই।
               </p>
               <a

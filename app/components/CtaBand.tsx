@@ -8,20 +8,20 @@ export default function CtaBand() {
     <section className="container-x py-20 sm:py-24">
       <Reveal>
         <div className="relative overflow-hidden rounded-card border border-white/10 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 p-8 shadow-card sm:p-12 lg:p-16">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand/30 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-brand/15 blur-3xl" />
+          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-warm-accent/30 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-warm-accent/15 blur-3xl" />
 
           <div className="relative grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
             <div>
               <span className="eyebrow">Ready to launch · যোগাযোগ</span>
-              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-white sm:text-4xl lg:text-5xl">
+              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-warm-fg sm:text-4xl lg:text-5xl">
                 Let&apos;s build a <span className="accent">cinematic AI video</span> campaign for your brand.
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-ash-300">
+              <p className="mt-5 max-w-xl text-base leading-7 text-warm-muted00">
                 Tell us about your product, audience and goal. We&apos;ll respond with a clear plan,
                 timeline and sample creative direction within hours.
               </p>
-              <p className="mt-3 max-w-xl font-bn text-sm leading-7 text-ash-200">
+              <p className="mt-3 max-w-xl font-bn text-sm leading-7 text-warm-muted00">
                 আপনার পণ্য, অডিয়েন্স ও লক্ষ্য জানালেই আমরা পরিষ্কার প্ল্যান, টাইমলাইন ও স্যাম্পল ক্রিয়েটিভ ডিরেকশন পাঠিয়ে দিব।
               </p>
             </div>

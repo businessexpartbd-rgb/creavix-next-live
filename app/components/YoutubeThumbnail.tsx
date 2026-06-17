@@ -51,8 +51,8 @@ export default function YoutubeThumbnail({
         {/* Play button */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative">
-            <div className="absolute inset-0 bg-brand/20 rounded-full blur-2xl group-hover:bg-brand/40 transition-all duration-300" />
-            <div className="relative grid h-16 w-16 place-items-center rounded-full bg-brand text-white shadow-glow transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-lg">
+            <div className="absolute inset-0 bg-warm-accent/20 rounded-full blur-2xl group-hover:bg-warm-accent/40 transition-all duration-300" />
+            <div className="relative grid h-16 w-16 place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-lg">
               <Play size={24} fill="currentColor" />
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function YoutubeThumbnail({
 
         {/* Duration badge */}
         {duration && (
-          <div className="absolute bottom-3 right-3 bg-black/70 px-2 py-1 rounded text-xs font-semibold text-white">
+          <div className="absolute bottom-3 right-3 bg-black/70 px-2 py-1 rounded text-xs font-semibold text-warm-fg">
             {duration}
           </div>
         )}
@@ -68,7 +68,7 @@ export default function YoutubeThumbnail({
 
       {/* Title overlay */}
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-4 py-3 sm:px-5 sm:py-4">
-        <p className="text-sm font-semibold text-white line-clamp-2">{title}</p>
+        <p className="text-sm font-semibold text-warm-fg line-clamp-2">{title}</p>
       </div>
     </div>
   );

@@ -145,7 +145,7 @@ export default function ChatBot() {
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-white/5 text-ash-300 transition hover:bg-white/10 hover:text-white"
+              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-white/5 text-warm-muted00 transition hover:bg-white/10 hover:text-warm-fg"
               aria-label="Go home"
               title="Home"
             >
@@ -163,10 +163,10 @@ export default function ChatBot() {
               />
             </span>
             <div className="flex flex-1 flex-col leading-tight">
-              <span className="font-display text-base tracking-[0.14em] text-white">
+              <span className="font-display text-base tracking-[0.14em] text-warm-fg">
                 CREAVIX
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-ash-300">
+              <span className="flex items-center gap-1.5 text-xs text-warm-muted00">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -177,7 +177,7 @@ export default function ChatBot() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="grid h-8 w-8 flex-none place-items-center rounded-full text-ash-300 hover:bg-white/5 hover:text-white"
+              className="grid h-8 w-8 flex-none place-items-center rounded-full text-warm-muted00 hover:bg-white/5 hover:text-warm-fg"
               aria-label="Close chat"
             >
               <X size={14} />
@@ -192,13 +192,13 @@ export default function ChatBot() {
             {messages.map((m) =>
               m.role === 'user' ? (
                 <div key={m.id} className="flex justify-end">
-                  <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-brand px-4 py-2 text-sm leading-6 text-white shadow-glow">
+                  <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-warm-accent px-4 py-2 text-sm leading-6 text-warm-fg shadow-glow">
                     {m.text}
                   </div>
                 </div>
               ) : (
                 <div key={m.id} className="flex justify-start">
-                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-white/10 bg-ink-700 px-4 py-2 text-sm leading-6 text-ash-50">
+                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-white/10 bg-ink-700 px-4 py-2 text-sm leading-6 text-warm-muted0">
                     <span className="font-bn">{m.text}</span>
                   </div>
                 </div>
@@ -207,9 +207,9 @@ export default function ChatBot() {
             {typing ? (
               <div className="flex justify-start">
                 <div className="flex gap-1 rounded-2xl rounded-tl-sm border border-white/10 bg-ink-700 px-4 py-3">
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-ash-300 [animation-delay:-0.3s]" />
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-ash-300 [animation-delay:-0.15s]" />
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-ash-300" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-warm-bg00 [animation-delay:-0.3s]" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-warm-bg00 [animation-delay:-0.15s]" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-warm-bg00" />
                 </div>
               </div>
             ) : null}
@@ -223,7 +223,7 @@ export default function ChatBot() {
                   key={q}
                   type="button"
                   onClick={() => sendMessage(q)}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-left font-bn text-xs text-ash-200 transition hover:border-brand/40 hover:bg-brand/10 hover:text-white"
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-left font-bn text-xs text-warm-muted00 transition hover:border-warm-accent/40 hover:bg-warm-accent/10 hover:text-warm-fg"
                 >
                   {q}
                 </button>
@@ -244,13 +244,13 @@ export default function ChatBot() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="মেসেজ লিখুন... · Type a message"
               aria-label="Type a message"
-              className="flex-1 rounded-full border border-white/10 bg-ink-800 px-4 py-2 text-sm text-white outline-none focus:border-brand/60"
+              className="flex-1 rounded-full border border-white/10 bg-ink-800 px-4 py-2 text-sm text-warm-fg outline-none focus:border-warm-accent/60"
             />
             <button
               type="submit"
               aria-label="Send"
               disabled={typing || !input.trim()}
-              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-brand text-white shadow-glow transition hover:bg-brand-secondary disabled:opacity-50"
+              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow transition hover:bg-warm-accent-secondary disabled:opacity-50"
             >
               <Send size={14} />
             </button>
