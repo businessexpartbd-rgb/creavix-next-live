@@ -1,6 +1,5 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Inter, Bebas_Neue, Hind_Siliguri } from 'next/font/google';
 import { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from './components/Navbar';
@@ -12,30 +11,6 @@ import { SITE } from '../lib/site-data';
 //    Bundle goes into a separate chunk that loads after FCP.
 const ChatBot = dynamic(() => import('./components/ChatBot'), {
   loading: () => null,
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-inter',
-  preload: true,
-});
-
-const bebas = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-bebas',
-  preload: true,
-});
-
-const bangla = Hind_Siliguri({
-  weight: ['400', '500', '600'],
-  subsets: ['bengali'],
-  display: 'swap',
-  variable: '--font-bangla',
-  preload: false,
 });
 
 // ✅ Mobile zoom DISABLED by default — desktop mode চালু করলে browser নিজেই
@@ -171,7 +146,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const fontVars = [inter.variable, bebas.variable, bangla.variable].join(' ');
+  // ✅ Fonts are now self-hosted in /public/fonts/ and loaded via @font-face in globals.css
 
   // ✅ Organization + LocalBusiness + WebSite JSON-LD একসাথে (rich snippets)
   const orgLd = {
@@ -282,7 +257,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <html lang="en" className={fontVars} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* ✅ Performance: DNS prefetch + preconnect for third-party origins */}
         <link rel="dns-prefetch" href="//i.ytimg.com" />
