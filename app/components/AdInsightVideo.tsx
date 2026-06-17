@@ -123,7 +123,7 @@ export default function AdInsightVideo() {
       <Reveal delay={180}>
         <div className="mx-auto w-full max-w-[320px]" ref={wrapRef}>
           <div
-            className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
+            className="relative overflow-hidden rounded-2xl border border-warm-fg/10 bg-black shadow-2xl"
             style={{ aspectRatio: '9 / 16' }}
           >
             {activated ? (
@@ -166,7 +166,7 @@ export default function AdInsightVideo() {
             ) : null}
           </div>
 
-          <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-center backdrop-blur-sm">
+          <div className="mt-4 rounded-xl border border-warm-fg/10 bg-warm-fg/5 px-5 py-4 text-center backdrop-blur-sm">
             <p className="text-sm font-medium leading-6 text-warm-fg">{SUBTITLE_EN}</p>
             <p className="mt-1 font-bn text-sm leading-7 text-warm-muted00">{SUBTITLE_BN}</p>
           </div>

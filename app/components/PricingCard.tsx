@@ -20,7 +20,7 @@ export default function PricingCard({
       className={`relative flex h-full flex-col rounded-card border p-7 transition ${
         plan.highlight
           ? 'border-warm-accent/50 bg-gradient-to-br from-warm-accent/12 via-white/[0.04] to-transparent shadow-glow-lg'
-          : 'border-white/10 bg-white/[0.03] hover:border-warm-accent/30'
+          : 'border-warm-fg/10 bg-white/[0.03] hover:border-warm-accent/30'
       }`}
     >
       {plan.highlight ? (

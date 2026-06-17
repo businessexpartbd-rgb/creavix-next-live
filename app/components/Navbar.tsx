@@ -226,7 +226,7 @@ export default function Navbar() {
             aria-controls="pages-dropdown"
             aria-label={pagesOpen ? 'Close pages menu' : 'Open pages menu'}
             onClick={() => setPagesOpen((v) => !v)}
-            className="flex h-10 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-warm-fg transition hover:border-warm-accent/60 sm:h-11 sm:px-4"
+            className="flex h-10 items-center gap-2 rounded-full border border-warm-fg/10 bg-warm-fg/5 px-3 text-warm-fg transition hover:border-warm-accent/60 sm:h-11 sm:px-4"
           >
             {pagesOpen ? <X size={16} /> : <LayoutGrid size={16} />}
             <span className="text-xs font-semibold uppercase tracking-[0.18em]">
@@ -239,7 +239,7 @@ export default function Navbar() {
       {/* ───── Pages dropdown ───── */}
       <div
         id="pages-dropdown"
-        className={`overflow-hidden border-t border-white/10 bg-ink-950 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
+        className={`overflow-hidden border-t border-warm-fg/10 bg-ink-950 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
           pagesOpen
             ? 'max-h-[640px] opacity-100'
             : 'pointer-events-none max-h-0 opacity-0'
@@ -249,7 +249,7 @@ export default function Navbar() {
           {/* Search bar */}
           <form
             onSubmit={submitSearch}
-            className="mb-4 flex items-center gap-3 rounded-xl border border-white/10 bg-ink-800 px-4 py-2.5 focus-within:border-warm-accent/60 focus-within:ring-2 focus-within:ring-warm-accent/20"
+            className="mb-4 flex items-center gap-3 rounded-xl border border-warm-fg/10 bg-ink-800 px-4 py-2.5 focus-within:border-warm-accent/60 focus-within:ring-2 focus-within:ring-warm-accent/20"
           >
             <Search size={16} className="flex-none text-warm-accent" />
             <input
@@ -266,7 +266,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setSearch('')}
                 aria-label="Clear search"
-                className="grid h-7 w-7 flex-none place-items-center rounded-full text-warm-muted00 hover:bg-white/5 hover:text-warm-fg"
+                className="grid h-7 w-7 flex-none place-items-center rounded-full text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg"
               >
                 <X size={14} />
               </button>
@@ -296,13 +296,13 @@ export default function Navbar() {
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
                     active
                       ? 'bg-warm-accent/15 text-warm-fg ring-1 ring-warm-accent/40'
-                      : 'text-warm-muted00 hover:bg-white/5 hover:text-warm-fg'
+                      : 'text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >
                   <span
                     className={`grid h-8 w-8 flex-none place-items-center rounded-lg ${
-                      active ? 'bg-warm-accent text-warm-fg' : 'bg-white/5 text-warm-muted00'
+                      active ? 'bg-warm-accent text-warm-fg' : 'bg-warm-fg/5 text-warm-muted00'
                     }`}
                   >
                     <Icon size={14} />
@@ -317,7 +317,7 @@ export default function Navbar() {
               );
             })}
             {filteredPages.length === 0 ? (
-              <div className="col-span-full rounded-xl border border-white/10 bg-white/5 p-4 text-center text-sm text-warm-muted00">
+              <div className="col-span-full rounded-xl border border-warm-fg/10 bg-warm-fg/5 p-4 text-center text-sm text-warm-muted00">
                 No pages match.{' '}
                 <button
                   type="button"
@@ -347,7 +347,7 @@ export default function Navbar() {
                 setPagesOpen(false);
                 window.dispatchEvent(new CustomEvent('creavix:open-subscribe'));
               }}
-              className="flex items-center justify-center gap-2 rounded-pill border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-warm-fg"
+              className="flex items-center justify-center gap-2 rounded-pill border border-warm-fg/10 bg-warm-fg/5 px-5 py-2.5 text-sm text-warm-fg"
             >
               <Bell size={16} />
               Subscribe — সাবস্ক্রাইব

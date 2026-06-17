@@ -98,7 +98,7 @@ export default function ContactForm() {
           <select
             name="budget"
             defaultValue=""
-            className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+            className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
           >
             <option value="">Select budget range</option>
             {BUDGET_OPTIONS.map((b) => (
@@ -116,7 +116,7 @@ export default function ContactForm() {
           name="service"
           required
           defaultValue=""
-          className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+          className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
         >
           <option value="" disabled>Choose a service</option>
           {SERVICE_OPTIONS.map((s) => (
@@ -134,7 +134,7 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Tell us about your product, audience, goal and timeline."
-          className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+          className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
         />
       </div>
 
@@ -184,7 +184,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         onBlur={onBlur}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+        className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
       />
     </div>
   );

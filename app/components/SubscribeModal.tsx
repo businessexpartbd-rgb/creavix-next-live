@@ -81,7 +81,7 @@ export default function SubscribeModal() {
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Close"
-          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-warm-muted00 hover:bg-white/5 hover:text-warm-fg"
+          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg"
         >
           <X size={16} />
         </button>
@@ -108,7 +108,7 @@ export default function SubscribeModal() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@brand.com"
                 required
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+                className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
               />
               {error ? <p className="mt-1 text-xs text-warm-accent">{error}</p> : null}
             </div>
@@ -140,7 +140,7 @@ export default function SubscribeModal() {
           </p>
         ) : null}
         {done === 'fallback' ? (
-          <div className="mt-6 space-y-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm">
+          <div className="mt-6 space-y-3 rounded-xl border border-warm-fg/10 bg-warm-fg/[0.04] px-4 py-3 text-sm">
             <p className="text-warm-muted00">
               Email service isn&apos;t configured yet — please email us directly:
             </p>

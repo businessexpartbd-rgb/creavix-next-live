@@ -50,7 +50,7 @@ export default function Footer() {
                   rel="noreferrer"
                   aria-label={`${SITE.name} on ${s.name}`}
                   title={s.name}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-warm-muted00 transition hover:border-warm-accent/60 hover:bg-warm-accent hover:text-warm-fg"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-warm-fg/10 bg-warm-fg/5 text-warm-muted00 transition hover:border-warm-accent/60 hover:bg-warm-accent hover:text-warm-fg"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-warm-fg/10">
         <div className="container-x flex flex-col gap-3 py-6 text-xs text-warm-muted00 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE.brand}. All rights reserved.

@@ -7,7 +7,7 @@ export default function CtaBand() {
   return (
     <section className="container-x py-20 sm:py-24">
       <Reveal>
-        <div className="relative overflow-hidden rounded-card border border-white/10 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 p-8 shadow-card sm:p-12 lg:p-16">
+        <div className="relative overflow-hidden rounded-card border border-warm-fg/10 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 p-8 shadow-card sm:p-12 lg:p-16">
           <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-warm-accent/30 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-warm-accent/15 blur-3xl" />
 

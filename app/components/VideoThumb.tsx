@@ -102,7 +102,7 @@ export default function VideoThumb({
         ref={(el) => {
           containerRef.current = el;
         }}
-        className={`relative overflow-hidden rounded-card border border-white/10 bg-ink-800 ${ratioClass}`}
+        className={`relative overflow-hidden rounded-card border border-warm-fg/10 bg-ink-800 ${ratioClass}`}
       >
         <iframe
           ref={iframeRef}
@@ -128,7 +128,7 @@ export default function VideoThumb({
       onClick={onActivate}
       title={title}
       aria-label={`Play ${title}`}
-      className={`group relative block w-full overflow-hidden rounded-card border border-white/10 bg-ink-800 ${ratioClass}`}
+      className={`group relative block w-full overflow-hidden rounded-card border border-warm-fg/10 bg-ink-800 ${ratioClass}`}
     >
       <Image
         src={thumbSrc}

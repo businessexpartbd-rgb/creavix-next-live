@@ -284,7 +284,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
   return (
     <section className="container-x py-16 sm:py-20">
       {/* ── Google Play Store-style rating hero ── */}
-      <div className="mb-16 rounded-card border border-white/10 bg-ink-800/60 p-6 sm:p-8">
+      <div className="mb-16 rounded-card border border-warm-fg/10 bg-ink-800/60 p-6 sm:p-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           {/* Big score */}
           <div className="flex flex-col items-center text-center sm:min-w-[140px]">
@@ -346,7 +346,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
       )}
 
       {/* ── Submit review form ── */}
-      <div className="mt-20 rounded-card border border-white/10 bg-white/[0.03] p-7 sm:p-9">
+      <div className="mt-20 rounded-card border border-warm-fg/10 bg-white/[0.03] p-7 sm:p-9">
         <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg sm:text-3xl">
           Share your experience
         </h3>
@@ -375,7 +375,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+                className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
               />
             </div>
             <div>
@@ -389,7 +389,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
                 onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError(''); }}
                 onBlur={(e) => { if (!validateEmail(e.target.value)) setEmailError('সঠিক ইমেইল দিন · Enter a valid email'); }}
                 placeholder="you@email.com (masked publicly)"
-                className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+                className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
               />
               {emailError && <p className="mt-1 text-xs text-warm-accent">{emailError}</p>}
             </div>
@@ -405,7 +405,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
               onChange={(e) => setReviewEn(e.target.value)}
               rows={3}
               placeholder="Share your experience in English..."
-              className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+              className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
             />
           </div>
 
@@ -418,7 +418,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
               onChange={(e) => setReviewBn(e.target.value)}
               rows={3}
               placeholder="বাংলায় আপনার অভিজ্ঞতা শেয়ার করুন (ঐচ্ছিক)..."
-              className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 font-bn text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+              className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 font-bn text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
             />
           </div>
 

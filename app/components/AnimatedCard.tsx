@@ -26,11 +26,11 @@ export default function AnimatedCard({
     'relative rounded-card border transition-all duration-300';
   
   const variantClasses = {
-    default: `${baseClasses} border-white/10 bg-ink-800 shadow-card ${
+    default: `${baseClasses} border-warm-fg/10 bg-ink-800 shadow-card ${
       hoverGlow ? 'hover:border-warm-accent/40 hover:shadow-glow' : ''
     }`,
-    glass: `${baseClasses} border-white/10 bg-white/5 shadow-card backdrop-blur-sm ${
-      hoverGlow ? 'hover:border-warm-accent/30 hover:bg-white/10' : ''
+    glass: `${baseClasses} border-warm-fg/10 bg-warm-fg/5 shadow-card backdrop-blur-sm ${
+      hoverGlow ? 'hover:border-warm-accent/30 hover:bg-warm-fg/10' : ''
     }`,
     minimal: `${baseClasses} border-white/5 bg-transparent ${
       hoverGlow ? 'hover:border-warm-accent/30' : ''
