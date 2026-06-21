@@ -8,6 +8,7 @@ import { SHOWCASES, SITE, ytThumb } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import CtaBand from '../components/CtaBand';
+import CinematicGallery from '../components/CinematicGallery';
 
 // Map showcase titles to filter tab labels
 const FILTER_TABS = [
@@ -43,7 +44,7 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
       target="_blank"
       rel="noreferrer"
       title={title}
-      className="group relative block overflow-hidden rounded-card border border-white/10 bg-ink-800 transition hover:border-warm-accent/50 hover:shadow-glow"
+      className="group relative block overflow-hidden rounded-card border border-warm-fg/10 bg-warm-bg transition hover:border-warm-accent/50 hover:shadow-warm-glow"
     >
       <div className="aspect-video">
         <Image
@@ -76,16 +77,15 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
 
 function ComingSoonCard({ index }: { index: number }) {
   return (
-    <div className="relative overflow-hidden rounded-card border border-dashed border-white/20 bg-ink-800/60">
+    <div className="relative overflow-hidden rounded-card border border-dashed border-warm-fg/20 bg-warm-bg/60">
       <div className="aspect-video flex flex-col items-center justify-center gap-3 p-4 text-center">
-        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-warm-muted00">
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-warm-fg/10 bg-warm-fg/5 text-warm-muted">
           <Clock size={18} />
         </span>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-warm-muted00">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-warm-muted">
             Coming Soon
           </p>
-          <p className="mt-1 font-bn text-[11px] text-warm-muted00">শীঘ্রই আসছে {index + 1}</p>
         </div>
       </div>
     </div>
@@ -131,8 +131,21 @@ export default function PortfolioPage() {
         </Reveal>
       </HeroSection>
 
+      {/* Cinematic Stories Gallery */}
+      {(() => {
+        const cinematicShowcase = SHOWCASES.find((s) => s.title_en === 'Cinematic Storytelling');
+        if (cinematicShowcase) {
+          const cinematicVideos = cinematicShowcase.ids.map((id, i) => ({
+            id,
+            title: `${cinematicShowcase.title_en} ${i + 1}`,
+          }));
+          return <CinematicGallery videos={cinematicVideos} />;
+        }
+        return null;
+      })()}
+
       {/* Filter tabs */}
-      <div className="border-b border-white/10 bg-ink-950/80 backdrop-blur-md sticky top-16 sm:top-20 z-30">
+      <div className="border-b border-warm-fg/10 bg-warm-fg/5 backdrop-blur-md sticky top-16 sm:top-20 z-30">
         <div className="container-x">
           <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
             {FILTER_TABS.map((tab) => {
@@ -144,8 +157,8 @@ export default function PortfolioPage() {
                   onClick={() => setActiveFilter(tab.key)}
                   className={`flex-none rounded-full px-4 py-2 text-sm font-medium transition whitespace-nowrap ${
                     active
-                      ? 'bg-warm-accent text-warm-fg shadow-glow'
-                      : 'border border-white/10 bg-white/5 text-warm-muted00 hover:border-warm-accent/40 hover:text-warm-fg'
+                      ? 'bg-warm-accent text-warm-fg shadow-warm-glow'
+                      : 'border border-warm-fg/10 bg-warm-fg/5 text-warm-muted hover:border-warm-accent/40 hover:text-warm-fg'
                   }`}
                 >
                   {tab.label_en}
@@ -180,28 +193,27 @@ export default function PortfolioPage() {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-sm text-warm-muted00">No videos in this category yet.</p>
-            <p className="mt-1 font-bn text-xs text-warm-muted00">এই ক্যাটাগরিতে এখনো ভিডিও নেই।</p>
+            <p className="text-sm text-warm-muted">No videos in this category yet.</p>
           </div>
         )}
 
         <Reveal delay={200}>
-          <p className="mt-10 text-center text-xs uppercase tracking-[0.18em] text-warm-muted00">
+          <p className="mt-10 text-center text-xs uppercase tracking-[0.18em] text-warm-muted">
             Click any thumbnail to watch on YouTube
           </p>
         </Reveal>
       </section>
 
       {/* CTA */}
-      <section className="border-t border-white/10 bg-ink-800/60 py-20 sm:py-24">
+      <section className="border-t border-warm-fg/10 bg-warm-accent/5 py-20 sm:py-24">
         <div className="container-x">
           <Reveal>
             <div className="rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.08] to-transparent p-8 text-center sm:p-12">
-              <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg sm:text-3xl">
+              <h3 className="font-serif text-2xl leading-tight tracking-tight text-warm-fg sm:text-3xl">
                 Want a campaign like these?
               </h3>
-              <p className="mx-auto mt-3 max-w-xl font-bn text-sm leading-7 text-warm-muted00">
-                আপনার পণ্য, অডিয়েন্স ও লক্ষ্য জানান — পরিষ্কার প্ল্যান ও স্যাম্পল ক্রিয়েটিভ ডিরেকশন পাঠাবো।
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-warm-muted">
+                Share your brief, and we'll send a creative direction and timeline.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="btn-3d-primary">
