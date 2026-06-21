@@ -57,7 +57,7 @@ export default function HomePage() {
             <Reveal>
               <span className="eyebrow">
                 <Sparkles size={12} className="text-warm-accent" />
-                {SITE.tagline_en} · বাংলাদেশ
+                {SITE.tagline_en}
               </span>
             </Reveal>
             <Reveal delay={80}>
@@ -69,13 +69,7 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl text-base leading-8 text-warm-muted sm:text-lg">
-                Creavix blends premium storytelling, AI-led production and bilingual brand
-                clarity for businesses that want short-form speed, cinematic depth and a
-                stronger mobile-first web presence.
-              </p>
-              <p className="mt-3 max-w-xl font-bn text-sm leading-7 text-warm-muted">
-                মেটা, ইউটিউব ও টিকটকের জন্য বাস্তবধর্মী, কনভার্সন-কেন্দ্রিক এআই ভিডিও অ্যাড।
-                ২০১৪ থেকে ৪,৩০০+ ব্র্যান্ডের পাশে।
+                Premium storytelling meets AI production. Fast, cinematic, and built for conversions.
               </p>
             </Reveal>
             <Reveal delay={240}>
@@ -86,56 +80,21 @@ export default function HomePage() {
                 </a>
                 <Link href="/portfolio" className="btn-3d-secondary">
                   <PlayCircle size={16} />
-                  Watch our work
+                  View work
                 </Link>
-              </div>
-            </Reveal>
-            <Reveal delay={320}>
-              <div className="mt-10 flex items-center gap-3">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-sm text-warm-muted">
-                  <span className="font-semibold text-warm-fg">4.8/5</span> from verified clients ·{' '}
-                  <span className="font-bn">৪,৩০০+ প্রজেক্ট</span>
-                </p>
               </div>
             </Reveal>
           </div>
 
-          {/* Hero media stack */}
+          {/* Hero media - single featured video */}
           <div className="relative">
             <Reveal delay={120}>
-              <div className="relative grid gap-4">
-                {HERO_REEL[0] ? (
-                  <div className="relative">
-                    <div className="absolute -inset-4 -z-10 rounded-[32px] bg-gradient-to-br from-warm-accent/20 via-warm-accent/5 to-transparent blur-2xl" />
-                    <VideoThumb id={HERO_REEL[0]} title="Featured cinematic story" priority />
-                  </div>
-                ) : null}
-                <div className="grid grid-cols-2 gap-4">
-                  {HERO_REEL.slice(1, 3).map((id, i) => (
-                    <VideoThumb key={id} id={id} title={`Hero reel ${i + 2}`} />
-                  ))}
+              {HERO_REEL[0] ? (
+                <div className="relative">
+                  <div className="absolute -inset-4 -z-10 rounded-[32px] bg-gradient-to-br from-warm-accent/20 via-warm-accent/5 to-transparent blur-2xl" />
+                  <VideoThumb id={HERO_REEL[0]} title="Featured cinematic story" priority />
                 </div>
-              </div>
-            </Reveal>
-            <Reveal delay={280}>
-              <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-warm-fg/10 bg-warm-bg/80 p-4 shadow-card backdrop-blur lg:block">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-warm-accent text-warm-bg">
-                    <Sparkles size={18} />
-                  </span>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-warm-muted">Delivered in</p>
-                    <p className="font-display text-lg uppercase tracking-wide text-warm-fg">
-                      24–48 hours
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ) : null}
             </Reveal>
           </div>
         </div>
@@ -152,7 +111,6 @@ export default function HomePage() {
                   {s.value}
                 </p>
                 <p className="mt-2 text-sm font-medium text-warm-fg">{s.label_en}</p>
-                <p className="mt-1 font-bn text-xs text-warm-muted">{s.sub_bn}</p>
               </div>
             ))}
           </div>
@@ -165,11 +123,9 @@ export default function HomePage() {
       {/* Services */}
       <section className="container-x py-24 sm:py-28 cv-auto">
         <SectionIntro
-          eyebrow="Core Services · মূল সার্ভিস"
+          eyebrow="Core Services"
           title="High-impact production for"
           accent="modern campaigns"
-          body="Conversion-focused AI video ads, cinematic storytelling and bilingual campaign formats."
-          body_bn="কনভার্সন-ফোকাসড এআই ভিডিও অ্যাড, সিনেম্যাটিক স্টোরিটেলিং ও বাইলিঙ্গুয়াল ক্যাম্পেইন।"
         />
         <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {SERVICES.map((service, i) => (
@@ -181,13 +137,12 @@ export default function HomePage() {
       </section>
 
       {/* Trust pillars */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28 cv-auto">
+      <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28 cv-auto">
         <div className="container-x">
           <SectionIntro
-            eyebrow="Why Creavix · কেন আমরা"
+            eyebrow="Why Creavix"
             title="Built for"
             accent="trust and delivery"
-            body_bn="দ্রুত অনুমোদন, পরিষ্কার যোগাযোগ ও নির্ভরযোগ্য কোয়ালিটি — তাই দীর্ঘমেয়াদি ক্যাম্পেইনে স্টুডিও ভরসা অর্জন করেছে।"
           />
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {TRUST_PILLARS.map((pillar, i) => (
@@ -203,10 +158,9 @@ export default function HomePage() {
       <section className="container-x py-24 sm:py-28 cv-auto">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionIntro
-            eyebrow="Showcase · কাজের ঝলক"
+            eyebrow="Showcase"
             title="Cinematic stories before the"
             accent="short-form grid"
-            body_bn="স্টোরি-ফার্স্ট ভিডিও আগে দেখানো হয়, এরপর ক্যাটাগরিভিত্তিক শর্ট-ফর্ম গ্রিড।"
           />
           <Reveal delay={120}>
             <Link href="/portfolio" className="btn-3d-secondary">
@@ -219,13 +173,6 @@ export default function HomePage() {
             <Reveal key={sc.title_en} delay={i * 80}>
               <article className="card-warm overflow-hidden">
                 <VideoThumb id={sc.ids[0]} title={sc.title_en} />
-                <div className="p-6">
-                  <h3 className="font-display text-xl uppercase tracking-[0.04em] text-warm-fg">
-                    {sc.title_en}
-                  </h3>
-                  <p className="mt-1 font-bn text-sm text-warm-muted00">{sc.title_bn}</p>
-                  <p className="mt-3 text-sm leading-7 text-warm-muted00">{sc.sub_en}</p>
-                </div>
               </article>
             </Reveal>
           ))}
@@ -233,10 +180,10 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="border-y border-white/10 bg-ink-800/60 py-24 sm:py-28 cv-auto">
+      <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28 cv-auto">
         <div className="container-x">
           <SectionIntro
-            eyebrow="Our Process · কাজের ধাপ"
+            eyebrow="Our Process"
             title="A clearer flow for"
             accent="faster approvals"
           />
@@ -275,23 +222,23 @@ export default function HomePage() {
       {/* Value promise */}
       <section className="container-x pb-24 sm:pb-28 cv-auto">
         <Reveal>
-          <div className="grid gap-10 rounded-card border border-white/10 bg-white/[0.03] p-8 sm:p-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="grid gap-10 rounded-card border border-warm-fg/10 bg-warm-fg/[0.03] p-8 sm:p-12 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <span className="eyebrow">Studio promise · প্রতি��্রুতি</span>
-              <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-warm-fg sm:text-4xl">
-                Sharper hierarchy, calmer reading flow,{' '}
-                <span className="accent">stronger premium cues.</span>
+              <span className="eyebrow">Studio Promise</span>
+              <h2 className="mt-5 font-serif text-3xl leading-tight tracking-tight text-warm-fg sm:text-4xl">
+                Quality, speed, and
+                <span className="font-display text-warm-accent"> clear communication</span>.
               </h2>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {[
-                'Strategy-led content where every asset starts with audience intent and a conversion plan.',
-                'Bilingual brand delivery — English-first structure with refined Bangla presentation.',
-                'Premium turnaround without sacrificing cinematic polish or brand safety.',
-                'Founder-led oversight on every brief from script to final export.',
+                'Conversion-focused strategy from day one.',
+                'Fast turnarounds without compromising quality.',
+                'Direct founder oversight on every project.',
+                'Transparent, bilingual collaboration.',
               ].map((t) => (
-                <li key={t} className="flex gap-3 text-sm leading-7 text-warm-muted00">
-                  <CheckCircle2 size={18} className="mt-1 flex-none text-warm-accent" />
+                <li key={t} className="flex gap-3 text-sm leading-6 text-warm-fg">
+                  <CheckCircle2 size={18} className="mt-0.5 flex-none text-warm-accent" />
                   <span>{t}</span>
                 </li>
               ))}

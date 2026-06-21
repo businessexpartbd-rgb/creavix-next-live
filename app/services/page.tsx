@@ -65,19 +65,16 @@ export default function ServicesPage() {
     <>
       <HeroSection theme="services" watermark="SERVICES">
         <Reveal>
-          <span className="eyebrow">Services · সার্ভিস</span>
+          <span className="eyebrow">Services</span>
         </Reveal>
         <Reveal delay={80}>
           <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-            <span className="font-display text-warm-accent">AI Video Ads</span> and storytelling for growth-focused brands.
+            <span className="font-display text-warm-accent">AI Video Ads</span> and storytelling.
           </h1>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl text-base leading-8 text-warm-muted sm:text-lg">
-            From launch promos to brand storytelling, each service delivers clearer messaging, stronger visuals and faster campaign motion across Meta, YouTube and TikTok.
-          </p>
-          <p className="mt-3 max-w-2xl font-bn text-sm leading-7 text-warm-muted">
-            লঞ্চ প্রমো থেকে ব্র্যান্ড স্টোরিটেলিং — প্রতিটি সার্ভিস ব্যবসাকে দেয় পরিষ্কার মেসেজিং, শক্তিশালী ভিজ্যুয়াল ও দ্রুত ক্যাম্পেইন গতি।
+            Conversion-focused production across Meta, YouTube, and TikTok.
           </p>
         </Reveal>
         <Reveal delay={240}>
@@ -115,21 +112,19 @@ export default function ServicesPage() {
                       </div>
                     </Reveal>
                     <Reveal delay={60}>
-                      <h2 className="mt-5 font-display text-3xl uppercase tracking-[0.04em] text-warm-fg sm:text-4xl lg:text-5xl">
+                      <h2 className="mt-5 font-serif text-3xl leading-tight tracking-tight text-warm-fg sm:text-4xl lg:text-5xl">
                         {service.title_en}
                       </h2>
-                      <p className="mt-1 font-bn text-base text-warm-muted00">{service.title_bn}</p>
                     </Reveal>
                     <Reveal delay={100}>
-                      <p className="mt-5 text-sm leading-8 text-warm-muted00">{service.desc_en}</p>
-                      <p className="mt-3 font-bn text-sm leading-7 text-warm-muted00">{service.desc_bn}</p>
+                      <p className="mt-5 text-base leading-8 text-warm-muted">{service.desc_en}</p>
                     </Reveal>
                     <Reveal delay={140}>
                       <ul className="mt-7 space-y-2.5">
-                        {service.bullets_bn.map((b) => (
+                        {service.bullets_en.map((b) => (
                           <li key={b} className="flex items-start gap-3">
                             <CheckCircle2 size={16} className="mt-1 flex-none text-warm-accent" />
-                            <span className="font-bn text-sm leading-6 text-warm-muted00">{b}</span>
+                            <span className="text-sm leading-6 text-warm-muted">{b}</span>
                           </li>
                         ))}
                       </ul>
@@ -138,10 +133,7 @@ export default function ServicesPage() {
                       <Reveal delay={180}>
                         <div className="mt-6 flex items-center gap-3 rounded-xl border border-warm-accent/20 bg-warm-accent/[0.06] px-4 py-3">
                           <span className="h-2 w-2 flex-none rounded-full bg-warm-accent" />
-                          <div>
-                            <p className="text-sm font-medium text-warm-muted00">{hint.en}</p>
-                            <p className="font-bn text-xs text-warm-muted00">{hint.bn}</p>
-                          </div>
+                          <p className="text-sm font-medium text-warm-muted">{hint.en}</p>
                         </div>
                       </Reveal>
                     )}
@@ -154,7 +146,7 @@ export default function ServicesPage() {
                           className="btn-3d-primary"
                         >
                           <MessageCircle size={16} />
-                          অর্ডার করুন
+                          Order now
                         </a>
                       </div>
                     </Reveal>
@@ -184,21 +176,20 @@ export default function ServicesPage() {
       </div>
 
       {/* FAQ section */}
-      <section className="border-t border-white/10 bg-ink-800/60 py-24 sm:py-28">
+      <section className="border-t border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
-            eyebrow="FAQ · প্রশ্নোত্তর"
+            eyebrow="FAQ"
             title="Common questions before"
             accent="booking a service"
-            body_bn="সার্ভিস নেওয়ার আগে সবচেয়ে বেশি জিজ্ঞেস করা প্রশ্নগুলো।"
           />
           <div className="mt-12">
             <FAQAccordion items={FAQS} />
           </div>
           <Reveal delay={120}>
             <div className="mt-10 rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.08] to-transparent p-6 sm:p-8">
-              <p className="font-bn text-sm leading-7 text-warm-muted00">
-                আরো প্রশ্ন আছে? WhatsApp-এ সরাসরি জিজ্ঞেস করুন — সাধারণত কয়েক ঘণ্টায় উত্তর দিই।
+              <p className="text-sm leading-7 text-warm-muted">
+                More questions? Ask on WhatsApp — we typically reply within hours.
               </p>
               <a
                 href={SITE.whatsappLink}
@@ -207,7 +198,7 @@ export default function ServicesPage() {
                 className="btn-3d-primary mt-4"
               >
                 <MessageCircle size={16} />
-                WhatsApp করুন
+                Message on WhatsApp
               </a>
             </div>
           </Reveal>

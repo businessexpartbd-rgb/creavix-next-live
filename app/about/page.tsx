@@ -206,7 +206,7 @@ export default function AboutPage() {
       <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
-            eyebrow="Our journey · আমাদের যাত্রা"
+            eyebrow="Our journey"
             title="A decade of"
             accent="consistent growth"
             body_bn="২০১৪ থেকে ২০২৬ — প্রতিটি মাইলস্টোন ছিল একটি নতুন প্রতিশ্রুতি।"
@@ -249,7 +249,7 @@ export default function AboutPage() {
       {/* Core values */}
       <section className="container-x py-24 sm:py-28">
         <SectionIntro
-          eyebrow="Core values · মূল মূল্যবোধ"
+          eyebrow="Core values"
           title="The principles behind"
           accent="every campaign"
           body_bn="চারটি মূল মূল্যবোধ যা প্রতিটি প্রজেক্টে আমাদের গাইড করে।"
@@ -278,7 +278,7 @@ export default function AboutPage() {
       <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-20 sm:py-24">
         <div className="container-x">
           <SectionIntro
-            eyebrow="Studio · স্টুডিও"
+            eyebrow="Studio"
             title="Real studio in"
             accent="Hemayetpur, Savar"
             body_bn="হেমায়েতপুর, সাভার, ঢাকা — ১৩৪০। ভিজিটের জন্য আগেই WhatsApp করে অ্যাপয়েন্টমেন্ট নিন।"
