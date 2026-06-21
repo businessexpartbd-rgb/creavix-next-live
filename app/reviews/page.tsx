@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import ReviewSection from '../components/ReviewSection';
 import CtaBand from '../components/CtaBand';
+import ScrollZoom from '../components/ScrollZoom';
 import type { DbReview } from '../api/reviews/route';
 
 export const metadata = {
@@ -48,9 +49,11 @@ export default async function ReviewsPage() {
           <span className="eyebrow">Reviews · ক্লায়েন্ট রিভিউ</span>
         </Reveal>
         <Reveal delay={80}>
+          <ScrollZoom className="mt-6">
           <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
             Verified <span className="font-display text-warm-accent">client feedback</span> across BD.
           </h1>
+          </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">

@@ -6,6 +6,7 @@ import Reveal from '../components/Reveal';
 import SectionIntro from '../components/SectionIntro';
 import TrustCard from '../components/TrustCard';
 import CtaBand from '../components/CtaBand';
+import ScrollZoom from '../components/ScrollZoom';
 
 export const metadata = {
   title: 'About Creavix — AI Video Studio Bangladesh Since 2014 | Hannan Khan',
@@ -126,9 +127,11 @@ export default function AboutPage() {
           <span className="eyebrow">About Creavix · আমাদের গল্প</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+          <ScrollZoom className="mt-6">
+          <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
             Storytelling, performance & <span className="font-display text-warm-accent">AI production</span> together.
           </h1>
+          </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">

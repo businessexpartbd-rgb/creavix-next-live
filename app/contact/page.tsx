@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import SectionIntro from '../components/SectionIntro';
 import ContactForm from '../components/ContactForm';
+import ScrollZoom from '../components/ScrollZoom';
 import { SOCIAL_ICON_MAP } from '../components/SocialIcons';
 
 export const metadata = {
@@ -34,9 +35,11 @@ export default function ContactPage() {
           <span className="eyebrow">Contact · যোগাযোগ</span>
         </Reveal>
         <Reveal delay={80}>
+          <ScrollZoom className="mt-6">
           <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
             Start your <span className="font-display text-warm-accent">video marketing</span> campaign.
           </h1>
+          </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">

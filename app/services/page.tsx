@@ -7,6 +7,7 @@ import SectionIntro from '../components/SectionIntro';
 import VideoThumb from '../components/VideoThumb';
 import FAQAccordion from '../components/FAQAccordion';
 import CtaBand from '../components/CtaBand';
+import ScrollZoom from '../components/ScrollZoom';
 
 export const metadata = {
   title: 'AI Video Ads, Cinematic Storytelling & Product Videos | Creavix Services',
@@ -68,9 +69,11 @@ export default function ServicesPage() {
           <span className="eyebrow">Services</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-            <span className="font-display text-warm-accent">AI Video Ads</span> and storytelling.
-          </h1>
+          <ScrollZoom className="mt-6">
+            <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+              <span className="font-display text-warm-accent">AI Video Ads</span> and storytelling.
+            </h1>
+          </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl text-base leading-8 text-warm-muted sm:text-lg">
@@ -121,7 +124,7 @@ export default function ServicesPage() {
                     </Reveal>
                     <Reveal delay={140}>
                       <ul className="mt-7 space-y-2.5">
-                        {service.bullets_en.map((b) => (
+                        {service.bullets_bn?.map((b: string) => (
                           <li key={b} className="flex items-start gap-3">
                             <CheckCircle2 size={16} className="mt-1 flex-none text-warm-accent" />
                             <span className="text-sm leading-6 text-warm-muted">{b}</span>

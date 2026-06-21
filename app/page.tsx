@@ -24,6 +24,8 @@ import VideoThumb from './components/VideoThumb';
 import CtaBand from './components/CtaBand';
 import ClientLogosSlider from './components/ClientLogosSlider';
 import ReviewSection from './components/ReviewSection';
+import ScrollZoom from './components/ScrollZoom';
+import VideoMarketingShowcase from './components/VideoMarketingShowcase';
 import type { DbReview } from './api/reviews/route';
 export const metadata = {
   title: 'Creavix — AI Video Marketing Agency Bangladesh',
@@ -61,11 +63,13 @@ export default function HomePage() {
               </span>
             </Reveal>
             <Reveal delay={80}>
-              <h1 className="mt-6 font-serif text-balance text-5xl leading-[1.1] tracking-tight text-warm-fg sm:text-6xl lg:text-7xl xl:text-[88px]">
-                Cinematic <span className="font-display text-warm-accent">AI Video</span>
-                <br />
-                campaigns that convert.
-              </h1>
+              <ScrollZoom className="mt-6">
+                <h1 className="font-serif text-balance text-5xl leading-[1.1] tracking-tight text-warm-fg sm:text-6xl lg:text-7xl xl:text-[88px]">
+                  Cinematic <span className="font-display text-warm-accent">AI Video</span>
+                  <br />
+                  campaigns that convert.
+                </h1>
+              </ScrollZoom>
             </Reveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl text-base leading-8 text-warm-muted sm:text-lg">
@@ -135,6 +139,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Video Marketing Showcase */}
+      <VideoMarketingShowcase />
 
       {/* Trust pillars */}
       <section className="border-y border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28 cv-auto">

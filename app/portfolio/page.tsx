@@ -8,6 +8,7 @@ import { SHOWCASES, SITE, ytThumb } from '../../lib/site-data';
 import HeroSection from '../components/HeroSection';
 import Reveal from '../components/Reveal';
 import CtaBand from '../components/CtaBand';
+import ScrollZoom from '../components/ScrollZoom';
 import CinematicGallery from '../components/CinematicGallery';
 
 // Map showcase titles to filter tab labels
@@ -117,9 +118,11 @@ export default function PortfolioPage() {
           <span className="eyebrow">Portfolio · শোকেস</span>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-            Story-first <span className="font-display text-warm-accent">video work</span> for modern brands.
-          </h1>
+          <ScrollZoom className="mt-6">
+            <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
+              Story-first <span className="font-display text-warm-accent">video work</span> for modern brands.
+            </h1>
+          </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-6 max-w-2xl text-sm leading-7 text-warm-muted sm:text-base">

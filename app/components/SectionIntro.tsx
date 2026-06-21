@@ -1,4 +1,5 @@
 import Reveal from './Reveal';
+import ScrollZoom from './ScrollZoom';
 
 interface SectionIntroProps {
   eyebrow?: string;
@@ -22,15 +23,17 @@ export default function SectionIntro({
     <Reveal>
       <div className={`flex max-w-3xl flex-col gap-5 ${alignment}`}>
         {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
-        <h2 className="font-serif text-balance text-4xl font-normal leading-tight tracking-tight text-warm-fg sm:text-5xl lg:text-6xl xl:text-7xl">
-          {title}
-          {accent ? (
-            <>
-              {' '}
-              <span className="font-display text-warm-accent">{accent}</span>
-            </>
-          ) : null}
-        </h2>
+        <ScrollZoom className="scroll-zoom-fast">
+          <h2 className="font-serif text-balance text-4xl font-normal leading-tight tracking-tight text-warm-fg sm:text-5xl lg:text-6xl xl:text-7xl">
+            {title}
+            {accent ? (
+              <>
+                {' '}
+                <span className="font-display text-warm-accent">{accent}</span>
+              </>
+            ) : null}
+          </h2>
+        </ScrollZoom>
         {body ? (
           <p className="max-w-2xl text-base leading-7 text-warm-muted sm:text-[17px]">{body}</p>
         ) : null}
