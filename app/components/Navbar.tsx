@@ -127,11 +127,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+    <header
+      className={`sticky top-0 z-30 w-full transition-all duration-300 ${
         scrolled
-          ? 'border-on-dark/10 bg-cream/72 backdrop-blur-md'
-          : 'border-transparent bg-transparent'
+          ? 'border-b border-accent-primary/20 bg-bg-base/85 backdrop-blur-xl shadow-lg'
+          : 'border-b border-accent-primary/10 bg-bg-base/50 backdrop-blur-sm'
       }`}
     >
       {/* Click-outside backdrop — visible only when the Pages dropdown
