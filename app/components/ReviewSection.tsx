@@ -51,15 +51,15 @@ function RatingBar({ star, count, total }: { star: number; count: number; total:
   const pct = total > 0 ? (count / total) * 100 : 0;
   return (
     <div className="flex items-center gap-3">
-      <span className="w-3 text-right text-xs font-medium text-warm-muted">{star}</span>
+      <span className="w-3 text-right text-xs font-medium text-muted">{star}</span>
       <Star size={11} className="flex-none fill-yellow-400 text-yellow-400" />
-      <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-warm-accent/10">
+      <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-accent-primary/10">
         <div
-          className="absolute inset-y-0 left-0 rounded-full bg-warm-accent transition-all duration-700"
+          className="absolute inset-y-0 left-0 rounded-full bg-accent-primary transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="w-6 text-right text-xs text-warm-muted">{count}</span>
+      <span className="w-6 text-right text-xs text-muted">{count}</span>
     </div>
   );
 }
@@ -86,19 +86,19 @@ function Stars({ rating, size = 14 }: { rating: number; size?: number }) {
    ────────────────────────────────────────────── */
 function ReviewCard({ review }: { review: DbReview }) {
   return (
-    <figure className="card-warm break-inside-avoid p-6">
+    <figure className="rounded-card border border-accent-primary/10 bg-accent-primary/5 break-inside-avoid p-6">
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <span
-            className="grid h-10 w-10 flex-none place-items-center rounded-full font-semibold text-warm-bg text-sm shadow-warm-glow"
+            className="grid h-10 w-10 flex-none place-items-center rounded-full font-semibold text-warm-bg text-sm shadow-gold-glow"
             style={{ backgroundColor: review.avatar_color }}
           >
             {review.name.charAt(0).toUpperCase()}
           </span>
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-warm-fg truncate">{review.name}</p>
-            <p className="text-xs text-warm-muted">{review.email_masked}</p>
+            <p className="text-sm font-semibold text-on-dark truncate">{review.name}</p>
+            <p className="text-xs text-muted">{review.email_masked}</p>
           </div>
         </div>
         {review.verified && (
@@ -112,14 +112,14 @@ function ReviewCard({ review }: { review: DbReview }) {
       {/* Stars + date */}
       <div className="mt-3 flex items-center justify-between">
         <Stars rating={review.rating} />
-        <span className="text-[11px] text-warm-muted">{formatDate(review.created_at)}</span>
+        <span className="text-[11px] text-muted">{formatDate(review.created_at)}</span>
       </div>
 
       {/* Review body */}
       <blockquote className="mt-3">
-        <p className="text-sm leading-7 text-warm-fg">&ldquo;{review.review_en}&rdquo;</p>
+        <p className="text-sm leading-7 text-on-dark">&ldquo;{review.review_en}&rdquo;</p>
         {review.review_bn && (
-          <p className="mt-2 font-bn text-xs leading-6 text-warm-muted">&ldquo;{review.review_bn}&rdquo;</p>
+          <p className="mt-2 font-bn text-xs leading-6 text-muted">&ldquo;{review.review_bn}&rdquo;</p>
         )}
       </blockquote>
     </figure>
@@ -144,7 +144,7 @@ function StarSelector({ value, onChange }: { value: number; onChange: (v: number
             onMouseLeave={() => setHover(0)}
             onClick={() => onChange(i)}
             className={`text-2xl transition-transform hover:scale-110 ${
-              filled ? 'text-warm-accent drop-shadow-[0_0_6px_rgba(235,94,40,0.6)]' : 'text-warm-bg/20'
+              filled ? 'text-accent-primary drop-shadow-[0_0_6px_rgba(235,94,40,0.6)]' : 'text-warm-bg/20'
             }`}
           >
             {filled ? '★' : '☆'}
@@ -152,7 +152,7 @@ function StarSelector({ value, onChange }: { value: number; onChange: (v: number
         );
       })}
       {value > 0 && (
-        <span className="ml-2 text-sm text-warm-muted">{value}/5</span>
+        <span className="ml-2 text-sm text-muted">{value}/5</span>
       )}
     </div>
   );
@@ -284,16 +284,16 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
   return (
     <section className="container-x py-16 sm:py-20">
       {/* ── Google Play Store-style rating hero ── */}
-      <div className="mb-16 rounded-card border border-warm-fg/10 bg-ink-800/60 p-6 sm:p-8">
+      <div className="mb-16 rounded-card border border-on-dark/10 bg-ink-800/60 p-6 sm:p-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           {/* Big score */}
           <div className="flex flex-col items-center text-center sm:min-w-[140px]">
-            <span className="font-sans text-[80px] font-extrabold leading-none tracking-tight text-warm-muted0 sm:text-[96px]">
+            <span className="font-sans text-[80px] font-extrabold leading-none tracking-tight text-muted0 sm:text-[96px]">
               {avg.toFixed(1)}
             </span>
             <Stars rating={Math.round(avg)} size={18} />
-            <p className="mt-1.5 text-xs text-warm-muted00">out of 5.0</p>
-            <p className="mt-3 font-bn text-xs text-warm-muted00">
+            <p className="mt-1.5 text-xs text-muted">out of 5.0</p>
+            <p className="mt-3 font-bn text-xs text-muted">
               {total.toLocaleString('en-BD')}+ রিভিউ
             </p>
           </div>
@@ -306,16 +306,16 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
           </div>
 
           {/* Summary card */}
-          <div className="hidden lg:flex flex-col items-center justify-center rounded-xl border border-warm-accent/20 bg-warm-accent/[0.06] px-8 py-6 text-center min-w-[160px]">
+          <div className="hidden lg:flex flex-col items-center justify-center rounded-xl border border-accent-primary/20 bg-accent-primary/[0.06] px-8 py-6 text-center min-w-[160px]">
             <div className="flex items-center gap-1">
               {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} size={16} className={i < 5 ? 'fill-yellow-400 text-yellow-400' : 'text-warm-muted00'} />
+                <Star key={i} size={16} className={i < 5 ? 'fill-yellow-400 text-yellow-400' : 'text-muted'} />
               ))}
             </div>
-            <p className="mt-2 font-display text-lg uppercase tracking-wide text-warm-fg">
+            <p className="mt-2 font-display text-lg uppercase tracking-wide text-on-dark">
               4,300+ projects
             </p>
-            <p className="mt-1 font-bn text-xs text-warm-muted00">ভেরিফাইড ক্লায়েন্ট</p>
+            <p className="mt-1 font-bn text-xs text-muted">ভেরিফাইড ক্লায়েন্ট</p>
             <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-400">
               <ShieldCheck size={11} />
               Verified
@@ -346,18 +346,18 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
       )}
 
       {/* ── Submit review form ── */}
-      <div className="mt-20 rounded-card border border-warm-fg/10 bg-white/[0.03] p-7 sm:p-9">
-        <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg sm:text-3xl">
+      <div className="mt-20 rounded-card border border-on-dark/10 bg-white/[0.03] p-7 sm:p-9">
+        <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-on-dark sm:text-3xl">
           Share your experience
         </h3>
-        <p className="mt-1 font-bn text-sm text-warm-muted00">
+        <p className="mt-1 font-bn text-sm text-muted">
           আপনার মতামত দিন · আপনার রিভিউ আমাদের সার্ভিস আরো উন্নত করতে সাহায্য করে।
         </p>
 
         <form onSubmit={handleSubmit} className="mt-7 space-y-5">
           {/* Star selector */}
           <div>
-            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
               Your rating · রেটিং
             </label>
             <div className="mt-2">
@@ -367,7 +367,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
                 Name · নাম
               </label>
               <input
@@ -375,11 +375,11 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+                className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark outline-none focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
                 Email · ইমেইল
               </label>
               <input
@@ -389,14 +389,14 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
                 onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError(''); }}
                 onBlur={(e) => { if (!validateEmail(e.target.value)) setEmailError('সঠিক ইমেইল দিন · Enter a valid email'); }}
                 placeholder="you@email.com (masked publicly)"
-                className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+                className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark outline-none focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
               />
-              {emailError && <p className="mt-1 text-xs text-warm-accent">{emailError}</p>}
+              {emailError && <p className="mt-1 text-xs text-accent-primary">{emailError}</p>}
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
               Review in English
             </label>
             <textarea
@@ -405,12 +405,12 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
               onChange={(e) => setReviewEn(e.target.value)}
               rows={3}
               placeholder="Share your experience in English..."
-              className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+              className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark outline-none focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+            <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
               Review in Bangla — optional · বাংলায় রিভিউ (ঐচ্ছিক)
             </label>
             <textarea
@@ -418,23 +418,23 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
               onChange={(e) => setReviewBn(e.target.value)}
               rows={3}
               placeholder="বাংলায় আপনার অভিজ্ঞতা শেয়ার করুন (ঐচ্ছিক)..."
-              className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 font-bn text-sm text-warm-fg outline-none focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+              className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 font-bn text-sm text-on-dark outline-none focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
             />
           </div>
 
           {/* Turnstile */}
           {SITE_KEY ? (
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
                 Human verification · মানব যাচাই
               </label>
               <div ref={turnstileWrapRef} className="mt-2 min-h-[68px] w-full max-w-[480px]" />
-              {!tsReady && <p className="mt-1 text-[11px] text-warm-muted00">Loading verification…</p>}
+              {!tsReady && <p className="mt-1 text-[11px] text-muted">Loading verification…</p>}
             </div>
           ) : null}
 
           {submitError && (
-            <p className="rounded-xl border border-warm-accent/40 bg-warm-accent/10 px-4 py-3 text-sm text-warm-accent">
+            <p className="rounded-xl border border-accent-primary/40 bg-accent-primary/10 px-4 py-3 text-sm text-accent-primary">
               {submitError}
             </p>
           )}
@@ -453,7 +453,7 @@ export default function ReviewSection({ initial }: { initial: DbReview[] }) {
             </p>
           )}
 
-          <p className="text-[11px] uppercase tracking-[0.18em] text-warm-muted00">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
             Your email is masked publicly (e.g. ha***@gmail.com)
           </p>
         </form>

@@ -59,13 +59,13 @@ type CellValue = boolean | string;
 
 function CellIcon({ value, isHighlight }: { value: CellValue; isHighlight: boolean }) {
   if (value === true) {
-    return <Check size={16} className={isHighlight ? 'text-warm-accent' : 'text-emerald-400'} />;
+    return <Check size={16} className={isHighlight ? 'text-accent-primary' : 'text-emerald-400'} />;
   }
   if (value === false) {
-    return <Minus size={14} className="text-warm-muted00" />;
+    return <Minus size={14} className="text-muted" />;
   }
   return (
-    <span className={`text-sm font-semibold ${isHighlight ? 'text-warm-accent' : 'text-warm-muted00'}`}>
+    <span className={`text-sm font-semibold ${isHighlight ? 'text-accent-primary' : 'text-muted'}`}>
       {value}
     </span>
   );
@@ -91,19 +91,19 @@ function ComparisonTable({
       <table className="w-full min-w-[540px] border-collapse text-sm">
         <thead>
           <tr className="border-b border-white/10 bg-ink-800">
-            <th className="p-4 text-left text-xs uppercase tracking-[0.18em] text-warm-muted00 w-[40%]">
+            <th className="p-4 text-left text-xs uppercase tracking-[0.18em] text-muted w-[40%]">
               Feature
             </th>
             {planNames.map((name, i) => (
               <th
                 key={name}
                 className={`p-4 text-center text-xs uppercase tracking-[0.18em] ${
-                  i === highlightIndex ? 'text-warm-accent' : 'text-warm-muted00'
+                  i === highlightIndex ? 'text-accent-primary' : 'text-muted'
                 }`}
               >
                 {name}
                 {i === highlightIndex && (
-                  <span className="ml-1.5 inline-flex items-center gap-0.5 rounded-full bg-warm-accent/20 px-1.5 py-0.5 text-[9px] text-warm-accent">
+                  <span className="ml-1.5 inline-flex items-center gap-0.5 rounded-full bg-accent-primary/20 px-1.5 py-0.5 text-[9px] text-accent-primary">
                     <Sparkles size={8} />
                     Popular
                   </span>
@@ -119,11 +119,11 @@ function ComparisonTable({
               className={`border-b border-white/[0.06] ${rowIdx % 2 === 0 ? 'bg-ink-900' : 'bg-ink-800/50'}`}
             >
               <td className="p-4">
-                <span className="font-medium text-warm-muted00">{row.feature_en}</span>
-                <span className="ml-2 font-bn text-xs text-warm-muted00">{row.feature_bn}</span>
+                <span className="font-medium text-muted">{row.feature_en}</span>
+                <span className="ml-2 font-bn text-xs text-muted">{row.feature_bn}</span>
               </td>
               {row.tiers.map((val, i) => (
-                <td key={i} className={`p-4 text-center ${i === highlightIndex ? 'bg-warm-accent/[0.04]' : ''}`}>
+                <td key={i} className={`p-4 text-center ${i === highlightIndex ? 'bg-accent-primary/[0.04]' : ''}`}>
                   <div className="flex justify-center">
                     <CellIcon value={val} isHighlight={i === highlightIndex} />
                   </div>
@@ -143,18 +143,18 @@ export default function PricingPage() {
       <HeroSection theme="pricing" watermark="PRICING">
         <Reveal>
           <span className="eyebrow">
-            <Sparkles size={12} className="text-warm-accent" /> 50% OFF · ছাড় চলছে
+            <Sparkles size={12} className="text-accent-primary" /> 50% OFF · ছাড় চলছে
           </span>
         </Reveal>
         <Reveal delay={80}>
           <ScrollZoom className="mt-6">
-          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-            Flexible packages for <span className="font-display text-warm-accent">every campaign stage.</span>
+          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+            Flexible packages for <span className="font-display text-accent-primary">every campaign stage.</span>
           </h1>
           </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">
+          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-muted sm:text-base">
             স্টোরি টেলিং ভিডিও ১ মিনিট, এবং প্রোডাক্ট ভিডিও — দুই ক্যাটাগরিতেই ৫০% ছাড়ে। অর্ডার করতে যেকোনো প্যাকেজে ট্যাপ করুন।
           </p>
         </Reveal>
@@ -187,7 +187,7 @@ export default function PricingPage() {
               {/* Comparison table */}
               <Reveal delay={120}>
                 <div className="mt-8">
-                  <p className="text-xs uppercase tracking-[0.18em] text-warm-muted00">
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted">
                     Full comparison · বিস্তারিত তুলনা
                   </p>
                   <ComparisonTable
@@ -202,7 +202,7 @@ export default function PricingPage() {
         })}
 
         <Reveal delay={240}>
-          <p className="text-center text-xs uppercase tracking-[0.18em] text-warm-muted00">
+          <p className="text-center text-xs uppercase tracking-[0.18em] text-muted">
             Custom industry packages available · বাংলা & English supported · Money-back guarantee on agreed scope
           </p>
         </Reveal>
@@ -222,16 +222,16 @@ export default function PricingPage() {
           </div>
           <Reveal delay={160}>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.07] to-transparent p-6">
-                <p className="text-sm font-semibold text-warm-muted00">Not sure which plan fits?</p>
-                <p className="mt-1 font-bn text-xs text-warm-muted00">সঠিক প্যাকেজ নিয়ে নিশ্চিত না হলে — WhatsApp করুন।</p>
+              <div className="rounded-card border border-accent-primary/20 bg-gradient-to-br from-accent-primary/[0.07] to-transparent p-6">
+                <p className="text-sm font-semibold text-muted">Not sure which plan fits?</p>
+                <p className="mt-1 font-bn text-xs text-muted">সঠিক প্যাকেজ নিয়ে নিশ্চিত না হলে — WhatsApp করুন।</p>
                 <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="btn-3d-primary mt-4 text-sm">
                   WhatsApp করুন
                 </a>
               </div>
               <div className="rounded-card border border-white/10 bg-white/[0.03] p-6">
-                <p className="text-sm font-semibold text-warm-muted00">Custom project?</p>
-                <p className="mt-1 font-bn text-xs text-warm-muted00">বড় বা ইন্ডাস্ট্রি-স্পেসিফিক প্রজেক্টের জন্য আলাদা কোট নি��।</p>
+                <p className="text-sm font-semibold text-muted">Custom project?</p>
+                <p className="mt-1 font-bn text-xs text-muted">বড় বা ইন্ডাস্ট্রি-স্পেসিফিক প্রজেক্টের জন্য আলাদা কোট নি��।</p>
                 <Link href="/contact" className="btn-3d-secondary mt-4 text-sm">
                   Get a custom quote
                 </Link>
@@ -245,13 +245,13 @@ export default function PricingPage() {
 
       <section className="container-x pb-24">
         <Reveal>
-          <p className="text-center text-sm text-warm-muted00">
+          <p className="text-center text-sm text-muted">
             Not sure which plan fits?{' '}
-            <Link href="/contact" className="font-semibold text-warm-accent hover:text-warm-accent-secondary">
+            <Link href="/contact" className="font-semibold text-accent-primary hover:text-accent-primary-secondary">
               Tell us about your project
             </Link>{' '}
             — সাহায্য করব। অথবা সরাসরি{' '}
-            <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold text-warm-accent hover:text-warm-accent-secondary">
+            <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold text-accent-primary hover:text-accent-primary-secondary">
               WhatsApp
             </a>
             -এ মেসেজ দিন।

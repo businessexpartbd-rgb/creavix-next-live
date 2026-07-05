@@ -24,21 +24,21 @@ export default function SectionIntro({
       <div className={`flex max-w-3xl flex-col gap-5 ${alignment}`}>
         {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
         <ScrollZoom className="scroll-zoom-fast">
-          <h2 className="font-serif text-balance text-4xl font-normal leading-tight tracking-tight text-warm-fg sm:text-5xl lg:text-6xl xl:text-7xl">
+          <h2 className="font-serif text-balance text-4xl font-normal leading-tight tracking-tight text-on-dark sm:text-5xl lg:text-6xl xl:text-7xl">
             {title}
             {accent ? (
               <>
                 {' '}
-                <span className="font-display text-warm-accent">{accent}</span>
+                <span className="font-display text-accent-primary">{accent}</span>
               </>
             ) : null}
           </h2>
         </ScrollZoom>
         {body ? (
-          <p className="max-w-2xl text-base leading-7 text-warm-muted sm:text-[17px]">{body}</p>
+          <p className="max-w-2xl text-base leading-7 text-muted sm:text-[17px]">{body}</p>
         ) : null}
         {body_bn ? (
-          <p className="max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">{body_bn}</p>
+          <p className="max-w-2xl font-bn text-sm leading-7 text-muted sm:text-base">{body_bn}</p>
         ) : null}
       </div>
     </Reveal>

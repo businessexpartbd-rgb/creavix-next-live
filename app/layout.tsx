@@ -272,7 +272,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="font-sans">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-warm-accent focus:px-4 focus:py-2 focus:text-warm-fg"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent-primary focus:px-4 focus:py-2 focus:text-on-dark"
         >
           Skip to content
         </a>

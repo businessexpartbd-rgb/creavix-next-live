@@ -70,13 +70,13 @@ export default function ServicesPage() {
         </Reveal>
         <Reveal delay={80}>
           <ScrollZoom className="mt-6">
-            <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-              <span className="font-display text-warm-accent">AI Video Ads</span> and storytelling.
+            <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+              <span className="font-display text-accent-primary">AI Video Ads</span> and storytelling.
             </h1>
           </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-warm-muted sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
             Conversion-focused production across Meta, YouTube, and TikTok.
           </p>
         </Reveal>
@@ -106,37 +106,37 @@ export default function ServicesPage() {
                   <div className={isEven ? 'lg:col-start-2' : ''}>
                     <Reveal>
                       <div className="flex items-center gap-3">
-                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-warm-accent/30 to-warm-accent/10 text-warm-accent ring-1 ring-warm-accent/30 shadow-[0_4px_16px_-4px_rgba(168,85,247,0.4)]">
+                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-accent-primary/30 to-accent-primary/10 text-accent-primary ring-1 ring-accent-primary/30 shadow-[0_4px_16px_-4px_rgba(168,85,247,0.4)]">
                           <Icon size={20} strokeWidth={1.6} />
                         </span>
-                        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-warm-accent">
+                        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-primary">
                           Service {String(idx + 1).padStart(2, '0')}
                         </span>
                       </div>
                     </Reveal>
                     <Reveal delay={60}>
-                      <h2 className="mt-5 font-serif text-3xl leading-tight tracking-tight text-warm-fg sm:text-4xl lg:text-5xl">
+                      <h2 className="mt-5 font-serif text-3xl leading-tight tracking-tight text-on-dark sm:text-4xl lg:text-5xl">
                         {service.title_en}
                       </h2>
                     </Reveal>
                     <Reveal delay={100}>
-                      <p className="mt-5 text-base leading-8 text-warm-muted">{service.desc_en}</p>
+                      <p className="mt-5 text-base leading-8 text-muted">{service.desc_en}</p>
                     </Reveal>
                     <Reveal delay={140}>
                       <ul className="mt-7 space-y-2.5">
                         {service.bullets_bn?.map((b: string) => (
                           <li key={b} className="flex items-start gap-3">
-                            <CheckCircle2 size={16} className="mt-1 flex-none text-warm-accent" />
-                            <span className="text-sm leading-6 text-warm-muted">{b}</span>
+                            <CheckCircle2 size={16} className="mt-1 flex-none text-accent-primary" />
+                            <span className="text-sm leading-6 text-muted">{b}</span>
                           </li>
                         ))}
                       </ul>
                     </Reveal>
                     {hint && (
                       <Reveal delay={180}>
-                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-warm-accent/20 bg-warm-accent/[0.06] px-4 py-3">
-                          <span className="h-2 w-2 flex-none rounded-full bg-warm-accent" />
-                          <p className="text-sm font-medium text-warm-muted">{hint.en}</p>
+                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-accent-primary/20 bg-accent-primary/[0.06] px-4 py-3">
+                          <span className="h-2 w-2 flex-none rounded-full bg-accent-primary" />
+                          <p className="text-sm font-medium text-muted">{hint.en}</p>
                         </div>
                       </Reveal>
                     )}
@@ -166,7 +166,7 @@ export default function ServicesPage() {
                         />
                       ) : (
                         <div className="aspect-video rounded-card border border-white/10 bg-ink-800 grid place-items-center">
-                          <Icon size={48} className="text-warm-accent/30" />
+                          <Icon size={48} className="text-accent-primary/30" />
                         </div>
                       )}
                     </Reveal>
@@ -179,7 +179,7 @@ export default function ServicesPage() {
       </div>
 
       {/* FAQ section */}
-      <section className="border-t border-warm-fg/10 bg-warm-accent/5 py-24 sm:py-28">
+      <section className="border-t border-on-dark/10 bg-accent-primary/5 py-24 sm:py-28">
         <div className="container-x">
           <SectionIntro
             eyebrow="FAQ"
@@ -190,8 +190,8 @@ export default function ServicesPage() {
             <FAQAccordion items={FAQS} />
           </div>
           <Reveal delay={120}>
-            <div className="mt-10 rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.08] to-transparent p-6 sm:p-8">
-              <p className="text-sm leading-7 text-warm-muted">
+            <div className="mt-10 rounded-card border border-accent-primary/20 bg-gradient-to-br from-accent-primary/[0.08] to-transparent p-6 sm:p-8">
+              <p className="text-sm leading-7 text-muted">
                 More questions? Ask on WhatsApp — we typically reply within hours.
               </p>
               <a

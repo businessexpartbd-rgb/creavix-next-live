@@ -69,13 +69,13 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
     case 'home':
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
-          <Camera className="absolute right-[6%] top-[18%] h-14 w-14 animate-float text-warm-accent/40" />
+          <Camera className="absolute right-[6%] top-[18%] h-14 w-14 animate-float text-accent-primary/40" />
           <Film
-            className="absolute right-[18%] top-[32%] h-16 w-16 animate-spin-slow text-warm-fg/8"
+            className="absolute right-[18%] top-[32%] h-16 w-16 animate-spin-slow text-on-dark/8"
             strokeWidth={1.2}
           />
           <Play
-            className="absolute right-[12%] top-[58%] h-12 w-12 animate-pulse-glow text-warm-accent/35"
+            className="absolute right-[12%] top-[58%] h-12 w-12 animate-pulse-glow text-accent-primary/35"
             fill="currentColor"
           />
         </div>
@@ -83,22 +83,22 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
     case 'services':
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
-          <Cpu className="absolute right-[6%] top-[20%] h-12 w-12 animate-float text-warm-accent/40" />
-          <Camera className="absolute right-[20%] top-[36%] h-12 w-12 animate-float text-warm-fg/15" />
-          <Mic className="absolute right-[12%] top-[60%] h-12 w-12 animate-float text-warm-accent/30" />
-          <Wrench className="absolute right-[26%] top-[18%] h-9 w-9 animate-spin-slow text-warm-fg/15" />
+          <Cpu className="absolute right-[6%] top-[20%] h-12 w-12 animate-float text-accent-primary/40" />
+          <Camera className="absolute right-[20%] top-[36%] h-12 w-12 animate-float text-on-dark/15" />
+          <Mic className="absolute right-[12%] top-[60%] h-12 w-12 animate-float text-accent-primary/30" />
+          <Wrench className="absolute right-[26%] top-[18%] h-9 w-9 animate-spin-slow text-on-dark/15" />
         </div>
       );
     case 'portfolio':
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
-          <Grid3x3 className="absolute right-[6%] top-[24%] h-20 w-20 animate-float text-warm-accent/30" />
+          <Grid3x3 className="absolute right-[6%] top-[24%] h-20 w-20 animate-float text-accent-primary/30" />
           <Play
-            className="absolute right-[20%] top-[44%] h-12 w-12 animate-pulse-glow text-warm-accent/40"
+            className="absolute right-[20%] top-[44%] h-12 w-12 animate-pulse-glow text-accent-primary/40"
             fill="currentColor"
           />
           <Film
-            className="absolute right-[12%] top-[64%] h-14 w-14 animate-spin-slow text-warm-fg/10"
+            className="absolute right-[12%] top-[64%] h-14 w-14 animate-spin-slow text-on-dark/10"
             strokeWidth={1.2}
           />
         </div>
@@ -106,12 +106,12 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
     case 'about':
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
-          <MapPin className="absolute right-[6%] top-[22%] h-14 w-14 animate-float text-warm-accent/40" />
+          <MapPin className="absolute right-[6%] top-[22%] h-14 w-14 animate-float text-accent-primary/40" />
           <span className="absolute right-[18%] top-[48%] flex gap-2">
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
-                className="h-3 w-3 animate-pulse rounded-full bg-warm-accent/50"
+                className="h-3 w-3 animate-pulse rounded-full bg-accent-primary/50"
                 style={{ animationDelay: `${i * 200}ms` }}
               />
             ))}
@@ -121,7 +121,7 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
     case 'pricing':
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
-          <Tag className="absolute right-[6%] top-[22%] h-14 w-14 animate-float text-warm-accent/40" />
+          <Tag className="absolute right-[6%] top-[22%] h-14 w-14 animate-float text-accent-primary/40" />
           <div className="absolute right-[14%] top-[48%] flex gap-1">
             {[0, 1, 2, 3, 4].map((i) => (
               <Star
@@ -137,8 +137,8 @@ function ThemeRig({ theme }: { theme: HeroTheme }) {
     case 'contact':
       return (
         <div className="pointer-events-none absolute inset-0 -z-[1] hidden md:block">
-          <MessageCircle className="absolute right-[6%] top-[22%] h-14 w-14 animate-pulse-glow text-warm-accent/45" />
-          <MapPin className="absolute right-[18%] top-[50%] h-12 w-12 animate-float text-warm-fg/15" />
+          <MessageCircle className="absolute right-[6%] top-[22%] h-14 w-14 animate-pulse-glow text-accent-primary/45" />
+          <MapPin className="absolute right-[18%] top-[50%] h-12 w-12 animate-float text-on-dark/15" />
         </div>
       );
     case 'reviews':

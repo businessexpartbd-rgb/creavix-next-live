@@ -14,9 +14,9 @@ interface SectionLabelProps {
 export default function SectionLabel({ children, className = '' }: SectionLabelProps) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full border border-warm-accent/30 bg-warm-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-warm-accent ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-accent-primary/30 bg-accent-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-primary ${className}`}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-warm-accent" />
+      <span className="h-1.5 w-1.5 rounded-full bg-accent-primary" />
       {children}
     </div>
   );

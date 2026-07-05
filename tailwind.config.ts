@@ -4,13 +4,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm premium light color system
+        // Cinematic dark premium color system
+        'bg-base': '#0B0E14',
+        'bg-soft-dark': '#14181F',
+        'bg-cream': '#F7F5F0',
+        'bg-tinted': '#F0EDE4',
+        'bg-accent-glow': '#1A1F2E',
+        'accent-primary': '#E4B94C',
+        'accent-secondary': '#6E5BFF',
+        'text-on-dark': '#F5F3ED',
+        'text-on-light': '#14181F',
+        muted: '#A0A0A0',
+        // Legacy warm colors - deprecated but kept for compatibility during migration
         warm: {
-          bg: '#FEFAE0',
-          'bg-soft': '#FFE6A7',
-          fg: '#03071E',
-          muted: '#656D4A',
-          accent: '#EB5E28',
+          bg: '#F7F5F0',
+          'bg-soft': '#F0EDE4',
+          fg: '#F5F3ED',
+          muted: '#A0A0A0',
+          accent: '#E4B94C',
         },
       },
       fontFamily: {
@@ -21,15 +32,17 @@ const config: Config = {
         bn: ['Hind Siliguri', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
-        warm: '0 6px 20px rgba(235, 94, 40, 0.35)',
-        'warm-glow': '0 0 30px rgba(235, 94, 40, 0.35)',
+        card: '0 8px 32px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(228, 185, 76, 0.1)',
+        'gold-glow': '0 0 30px rgba(228, 185, 76, 0.35)',
+        'violet-glow': '0 0 30px rgba(110, 91, 255, 0.35)',
+        'dark-card': '0 8px 32px rgba(0, 0, 0, 0.4)',
       },
       backgroundImage: {
-        'radial-warm':
-          'radial-gradient(60% 60% at 50% 0%, rgba(235, 94, 40, 0.12) 0%, rgba(0, 0, 0, 0) 70%)',
-        'gradient-orange': 'linear-gradient(135deg, #FFB347 0%, #EB5E28 100%)',
-        'gradient-warm': 'linear-gradient(135deg, #FFEEEE 0%, #DDEFBB 51%, #FFEEEE 100%)',
+        'radial-gold': 'radial-gradient(60% 60% at 50% 0%, rgba(228, 185, 76, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
+        'radial-violet': 'radial-gradient(60% 60% at 50% 0%, rgba(110, 91, 255, 0.12) 0%, rgba(0, 0, 0, 0) 70%)',
+        'gradient-gold': 'linear-gradient(135deg, #E4B94C 0%, #D4A236 100%)',
+        'gradient-violet': 'linear-gradient(135deg, #6E5BFF 0%, #5644E8 100%)',
+        'gradient-dark': 'linear-gradient(135deg, #14181F 0%, #0B0E14 100%)',
       },
       animation: {
         'fade-up': 'fadeUp 0.7s ease-out both',
@@ -73,8 +86,43 @@ const config: Config = {
         card: '16px',
         pill: '9999px',
       },
+      spacing: {
+        'container-p': '40px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents, theme }: any) {
+      addComponents({
+        // Section background utilities
+        '.section-dark': {
+          '@apply bg-bg-base text-text-on-dark': {},
+        },
+        '.section-dark-soft': {
+          '@apply bg-soft-dark text-text-on-dark': {},
+        },
+        '.section-cream': {
+          '@apply bg-cream text-text-on-light': {},
+        },
+        '.section-tinted': {
+          '@apply bg-tinted text-text-on-light': {},
+        },
+        '.section-glow': {
+          '@apply bg-bg-accent-glow text-text-on-dark': {},
+        },
+        // Button styles with new colors
+        '.btn-gold': {
+          '@apply bg-accent-primary text-text-on-light hover:shadow-gold-glow transition-all': {},
+        },
+        '.btn-violet': {
+          '@apply bg-accent-secondary text-white hover:shadow-violet-glow transition-all': {},
+        },
+        // Card styles
+        '.card-modern': {
+          '@apply rounded-card border border-accent-primary/15 bg-accent-primary/5': {},
+        },
+      });
+    },
+  ],
 };
 export default config;

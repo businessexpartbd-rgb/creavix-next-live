@@ -19,12 +19,12 @@ export default function PricingCard({
     <article
       className={`relative flex h-full flex-col rounded-card border p-7 transition ${
         plan.highlight
-          ? 'border-warm-accent/50 bg-gradient-to-br from-warm-accent/12 via-white/[0.04] to-transparent shadow-glow-lg'
-          : 'border-warm-fg/10 bg-white/[0.03] hover:border-warm-accent/30'
+          ? 'border-accent-primary/50 bg-gradient-to-br from-accent-primary/12 via-white/[0.04] to-transparent shadow-glow-lg'
+          : 'border-on-dark/10 bg-white/[0.03] hover:border-accent-primary/30'
       }`}
     >
       {plan.highlight ? (
-        <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-warm-accent px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-warm-fg shadow-glow">
+        <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-accent-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-on-dark shadow-glow">
           <Sparkles size={11} />
           Most popular
         </span>
@@ -32,35 +32,35 @@ export default function PricingCard({
 
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg">
+          <h3 className="font-display text-2xl uppercase tracking-[0.04em] text-on-dark">
             {plan.name_en}
           </h3>
-          <p className="mt-1 font-bn text-sm text-warm-muted00">{plan.name_bn}</p>
+          <p className="mt-1 font-bn text-sm text-muted">{plan.name_bn}</p>
         </div>
-        <span className="rounded-full bg-warm-accent/15 px-3 py-1 text-[11px] font-semibold text-warm-accent">
+        <span className="rounded-full bg-accent-primary/15 px-3 py-1 text-[11px] font-semibold text-accent-primary">
           -{discountPct}%
         </span>
       </div>
 
       <div className="mt-6 flex items-end gap-3">
-        <div className="font-display text-4xl tracking-wide text-warm-fg">
+        <div className="font-display text-4xl tracking-wide text-on-dark">
           ৳<span className="accent">{plan.priceBDT.toLocaleString('en-BD')}</span>
         </div>
-        <div className="pb-1 text-xs text-warm-muted00 line-through">
+        <div className="pb-1 text-xs text-muted line-through">
           ৳{plan.originalBDT.toLocaleString('en-BD')}
         </div>
       </div>
       {plan.duration ? (
-        <p className="mt-1 font-bn text-xs text-warm-muted00">⏱ {plan.duration}</p>
+        <p className="mt-1 font-bn text-xs text-muted">⏱ {plan.duration}</p>
       ) : null}
 
       <ul className="mt-7 space-y-3">
         {plan.features_bn.map((f) => (
           <li
             key={f}
-            className="flex items-start gap-3 font-bn text-sm leading-6 text-warm-muted00"
+            className="flex items-start gap-3 font-bn text-sm leading-6 text-muted"
           >
-            <Check size={16} className="mt-0.5 flex-none text-warm-accent" />
+            <Check size={16} className="mt-0.5 flex-none text-accent-primary" />
             <span>{f}</span>
           </li>
         ))}
@@ -77,7 +77,7 @@ export default function PricingCard({
         >
           অর্ডার করুন
         </a>
-        <p className="mt-3 text-center text-[11px] uppercase tracking-[0.18em] text-warm-muted00">
+        <p className="mt-3 text-center text-[11px] uppercase tracking-[0.18em] text-muted">
           WhatsApp · pre-filled
         </p>
       </div>

@@ -31,7 +31,7 @@ export default function ServiceCard({ service }: { service: Service }) {
 
   return (
     <article
-      className="card-warm group relative flex h-full cursor-pointer flex-col p-6 transition-all duration-300 sm:p-7 hover:shadow-warm-glow"
+      className="rounded-card border border-accent-primary/10 bg-accent-primary/5 group relative flex h-full cursor-pointer flex-col p-6 transition-all duration-300 sm:p-7 hover:shadow-gold-glow"
       onClick={() => setExpanded((v) => !v)}
       role="button"
       tabIndex={0}
@@ -45,22 +45,22 @@ export default function ServiceCard({ service }: { service: Service }) {
     >
       <div className="flex items-start justify-between">
         {/* Premium icon with micro-animation and warm orange glow */}
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-warm-accent/20 via-warm-accent/5 to-transparent text-warm-accent ring-1 ring-warm-accent/30 shadow-[inset_0_-2px_6px_rgba(235,94,40,0.25),0_8px_20px_-8px_rgba(235,94,40,0.35)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[inset_0_-2px_6px_rgba(235,94,40,0.35),0_12px_30px_-4px_rgba(235,94,40,0.45)]">
+        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-accent-primary/20 via-accent-primary/5 to-transparent text-accent-primary ring-1 ring-accent-primary/30 shadow-[inset_0_-2px_6px_rgba(235,94,40,0.25),0_8px_20px_-8px_rgba(235,94,40,0.35)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[inset_0_-2px_6px_rgba(235,94,40,0.35),0_12px_30px_-4px_rgba(235,94,40,0.45)]">
           <Icon size={26} strokeWidth={1.6} className="transition-transform duration-500 group-hover:rotate-12" />
         </span>
         <ArrowUpRight
           size={18}
-          className="text-warm-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-warm-accent"
+          className="text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-primary"
         />
       </div>
 
-      <h3 className="mt-6 font-serif text-xl tracking-tight text-warm-fg">
+      <h3 className="mt-6 font-serif text-xl tracking-tight text-on-dark">
         {service.title_en}
       </h3>
-      <p className="mt-1 font-bn text-sm text-warm-muted">{service.title_bn}</p>
+      <p className="mt-1 font-bn text-sm text-muted">{service.title_bn}</p>
 
-      <p className="mt-4 text-sm leading-7 text-warm-muted">{service.desc_en}</p>
-      <p className="mt-2 font-bn text-sm leading-7 text-warm-muted">{service.desc_bn}</p>
+      <p className="mt-4 text-sm leading-7 text-muted">{service.desc_en}</p>
+      <p className="mt-2 font-bn text-sm leading-7 text-muted">{service.desc_bn}</p>
 
       {/* Expand panel */}
       <div
@@ -69,11 +69,11 @@ export default function ServiceCard({ service }: { service: Service }) {
         }`}
       >
         <div className="min-h-0">
-          <div className="rounded-card border border-warm-fg/10 bg-warm-bg/60 p-5 shadow-card">
+          <div className="rounded-card border border-on-dark/10 bg-cream/60 p-5 shadow-card">
             <ul className="space-y-2">
               {service.bullets_bn.map((b) => (
-                <li key={b} className="flex gap-2 font-bn text-sm leading-6 text-warm-fg">
-                  <CheckCircle2 size={14} className="mt-1 flex-none text-warm-accent" />
+                <li key={b} className="flex gap-2 font-bn text-sm leading-6 text-on-dark">
+                  <CheckCircle2 size={14} className="mt-1 flex-none text-accent-primary" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -95,11 +95,11 @@ export default function ServiceCard({ service }: { service: Service }) {
       </div>
 
       {/* Toggle hint */}
-      <div className="mt-auto flex items-center gap-2 pt-5 text-xs uppercase tracking-[0.18em] text-warm-muted">
+      <div className="mt-auto flex items-center gap-2 pt-5 text-xs uppercase tracking-[0.18em] text-muted">
         <span>{expanded ? 'Tap to collapse' : 'Tap for details'}</span>
         <ChevronDown
           size={14}
-          className={`transition-transform ${expanded ? 'rotate-180 text-warm-accent' : ''}`}
+          className={`transition-transform ${expanded ? 'rotate-180 text-accent-primary' : ''}`}
         />
       </div>
       <span className="sr-only">WhatsApp {SITE.whatsapp}</span>

@@ -109,12 +109,12 @@ export default function AdInsightVideo() {
           <span className="eyebrow">Ad Strategy · বিজ্ঞাপন কৌশল</span>
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4 font-display text-3xl uppercase tracking-[0.04em] text-warm-fg sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 font-display text-3xl uppercase tracking-[0.04em] text-on-dark sm:text-4xl lg:text-5xl">
             Why Most Ads <span className="accent">Fail</span> — and What Works
           </h2>
         </Reveal>
         <Reveal delay={140}>
-          <p className="mx-auto mt-3 max-w-xl font-bn text-sm leading-7 text-warm-muted00">
+          <p className="mx-auto mt-3 max-w-xl font-bn text-sm leading-7 text-muted">
             বিজ্ঞাপন দিচ্ছেন কিন্তু ফল আসছে না? এই ভিডিওতে জানুন আসল কারণ।
           </p>
         </Reveal>
@@ -123,7 +123,7 @@ export default function AdInsightVideo() {
       <Reveal delay={180}>
         <div className="mx-auto w-full max-w-[320px]" ref={wrapRef}>
           <div
-            className="relative overflow-hidden rounded-2xl border border-warm-fg/10 bg-black shadow-2xl"
+            className="relative overflow-hidden rounded-2xl border border-on-dark/10 bg-black shadow-2xl"
             style={{ aspectRatio: '9 / 16' }}
           >
             {activated ? (
@@ -148,7 +148,7 @@ export default function AdInsightVideo() {
 
             {!activated ? (
               <div className="pointer-events-none absolute inset-0 grid place-items-center bg-black/40">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-accent-primary text-on-dark shadow-glow">
                   <Play size={24} fill="currentColor" />
                 </span>
               </div>
@@ -158,7 +158,7 @@ export default function AdInsightVideo() {
               <button
                 onClick={toggleMute}
                 aria-label={muted ? 'Unmute video' : 'Mute video'}
-                className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-warm-fg backdrop-blur-sm transition hover:bg-black/90"
+                className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-2 text-xs font-semibold text-on-dark backdrop-blur-sm transition hover:bg-black/90"
               >
                 {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
                 {muted ? 'Sound On' : 'Mute'}
@@ -166,9 +166,9 @@ export default function AdInsightVideo() {
             ) : null}
           </div>
 
-          <div className="mt-4 rounded-xl border border-warm-fg/10 bg-warm-fg/5 px-5 py-4 text-center backdrop-blur-sm">
-            <p className="text-sm font-medium leading-6 text-warm-fg">{SUBTITLE_EN}</p>
-            <p className="mt-1 font-bn text-sm leading-7 text-warm-muted00">{SUBTITLE_BN}</p>
+          <div className="mt-4 rounded-xl border border-on-dark/10 bg-soft-dark/5 px-5 py-4 text-center backdrop-blur-sm">
+            <p className="text-sm font-medium leading-6 text-on-dark">{SUBTITLE_EN}</p>
+            <p className="mt-1 font-bn text-sm leading-7 text-muted">{SUBTITLE_BN}</p>
           </div>
         </div>
       </Reveal>

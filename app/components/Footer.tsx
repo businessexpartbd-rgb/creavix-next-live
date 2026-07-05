@@ -7,12 +7,12 @@ import SubscribeButton from './SubscribeButton';
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-warm-fg/10 bg-gradient-to-r from-warm-muted/80 to-warm-fg/80 text-warm-bg">
+    <footer className="relative mt-24 border-t border-on-dark/10 bg-gradient-to-r from-warm-muted/80 to-warm-fg/80 text-warm-bg">
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div>
           <Link href="/" className="flex items-center gap-3">
-            <span className="relative grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-xl bg-warm-fg/10 ring-1 ring-warm-fg/20">
+            <span className="relative grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-xl bg-soft-dark/10 ring-1 ring-warm-fg/20">
               <Image
                 src="/new-logo.png"
                 alt={`${SITE.name} logo`}
@@ -50,7 +50,7 @@ export default function Footer() {
                   rel="noreferrer"
                   aria-label={`${SITE.name} on ${s.name}`}
                   title={s.name}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-warm-fg/10 bg-warm-fg/5 text-warm-muted00 transition hover:border-warm-accent/60 hover:bg-warm-accent hover:text-warm-fg"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-on-dark/10 bg-soft-dark/5 text-muted transition hover:border-accent-primary/60 hover:bg-accent-primary hover:text-on-dark"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -61,15 +61,15 @@ export default function Footer() {
 
         {/* Explore */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-warm-muted00">
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">
             Explore
           </h4>
-          <ul className="mt-5 space-y-3 text-sm text-warm-muted00">
+          <ul className="mt-5 space-y-3 text-sm text-muted">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-warm-accent">
+                <Link href={link.href} className="hover:text-accent-primary">
                   {link.label_en}
-                  <span className="ml-2 font-bn text-xs text-warm-muted00">{link.label_bn}</span>
+                  <span className="ml-2 font-bn text-xs text-muted">{link.label_bn}</span>
                 </Link>
               </li>
             ))}
@@ -78,34 +78,34 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-warm-muted00">
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">
             Contact
           </h4>
-          <ul className="mt-5 space-y-4 text-sm text-warm-muted00">
+          <ul className="mt-5 space-y-4 text-sm text-muted">
             <li className="flex items-start gap-3">
-              <Phone size={16} className="mt-0.5 flex-none text-warm-accent" />
-              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-warm-fg">
+              <Phone size={16} className="mt-0.5 flex-none text-accent-primary" />
+              <a href={`tel:${SITE.hotline.replace(/[^+0-9]/g, '')}`} className="hover:text-on-dark">
                 {SITE.hotline}
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <MessageCircle size={16} className="mt-0.5 flex-none text-warm-accent" />
-              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-warm-fg">
+              <MessageCircle size={16} className="mt-0.5 flex-none text-accent-primary" />
+              <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="hover:text-on-dark">
                 WhatsApp · {SITE.whatsapp}
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <Mail size={16} className="mt-0.5 flex-none text-warm-accent" />
-              <a href={`mailto:${SITE.email1}`} className="hover:text-warm-fg">
+              <Mail size={16} className="mt-0.5 flex-none text-accent-primary" />
+              <a href={`mailto:${SITE.email1}`} className="hover:text-on-dark">
                 {SITE.email1}
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <MapPin size={16} className="mt-0.5 flex-none text-warm-accent" />
+              <MapPin size={16} className="mt-0.5 flex-none text-accent-primary" />
               <span>
                 {SITE.address_en}
                 <br />
-                <span className="font-bn text-warm-muted00">{SITE.address_bn}</span>
+                <span className="font-bn text-muted">{SITE.address_bn}</span>
               </span>
             </li>
           </ul>
@@ -113,27 +113,27 @@ export default function Footer() {
 
         {/* Subscribe + Hours */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-warm-muted00">
+          <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">
             Studio Hours
           </h4>
-          <ul className="mt-5 space-y-2 text-sm text-warm-muted00">
+          <ul className="mt-5 space-y-2 text-sm text-muted">
             <li>Sat – Thu · 10:00 AM – 8:00 PM</li>
-            <li className="font-bn text-warm-muted00">শনি – বৃহঃ · সকাল ১০টা – রাত ৮টা</li>
-            <li className="text-warm-muted00">Friday closed · শুক্রবার বন্ধ</li>
+            <li className="font-bn text-muted">শনি – বৃহঃ · সকাল ১০টা – রাত ৮টা</li>
+            <li className="text-muted">Friday closed · শুক্রবার বন্ধ</li>
           </ul>
 
-          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-warm-muted00">
+          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-muted">
             Subscribe
           </h4>
-          <p className="mt-3 text-xs leading-5 text-warm-muted00">
+          <p className="mt-3 text-xs leading-5 text-muted">
             নতুন অফার, প্যাকেজ ও ভিডিও আপডেট পেতে সাবস্ক্রাইব করুন।
           </p>
           <SubscribeButton>Subscribe — সাবস্ক্রাইব</SubscribeButton>
         </div>
       </div>
 
-      <div className="border-t border-warm-fg/10">
-        <div className="container-x flex flex-col gap-3 py-6 text-xs text-warm-muted00 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-on-dark/10">
+        <div className="container-x flex flex-col gap-3 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE.brand}. All rights reserved.
           </p>

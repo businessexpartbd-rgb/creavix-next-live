@@ -26,14 +26,14 @@ export default function AnimatedCard({
     'relative rounded-card border transition-all duration-300';
   
   const variantClasses = {
-    default: `${baseClasses} border-warm-fg/10 bg-ink-800 shadow-card ${
-      hoverGlow ? 'hover:border-warm-accent/40 hover:shadow-glow' : ''
+    default: `${baseClasses} border-on-dark/10 bg-ink-800 shadow-card ${
+      hoverGlow ? 'hover:border-accent-primary/40 hover:shadow-glow' : ''
     }`,
-    glass: `${baseClasses} border-warm-fg/10 bg-warm-fg/5 shadow-card backdrop-blur-sm ${
-      hoverGlow ? 'hover:border-warm-accent/30 hover:bg-warm-fg/10' : ''
+    glass: `${baseClasses} border-on-dark/10 bg-soft-dark/5 shadow-card backdrop-blur-sm ${
+      hoverGlow ? 'hover:border-accent-primary/30 hover:bg-soft-dark/10' : ''
     }`,
     minimal: `${baseClasses} border-white/5 bg-transparent ${
-      hoverGlow ? 'hover:border-warm-accent/30' : ''
+      hoverGlow ? 'hover:border-accent-primary/30' : ''
     }`,
   };
 

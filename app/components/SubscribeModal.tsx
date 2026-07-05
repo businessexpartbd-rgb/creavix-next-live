@@ -74,32 +74,32 @@ export default function SubscribeModal() {
       onClick={() => setOpen(false)}
     >
       <div
-        className="card-warm relative w-full max-w-md p-7"
+        className="rounded-card border border-accent-primary/10 bg-accent-primary/5 relative w-full max-w-md p-7"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Close"
-          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg"
+          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-muted hover:bg-soft-dark/5 hover:text-on-dark"
         >
           <X size={16} />
         </button>
 
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-warm-accent/15 text-warm-accent ring-1 ring-warm-accent/30">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent-primary/15 text-accent-primary ring-1 ring-accent-primary/30">
           <Bell size={20} />
         </span>
-        <h2 className="mt-5 font-display text-2xl uppercase tracking-[0.04em] text-warm-fg">
+        <h2 className="mt-5 font-display text-2xl uppercase tracking-[0.04em] text-on-dark">
           Subscribe
         </h2>
-        <p className="mt-1 font-bn text-sm text-warm-muted00">
+        <p className="mt-1 font-bn text-sm text-muted">
           নতুন অফার, প্যাকেজ ও ভিডিও আপডেট পেতে সাবস্ক্রাইব করুন।
         </p>
 
         {done === 'idle' || done === 'error' ? (
           <form onSubmit={submit} className="mt-6 space-y-3">
             <div>
-              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+              <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
                 Email
               </label>
               <input
@@ -108,9 +108,9 @@ export default function SubscribeModal() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@brand.com"
                 required
-                className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+                className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark placeholder:text-muted outline-none transition focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
               />
-              {error ? <p className="mt-1 text-xs text-warm-accent">{error}</p> : null}
+              {error ? <p className="mt-1 text-xs text-accent-primary">{error}</p> : null}
             </div>
             <button
               type="submit"
@@ -120,7 +120,7 @@ export default function SubscribeModal() {
               {busy ? 'Sending…' : 'Subscribe'}
             </button>
             {done === 'error' ? (
-              <p className="text-xs text-warm-accent">
+              <p className="text-xs text-accent-primary">
                 Something went wrong. Please email us instead.
               </p>
             ) : null}
@@ -135,13 +135,13 @@ export default function SubscribeModal() {
         ) : null}
 
         {done === 'ok' ? (
-          <p className="mt-6 rounded-xl border border-warm-accent/30 bg-warm-accent/10 px-4 py-3 text-sm text-warm-accent">
+          <p className="mt-6 rounded-xl border border-accent-primary/30 bg-accent-primary/10 px-4 py-3 text-sm text-accent-primary">
             ✓ Subscribed! আপনার ইমেইলে শীঘ্রই স্বাগত বার্তা পৌঁছাবে।
           </p>
         ) : null}
         {done === 'fallback' ? (
-          <div className="mt-6 space-y-3 rounded-xl border border-warm-fg/10 bg-warm-fg/[0.04] px-4 py-3 text-sm">
-            <p className="text-warm-muted00">
+          <div className="mt-6 space-y-3 rounded-xl border border-on-dark/10 bg-soft-dark/[0.04] px-4 py-3 text-sm">
+            <p className="text-muted">
               Email service isn&apos;t configured yet — please email us directly:
             </p>
             <a

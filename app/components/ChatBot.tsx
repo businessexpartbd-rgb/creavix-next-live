@@ -136,16 +136,16 @@ export default function ChatBot() {
       {/* Window */}
       {open ? (
         <div
-          className="fixed right-4 bottom-[100px] z-[60] flex w-[min(92vw,380px)] flex-col overflow-hidden rounded-card border border-warm-fg/10 bg-ink-900 shadow-deep sm:right-7 sm:bottom-[110px]"
+          className="fixed right-4 bottom-[100px] z-[60] flex w-[min(92vw,380px)] flex-col overflow-hidden rounded-card border border-on-dark/10 bg-ink-900 shadow-deep sm:right-7 sm:bottom-[110px]"
           role="dialog"
           aria-label="Creavix chat support"
         >
           {/* Header */}
-          <div className="flex items-center gap-3 border-b border-warm-fg/10 bg-ink-800 p-3">
+          <div className="flex items-center gap-3 border-b border-on-dark/10 bg-ink-800 p-3">
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-warm-fg/5 text-warm-muted00 transition hover:bg-warm-fg/10 hover:text-warm-fg"
+              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-soft-dark/5 text-muted transition hover:bg-soft-dark/10 hover:text-on-dark"
               aria-label="Go home"
               title="Home"
             >
@@ -163,10 +163,10 @@ export default function ChatBot() {
               />
             </span>
             <div className="flex flex-1 flex-col leading-tight">
-              <span className="font-display text-base tracking-[0.14em] text-warm-fg">
+              <span className="font-display text-base tracking-[0.14em] text-on-dark">
                 CREAVIX
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-warm-muted00">
+              <span className="flex items-center gap-1.5 text-xs text-muted">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -177,7 +177,7 @@ export default function ChatBot() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="grid h-8 w-8 flex-none place-items-center rounded-full text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg"
+              className="grid h-8 w-8 flex-none place-items-center rounded-full text-muted hover:bg-soft-dark/5 hover:text-on-dark"
               aria-label="Close chat"
             >
               <X size={14} />
@@ -192,13 +192,13 @@ export default function ChatBot() {
             {messages.map((m) =>
               m.role === 'user' ? (
                 <div key={m.id} className="flex justify-end">
-                  <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-warm-accent px-4 py-2 text-sm leading-6 text-warm-fg shadow-glow">
+                  <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-accent-primary px-4 py-2 text-sm leading-6 text-on-dark shadow-glow">
                     {m.text}
                   </div>
                 </div>
               ) : (
                 <div key={m.id} className="flex justify-start">
-                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-warm-fg/10 bg-ink-700 px-4 py-2 text-sm leading-6 text-warm-muted0">
+                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-on-dark/10 bg-ink-700 px-4 py-2 text-sm leading-6 text-muted0">
                     <span className="font-bn">{m.text}</span>
                   </div>
                 </div>
@@ -206,24 +206,24 @@ export default function ChatBot() {
             )}
             {typing ? (
               <div className="flex justify-start">
-                <div className="flex gap-1 rounded-2xl rounded-tl-sm border border-warm-fg/10 bg-ink-700 px-4 py-3">
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-warm-bg00 [animation-delay:-0.3s]" />
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-warm-bg00 [animation-delay:-0.15s]" />
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-warm-bg00" />
+                <div className="flex gap-1 rounded-2xl rounded-tl-sm border border-on-dark/10 bg-ink-700 px-4 py-3">
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-cream00 [animation-delay:-0.3s]" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-cream00 [animation-delay:-0.15s]" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-cream00" />
                 </div>
               </div>
             ) : null}
           </div>
 
           {/* Suggested questions */}
-          <div className="border-t border-warm-fg/10 bg-ink-800 p-3">
+          <div className="border-t border-on-dark/10 bg-ink-800 p-3">
             <div className="flex flex-wrap gap-2">
               {SUGGESTED_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   type="button"
                   onClick={() => sendMessage(q)}
-                  className="rounded-full border border-warm-fg/10 bg-warm-fg/5 px-3 py-1.5 text-left font-bn text-xs text-warm-muted00 transition hover:border-warm-accent/40 hover:bg-warm-accent/10 hover:text-warm-fg"
+                  className="rounded-full border border-on-dark/10 bg-soft-dark/5 px-3 py-1.5 text-left font-bn text-xs text-muted transition hover:border-accent-primary/40 hover:bg-accent-primary/10 hover:text-on-dark"
                 >
                   {q}
                 </button>
@@ -237,20 +237,20 @@ export default function ChatBot() {
               e.preventDefault();
               sendMessage(input);
             }}
-            className="flex items-center gap-2 border-t border-warm-fg/10 bg-ink-900 p-3"
+            className="flex items-center gap-2 border-t border-on-dark/10 bg-ink-900 p-3"
           >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="মেসেজ লিখুন... · Type a message"
               aria-label="Type a message"
-              className="flex-1 rounded-full border border-warm-fg/10 bg-ink-800 px-4 py-2 text-sm text-warm-fg outline-none focus:border-warm-accent/60"
+              className="flex-1 rounded-full border border-on-dark/10 bg-ink-800 px-4 py-2 text-sm text-on-dark outline-none focus:border-accent-primary/60"
             />
             <button
               type="submit"
               aria-label="Send"
               disabled={typing || !input.trim()}
-              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow transition hover:bg-warm-accent-secondary disabled:opacity-50"
+              className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-primary text-on-dark shadow-glow transition hover:bg-accent-primary-secondary disabled:opacity-50"
             >
               <Send size={14} />
             </button>

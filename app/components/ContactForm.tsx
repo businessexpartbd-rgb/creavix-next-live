@@ -59,13 +59,13 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="card-warm p-7 sm:p-9"
+      className="rounded-card border border-accent-primary/10 bg-accent-primary/5 p-7 sm:p-9"
       aria-label="Contact form"
     >
-      <h2 className="font-display text-2xl uppercase tracking-[0.04em] text-warm-fg sm:text-3xl">
+      <h2 className="font-display text-2xl uppercase tracking-[0.04em] text-on-dark sm:text-3xl">
         Tell us about your project
       </h2>
-      <p className="mt-1 font-bn text-sm text-warm-muted00">
+      <p className="mt-1 font-bn text-sm text-muted">
         ফর্ম সাবমিট করলেই WhatsApp খুলবে আপনার বার্তা সহ — দ্রুত উত্তরের সবচেয়ে সহজ পথ।
       </p>
 
@@ -80,7 +80,7 @@ export default function ContactForm() {
             required
             onBlur={(e) => validateEmail(e.target.value)}
           />
-          {emailError ? <p className="mt-1 text-xs text-warm-accent">{emailError}</p> : null}
+          {emailError ? <p className="mt-1 text-xs text-accent-primary">{emailError}</p> : null}
         </div>
       </div>
 
@@ -92,13 +92,13 @@ export default function ContactForm() {
           placeholder="+8801XXXXXXXXX"
         />
         <div>
-          <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+          <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
             Budget range · বাজেট
           </label>
           <select
             name="budget"
             defaultValue=""
-            className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+            className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark outline-none transition focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
           >
             <option value="">Select budget range</option>
             {BUDGET_OPTIONS.map((b) => (
@@ -109,14 +109,14 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-5">
-        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
           Service · সার্ভিস
         </label>
         <select
           name="service"
           required
           defaultValue=""
-          className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+          className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark outline-none transition focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
         >
           <option value="" disabled>Choose a service</option>
           {SERVICE_OPTIONS.map((s) => (
@@ -126,7 +126,7 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-5">
-        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+        <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
           Project brief · প্রজেক্ট ডিটেইলস
         </label>
         <textarea
@@ -134,7 +134,7 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Tell us about your product, audience, goal and timeline."
-          className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+          className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark outline-none transition focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
         />
       </div>
 
@@ -150,7 +150,7 @@ export default function ContactForm() {
       </div>
 
       {submitted ? (
-        <p className="mt-5 rounded-xl border border-warm-accent/30 bg-warm-accent/10 px-4 py-3 text-sm text-warm-accent">
+        <p className="mt-5 rounded-xl border border-accent-primary/30 bg-accent-primary/10 px-4 py-3 text-sm text-accent-primary">
           WhatsApp opened in a new tab with your message. If it didn&apos;t open, tap the button again.
         </p>
       ) : null}
@@ -175,7 +175,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs font-medium uppercase tracking-[0.16em] text-warm-muted00">
+      <label className="block text-xs font-medium uppercase tracking-[0.16em] text-muted">
         {label}
       </label>
       <input
@@ -184,7 +184,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         onBlur={onBlur}
-        className="mt-2 w-full rounded-xl border border-warm-fg/10 bg-ink-900 px-4 py-3 text-sm text-warm-fg placeholder:text-warm-muted00 outline-none transition focus:border-warm-accent/60 focus:ring-2 focus:ring-warm-accent/20"
+        className="mt-2 w-full rounded-xl border border-on-dark/10 bg-ink-900 px-4 py-3 text-sm text-on-dark placeholder:text-muted outline-none transition focus:border-accent-primary/60 focus:ring-2 focus:ring-accent-primary/20"
       />
     </div>
   );

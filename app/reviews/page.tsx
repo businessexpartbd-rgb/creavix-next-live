@@ -50,13 +50,13 @@ export default async function ReviewsPage() {
         </Reveal>
         <Reveal delay={80}>
           <ScrollZoom className="mt-6">
-          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-            Verified <span className="font-display text-warm-accent">client feedback</span> across BD.
+          <h1 className="mt-6 max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+            Verified <span className="font-display text-accent-primary">client feedback</span> across BD.
           </h1>
           </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-warm-muted sm:text-base">
+          <p className="mt-6 max-w-2xl font-bn text-sm leading-7 text-muted sm:text-base">
             আমাদের প্রতিটি ক্যাম্পেইনের পেছনে একটি বাস্তব গল্প — পড়ুন, রেট দিন এবং নিজেও আপনার অভিজ্ঞতা শেয়ার করুন।
           </p>
         </Reveal>

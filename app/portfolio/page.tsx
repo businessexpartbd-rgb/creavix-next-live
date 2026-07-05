@@ -45,7 +45,7 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
       target="_blank"
       rel="noreferrer"
       title={title}
-      className="group relative block overflow-hidden rounded-card border border-warm-fg/10 bg-warm-bg transition hover:border-warm-accent/50 hover:shadow-warm-glow"
+      className="group relative block overflow-hidden rounded-card border border-on-dark/10 bg-cream transition hover:border-accent-primary/50 hover:shadow-gold-glow"
     >
       <div className="aspect-video">
         <Image
@@ -59,14 +59,14 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent opacity-80 transition group-hover:opacity-100" />
         {/* Play button overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="grid h-12 w-12 place-items-center rounded-full bg-warm-accent text-warm-fg shadow-glow transition duration-300 group-hover:scale-110 group-hover:shadow-glow-lg">
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-accent-primary text-on-dark shadow-glow transition duration-300 group-hover:scale-110 group-hover:shadow-glow-lg">
             <Play size={18} fill="currentColor" />
           </span>
         </div>
         {/* Title overlay */}
         <div className="absolute inset-x-0 bottom-0 p-3">
-          <p className="line-clamp-1 text-xs font-medium text-warm-fg/90 drop-shadow">{title}</p>
-          <div className="mt-1 flex items-center gap-1 text-[10px] uppercase tracking-[0.18em] text-warm-muted00">
+          <p className="line-clamp-1 text-xs font-medium text-on-dark/90 drop-shadow">{title}</p>
+          <div className="mt-1 flex items-center gap-1 text-[10px] uppercase tracking-[0.18em] text-muted">
             <ArrowUpRight size={10} />
             YouTube
           </div>
@@ -78,13 +78,13 @@ function VideoCard({ id, title, priority = false }: { id: string; title: string;
 
 function ComingSoonCard({ index }: { index: number }) {
   return (
-    <div className="relative overflow-hidden rounded-card border border-dashed border-warm-fg/20 bg-warm-bg/60">
+    <div className="relative overflow-hidden rounded-card border border-dashed border-on-dark/20 bg-cream/60">
       <div className="aspect-video flex flex-col items-center justify-center gap-3 p-4 text-center">
-        <span className="grid h-10 w-10 place-items-center rounded-full border border-warm-fg/10 bg-warm-fg/5 text-warm-muted">
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-on-dark/10 bg-soft-dark/5 text-muted">
           <Clock size={18} />
         </span>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-warm-muted">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
             Coming Soon
           </p>
         </div>
@@ -119,16 +119,16 @@ export default function PortfolioPage() {
         </Reveal>
         <Reveal delay={80}>
           <ScrollZoom className="mt-6">
-            <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-warm-fg sm:text-6xl lg:text-7xl">
-              Story-first <span className="font-display text-warm-accent">video work</span> for modern brands.
+            <h1 className="max-w-4xl font-serif text-balance text-5xl leading-tight tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+              Story-first <span className="font-display text-accent-primary">video work</span> for modern brands.
             </h1>
           </ScrollZoom>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-warm-muted sm:text-base">
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-muted sm:text-base">
             Browse by category — cinematic storytelling, AI product ads, financial campaigns and custom projects.
           </p>
-          <p className="mt-2 max-w-2xl font-bn text-sm leading-7 text-warm-muted">
+          <p className="mt-2 max-w-2xl font-bn text-sm leading-7 text-muted">
             ক্যাটাগরি অনুযায়ী ফিল্টার করুন — সিনেম্যাটিক, এআই প্রোডাক্ট অ্যাড, ফাইন্যান্সিয়াল ও কাস্টম।
           </p>
         </Reveal>
@@ -148,7 +148,7 @@ export default function PortfolioPage() {
       })()}
 
       {/* Filter tabs */}
-      <div className="border-b border-warm-fg/10 bg-warm-fg/5 backdrop-blur-md sticky top-16 sm:top-20 z-30">
+      <div className="border-b border-on-dark/10 bg-soft-dark/5 backdrop-blur-md sticky top-16 sm:top-20 z-30">
         <div className="container-x">
           <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
             {FILTER_TABS.map((tab) => {
@@ -160,12 +160,12 @@ export default function PortfolioPage() {
                   onClick={() => setActiveFilter(tab.key)}
                   className={`flex-none rounded-full px-4 py-2 text-sm font-medium transition whitespace-nowrap ${
                     active
-                      ? 'bg-warm-accent text-warm-fg shadow-warm-glow'
-                      : 'border border-warm-fg/10 bg-warm-fg/5 text-warm-muted hover:border-warm-accent/40 hover:text-warm-fg'
+                      ? 'bg-accent-primary text-on-dark shadow-gold-glow'
+                      : 'border border-on-dark/10 bg-soft-dark/5 text-muted hover:border-accent-primary/40 hover:text-on-dark'
                   }`}
                 >
                   {tab.label_en}
-                  <span className={`ml-1.5 font-bn text-[11px] ${active ? 'text-warm-accent-secondary' : 'text-warm-muted00'}`}>
+                  <span className={`ml-1.5 font-bn text-[11px] ${active ? 'text-accent-primary-secondary' : 'text-muted'}`}>
                     {tab.label_bn}
                   </span>
                 </button>
@@ -196,26 +196,26 @@ export default function PortfolioPage() {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-sm text-warm-muted">No videos in this category yet.</p>
+            <p className="text-sm text-muted">No videos in this category yet.</p>
           </div>
         )}
 
         <Reveal delay={200}>
-          <p className="mt-10 text-center text-xs uppercase tracking-[0.18em] text-warm-muted">
+          <p className="mt-10 text-center text-xs uppercase tracking-[0.18em] text-muted">
             Click any thumbnail to watch on YouTube
           </p>
         </Reveal>
       </section>
 
       {/* CTA */}
-      <section className="border-t border-warm-fg/10 bg-warm-accent/5 py-20 sm:py-24">
+      <section className="border-t border-on-dark/10 bg-accent-primary/5 py-20 sm:py-24">
         <div className="container-x">
           <Reveal>
-            <div className="rounded-card border border-warm-accent/20 bg-gradient-to-br from-warm-accent/[0.08] to-transparent p-8 text-center sm:p-12">
-              <h3 className="font-serif text-2xl leading-tight tracking-tight text-warm-fg sm:text-3xl">
+            <div className="rounded-card border border-accent-primary/20 bg-gradient-to-br from-accent-primary/[0.08] to-transparent p-8 text-center sm:p-12">
+              <h3 className="font-serif text-2xl leading-tight tracking-tight text-on-dark sm:text-3xl">
                 Want a campaign like these?
               </h3>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-warm-muted">
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-muted">
                 Share your brief, and we'll send a creative direction and timeline.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">

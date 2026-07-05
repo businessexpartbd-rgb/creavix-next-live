@@ -130,7 +130,7 @@ export default function Navbar() {
     <nav
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         scrolled
-          ? 'border-warm-fg/10 bg-warm-bg/72 backdrop-blur-md'
+          ? 'border-on-dark/10 bg-cream/72 backdrop-blur-md'
           : 'border-transparent bg-transparent'
       }`}
     >
@@ -144,13 +144,13 @@ export default function Navbar() {
           type="button"
           aria-label="Close pages menu"
           onClick={() => setPagesOpen(false)}
-          className="fixed inset-0 -z-10 cursor-default bg-warm-fg/20 backdrop-blur-sm"
+          className="fixed inset-0 -z-10 cursor-default bg-soft-dark/20 backdrop-blur-sm"
         />
       ) : null}
       <div className="container-x flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-6">
         {/* Logo + brand wordmark — clicks Home */}
         <Link href="/" aria-label="Home" className="group flex items-center gap-2.5">
-          <span className="relative grid h-10 w-10 flex-none place-items-center overflow-hidden rounded-xl bg-warm-bg/50 ring-1 ring-warm-fg/10 transition-all hover:ring-warm-accent/40 sm:h-11 sm:w-11">
+          <span className="relative grid h-10 w-10 flex-none place-items-center overflow-hidden rounded-xl bg-cream/50 ring-1 ring-warm-fg/10 transition-all hover:ring-accent-primary/40 sm:h-11 sm:w-11">
             <Image
               src="/new-logo.png"
               alt={`${SITE.name} logo`}
@@ -163,10 +163,10 @@ export default function Navbar() {
             />
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-2xl tracking-[0.18em] text-warm-accent sm:text-[26px]">
+            <span className="font-display text-2xl tracking-[0.18em] text-accent-primary sm:text-[26px]">
               CREAVIX
             </span>
-            <span className="text-[9px] uppercase tracking-[0.32em] text-warm-muted sm:text-[10px]">
+            <span className="text-[9px] uppercase tracking-[0.32em] text-muted sm:text-[10px]">
               IT Solution
             </span>
           </span>
@@ -183,8 +183,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   active
-                    ? 'bg-warm-accent/10 text-warm-accent'
-                    : 'text-warm-muted hover:bg-warm-bg/50 hover:text-warm-accent'
+                    ? 'bg-accent-primary/10 text-accent-primary'
+                    : 'text-muted hover:bg-cream/50 hover:text-accent-primary'
                 }`}
                 aria-current={active ? 'page' : undefined}
               >
@@ -203,7 +203,7 @@ export default function Navbar() {
             onClick={() =>
               window.dispatchEvent(new CustomEvent('creavix:open-subscribe'))
             }
-            className="hidden h-10 w-10 place-items-center rounded-full border border-warm-fg/10 bg-warm-bg/50 text-warm-muted transition hover:border-warm-accent/60 hover:text-warm-accent md:grid"
+            className="hidden h-10 w-10 place-items-center rounded-full border border-on-dark/10 bg-cream/50 text-muted transition hover:border-accent-primary/60 hover:text-accent-primary md:grid"
           >
             <Bell size={16} />
           </button>
@@ -226,7 +226,7 @@ export default function Navbar() {
             aria-controls="pages-dropdown"
             aria-label={pagesOpen ? 'Close pages menu' : 'Open pages menu'}
             onClick={() => setPagesOpen((v) => !v)}
-            className="flex h-10 items-center gap-2 rounded-full border border-warm-fg/10 bg-warm-fg/5 px-3 text-warm-fg transition hover:border-warm-accent/60 sm:h-11 sm:px-4"
+            className="flex h-10 items-center gap-2 rounded-full border border-on-dark/10 bg-soft-dark/5 px-3 text-on-dark transition hover:border-accent-primary/60 sm:h-11 sm:px-4"
           >
             {pagesOpen ? <X size={16} /> : <LayoutGrid size={16} />}
             <span className="text-xs font-semibold uppercase tracking-[0.18em]">
@@ -239,7 +239,7 @@ export default function Navbar() {
       {/* ───── Pages dropdown ───── */}
       <div
         id="pages-dropdown"
-        className={`overflow-hidden border-t border-warm-fg/10 bg-ink-950 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
+        className={`overflow-hidden border-t border-on-dark/10 bg-ink-950 shadow-2xl shadow-black/60 transition-[max-height,opacity] duration-300 md:bg-ink-900 md:shadow-black/40 ${
           pagesOpen
             ? 'max-h-[640px] opacity-100'
             : 'pointer-events-none max-h-0 opacity-0'
@@ -249,15 +249,15 @@ export default function Navbar() {
           {/* Search bar */}
           <form
             onSubmit={submitSearch}
-            className="mb-4 flex items-center gap-3 rounded-xl border border-warm-fg/10 bg-ink-800 px-4 py-2.5 focus-within:border-warm-accent/60 focus-within:ring-2 focus-within:ring-warm-accent/20"
+            className="mb-4 flex items-center gap-3 rounded-xl border border-on-dark/10 bg-ink-800 px-4 py-2.5 focus-within:border-accent-primary/60 focus-within:ring-2 focus-within:ring-accent-primary/20"
           >
-            <Search size={16} className="flex-none text-warm-accent" />
+            <Search size={16} className="flex-none text-accent-primary" />
             <input
               ref={searchInputRef}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search pages or ask AI… · পেজ বা কন্টেন্ট খুঁজুন"
-              className="flex-1 bg-transparent text-sm text-warm-fg outline-none placeholder:text-warm-muted00"
+              className="flex-1 bg-transparent text-sm text-on-dark outline-none placeholder:text-muted"
               type="text"
               aria-label="Search website"
             />
@@ -266,7 +266,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setSearch('')}
                 aria-label="Clear search"
-                className="grid h-7 w-7 flex-none place-items-center rounded-full text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg"
+                className="grid h-7 w-7 flex-none place-items-center rounded-full text-muted hover:bg-soft-dark/5 hover:text-on-dark"
               >
                 <X size={14} />
               </button>
@@ -274,7 +274,7 @@ export default function Navbar() {
             {q ? (
               <button
                 type="submit"
-                className="hidden flex-none rounded-full bg-warm-accent px-3 py-1.5 text-xs font-semibold text-warm-fg transition hover:bg-warm-accent-secondary sm:inline-flex"
+                className="hidden flex-none rounded-full bg-accent-primary px-3 py-1.5 text-xs font-semibold text-on-dark transition hover:bg-accent-primary-secondary sm:inline-flex"
               >
                 Go
               </button>
@@ -295,21 +295,21 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
                     active
-                      ? 'bg-warm-accent/15 text-warm-fg ring-1 ring-warm-accent/40'
-                      : 'text-warm-muted00 hover:bg-warm-fg/5 hover:text-warm-fg'
+                      ? 'bg-accent-primary/15 text-on-dark ring-1 ring-accent-primary/40'
+                      : 'text-muted hover:bg-soft-dark/5 hover:text-on-dark'
                   }`}
                   aria-current={active ? 'page' : undefined}
                 >
                   <span
                     className={`grid h-8 w-8 flex-none place-items-center rounded-lg ${
-                      active ? 'bg-warm-accent text-warm-fg' : 'bg-warm-fg/5 text-warm-muted00'
+                      active ? 'bg-accent-primary text-on-dark' : 'bg-soft-dark/5 text-muted'
                     }`}
                   >
                     <Icon size={14} />
                   </span>
                   <span className="flex flex-col leading-tight">
                     <span className="font-medium">{link.label_en}</span>
-                    <span className="font-bn text-xs text-warm-muted00">
+                    <span className="font-bn text-xs text-muted">
                       {link.label_bn}
                     </span>
                   </span>
@@ -317,12 +317,12 @@ export default function Navbar() {
               );
             })}
             {filteredPages.length === 0 ? (
-              <div className="col-span-full rounded-xl border border-warm-fg/10 bg-warm-fg/5 p-4 text-center text-sm text-warm-muted00">
+              <div className="col-span-full rounded-xl border border-on-dark/10 bg-soft-dark/5 p-4 text-center text-sm text-muted">
                 No pages match.{' '}
                 <button
                   type="button"
                   onClick={submitSearch}
-                  className="text-warm-accent underline hover:text-warm-fg"
+                  className="text-accent-primary underline hover:text-on-dark"
                 >
                   Press Enter to ask AI.
                 </button>
@@ -347,7 +347,7 @@ export default function Navbar() {
                 setPagesOpen(false);
                 window.dispatchEvent(new CustomEvent('creavix:open-subscribe'));
               }}
-              className="flex items-center justify-center gap-2 rounded-pill border border-warm-fg/10 bg-warm-fg/5 px-5 py-2.5 text-sm text-warm-fg"
+              className="flex items-center justify-center gap-2 rounded-pill border border-on-dark/10 bg-soft-dark/5 px-5 py-2.5 text-sm text-on-dark"
             >
               <Bell size={16} />
               Subscribe — সাবস্ক্রাইব

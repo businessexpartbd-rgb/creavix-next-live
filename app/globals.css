@@ -69,30 +69,45 @@
 @tailwind utilities;
 
 
-/* ────────────────────────────── Warm Premium Light Theme ────────────────────── */
+/* ────────────────────────────── Cinematic Dark Premium Theme ────────────────────── */
 @layer base {
   :root {
-    /* Warm premium light color system */
-    --background: #FEFAE0;
-    --background-soft: #FFE6A7;
-    --foreground: #03071E;
-    --muted: #656D4A;
-    --accent: #EB5E28;
-    --card: rgba(255, 230, 167, 0.55);
-    --card-olive: rgba(101, 109, 74, 0.12);
-    --border: rgba(3, 7, 30, 0.12);
-    --orange-glow: rgba(235, 94, 40, 0.35);
-    --glass-bg: rgba(254, 250, 224, 0.72);
-    --glass-border: rgba(3, 7, 30, 0.08);
+    /* Cinematic dark premium color system */
+    --bg-base: #0B0E14;
+    --bg-soft-dark: #14181F;
+    --bg-cream: #F7F5F0;
+    --bg-tinted: #F0EDE4;
+    --bg-accent-glow: #1A1F2E;
+    --accent-primary: #E4B94C;
+    --accent-secondary: #6E5BFF;
+    --text-on-dark: #F5F3ED;
+    --text-on-light: #14181F;
+    
+    /* Semantic mappings for backward compatibility */
+    --background: var(--bg-cream);
+    --background-soft: var(--bg-tinted);
+    --foreground: var(--text-on-dark);
+    --muted: #A0A0A0;
+    --accent: var(--accent-primary);
+    
+    /* Derived colors for sections */
+    --card: rgba(228, 185, 76, 0.12);
+    --card-dark: rgba(20, 24, 31, 0.55);
+    --border: rgba(228, 185, 76, 0.15);
+    --gold-glow: rgba(228, 185, 76, 0.35);
+    --violet-glow: rgba(110, 91, 255, 0.25);
+    --glass-bg: rgba(11, 14, 20, 0.72);
+    --glass-border: rgba(228, 185, 76, 0.12);
 
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   html {
     overflow-x: clip;
     -webkit-overflow-scrolling: touch;
     text-rendering: optimizeSpeed;
-    background-color: var(--background);
+    background-color: var(--bg-base);
+    color: var(--text-on-dark);
   }
 
   @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
