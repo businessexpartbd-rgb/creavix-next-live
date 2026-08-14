@@ -16,6 +16,7 @@ import {
   TRUST_PILLARS,
 } from '../lib/site-data';
 import HeroSection from './components/HeroSection';
+import HeroAnimatedHeading from './components/HeroAnimatedHeading';
 import Reveal from './components/Reveal';
 import SectionIntro from './components/SectionIntro';
 import ServiceCard from './components/ServiceCard';
@@ -54,20 +55,22 @@ export default function HomePage() {
       <HeroSection theme="home" watermark="CREAVIX">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
-            <Reveal>
+            <Reveal repeat>
               <span className="eyebrow">
                 <Sparkles size={12} className="text-brand" />
                 {SITE.tagline_en} · বাংলাদেশ
               </span>
             </Reveal>
-            <Reveal delay={80}>
-              <h1 className="mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]">
-                Cinematic <span className="accent">AI Video</span>
-                <br />
-                campaigns that convert.
-              </h1>
-            </Reveal>
-            <Reveal delay={160}>
+            <HeroAnimatedHeading
+              className="mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]"
+              lines={[
+                <span key="line-one">
+                  Cinematic <span className="accent">AI Video</span>
+                </span>,
+                <span key="line-two">campaigns that convert.</span>,
+              ]}
+            />
+            <Reveal delay={160} repeat>
               <p className="mt-6 max-w-xl text-base leading-8 text-ash-300 sm:text-lg">
                 Creavix blends premium storytelling, AI-led production and bilingual brand
                 clarity for businesses that want short-form speed, cinematic depth and a
@@ -78,7 +81,7 @@ export default function HomePage() {
                 ২০১৪ থেকে ৪,৩০০+ ব্র্যান্ডের পাশে।
               </p>
             </Reveal>
-            <Reveal delay={240}>
+            <Reveal delay={240} repeat>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a href={SITE.whatsappLink} target="_blank" rel="noreferrer" className="btn-3d-primary">
                   Start your campaign
@@ -90,7 +93,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </Reveal>
-            <Reveal delay={320}>
+            <Reveal delay={320} repeat>
               <div className="mt-10 flex items-center gap-3">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -107,7 +110,7 @@ export default function HomePage() {
 
           {/* Hero media stack */}
           <div className="relative">
-            <Reveal delay={120}>
+            <Reveal delay={120} repeat>
               <div className="relative grid gap-4">
                 {HERO_REEL[0] ? (
                   <div className="relative">
@@ -122,7 +125,7 @@ export default function HomePage() {
                 </div>
               </div>
             </Reveal>
-            <Reveal delay={280}>
+            <Reveal delay={280} repeat>
               <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-white/10 bg-ink-900/80 p-4 shadow-card backdrop-blur lg:block">
                 <div className="flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white">
@@ -141,7 +144,7 @@ export default function HomePage() {
         </div>
 
         {/* Stats */}
-        <Reveal delay={200}>
+        <Reveal delay={200} repeat>
           <div className="mt-20 grid gap-px rounded-card border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s) => (
               <div
