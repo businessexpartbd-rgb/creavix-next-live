@@ -26,8 +26,7 @@ interface VideoThumbProps {
  *      visitor scrolls back, the video stays paused at the same frame
  *      so playback resumes only when they click play again.
  *   ④ When ANY other VideoThumb on the page starts playing, every
- *      other one immediately pauses (single-channel feel, matching
- *      AdInsightVideo).
+      *      other one immediately pauses (single-channel feel).
  *   ⑤ Tab switch / window blur also pauses (mobile background switch).
  */
 export default function VideoThumb({
