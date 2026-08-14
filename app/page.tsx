@@ -161,6 +161,9 @@ export default function HomePage() {
       {/* Client logos */}
       <ClientLogosSlider />
 
+      {/* Keep the original section rhythm after removing the vertical ad insight video. */}
+      <div aria-hidden="true" className="h-20 sm:h-24" />
+
       {/* Services */}
       <section className="container-x py-24 sm:py-28 cv-auto">
         <SectionIntro
