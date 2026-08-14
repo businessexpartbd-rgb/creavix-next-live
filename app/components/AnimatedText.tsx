@@ -5,6 +5,8 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 interface AnimatedTextProps {
   children: ReactNode;
   delay?: number;
+  /** Replays the animation whenever the text re-enters the viewport. */
+  repeat?: boolean;
   className?: string;
 }
 
@@ -20,6 +22,7 @@ interface AnimatedTextProps {
 export default function AnimatedText({
   children,
   delay = 0,
+  repeat = false,
   className = '',
 }: AnimatedTextProps) {
   const ref = useRef<HTMLParagraphElement | null>(null);
@@ -36,6 +39,9 @@ export default function AnimatedText({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsAnimating(true);
+            if (!repeat) observer.unobserve(entry.target);
+          } else if (repeat) {
+            setIsAnimating(false);
           }
         });
       },
@@ -53,7 +59,7 @@ export default function AnimatedText({
     return () => {
       if (el) observer.unobserve(el);
     };
-  }, []);
+  }, [repeat]);
 
   const animationStyle: React.CSSProperties = isAnimating
     ? {
