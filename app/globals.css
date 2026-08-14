@@ -198,6 +198,34 @@
     }
   }
 
+  /* Homepage-only cinematic hero motion */
+  .hero-home::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    background:
+      radial-gradient(circle at 78% 24%, rgba(232, 23, 58, 0.13), transparent 24%),
+      radial-gradient(circle at 58% 72%, rgba(232, 23, 58, 0.07), transparent 28%);
+    animation: heroGlowDrift 12s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+  .hero-title-entrance {
+    opacity: 1;
+    transform: none;
+    transform-origin: center top;
+  }
+  .hero-home:not(.hero-home-visible) .hero-title-entrance {
+    opacity: 0;
+    transform: translate3d(0, -24px, 0) scale(1.035);
+  }
+  .hero-home-visible .hero-title-entrance,
+  .hero-home-visible .hero-title-entrance.reveal.in-view {
+    animation: heroTitleEntrance 0.78s cubic-bezier(0.22, 1, 0.36, 1) both;
+    opacity: 1;
+  }
+
   /* Hero giant background watermark text */
   .hero-watermark {
     position: absolute;
@@ -314,6 +342,14 @@
 
   /* ✅ Respect user motion preferences globally */
   @media (prefers-reduced-motion: reduce) {
+    .hero-title-entrance {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .hero-home::before {
+      animation: none !important;
+    }
     .reveal {
       opacity: 1 !important;
       transform: none !important;
@@ -363,6 +399,28 @@
 }
 
 /* ───────────────────────────────── Keyframes ──────────────────────────────── */
+@keyframes heroTitleEntrance {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -24px, 0) scale(1.035);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes heroGlowDrift {
+  from {
+    transform: translate3d(-1%, -1%, 0) scale(1);
+    opacity: 0.72;
+  }
+  to {
+    transform: translate3d(1%, 1%, 0) scale(1.03);
+    opacity: 1;
+  }
+}
+
 @keyframes waPulse {
   0%,
   100% {

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   Camera,
   Film,
@@ -45,8 +45,33 @@ interface HeroSectionProps {
  * stays untouched. Mobile-safe: hidden below md to avoid clutter.
  */
 export default function HeroSection({ theme, watermark, children }: HeroSectionProps) {
+  const heroRef = useRef<HTMLElement>(null);
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
+
+  useEffect(() => {
+    if (theme !== 'home' || !heroRef.current || typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+
+    const hero = heroRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsHeroVisible(entry.isIntersecting),
+      { threshold: 0.55 },
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [theme]);
+
   return (
-    <section className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-40">
+    <section
+      ref={heroRef}
+      className={
+        theme === 'home'
+          ? `hero-home relative overflow-hidden pt-28 sm:pt-32 lg:pt-40${isHeroVisible ? ' hero-home-visible' : ''}`
+          : 'relative overflow-hidden pt-28 sm:pt-32 lg:pt-40'
+      }
+    >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-radial-brand" />
 
       {/* Big watermark text */}

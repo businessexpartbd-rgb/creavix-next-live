@@ -60,7 +60,7 @@ export default function HomePage() {
               </span>
             </Reveal>
             <Reveal delay={80}>
-              <h1 className="mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]">
+              <h1 className="hero-title-entrance mt-6 font-display text-balance text-5xl uppercase leading-[0.92] tracking-[0.04em] text-white sm:text-6xl lg:text-7xl xl:text-[88px]">
                 Cinematic <span className="accent">AI Video</span>
                 <br />
                 campaigns that convert.
